@@ -5,7 +5,7 @@ export const AMAZON_TAG = 'crispypettus-20';
 
 export function amazonShopUrl(items: string[]): string {
   const query = items.slice(0, 8).join(' ');
-  return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${AMAZON_TAG}`;
+  return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&i=amazonfresh&tag=${AMAZON_TAG}`;
 }
 
 export interface EquipmentItem {
