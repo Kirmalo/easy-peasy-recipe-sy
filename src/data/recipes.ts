@@ -1,11 +1,12 @@
 import type { Recipe } from '../types';
+import { EXTENDED_RECIPES } from './recipes-extended';
 
 export const CUISINE_LABELS: Record<string, string> = {
   easy: 'Easy', medium: 'Medium', hard: 'Hard',
   breakfast: 'Breakfast', lunch: 'Lunch', dinner: 'Dinner', snack: 'Snack', dessert: 'Dessert',
 };
 
-export const RECIPES: Recipe[] = [
+const CURATED_RECIPES: Recipe[] = [
   {
     id: 1, name: 'Garlic Butter Pasta', emoji: '🍝', theme: 'mustard',
     description: 'Silky pasta tossed in a glossy, garlicky butter sauce.',
@@ -338,8 +339,10 @@ export const RECIPES: Recipe[] = [
   },
 ];
 
+export const RECIPES: Recipe[] = [...CURATED_RECIPES, ...EXTENDED_RECIPES];
+
 if (import.meta.env.DEV) {
-  RECIPES.forEach((r) => {
+  CURATED_RECIPES.forEach((r) => {
     if (r.amounts.length !== r.ingredients.length) {
       console.warn(
         `Recipe "${r.name}" (id ${r.id}): amounts.length (${r.amounts.length}) !== ingredients.length (${r.ingredients.length})`,
