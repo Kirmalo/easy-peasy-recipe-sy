@@ -1,7 +1,6 @@
 import { Apple, Sparkles, BookOpen, Flame } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-
-type ViewId = 'kitchen' | 'discover' | 'cookbook' | 'making';
+import type { ViewId } from '../types';
 
 interface Tab {
   id: ViewId;

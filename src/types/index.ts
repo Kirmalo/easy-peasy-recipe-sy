@@ -1,3 +1,4 @@
+export type ViewId = 'kitchen' | 'discover' | 'cookbook' | 'making';
 export type ThemeName = 'tomato' | 'sage' | 'mustard' | 'berry' | 'peach' | 'ocean' | 'forest' | 'rose';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';

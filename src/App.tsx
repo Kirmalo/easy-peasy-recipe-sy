@@ -10,17 +10,8 @@ import { CookingStepsView } from './views/CookingStepsView';
 import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
-import type { Filters } from './types';
-
-type ViewId = 'kitchen' | 'discover' | 'cookbook' | 'making';
-
-const DEFAULT_FILTERS: Filters = {
-  cookTime: null,
-  difficulty: null,
-  mealType: null,
-  dietary: [],
-  ingredientMode: 'all',
-};
+import { DEFAULT_FILTERS } from './data/defaults';
+import type { ViewId } from './types';
 
 export default function App() {
   const [view, setView] = useState<ViewId>('kitchen');
@@ -37,7 +28,11 @@ export default function App() {
   const removeFromCookbook = (id: number) => setCookbook((p) => p.filter((x) => x !== id));
   const addToMaking = (id: number) => setMaking((p) => (p.includes(id) ? p : [...p, id]));
   const removeFromMaking = (id: number) => setMaking((p) => p.filter((x) => x !== id));
-  const addToPassed = (id: number) => setPassed((p) => (p.includes(id) ? p : [...p, id]));
+  const addToPassed = (id: number) => setPassed((p) => {
+    if (p.includes(id)) return p;
+    const next = [...p, id];
+    return next.length > 500 ? next.slice(-500) : next;
+  });
   const resetPassed = () => setPassed(() => []);
 
   return (
@@ -88,7 +83,6 @@ export default function App() {
           <DiscoverView
             pantry={pantry}
             filters={filters}
-            setFilters={setFilters}
             cookbook={cookbook}
             addToCookbook={addToCookbook}
             making={making}
@@ -127,12 +121,15 @@ export default function App() {
           makingCount={making.length}
         />
 
-        <FilterSheet
-          open={showFilters}
-          onClose={() => setShowFilters(false)}
-          filters={filters}
-          setFilters={setFilters}
-        />
+        <AnimatePresence>
+          {showFilters && (
+            <FilterSheet
+              onClose={() => setShowFilters(false)}
+              filters={filters}
+              setFilters={setFilters}
+            />
+          )}
+        </AnimatePresence>
 
         {detailId !== null && (
           <RecipeDetail

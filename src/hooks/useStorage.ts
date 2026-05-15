@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 export function useStorage<T>(
   key: string,
   defaultValue: T,
-): [T, (newVal: T | ((prev: T) => T)) => void, boolean] {
+): [T, (newVal: T | ((prev: T) => T)) => void] {
   const [value, setValue] = useState<T>(() => {
     try {
       const raw = localStorage.getItem(key);
@@ -28,6 +28,5 @@ export function useStorage<T>(
     [key],
   );
 
-  // localStorage is synchronous, so loaded is always true
-  return [value, update, true];
+  return [value, update];
 }

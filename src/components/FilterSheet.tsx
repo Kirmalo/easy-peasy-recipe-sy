@@ -1,19 +1,15 @@
+import { motion } from 'framer-motion';
 import type { Filters, DietaryTag, Difficulty, MealType } from '../types';
 import { CUISINE_LABELS } from '../data/recipes';
+import { DEFAULT_FILTERS } from '../data/defaults';
 
 interface FilterSheetProps {
-  open: boolean;
   onClose: () => void;
   filters: Filters;
   setFilters: (fn: (prev: Filters) => Filters) => void;
 }
 
-const DEFAULT_FILTERS: Filters = {
-  cookTime: null, difficulty: null, mealType: null, dietary: [], ingredientMode: 'all',
-};
-
-export function FilterSheet({ open, onClose, filters, setFilters }: FilterSheetProps) {
-  if (!open) return null;
+export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) {
 
   const toggle = (key: 'cookTime' | 'difficulty' | 'mealType', value: number | string) => {
     setFilters((f) => ({ ...f, [key]: f[key] === value ? null : value }));
@@ -68,11 +64,22 @@ export function FilterSheet({ open, onClose, filters, setFilters }: FilterSheetP
   const mode = filters.ingredientMode ?? 'all';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end" style={{ animation: 'float-in 0.25s ease-out' }}>
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div
+    <div className="fixed inset-0 z-50 flex items-end">
+      <motion.div
+        className="absolute inset-0 bg-black/40"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        onClick={onClose}
+      />
+      <motion.div
         className="relative w-full bg-[var(--bg-page)] rounded-t-[32px] p-6 pb-8 max-h-[80vh] overflow-y-auto no-scrollbar"
         style={{ boxShadow: '0 -20px 40px rgba(0,0,0,0.15)' }}
+        initial={{ y: '100%' }}
+        animate={{ y: 0 }}
+        exit={{ y: '100%' }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       >
         <div className="w-12 h-1.5 bg-[var(--border-default)] rounded-full mx-auto mb-5" />
 
@@ -165,7 +172,7 @@ export function FilterSheet({ open, onClose, filters, setFilters }: FilterSheetP
         >
           Show recipes
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 }

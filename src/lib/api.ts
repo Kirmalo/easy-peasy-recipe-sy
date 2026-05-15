@@ -26,8 +26,24 @@ const RECIPE_QUERIES: Record<number, string[]> = {
   25: ['Chocolate Cake', 'Chocolate', 'Brownie'],
 };
 
+const SESSION_PREFIX = 'ep_img_';
+
 const imageCache = new Map<number, string | null>();
 const imageInflight = new Map<number, Promise<string | null>>();
+
+// Pre-populate from sessionStorage so images are instant on page reload.
+try {
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const key = sessionStorage.key(i);
+    if (key?.startsWith(SESSION_PREFIX)) {
+      const id = parseInt(key.slice(SESSION_PREFIX.length), 10);
+      if (!isNaN(id)) {
+        const raw = sessionStorage.getItem(key);
+        imageCache.set(id, raw === 'null' ? null : raw);
+      }
+    }
+  }
+} catch { /* private browsing / storage unavailable */ }
 
 export async function fetchRecipeImage(recipeId: number): Promise<string | null> {
   if (imageCache.has(recipeId)) return imageCache.get(recipeId) ?? null;
@@ -42,16 +58,18 @@ export async function fetchRecipeImage(recipeId: number): Promise<string | null>
         );
         if (!res.ok) continue;
         const data = (await res.json()) as { meals?: Array<{ strMealThumb: string }> | null };
-        const meals = data?.meals;
-        if (meals && meals.length > 0 && meals[0].strMealThumb) {
-          imageCache.set(recipeId, meals[0].strMealThumb);
-          return meals[0].strMealThumb;
+        const url = data?.meals?.[0]?.strMealThumb ?? null;
+        if (url) {
+          imageCache.set(recipeId, url);
+          try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, url); } catch { /* quota */ }
+          return url;
         }
       } catch {
         // try next query
       }
     }
     imageCache.set(recipeId, null);
+    try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, 'null'); } catch { /* quota */ }
     return null;
   })();
 

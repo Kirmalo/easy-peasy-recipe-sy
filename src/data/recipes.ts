@@ -337,3 +337,13 @@ export const RECIPES: Recipe[] = [
     ],
   },
 ];
+
+if (import.meta.env.DEV) {
+  RECIPES.forEach((r) => {
+    if (r.amounts.length !== r.ingredients.length) {
+      console.warn(
+        `Recipe "${r.name}" (id ${r.id}): amounts.length (${r.amounts.length}) !== ingredients.length (${r.ingredients.length})`,
+      );
+    }
+  });
+}

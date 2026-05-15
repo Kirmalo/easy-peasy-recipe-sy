@@ -9,7 +9,6 @@ import type { Filters, SwipeDirection } from '../types';
 interface DiscoverViewProps {
   pantry: string[];
   filters: Filters;
-  setFilters: (fn: (prev: Filters) => Filters) => void;
   cookbook: number[];
   addToCookbook: (id: number) => void;
   making: number[];
