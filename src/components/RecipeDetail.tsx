@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Clock, Gauge, Utensils, ChefHat, Leaf, BookOpen, Flame, Check } from 'lucide-react';
+import { ArrowLeft, Clock, Gauge, Utensils, ChefHat, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus } from 'lucide-react';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
@@ -18,6 +18,36 @@ interface RecipeDetailProps {
   removeFromMaking: (id: number) => void;
 }
 
+function scaleAmount(amount: string, factor: number): string {
+  if (factor === 1) return amount;
+  return amount.replace(/\d+\/\d+|\d+\.?\d*/g, (match) => {
+    let n: number;
+    if (match.includes('/')) {
+      const [num, den] = match.split('/').map(Number);
+      n = num / den;
+    } else {
+      n = parseFloat(match);
+    }
+    const scaled = n * factor;
+    if (scaled % 1 === 0) return String(scaled);
+    const rounded = Math.round(scaled * 4) / 4;
+    const frac = rounded % 1;
+    const whole = Math.floor(rounded);
+    const fracStr = frac < 0.3 ? '¼' : frac < 0.55 ? '½' : frac < 0.8 ? '¾' : '1';
+    if (fracStr === '1') return String(whole + 1);
+    return whole > 0 ? `${whole} ${fracStr}` : fracStr;
+  });
+}
+
+async function shareShoppingList(missing: string[], recipeName: string) {
+  const text = `Shopping list for ${recipeName}:\n${missing.map((m) => `• ${m}`).join('\n')}`;
+  if (navigator.share) {
+    await navigator.share({ title: `${recipeName} — shopping list`, text });
+  } else {
+    await navigator.clipboard.writeText(text);
+  }
+}
+
 export function RecipeDetail({
   recipeId,
   onClose,
@@ -32,6 +62,8 @@ export function RecipeDetail({
   const recipe = RECIPES.find((r) => r.id === recipeId);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [servings, setServings] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
 
   if (!recipe) return null;
 
@@ -41,6 +73,9 @@ export function RecipeDetail({
   const inMaking = making.includes(recipe.id);
   const imageUrl = useRecipeImage(recipe.id);
   const showFallback = !imageUrl || imgError || !imgLoaded;
+
+  const activeServings = servings ?? recipe.servings;
+  const scaleFactor = activeServings / recipe.servings;
 
   return (
     <div
@@ -104,7 +139,29 @@ export function RecipeDetail({
           <Pill icon={Clock} color="var(--surface-cream)" textColor="var(--text-primary)">{recipe.cookTime} min</Pill>
           <Pill icon={Gauge} color="var(--surface-cream)" textColor="var(--text-primary)">{CUISINE_LABELS[recipe.difficulty]}</Pill>
           <Pill icon={Utensils} color="var(--surface-cream)" textColor="var(--text-primary)">{CUISINE_LABELS[recipe.mealType]}</Pill>
-          <Pill icon={ChefHat} color="var(--surface-cream)" textColor="var(--text-primary)">Serves {recipe.servings}</Pill>
+          <div
+            className="inline-flex items-center gap-1 px-1 py-1 rounded-full"
+            style={{ background: 'var(--surface-cream)' }}
+          >
+            <button
+              onClick={() => setServings((s) => Math.max(1, (s ?? recipe.servings) - 1))}
+              className="w-7 h-7 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+              style={{ background: activeServings > 1 ? 'var(--surface-dark)' : 'var(--border-default)' }}
+              disabled={activeServings <= 1}
+            >
+              <Minus size={12} strokeWidth={3} className="text-white" />
+            </button>
+            <span className="font-body text-[13px] font-semibold text-[var(--text-primary)] px-1.5 tabular-nums">
+              {activeServings} {activeServings === 1 ? 'serving' : 'servings'}
+            </span>
+            <button
+              onClick={() => setServings((s) => (s ?? recipe.servings) + 1)}
+              className="w-7 h-7 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+              style={{ background: 'var(--surface-dark)' }}
+            >
+              <Plus size={12} strokeWidth={3} className="text-white" />
+            </button>
+          </div>
           {recipe.dietary.map((d) => (
             <Pill key={d} icon={Leaf} color={theme.soft} textColor={theme.dark}>{d}</Pill>
           ))}
@@ -112,14 +169,33 @@ export function RecipeDetail({
 
         {/* Ingredients */}
         <div className="mb-7">
-          <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] mb-4 flex items-center gap-2">
-            Ingredients
-            {pantry.length > 0 && (
-              <span className="font-body font-medium text-[13px] text-[var(--text-tertiary)]">
-                · {match.have}/{match.need} in pantry
-              </span>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] flex items-center gap-2">
+              Ingredients
+              {pantry.length > 0 && (
+                <span className="font-body font-medium text-[13px] text-[var(--text-tertiary)]">
+                  · {match.have}/{match.need} in pantry
+                </span>
+              )}
+            </h2>
+            {match.missing.length > 0 && (
+              <button
+                onClick={async () => {
+                  await shareShoppingList(match.missing, recipe.name);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
+                style={{
+                  background: copied ? 'var(--success-100)' : theme.soft,
+                  color: copied ? 'var(--success-700)' : theme.dark,
+                }}
+              >
+                <ShoppingCart size={13} strokeWidth={2.5} />
+                {copied ? 'Copied!' : `${match.missing.length} to buy`}
+              </button>
             )}
-          </h2>
+          </div>
           <div className="bg-white rounded-2xl p-2">
             {recipe.ingredients.map((ing, i) => {
               const have = pantry.some((p) => ingMatches(ing, p));
@@ -132,7 +208,9 @@ export function RecipeDetail({
                     {have && <Check size={14} strokeWidth={3.5} className="text-white" />}
                   </div>
                   <span className="font-body text-[15px] text-[var(--text-primary)] capitalize flex-1">{ing}</span>
-                  <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">{recipe.amounts[i]}</span>
+                  <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
+                    {scaleAmount(recipe.amounts[i], scaleFactor)}
+                  </span>
                 </div>
               );
             })}

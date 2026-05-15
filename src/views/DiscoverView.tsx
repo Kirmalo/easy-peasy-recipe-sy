@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { X, BookmarkPlus, Heart, SlidersHorizontal, Sparkles, RotateCcw } from 'lucide-react';
+import { X, BookmarkPlus, Heart, SlidersHorizontal, Sparkles, RotateCcw, Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
 import { RECIPES } from '../data/recipes';
@@ -37,6 +38,13 @@ export function DiscoverView({
 }: DiscoverViewProps) {
   const [forcedExit, setForcedExit] = useState<SwipeDirection | null>(null);
   const [exitingId, setExitingId] = useState<number | null>(null);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const unfilteredCount = useMemo(
+    () => RECIPES.filter((r) => !passed.includes(r.id) && !cookbook.includes(r.id) && !making.includes(r.id)).length,
+    [passed, cookbook, making],
+  );
 
   const deck = useMemo(() => {
     let candidates = RECIPES.filter(
@@ -47,6 +55,13 @@ export function DiscoverView({
     if (filters.mealType) candidates = candidates.filter((r) => r.mealType === filters.mealType);
     if (filters.dietary?.length) {
       candidates = candidates.filter((r) => filters.dietary.every((d) => r.dietary.includes(d)));
+    }
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      candidates = candidates.filter(
+        (r) => r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)),
+      );
     }
 
     let scored = candidates.map((r) => ({ recipe: r, match: computeMatch(r, pantry) }));
@@ -63,7 +78,7 @@ export function DiscoverView({
 
     scored.sort((a, b) => b.match.score - a.match.score);
     return scored;
-  }, [pantry, filters, cookbook, making, passed]);
+  }, [pantry, filters, cookbook, making, passed, searchQuery]);
 
   const topThree = deck.slice(0, 3);
   const current = topThree[0];
@@ -110,38 +125,87 @@ export function DiscoverView({
   return (
     <div className="flex-1 flex flex-col">
       {/* Filter bar */}
-      <div className="px-6 pt-2 pb-3 flex items-center justify-between">
-        <div className="min-w-0 flex-1">
-          <p className="font-body text-[12px] uppercase tracking-[0.18em] text-[var(--text-tertiary)] font-semibold">
-            {pantry.length > 0
-              ? `Matched to ${pantry.length} ingredient${pantry.length === 1 ? '' : 's'}`
-              : 'Browsing everything'}
-          </p>
-          <h1 className="font-display font-semibold text-[var(--text-primary)] text-[28px] leading-tight tracking-tight">
-            Discover
-          </h1>
-          {modeBadge && (
-            <button
-              onClick={onOpenFilters}
-              className="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--brand-50)] active:scale-95 transition-transform"
+      <div className="px-6 pt-2 pb-3">
+        <AnimatePresence initial={false} mode="wait">
+          {showSearch ? (
+            <motion.div
+              key="search"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18 }}
+              className="flex items-center gap-2"
             >
-              <Sparkles size={11} strokeWidth={2.8} className="text-[var(--brand-500)]" />
-              <span className="font-body text-[11px] font-bold text-[var(--brand-800)]">{modeBadge}</span>
-            </button>
+              <div className="flex-1 relative">
+                <Search size={16} strokeWidth={2.4} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]" />
+                <input
+                  autoFocus
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search recipes or ingredients…"
+                  className="w-full pl-9 pr-4 py-3 rounded-2xl font-body text-[15px] bg-white border-2 border-[var(--border-default)] focus:border-[var(--brand-500)] focus:outline-none placeholder:text-[var(--text-placeholder)] text-[var(--text-primary)]"
+                  style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.10)' }}
+                />
+              </div>
+              <button
+                onClick={() => { setShowSearch(false); setSearchQuery(''); }}
+                className="h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform flex-shrink-0"
+              >
+                <X size={18} className="text-[var(--text-primary)]" strokeWidth={2.4} />
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="title"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.18 }}
+              className="flex items-center justify-between"
+            >
+              <div className="min-w-0 flex-1">
+                <p className="font-body text-[12px] uppercase tracking-[0.18em] text-[var(--text-tertiary)] font-semibold">
+                  {pantry.length > 0
+                    ? `Matched to ${pantry.length} ingredient${pantry.length === 1 ? '' : 's'}`
+                    : 'Browsing everything'}
+                </p>
+                <h1 className="font-display font-semibold text-[var(--text-primary)] text-[28px] leading-tight tracking-tight">
+                  Discover
+                </h1>
+                {modeBadge && (
+                  <button
+                    onClick={onOpenFilters}
+                    className="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--brand-50)] active:scale-95 transition-transform"
+                  >
+                    <Sparkles size={11} strokeWidth={2.8} className="text-[var(--brand-500)]" />
+                    <span className="font-body text-[11px] font-bold text-[var(--brand-800)]">{modeBadge}</span>
+                  </button>
+                )}
+              </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <button
+                  onClick={() => setShowSearch(true)}
+                  className="h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform"
+                  style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.15)' }}
+                >
+                  <Search size={20} className="text-[var(--text-primary)]" strokeWidth={2.4} />
+                </button>
+                <button
+                  onClick={onOpenFilters}
+                  className="relative h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform"
+                  style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.15)' }}
+                >
+                  <SlidersHorizontal size={20} className="text-[var(--text-primary)]" strokeWidth={2.4} />
+                  {activeFilterCount > 0 && (
+                    <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--brand-500)] text-white text-[11px] font-bold flex items-center justify-center font-body">
+                      {activeFilterCount}
+                    </span>
+                  )}
+                </button>
+              </div>
+            </motion.div>
           )}
-        </div>
-        <button
-          onClick={onOpenFilters}
-          className="relative h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform flex-shrink-0"
-          style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.15)' }}
-        >
-          <SlidersHorizontal size={20} className="text-[var(--text-primary)]" strokeWidth={2.4} />
-          {activeFilterCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--brand-500)] text-white text-[11px] font-bold flex items-center justify-center font-body">
-              {activeFilterCount}
-            </span>
-          )}
-        </button>
+        </AnimatePresence>
       </div>
 
       {/* Card area */}
@@ -202,6 +266,35 @@ export function DiscoverView({
               <p className="font-body text-[11px] text-[var(--text-tertiary)] text-center w-16">Cook it</p>
             </div>
           </>
+        ) : unfilteredCount > 0 ? (
+          <div className="text-center py-16" style={{ animation: 'float-in 0.5s ease-out' }}>
+            <div className="text-7xl mb-5">🔍</div>
+            <h2 className="font-display font-semibold text-[var(--text-primary)] text-[28px] leading-tight mb-3">
+              No matches
+            </h2>
+            <p className="font-body text-[var(--text-secondary)] text-[15px] mb-6 px-6">
+              {searchQuery.trim()
+                ? 'No recipes found for that search. Try different words.'
+                : 'Your current filters are hiding everything. Loosen them up!'}
+            </p>
+            <div className="flex flex-col gap-3 px-6">
+              <button
+                onClick={onOpenFilters}
+                className="px-6 py-3.5 rounded-2xl bg-[var(--surface-dark)] text-white font-body font-bold text-[15px] active:scale-95 transition-transform"
+              >
+                Adjust filters
+              </button>
+              {searchQuery.trim() && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="px-6 py-3.5 rounded-2xl bg-white border-2 border-[var(--border-default)] text-[var(--text-primary)] font-body font-bold text-[15px] active:scale-95 transition-transform"
+                  style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.12)' }}
+                >
+                  Clear search
+                </button>
+              )}
+            </div>
+          </div>
         ) : (
           <div className="text-center py-16" style={{ animation: 'float-in 0.5s ease-out' }}>
             <div className="text-7xl mb-5">🌟</div>
@@ -209,7 +302,7 @@ export function DiscoverView({
               You've seen it all!
             </h2>
             <p className="font-body text-[var(--text-secondary)] text-[15px] mb-6 px-6">
-              Try changing your filters or starting fresh.
+              You've been through every recipe. Ready to go again?
             </p>
             <div className="flex flex-col gap-3 px-6">
               <button
@@ -218,13 +311,6 @@ export function DiscoverView({
               >
                 <RotateCcw size={18} strokeWidth={2.5} />
                 Start over
-              </button>
-              <button
-                onClick={onOpenFilters}
-                className="px-6 py-3.5 rounded-2xl bg-white border-2 border-[var(--border-default)] text-[var(--text-primary)] font-body font-bold text-[15px] active:scale-95 transition-transform"
-                style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.12)' }}
-              >
-                Adjust filters
               </button>
             </div>
           </div>

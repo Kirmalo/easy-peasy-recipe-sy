@@ -104,6 +104,12 @@ export function KitchenView({ pantry, setPantry, onContinue }: KitchenViewProps)
         </div>
 
         {/* Voice input */}
+        {!speechSupported && (
+          <p className="mb-5 font-body text-[12px] text-[var(--text-tertiary)] flex items-center gap-1.5">
+            <Mic size={13} strokeWidth={2.5} className="flex-shrink-0 opacity-50" />
+            Voice input isn't available in this browser. Works best in Chrome or Safari on mobile.
+          </p>
+        )}
         {speechSupported && (
           <div className="mb-5">
             {!isListening ? (

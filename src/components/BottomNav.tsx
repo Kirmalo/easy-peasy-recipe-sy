@@ -7,6 +7,7 @@ interface Tab {
   label: string;
   icon: LucideIcon;
   badge?: number;
+  activeColor?: string;
 }
 
 interface BottomNavProps {
@@ -20,8 +21,8 @@ export function BottomNav({ view, setView, cookbookCount, makingCount }: BottomN
   const tabs: Tab[] = [
     { id: 'kitchen',  label: 'Kitchen',  icon: Apple },
     { id: 'discover', label: 'Discover', icon: Sparkles },
-    { id: 'cookbook', label: 'Cookbook', icon: BookOpen, badge: cookbookCount },
-    { id: 'making',   label: 'Cooking',  icon: Flame,   badge: makingCount },
+    { id: 'cookbook', label: 'Cookbook', icon: BookOpen, badge: cookbookCount, activeColor: 'var(--accent-500)' },
+    { id: 'making',   label: 'Cooking',  icon: Flame,   badge: makingCount,   activeColor: '#f97316' },
   ];
 
   return (
@@ -38,7 +39,7 @@ export function BottomNav({ view, setView, cookbookCount, makingCount }: BottomN
               key={t.id}
               onClick={() => setView(t.id)}
               className="relative flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-full transition-all"
-              style={{ background: active ? 'var(--brand-500)' : 'transparent' }}
+              style={{ background: active ? (t.activeColor ?? 'var(--brand-500)') : 'transparent' }}
             >
               <Icon size={18} strokeWidth={2.5} className="text-white" />
               {active && (

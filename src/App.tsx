@@ -150,6 +150,10 @@ export default function App() {
             <CookingStepsView
               recipeId={cookingSessionId}
               onClose={() => setCookingSessionId(null)}
+              onDone={() => {
+                removeFromMaking(cookingSessionId);
+                setCookingSessionId(null);
+              }}
             />
           )}
         </AnimatePresence>

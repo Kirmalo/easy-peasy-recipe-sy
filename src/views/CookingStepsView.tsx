@@ -8,6 +8,7 @@ import { useRecipeImage } from '../hooks/useRecipeImage';
 interface CookingStepsViewProps {
   recipeId: number;
   onClose: () => void;
+  onDone: () => void;
 }
 
 const slideVariants = {
@@ -16,7 +17,7 @@ const slideVariants = {
   exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
 };
 
-export function CookingStepsView({ recipeId, onClose }: CookingStepsViewProps) {
+export function CookingStepsView({ recipeId, onClose, onDone }: CookingStepsViewProps) {
   const recipe = RECIPES.find((r) => r.id === recipeId)!;
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId);
@@ -273,7 +274,7 @@ export function CookingStepsView({ recipeId, onClose }: CookingStepsViewProps) {
                       Enjoy your {recipe.name}!
                     </p>
                     <button
-                      onClick={onClose}
+                      onClick={onDone}
                       className="px-10 py-4 rounded-2xl bg-white font-body font-bold text-[16px] active:scale-95 transition-transform"
                       style={{ color: 'var(--surface-dark)' }}
                     >
