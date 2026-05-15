@@ -11,6 +11,7 @@
     "fetch-recipes": "node scripts/fetch-meals.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.96.0",
     "@tailwindcss/vite": "^4.3.0",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.16.0",
