@@ -202,7 +202,7 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
             backdropFilter: 'blur(4px)',
           }}
         >
-          LET'S COOK
+          LET'S MAKE IT
         </div>
       </motion.div>
       <motion.div

@@ -19,6 +19,7 @@ interface DiscoverViewProps {
   resetPassed: () => void;
   onOpenFilters: () => void;
   openDetail: (id: number) => void;
+  onCookNow: (id: number) => void;
 }
 
 export function DiscoverView({
@@ -33,6 +34,7 @@ export function DiscoverView({
   resetPassed,
   onOpenFilters,
   openDetail,
+  onCookNow,
 }: DiscoverViewProps) {
   const [forcedExit, setForcedExit] = useState<SwipeDirection | null>(null);
   const [exitingId, setExitingId] = useState<number | null>(null);
@@ -69,8 +71,12 @@ export function DiscoverView({
 
   const handleSwipe = (dir: SwipeDirection) => {
     if (!current) return;
-    if (dir === 'right') addToMaking(current.recipe.id);
-    else addToPassed(current.recipe.id);
+    if (dir === 'right') {
+      addToMaking(current.recipe.id);
+      onCookNow(current.recipe.id);
+    } else {
+      addToPassed(current.recipe.id);
+    }
     setForcedExit(null);
     setExitingId(null);
   };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Clock, Sparkles } from 'lucide-react';
+import { X, Clock, Sparkles, BookmarkPlus, BookmarkCheck } from 'lucide-react';
 import { THEMES } from '../data/themes';
 import { RECIPES } from '../data/recipes';
 import { computeMatch } from '../lib/matching';
@@ -11,11 +11,13 @@ interface GridCardProps {
   pantry: string[];
   onRemove?: (id: number) => void;
   removeLabel?: string;
+  onSave?: (id: number) => void;
+  saved?: boolean;
   openDetail: (id: number) => void;
   index: number;
 }
 
-export function GridCard({ recipe, pantry, onRemove, removeLabel, openDetail, index }: GridCardProps) {
+export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, openDetail, index }: GridCardProps) {
   const theme = THEMES[recipe.theme];
   const m = computeMatch(recipe, pantry);
   const imageUrl = useRecipeImage(recipe.id);
@@ -70,14 +72,30 @@ export function GridCard({ recipe, pantry, onRemove, removeLabel, openDetail, in
         {recipe.emoji}
       </div>
 
-      {onRemove && (
-        <button
-          onClick={(e) => { e.stopPropagation(); onRemove(recipe.id); }}
-          aria-label={removeLabel}
-          className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white active:scale-90"
-        >
-          <X size={16} strokeWidth={2.8} />
-        </button>
+      {(onRemove || onSave) && (
+        <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5">
+          {onSave && (
+            <button
+              onClick={(e) => { e.stopPropagation(); if (!saved) onSave(recipe.id); }}
+              aria-label={saved ? 'Saved to cookbook' : 'Save to cookbook'}
+              className="w-8 h-8 rounded-full backdrop-blur-md flex items-center justify-center active:scale-90 transition-all"
+              style={{ background: saved ? 'rgba(var(--accent-rgb),0.85)' : 'rgba(0,0,0,0.40)' }}
+            >
+              {saved
+                ? <BookmarkCheck size={15} strokeWidth={2.5} className="text-white" />
+                : <BookmarkPlus size={15} strokeWidth={2.5} className="text-white" />}
+            </button>
+          )}
+          {onRemove && (
+            <button
+              onClick={(e) => { e.stopPropagation(); onRemove(recipe.id); }}
+              aria-label={removeLabel}
+              className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white active:scale-90"
+            >
+              <X size={16} strokeWidth={2.8} />
+            </button>
+          )}
+        </div>
       )}
 
       <div className="absolute bottom-0 left-0 right-0 p-3.5">
@@ -112,6 +130,8 @@ interface RecipeGridProps {
   pantry: string[];
   onRemove?: (id: number) => void;
   removeLabel?: string;
+  onSave?: (id: number) => void;
+  savedIds?: number[];
   emptyTitle: string;
   emptyDesc: string;
   emptyEmoji: string;
@@ -123,6 +143,8 @@ export function RecipeGrid({
   pantry,
   onRemove,
   removeLabel,
+  onSave,
+  savedIds,
   emptyTitle,
   emptyDesc,
   emptyEmoji,
@@ -154,6 +176,8 @@ export function RecipeGrid({
             pantry={pantry}
             onRemove={onRemove}
             removeLabel={removeLabel}
+            onSave={onSave}
+            saved={savedIds?.includes(r.id)}
             openDetail={openDetail}
             index={i}
           />

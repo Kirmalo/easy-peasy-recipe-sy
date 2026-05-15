@@ -3,11 +3,13 @@ import { RecipeGrid } from '../components/GridCard';
 interface CookingViewProps {
   making: number[];
   pantry: string[];
+  cookbook: number[];
   removeFromMaking: (id: number) => void;
+  addToCookbook: (id: number) => void;
   openDetail: (id: number) => void;
 }
 
-export function CookingView({ making, pantry, removeFromMaking, openDetail }: CookingViewProps) {
+export function CookingView({ making, pantry, cookbook, removeFromMaking, addToCookbook, openDetail }: CookingViewProps) {
   return (
     <div className="flex-1 flex flex-col">
       <div className="px-6 pt-2 pb-4">
@@ -24,6 +26,8 @@ export function CookingView({ making, pantry, removeFromMaking, openDetail }: Co
         pantry={pantry}
         onRemove={removeFromMaking}
         removeLabel="Remove from cooking list"
+        onSave={addToCookbook}
+        savedIds={cookbook}
         emptyEmoji="🔥"
         emptyTitle="Nothing cooking yet"
         emptyDesc="Swipe right (or tap the heart) on recipes you want to make."

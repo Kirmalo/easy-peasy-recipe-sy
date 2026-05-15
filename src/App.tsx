@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { ChefHat } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { useStorage } from './hooks/useStorage';
 import { KitchenView } from './views/KitchenView';
 import { DiscoverView } from './views/DiscoverView';
 import { CookbookView } from './views/CookbookView';
 import { CookingView } from './views/CookingView';
+import { CookingStepsView } from './views/CookingStepsView';
 import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
@@ -29,6 +31,7 @@ export default function App() {
   const [passed, setPassed] = useStorage<number[]>('passed', []);
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [cookingSessionId, setCookingSessionId] = useState<number | null>(null);
 
   const addToCookbook = (id: number) => setCookbook((p) => (p.includes(id) ? p : [...p, id]));
   const removeFromCookbook = (id: number) => setCookbook((p) => p.filter((x) => x !== id));
@@ -95,6 +98,7 @@ export default function App() {
             resetPassed={resetPassed}
             onOpenFilters={() => setShowFilters(true)}
             openDetail={(id) => setDetailId(id)}
+            onCookNow={(id) => setCookingSessionId(id)}
           />
         )}
         {view === 'cookbook' && (
@@ -109,7 +113,9 @@ export default function App() {
           <CookingView
             making={making}
             pantry={pantry}
+            cookbook={cookbook}
             removeFromMaking={removeFromMaking}
+            addToCookbook={addToCookbook}
             openDetail={(id) => setDetailId(id)}
           />
         )}
@@ -141,6 +147,15 @@ export default function App() {
             removeFromMaking={removeFromMaking}
           />
         )}
+
+        <AnimatePresence>
+          {cookingSessionId !== null && (
+            <CookingStepsView
+              recipeId={cookingSessionId}
+              onClose={() => setCookingSessionId(null)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
