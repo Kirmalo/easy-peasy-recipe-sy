@@ -4,11 +4,13 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RECIPES } from '../data/recipes';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
+import type { Recipe } from '../types';
 
 interface CookingStepsViewProps {
   recipeId: number;
   onClose: () => void;
   onDone: () => void;
+  extraRecipes?: Recipe[];
 }
 
 const slideVariants = {
@@ -17,8 +19,8 @@ const slideVariants = {
   exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
 };
 
-export function CookingStepsView({ recipeId, onClose, onDone }: CookingStepsViewProps) {
-  const recipe = RECIPES.find((r) => r.id === recipeId)!;
+export function CookingStepsView({ recipeId, onClose, onDone, extraRecipes }: CookingStepsViewProps) {
+  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId);
   const [imgLoaded, setImgLoaded] = useState(false);

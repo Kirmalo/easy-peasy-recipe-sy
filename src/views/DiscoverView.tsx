@@ -3,9 +3,10 @@ import { X, BookmarkPlus, Heart, SlidersHorizontal, Sparkles, RotateCcw, Search 
 import { motion, AnimatePresence } from 'framer-motion';
 import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
+import { AIRecipeSheet } from '../components/AIRecipeSheet';
 import { RECIPES } from '../data/recipes';
 import { computeMatch, isStaple } from '../lib/matching';
-import type { Filters, SwipeDirection, ApplianceTag } from '../types';
+import type { Filters, SwipeDirection, ApplianceTag, Recipe } from '../types';
 
 interface DiscoverViewProps {
   pantry: string[];
@@ -21,6 +22,7 @@ interface DiscoverViewProps {
   onOpenFilters: () => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
+  onAiGenerated: (recipe: Recipe) => void;
 }
 
 export function DiscoverView({
@@ -37,11 +39,35 @@ export function DiscoverView({
   onOpenFilters,
   openDetail,
   onCookNow,
+  onAiGenerated,
 }: DiscoverViewProps) {
   const [forcedExit, setForcedExit] = useState<SwipeDirection | null>(null);
   const [exitingId, setExitingId] = useState<number | null>(null);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [aiGenerating, setAiGenerating] = useState(false);
+  const [aiRecipe, setAiRecipe] = useState<Recipe | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
+  const generateRecipe = async () => {
+    if (pantry.length === 0) return;
+    setAiGenerating(true);
+    setAiError(null);
+    try {
+      const res = await fetch('/api/generate-recipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pantry, appliances, servings: 4 }),
+      });
+      const data = await res.json() as { error?: string } & Recipe;
+      if (!res.ok) throw new Error(data.error ?? 'Generation failed');
+      setAiRecipe(data as Recipe);
+    } catch (e) {
+      setAiError(e instanceof Error ? e.message : 'Something went wrong');
+    } finally {
+      setAiGenerating(false);
+    }
+  };
 
   const unfilteredCount = useMemo(
     () => RECIPES.filter((r) => !passed.includes(r.id) && !cookbook.includes(r.id) && !making.includes(r.id)).length,
@@ -273,6 +299,26 @@ export function DiscoverView({
               <p className="font-body text-[11px] text-[var(--text-tertiary)] text-center w-14">Save</p>
               <p className="font-body text-[11px] text-[var(--text-tertiary)] text-center w-16">Cook it</p>
             </div>
+
+            {/* AI generate button */}
+            <div className="flex flex-col items-center mt-4 gap-2">
+              <button
+                onClick={generateRecipe}
+                disabled={aiGenerating || pantry.length === 0}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full font-body text-[13px] font-semibold active:scale-95 transition-transform disabled:opacity-40"
+                style={{
+                  background: 'var(--surface-cream)',
+                  color: 'var(--text-primary)',
+                  boxShadow: '0 2px 8px -2px rgba(var(--ink-warm-rgb),0.10)',
+                }}
+              >
+                <span style={{ display: 'inline-block', animation: aiGenerating ? 'spin 1s linear infinite' : 'none' }}>✨</span>
+                {aiGenerating ? 'Generating…' : pantry.length === 0 ? 'Add ingredients to generate' : 'Generate a recipe from my pantry'}
+              </button>
+              {aiError && (
+                <p className="font-body text-[12px] text-red-500 text-center px-6">{aiError}</p>
+              )}
+            </div>
           </>
         ) : unfilteredCount > 0 ? (
           <div className="text-center py-16" style={{ animation: 'float-in 0.5s ease-out' }}>
@@ -320,10 +366,45 @@ export function DiscoverView({
                 <RotateCcw size={18} strokeWidth={2.5} />
                 Start over
               </button>
+              {pantry.length > 0 && (
+                <button
+                  onClick={generateRecipe}
+                  disabled={aiGenerating}
+                  className="px-6 py-3.5 rounded-2xl font-body font-bold text-[15px] active:scale-95 transition-transform flex items-center justify-center gap-2 disabled:opacity-50"
+                  style={{ background: 'var(--surface-cream)', color: 'var(--text-primary)' }}
+                >
+                  <span>✨</span>
+                  {aiGenerating ? 'Generating…' : 'Generate a recipe with AI'}
+                </button>
+              )}
             </div>
+            {aiError && (
+              <p className="font-body text-[12px] text-red-500 text-center mt-3 px-6">{aiError}</p>
+            )}
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {aiRecipe && (
+          <AIRecipeSheet
+            recipe={aiRecipe}
+            pantry={pantry}
+            onDismiss={() => setAiRecipe(null)}
+            onSave={(r) => {
+              onAiGenerated(r);
+              addToCookbook(r.id);
+              setAiRecipe(null);
+            }}
+            onCook={(r) => {
+              onAiGenerated(r);
+              addToMaking(r.id);
+              onCookNow(r.id);
+              setAiRecipe(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

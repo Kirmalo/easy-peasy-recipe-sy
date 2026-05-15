@@ -17,6 +17,7 @@ interface RecipeDetailProps {
   addToMaking: (id: number) => void;
   removeFromCookbook: (id: number) => void;
   removeFromMaking: (id: number) => void;
+  extraRecipes?: import('../types').Recipe[];
 }
 
 function scaleAmount(amount: string, factor: number): string {
@@ -59,8 +60,9 @@ export function RecipeDetail({
   addToMaking,
   removeFromCookbook,
   removeFromMaking,
+  extraRecipes,
 }: RecipeDetailProps) {
-  const recipe = RECIPES.find((r) => r.id === recipeId);
+  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [servings, setServings] = useState<number | null>(null);

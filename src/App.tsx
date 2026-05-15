@@ -11,7 +11,7 @@ import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
 import { DEFAULT_FILTERS } from './data/defaults';
-import type { ViewId, Filters, ApplianceTag } from './types';
+import type { ViewId, Filters, ApplianceTag, Recipe } from './types';
 
 export default function App() {
   const [view, setView] = useState<ViewId>('kitchen');
@@ -21,9 +21,12 @@ export default function App() {
   const [making, setMaking] = useStorage<number[]>('making', []);
   const [appliances, setAppliances] = useStorage<ApplianceTag[]>('appliances', []);
   const [passed, setPassed] = useStorage<number[]>('passed', []);
+  const [aiRecipes, setAiRecipes] = useState<Recipe[]>([]);
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [cookingSessionId, setCookingSessionId] = useState<number | null>(null);
+
+  const addAiRecipe = (r: Recipe) => setAiRecipes((prev) => [r, ...prev.filter((x) => x.id !== r.id)]);
 
   const addToCookbook = (id: number) => setCookbook((p) => (p.includes(id) ? p : [...p, id]));
   const removeFromCookbook = (id: number) => setCookbook((p) => p.filter((x) => x !== id));
@@ -97,6 +100,7 @@ export default function App() {
             onOpenFilters={() => setShowFilters(true)}
             openDetail={(id) => setDetailId(id)}
             onCookNow={(id) => setCookingSessionId(id)}
+            onAiGenerated={addAiRecipe}
           />
         )}
         {view === 'cookbook' && (
@@ -148,6 +152,7 @@ export default function App() {
             addToMaking={addToMaking}
             removeFromCookbook={removeFromCookbook}
             removeFromMaking={removeFromMaking}
+            extraRecipes={aiRecipes}
           />
         )}
 
@@ -160,6 +165,7 @@ export default function App() {
                 removeFromMaking(cookingSessionId);
                 setCookingSessionId(null);
               }}
+              extraRecipes={aiRecipes}
             />
           )}
         </AnimatePresence>
