@@ -1,122 +1,147 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from 'react';
+import { ChefHat } from 'lucide-react';
+import { useStorage } from './hooks/useStorage';
+import { KitchenView } from './views/KitchenView';
+import { DiscoverView } from './views/DiscoverView';
+import { CookbookView } from './views/CookbookView';
+import { CookingView } from './views/CookingView';
+import { BottomNav } from './components/BottomNav';
+import { FilterSheet } from './components/FilterSheet';
+import { RecipeDetail } from './components/RecipeDetail';
+import type { Filters } from './types';
 
-function App() {
-  const [count, setCount] = useState(0)
+type ViewId = 'kitchen' | 'discover' | 'cookbook' | 'making';
+
+const DEFAULT_FILTERS: Filters = {
+  cookTime: null,
+  difficulty: null,
+  mealType: null,
+  dietary: [],
+  ingredientMode: 'all',
+};
+
+export default function App() {
+  const [view, setView] = useState<ViewId>('kitchen');
+  const [pantry, setPantry] = useStorage<string[]>('pantry', []);
+  const [filters, setFilters] = useStorage<Filters>('filters', DEFAULT_FILTERS);
+  const [cookbook, setCookbook] = useStorage<number[]>('cookbook', []);
+  const [making, setMaking] = useStorage<number[]>('making', []);
+  const [passed, setPassed] = useStorage<number[]>('passed', []);
+  const [detailId, setDetailId] = useState<number | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
+
+  const addToCookbook = (id: number) => setCookbook((p) => (p.includes(id) ? p : [...p, id]));
+  const removeFromCookbook = (id: number) => setCookbook((p) => p.filter((x) => x !== id));
+  const addToMaking = (id: number) => setMaking((p) => (p.includes(id) ? p : [...p, id]));
+  const removeFromMaking = (id: number) => setMaking((p) => p.filter((x) => x !== id));
+  const addToPassed = (id: number) => setPassed((p) => (p.includes(id) ? p : [...p, id]));
+  const resetPassed = () => setPassed(() => []);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div
+      className="min-h-screen w-full"
+      style={{ background: 'linear-gradient(180deg, var(--bg-page) 0%, var(--bg-soft) 100%)' }}
+    >
+      <div
+        className="max-w-[480px] mx-auto min-h-screen flex flex-col relative font-body"
+        style={{ background: 'var(--bg-page)' }}
+      >
+        {/* Brand header */}
+        <header className="px-6 pt-7 pb-2 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-9 h-9 rounded-xl bg-[var(--brand-500)] flex items-center justify-center"
+              style={{ boxShadow: '0 6px 14px -3px rgba(var(--brand-rgb),0.5)' }}
+            >
+              <ChefHat size={20} className="text-white" strokeWidth={2.5} />
+            </div>
+            <div>
+              <p className="font-display font-bold text-[var(--text-primary)] text-[18px] leading-none tracking-tight">
+                Easy Peasy
+              </p>
+              <p className="font-display italic text-[var(--brand-500)] text-[14px] leading-none -mt-0.5">
+                Recipe-sy
+              </p>
+            </div>
+          </div>
+          {pantry.length > 0 && view !== 'kitchen' && (
+            <button
+              onClick={() => setView('kitchen')}
+              className="text-[12px] font-body font-medium text-[var(--text-tertiary)] underline underline-offset-2"
+            >
+              {pantry.length} ingredients
+            </button>
+          )}
+        </header>
 
-      <div className="ticks"></div>
+        {view === 'kitchen' && (
+          <KitchenView
+            pantry={pantry}
+            setPantry={setPantry}
+            onContinue={() => setView('discover')}
+          />
+        )}
+        {view === 'discover' && (
+          <DiscoverView
+            pantry={pantry}
+            filters={filters}
+            setFilters={setFilters}
+            cookbook={cookbook}
+            addToCookbook={addToCookbook}
+            making={making}
+            addToMaking={addToMaking}
+            passed={passed}
+            addToPassed={addToPassed}
+            resetPassed={resetPassed}
+            onOpenFilters={() => setShowFilters(true)}
+            openDetail={(id) => setDetailId(id)}
+          />
+        )}
+        {view === 'cookbook' && (
+          <CookbookView
+            cookbook={cookbook}
+            pantry={pantry}
+            removeFromCookbook={removeFromCookbook}
+            openDetail={(id) => setDetailId(id)}
+          />
+        )}
+        {view === 'making' && (
+          <CookingView
+            making={making}
+            pantry={pantry}
+            removeFromMaking={removeFromMaking}
+            openDetail={(id) => setDetailId(id)}
+          />
+        )}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <BottomNav
+          view={view}
+          setView={setView}
+          cookbookCount={cookbook.length}
+          makingCount={making.length}
+        />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <FilterSheet
+          open={showFilters}
+          onClose={() => setShowFilters(false)}
+          filters={filters}
+          setFilters={setFilters}
+        />
+
+        {detailId !== null && (
+          <RecipeDetail
+            recipeId={detailId}
+            onClose={() => setDetailId(null)}
+            pantry={pantry}
+            cookbook={cookbook}
+            making={making}
+            addToCookbook={addToCookbook}
+            addToMaking={addToMaking}
+            removeFromCookbook={removeFromCookbook}
+            removeFromMaking={removeFromMaking}
+          />
+        )}
+      </div>
+    </div>
+  );
 }
-
-export default App

@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# Easy Peasy Recipe-sy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A swipe-to-cook recipe discovery app. Add ingredients, get matched recipes one card at a time — swipe right to cook, left to skip, bookmark to save.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Vite 8** + **React 19** + **TypeScript**
+- **Tailwind CSS v4** (design tokens in `src/styles/tokens.css`)
+- **Framer Motion** — swipe card animations
+- **lucide-react** — icons
+- Storage: `localStorage` (no backend, single-user)
 
-## React Compiler
+## Local dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev        # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Production build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build      # outputs to dist/
+npm run preview    # preview the built dist/ locally
 ```
+
+The `dist/` folder is a self-contained static site — no server needed.
+
+## Deployment
+
+Upload the contents of `dist/` to your host. If the app lives under a subpath (e.g. `christopherpettus.com/recipes/`), set the `base` option in `vite.config.ts` before building:
+
+```ts
+export default defineConfig({
+  base: '/recipes/',
+  plugins: [tailwindcss(), react()],
+})
+```
+
+For Netlify or Vercel, connect the repo and set the build command to `npm run build` and the output directory to `dist`.
+
+## Project structure
+
+```
+src/
+  App.tsx                 # root component, all persisted state lives here
+  types/index.ts          # shared TypeScript types (Recipe, Filters, etc.)
+  data/
+    recipes.ts            # 25 seed recipes + CUISINE_LABELS
+    themes.ts             # 8 per-recipe color palettes
+    staples.ts            # common pantry staples list
+    commonIngredients.ts  # quick-add chip categories
+  lib/
+    matching.ts           # ingredient fuzzy matching + scoring
+    parseSpeech.ts        # spoken text → ingredient list
+    api.ts                # TheMealDB image fetcher (module-level cache)
+  hooks/
+    useStorage.ts         # localStorage-backed state (drop-in for future backend)
+    useRecipeImage.ts     # cached recipe photo hook
+    useSpeechRecognition.ts  # Web Speech API wrapper
+  components/
+    SwipeCard.tsx         # hero swipeable card (Framer Motion drag)
+    GridCard.tsx          # grid tile + RecipeGrid layout
+    RecipeDetail.tsx      # full-screen recipe view
+    FilterSheet.tsx       # bottom-sheet filter panel
+    BottomNav.tsx         # tab bar
+    Pill.tsx / IconButton.tsx  # small reusable bits
+  views/
+    KitchenView.tsx       # ingredient entry (type + voice)
+    DiscoverView.tsx      # swipe deck
+    CookbookView.tsx      # saved recipes
+    CookingView.tsx       # "currently making" list
+  styles/
+    tokens.css            # CSS custom properties (design system)
+    index.css             # Tailwind v4 entry + tokens import
+```
+
+## Data persistence
+
+All state is stored in `localStorage` under these keys:
+- `pantry` — ingredients the user has added
+- `filters` — active filter settings
+- `cookbook` — saved recipe IDs
+- `making` — "I'm making this" recipe IDs
+- `passed` — swiped-left recipe IDs (excluded from deck)
+
+To add a backend later, swap `useStorage` to hit an API; the rest of the app is unchanged.
+
+## Roadmap (post-port)
+
+1. More recipes (target 100-200; TheMealDB API has plenty)
+2. "Surprise me" button — random match
+3. Shopping list from Cooking recipes
+4. Step-by-step cooking mode with timers
+5. PWA manifest + service worker for installability
