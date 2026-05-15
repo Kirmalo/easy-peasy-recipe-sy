@@ -5,9 +5,10 @@ interface CookbookViewProps {
   pantry: string[];
   removeFromCookbook: (id: number) => void;
   openDetail: (id: number) => void;
+  onCookNow: (id: number) => void;
 }
 
-export function CookbookView({ cookbook, pantry, removeFromCookbook, openDetail }: CookbookViewProps) {
+export function CookbookView({ cookbook, pantry, removeFromCookbook, openDetail, onCookNow }: CookbookViewProps) {
   return (
     <div className="flex-1 flex flex-col">
       <div className="px-6 pt-2 pb-4">
@@ -24,6 +25,7 @@ export function CookbookView({ cookbook, pantry, removeFromCookbook, openDetail 
         pantry={pantry}
         onRemove={removeFromCookbook}
         removeLabel="Remove from cookbook"
+        onCook={onCookNow}
         emptyEmoji="📖"
         emptyTitle="Your cookbook is empty"
         emptyDesc="Tap the bookmark icon on any recipe to save it here for later."

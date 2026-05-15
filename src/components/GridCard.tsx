@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Clock, Sparkles, BookmarkPlus, BookmarkCheck } from 'lucide-react';
+import { X, Clock, Sparkles, BookmarkPlus, BookmarkCheck, Play } from 'lucide-react';
 import { THEMES } from '../data/themes';
 import { RECIPES } from '../data/recipes';
 import { computeMatch } from '../lib/matching';
@@ -13,11 +13,12 @@ interface GridCardProps {
   removeLabel?: string;
   onSave?: (id: number) => void;
   saved?: boolean;
+  onCook?: (id: number) => void;
   openDetail: (id: number) => void;
   index: number;
 }
 
-export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, openDetail, index }: GridCardProps) {
+export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index }: GridCardProps) {
   const theme = THEMES[recipe.theme];
   const m = computeMatch(recipe, pantry);
   const imageUrl = useRecipeImage(recipe.id);
@@ -98,27 +99,39 @@ export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved,
         </div>
       )}
 
-      <div className="absolute bottom-0 left-0 right-0 p-3.5">
-        <p
-          className="font-display font-semibold text-white text-[16px] leading-[1.1] tracking-tight mb-1.5"
-          style={{ textShadow: '0 1px 6px rgba(0,0,0,0.4)' }}
-        >
-          {recipe.name}
-        </p>
-        <div
-          className="flex items-center gap-1.5 text-white/95 font-body text-[11px] font-semibold"
-          style={{ textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
-        >
-          <Clock size={11} strokeWidth={2.6} />
-          {recipe.cookTime}m
-          {pantry.length > 0 && (
-            <>
-              <span>·</span>
-              <Sparkles size={11} strokeWidth={2.6} />
-              {m.have}/{m.need}
-            </>
-          )}
+      <div className="absolute bottom-0 left-0 right-0 p-3.5 flex items-end justify-between gap-2">
+        <div className="min-w-0">
+          <p
+            className="font-display font-semibold text-white text-[16px] leading-[1.1] tracking-tight mb-1.5"
+            style={{ textShadow: '0 1px 6px rgba(0,0,0,0.4)' }}
+          >
+            {recipe.name}
+          </p>
+          <div
+            className="flex items-center gap-1.5 text-white/95 font-body text-[11px] font-semibold"
+            style={{ textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
+          >
+            <Clock size={11} strokeWidth={2.6} />
+            {recipe.cookTime}m
+            {pantry.length > 0 && (
+              <>
+                <span>·</span>
+                <Sparkles size={11} strokeWidth={2.6} />
+                {m.have}/{m.need}
+              </>
+            )}
+          </div>
         </div>
+        {onCook && (
+          <button
+            onClick={(e) => { e.stopPropagation(); onCook(recipe.id); }}
+            aria-label="Start cooking"
+            className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+            style={{ background: 'white', boxShadow: '0 2px 10px rgba(0,0,0,0.35)' }}
+          >
+            <Play size={14} strokeWidth={0} fill={theme.from} />
+          </button>
+        )}
       </div>
     </div>
   );
@@ -132,6 +145,7 @@ interface RecipeGridProps {
   removeLabel?: string;
   onSave?: (id: number) => void;
   savedIds?: number[];
+  onCook?: (id: number) => void;
   emptyTitle: string;
   emptyDesc: string;
   emptyEmoji: string;
@@ -145,6 +159,7 @@ export function RecipeGrid({
   removeLabel,
   onSave,
   savedIds,
+  onCook,
   emptyTitle,
   emptyDesc,
   emptyEmoji,
@@ -178,6 +193,7 @@ export function RecipeGrid({
             removeLabel={removeLabel}
             onSave={onSave}
             saved={savedIds?.includes(r.id)}
+            onCook={onCook}
             openDetail={openDetail}
             index={i}
           />

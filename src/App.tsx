@@ -101,6 +101,7 @@ export default function App() {
             pantry={pantry}
             removeFromCookbook={removeFromCookbook}
             openDetail={(id) => setDetailId(id)}
+            onCookNow={(id) => { addToMaking(id); setCookingSessionId(id); }}
           />
         )}
         {view === 'making' && (
@@ -111,6 +112,7 @@ export default function App() {
             removeFromMaking={removeFromMaking}
             addToCookbook={addToCookbook}
             openDetail={(id) => setDetailId(id)}
+            onCookNow={(id) => setCookingSessionId(id)}
           />
         )}
 
