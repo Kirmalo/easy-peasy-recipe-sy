@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Clock, Gauge, Utensils, ChefHat, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Clock, Gauge, Utensils, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus } from 'lucide-react';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
