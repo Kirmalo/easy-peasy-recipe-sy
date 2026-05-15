@@ -11,7 +11,7 @@ import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
 import { DEFAULT_FILTERS } from './data/defaults';
-import type { ViewId, Filters } from './types';
+import type { ViewId, Filters, ApplianceTag } from './types';
 
 export default function App() {
   const [view, setView] = useState<ViewId>('kitchen');
@@ -19,6 +19,7 @@ export default function App() {
   const [filters, setFilters] = useStorage<Filters>('filters', DEFAULT_FILTERS);
   const [cookbook, setCookbook] = useStorage<number[]>('cookbook', []);
   const [making, setMaking] = useStorage<number[]>('making', []);
+  const [appliances, setAppliances] = useStorage<ApplianceTag[]>('appliances', []);
   const [passed, setPassed] = useStorage<number[]>('passed', []);
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
@@ -76,6 +77,8 @@ export default function App() {
           <KitchenView
             pantry={pantry}
             setPantry={setPantry}
+            appliances={appliances}
+            setAppliances={setAppliances}
             onContinue={() => setView('discover')}
           />
         )}
@@ -83,6 +86,7 @@ export default function App() {
           <DiscoverView
             pantry={pantry}
             filters={filters}
+            appliances={appliances}
             cookbook={cookbook}
             addToCookbook={addToCookbook}
             making={making}

@@ -38,6 +38,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Finely chop the peppers in a food processor, then tip them in a sieve and press into the sieve so that the peppers release all of their juices. Tip into a bowl along with the mince, red pepper paste, pul biber, 1½ tsp flaky sea salt, and 2 tbsp of the oil. Mix together, kneading well for at least 2-3 mins. If you need to, wet your hands with cold water to prevent the mixture from sticking. The mixture should be sticky when ready. Cover and chill for at least 2 hrs, or up to 12 hrs.",
       "When ready to cook, heat the grill to high or an oven to 220C/200C fan/gas 6. Divide the mixture into 12 equal portions, around 85g each. If you’d like to skewer them, divide into 8 equal portions and roll into balls. Using wet hands, thread the balls onto the end of the skewers, massaging the mixture down the skewers in between the palms of your hands, until evenly distributed. Ensure that the mixture is fully wrapped tightly around the skewers without any exposed metal. Alternatively, lay them on a large baking tray lined with parchment paper if cooking in the oven, or foil if cooking under the grill. Shape into 20cm-long köfte. Wet your fingers with a little cold water and make indents all along the köfte for the traditional shape.",
       "Gently brush each köfte with the remaining 1 tbsp oil and cook under the grill, on the top shelf for 10-12 mins, turning regularly, or cook in the oven for 16-18 mins, until crispy on the outside and juicy in the middle"
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "blender"
     ]
   },
   {
@@ -92,6 +97,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Air fry the egg rolls: Place the egg rolls in the basket of your air fryer. Spray or brush them lightly with oil. Add as many as you can without stacking the egg rolls, making sure they don’t touch. Air needs to circulate around them. Brush the egg rolls lightly with oil.",
       "Place the basket in the air fryer and turn the air fryer to 350°F. Cook for 6 to 7 minutes, then flip the egg rolls, spray or brush with oil a second time on the bottom side, and cook for another 4 to 5 minutes.",
       "Finished egg rolls should be golden brown and crispy! Serve immediately."
+    ],
+    "appliances": [
+      "air-fryer"
     ]
   },
   {
@@ -133,6 +141,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Soak the potatoes in just-boiled water for 30 mins, then drain and leave to air-dry for 5 mins. Heat the air fryer to 200C. Tip the potatoes into a bowl and drizzle over 1 tbsp of the oil and add 1/2 tsp each of salt and freshly ground black pepper. Mix to coat the potatoes all over, then tip into the air fryer basket and cook for 20-30 mins until crisp and golden.",
       "Meanwhile, heat the remaining oil in a small pan over a medium-low heat and fry the onion for 8-10 mins until softened but not golden. Stir in the garlic and cook for a minute before adding the paprika and cooking for 30 seconds more. Stir in the tomato purée, cook for 1 min, then tip in the chopped tomatoes. Cook for 5-10 mins over a medium heat until thickened slightly.",
       "Once the potatoes are cooked, tip out onto a platter and pour over the tomato sauce. Sprinkle with the basil leaves, then serve."
+    ],
+    "appliances": [
+      "air-fryer"
     ]
   },
   {
@@ -167,6 +178,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the bread into a bowl and pour over 350ml water. Leave to soak for 10 mins.",
       "Blend the ingredients together with 350ml water and 1 tsp salt.",
       "Let the soup cool in the fridge for 1 hr or so, then serve with a drizzle of oil and some black pepper."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -208,6 +222,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Assemble: Spread dulce de leche on one cookie, then sandwich with another. Roll the edges in coconut flakes.",
       "Chill the dough before rolling it out to make it easier to handle and to prevent the cookies from spreading too much while baking.",
       "Dip the alfajores in melted chocolate and let them set on a wire rack for an extra decadent treat."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -256,6 +273,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place the semolina in a large bowl, and stir in salt and 4 tablespoons of olive oil. Gradually add water while mixing and squeezing with your hand until the dough holds together without being sticky or dry, and molds easily with the hand. Divide into 6 pieces and form into balls.",
       "For each round, heat 1 tablespoon of olive oil in a large heavy skillet over medium heat. Roll out dough one round at a time, to no thicker than 1/4 inch. Fry in the hot skillet until dark brown spots appear on the surface, and they are crispy. Remove from the skillet, and wrap in a clean towel while preparing the remaining flat breads.",
       "To eat the bread and sauce, break off pieces of the bread, and scoop them into the sauce. It will slide off, but just keep reaching in!"
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -303,7 +324,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place a steamer insert into a saucepan, and fill with 1 1/2 cups of water, or just below the bottom of the steamer. Cover, and bring the water to a boil over high heat. Add the sliced carrots, reduce the heat to medium, and cover the pan again. Steam until tender but not mushy, 4 to 6 minutes depending on the thickness of the slices. Reserve 1/2 cup of the cooking liquid.",
       "Heat the olive oil in a skillet over medium heat. Reduce the heat to low and stir in the salt, pepper, cinnamon, cumin, garlic, and thyme. Cook the spices and garlic, stirring frequently, until fragrant, about 10 minutes. Add the 1/2 cup reserved cooking liquid and the bay leaf, cover, and simmer for 20 minutes.",
       "Stir in the carrots, tossing well to coat with the spice mixture, and cook until heated through, about 2 to 3 minutes. Sprinkle with lemon juice and remove the bay leaf before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53288,
@@ -342,6 +364,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat an oven to 450 degrees F (230 degrees C). Place the whole peppers on aluminum foil. Bake until the skin is spotted black and the peppers are soft, 30 to 45 minutes, turning the peppers once if necessary.",
       "Remove peppers from the oven and set aside to cool for 10 minutes. Peel off the skin and remove the stem and seeds. Chop the roasted peppers into half-inch pieces.",
       "Heat the olive oil in a skillet over medium heat. Stir in the onion and cook, stirring frequently, until the onion has softened and turned translucent, about 5 minutes. Add the garlic, salt, and pepper; stir in the chopped peppers and tomato. Cook over medium heat, stirring occasionally, until the tomato is soft and the mixture is well incorporated, about 5 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -382,7 +407,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a large skillet over medium-high heat. Brown patties in batches in the hot skillet until crispy on both sides and no longer pink in the center, about 10 minutes. Set meatballs aside in a rimmed serving dish.",
       "Reduce heat to medium and stir remaining chopped onion into drippings in the skillet. Season with salt and pepper. Cook, stirring constantly, until onion has softened and turned translucent, about 5 minutes. Stir in remaining garlic and cook for 30 seconds. Stir in Roma tomatoes, dried parsley, and ras el hanout. Pour in water. Cook until tomatoes are soft, about 5 minutes.",
       "Pour tomato sauce over meatballs to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53111,
@@ -419,6 +445,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 180C/fan 160C/gas 4. Put the oats, coconut, flour and sugar in a bowl. Melt the butter in a small pan and stir in the golden syrup. Add the bicarbonate of soda to 2 tbsp boiling water, then stir into the golden syrup and butter mixture.",
       "Make a well in the middle of the dry ingredients and pour in the butter and golden syrup mixture. Stir gently to incorporate the dry ingredients.",
       "Put dessertspoonfuls of the mixture on to buttered baking sheets, about 2.5cm/1in apart to allow room for spreading. Bake in batches for 8-10 mins until golden. Transfer to a wire rack to cool."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -461,6 +490,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.",
       "Add butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.",
       "Cut into wedges and best eaten when it is warm."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -502,6 +534,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 190C/170C fan/gas 5. Tip the flour and sugar into a large bowl. Add the butter, then rub into the flour using your fingertips to make a light breadcrumb texture. Do not overwork it or the crumble will become heavy. Sprinkle the mixture evenly over a baking sheet and bake for 15 mins or until lightly coloured.",
       "Meanwhile, for the compote, peel, core and cut the apples into 2cm dice. Put the butter and sugar in a medium saucepan and melt together over a medium heat. Cook for 3 mins until the mixture turns to a light caramel. Stir in the apples and cook for 3 mins. Add the blackberries and cinnamon, and cook for 3 mins more. Cover, remove from the heat, then leave for 2-3 mins to continue cooking in the warmth of the pan.",
       "To serve, spoon the warm fruit into an ovenproof gratin dish, top with the crumble mix, then reheat in the oven for 5-10 mins. Serve with vanilla ice cream."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -550,6 +585,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake the apple cake in the preheated oven for about 45-50 minutes, or until a wooden skewer comes out clean when inserted into the center of the cake.",
       "Remove the cake from the oven and let it cool in the mold for a few minutes. Then carefully remove the cake from the mold and let cool completely on a wire rack.",
       "Sprinkle the cooled apple cake with powdered sugar"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -596,6 +634,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake for 20-25 minutes until golden-brown and set.",
       "Remove from the oven and leave to cool for 15 minutes. Remove the sides of the tin. An easy way to do this is to stand the tin on a can of beans and push down gently on the edges of the tin.",
       "Transfer the tart, with the tin base attached, to a serving plate. Serve warm with cream, crème fraiche or ice cream."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -643,6 +685,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Dip the cheese into the egg and make sure it coats all sides. Then dip the cheese into the sesame seeds and make sure it is covered everywhere.",
       "Heat a non stick frying pan on high until nice and hot. Put the cheese slice in and bake until the sesame seeds are brown. You have to do this rather quickly or the cheese will melt completely. Turn and bake the other side.",
       "Drain the apples and potatoes and mash them together. Taste and add cinnamon and salt where needed. Remove the cinnamon stick before mashing"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -683,7 +728,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Place the mascarpone, yogurt, sugar and orange flower water into a large bowl and whisk until thickened. Fold the remaining ingredients through, then divide the mix between 2 dessert glasses or bowls and decorate with extra mint, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53334,
@@ -724,6 +770,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the grill or pan and grill the arepa, putting it once on each side until they are golden brown.",
       "With the help of a knife, open it by the edge through the middle, creating a space to fill it with the ripe plantain, the beans, meat and chopped tomato.",
       "Serve with a little pico de gallo or guacamole dip sauce."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -775,6 +825,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Form the arepas: Divide the dough into 6 portions, shape into balls, and flatten into thick discs.",
       "Cook: Cook the arepas on a griddle or skillet over medium heat for 2–3 minutes on each side until golden. You can then bake them for a few minutes if you prefer them crispier.",
       "Fill: Slice the arepas open on one side, fill with the hot shredded beef, and top with grated cheese."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -818,6 +871,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "bake the cookies golden brown in about 25 minutes and make sure the sugar is caramelised nicely",
       "And voila, Girls from Arnhem with an Almeerse twist",
       "Voila, Arnhemse Meisjes met een Almeerse twist."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -871,6 +927,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/180C/gas 6. Heat half the oil in a deep frying or sauté pan (or shallow casserole dish) measuring around 30cm in diameter. Over a high heat, colour the pork belly slices on each side in several batches, then transfer to a bowl. Add the remaining oil to the pan and lower the heat to medium, then add the black pudding and bacon and fry all over for several mins. Remove with a slotted spoon. Fry the onion and peppers for around 10 mins until soft and pale gold, then add the tomato and cook until soft. Add the garlic, smoked paprika and chilli flakes and cook for another 2 mins, then put the pork, black pudding and bacon back in the pan. Add the beans, stock and whichever herb you're using, and bring everything to the boil.",
       "Sprinkle the rice around the pork belly, pushing it underneath the stock. Let the stock come to the boil again, season well, then transfer to the oven (leave it uncovered). Cook for 20 mins without stirring, then check to see how the rice is doing. The rice should be tender and the stock absorbed. If it’s not ready, put back in the oven for another 5 mins, then check again. Taste for seasoning.",
       "Squeeze lemon juice over the top and drizzle over some extra virgin olive oil just before serving, if you like."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -914,7 +973,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Peel and devein most of the prawns (a fishmonger should be able to do this for you), keeping a few whole for decoration, if you like. Heat the olive oil in a large frying pan or shallow flameproof casserole over a medium-low heat and fry the onion for 5 mins until softened. Add the bay leaf, saffron, rice and tomato purée, and cook for 1-2 mins more, stirring.",
       "Pour in the wine and bubble for 1-2 mins, then pour in the seafood stock and 150ml water. Cook for 5 mins, then add the squid, season well and stir to combine. Bring to the boil, then cover and reduce the heat to a gentle simmer. Cook for 12 mins more, adding a little more water if the mixture starts to look dry.",
       "Uncover the pan and stir through the peeled prawns, then arrange any whole prawns on top of the rice mixture. Cover again and simmer for a further 5-6 mins until the prawns are pink and cooked through. Leave to stand for a couple of minutes before serving from the pan."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53133,
@@ -945,6 +1005,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Prepare the Fire: Start a wood fire in your grill and let it burn down to coals. Season the Meat: Generously salt the beef cuts. Grill the Meat: Place the beef on the grill, starting with the thickest cuts farthest from the coals. Add chorizo and morcilla after the beef has been cooking for a while. Cook to Perfection: Cook the meat, turning occasionally, until it reaches your desired doneness. Typically, ribs may take up to 2 hours; thinner cuts will cook faster. Rest and Serve: Let the meat rest for about 10 minutes before slicing. Serve with chimichurri sauce and grilled vegetables. Pro Tips:",
       "Use a mix of wood and charcoal for a consistent heat source. Wood adds flavor, while charcoal maintains temperature. Season the meat just before grilling to ensure it retains its moisture and flavor. Serving Suggestions:",
       "Serve with a side of chimichurri sauce, a fresh tomato salad, and crusty bread. Pair with a robust Malbec wine to complement the rich flavors of the meat."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -987,6 +1050,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Lay the aubergine out in one layer on a large baking sheet. Brush sparingly with vegetable oil, then season generously. Grill for 15 mins, turning twice and brushing with oil until the slices are softened and cooked through. Meanwhile, whizz the bread into crumbs. Add 2 tsp oil and whizz briefly again, to coat.",
       "Spread a couple of tsps of hummus on top of each slice of aubergine. Tip the breadcrumbs onto a large plate, then press the hummus side of the aubergines into the crumbs to coat. Grill again, crumb-side up, for about 3 mins until golden.",
       "Toss the walnuts, parsley and cherry tomatoes in a bowl, season, then add the lemon juice and olive oil and toss again. Serve the grills with the salad, a dollop more hummus and some pitta bread."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -1025,6 +1092,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat grill to high. Put the aubergine on a baking sheet, brush with oil and season. Grill for about 15 mins, turning and brushing with more oil halfway, until browned and softened.",
       "Meanwhile, tip the couscous into a large bowl, pour over the stock, then cover and leave for 10 mins. Mix the tomatoes, mint, goat’s cheese and remaining oil together. Fluff the couscous up with a fork, then stir in the aubergines, tomato mixture and lemon juice."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -1057,6 +1128,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Sort out your ingredients: Slice the beetroot and split the naan breads.",
       "Toast the naans: Heat a griddle pan or barbecue. Griddle the naans on both sides until lightly toasted and set aside. Add the burgers to the grill or barbecue and cook for 2-3 minutes, then turn and cook the other side for a further 2-3 minutes.",
       "Assemble the dish: Set half a toasted naan on each serving plate and put a pile of rocket on each. Top with a burger, then a few slices of beetroot and a dollop of soured cream. Sprinkle with salt and freshly ground black pepper and serve immediately with a big green salad and chips. A glass of red wine wouldn’t go amiss, either."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -1096,6 +1170,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 210°C (410°F) top and bottom heat. Divide the dough into six sections.",
       "Slowly add the remaining egg white to the dough and knead it until you can roll it into long sausages about as thick as your index finger. Fill the forms with the dough sausages, pinching the ends together to make rings.",
       "Set the forms on a baking sheet and back in the middle of the oven for about 10 – 12 minutes, until the tops are golden brown."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -1137,6 +1215,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Whizz half the avocado flesh with the yogurt, lime and lemon juice and seasoning. Dice the remaining avocado, then gently stir into the whizzed mix with most of the lime zest. Cover, then chill until ready to serve.",
       "Boil potatoes for 6 mins, then drain well and toss with olive oil, chilli powder and cumin seeds. Now set aside until half an hour before your guests arrive.",
       "Heat oven to 200C/180C fan/gas 6, then roast potatoes for about 30 mins, shaking the tray halfway, until golden and tender. Transfer the dip to one or two bowls, scatter with the remaining lime zest and serve with the hot potatoes, and tortilla chips for dipping."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1190,6 +1271,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the oven to 425 F.",
       "Remove the chicken from the marinade. Spoon the marinade onto a greased (or aluminum lined) baking sheet. Lay the chicken on top of the sauce (make sure the chicken covers the sauce and the sauce isn't exposed or it'll burn) and spread the remaining marinade on the chicken. Roast for 35-45 minutes or until internal temp of the thickest part of chicken is at least 175 F.",
       "Let chicken rest for 5 minutes. Brush the chicken with some of the oil. Serve chicken with the sauce over steamed rice (or coconut rice)."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -1236,6 +1321,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When eggplants are cool enough to handle, split them in half and scrape flesh into a colander placed over a bowl. Drain 5 or 10 minutes.",
       "Transfer eggplant to mixing bowl. Add crushed garlic and salt; mash until creamy but with a little texture, about 5 minutes. Whisk in lemon juice, tahini, olive oil, and cayenne pepper. Stir in yogurt.",
       "Cover bowl with plastic wrap and refrigerate until completely chilled. Stir in mint and parsley, and taste to adjust seasonings before serving."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -1288,6 +1377,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "aubergine is kept. Add a few drops of oil on the charcoal. The charcoal would begin to smoke.",
       "As soon as smoke begins to release from the charcoal, cover the entire plate tightly with a large bowl. Allow the",
       "charcoal smoke to get infused for 1 to 2 minutes. The more you do, the more smoky the baingan bharta will"
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -1324,6 +1417,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 180C/fan 160C/gas 4. Trim the fronds from the fennel and set aside. Cut the fennel bulbs in half, then cut each half into 3 wedges. Cook in boiling salted water for 10 mins, then drain well. Chop the fennel fronds roughly, then mix with the parsley and lemon zest.",
       "Spread the drained fennel over a shallow ovenproof dish, then add the tomatoes. Drizzle with olive oil, then bake for 10 mins. Nestle the salmon among the veg, sprinkle with lemon juice, then bake 15 mins more until the fish is just cooked. Scatter over the parsley and serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1371,6 +1467,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the filing, spread the base of the flan generously with raspberry jam.",
       "Melt the butter in a pan, take off the heat and then stir in the sugar. Add ground almonds, egg and almond extract. Pour into the flan tin and sprinkle over the flaked almonds.",
       "Bake for about 35 minutes. If the almonds seem to be browning too quickly, cover the tart loosely with foil to prevent them burning."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1425,6 +1524,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a separate bowl, mix the ricotta with the lemon and orange zests and vanilla. Heat the oven to 180C/160C fan/gas 4. Brush the bottom of a large baking tray (about 35 x 47cm) with some of the melted butter. Working with one sheet of filo at a time (covering the rest with a damp tea towel to prevent it drying out), lay the sheet out on a board so one of the short ends is facing you. Sprinkle 30g of the nut mixture evenly over the whole sheet, then spoon 1 tbsp of the ricotta mixture across the end closest to you. Fold this end over to enclose the filling, then lay a long, thin skewer next to the folded edge and roll the pastry around it to create a long roll. When it’s fully rolled up, it should be roughly the thickness of a chipolata sausage. While holding one end of the rolling pin or skewer, gently scrunch the filo roll like an accordion and carefully push it off the skewer and onto the prepared tray. Repeat with the rest of the filo and fillings – you should get about 12 rolls. Cut each roll into four to make 48 large baklava, or eight to make 96 mini.",
       "Brush with the remaining melted butter. Bake for 20-25 mins until evenly golden, turning the tray around halfway through. While still hot, immediately pour over 5-6 ladlefuls of the syrup. You should hear the syrup sizzle as it hits the hot baklava. Set aside to cool and absorb.",
       "Melt the dark chocolate in a heatproof bowl set over a pan of simmering water, ensuring the bowl doesn’t touch the water, or in the microwave in short bursts. Drizzle this over the cooled baklava and sprinkle with the ground pistachios."
+    ],
+    "appliances": [
+      "oven",
+      "microwave",
+      "blender"
     ]
   },
   {
@@ -1462,6 +1566,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "In a bowl, mash the banana with a fork until it resembles a thick purée. Stir in the eggs, baking powder and vanilla.",
       "Heat a large non-stick frying pan or pancake pan over a medium heat and brush with half the oil. Using half the batter, spoon two pancakes into the pan, cook for 1-2 mins each side, then tip onto a plate. Repeat the process with the remaining oil and batter. Top the pancakes with the pecans and raspberries."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1498,7 +1605,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Cook the noodles following pack instructions, then rinse under cold water and drain thoroughly. In a small saucepan melt together the peanut butter, coconut milk, sweet chilli sauce and half the spring onions, adding 1-2 tbsp of water to loosen the mixture to a drizzling consistency.",
       "Mix the noodles, cucumber and beansprouts in a serving dish. Top with the prawns, drizzle over the peanut sauce and scatter over the remaining spring onions."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53242,
@@ -1539,6 +1647,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 200C/fan 180C/gas. Mix the sugar into the bread mix in a large bowl, then add water as instructed on the pack. Bring the dough together with a wooden spoon, then knead on a lightly floured surface for 5 mins until smooth. Put into a large bowl, cover with oiled cling film then leave in a warm place until doubled in size.",
       "Meanwhile, heat the oil in a pan, then fry the bacon until crisp, about 5 mins. Add the ginger and garlic and fry for 1 min until soft, then tip in the soy, honey and tomato purée and stir well. Can be made up to 3 days ahead.",
       "Turn out the dough and knead briefly, then pull into 12 even-sized balls. Flatten with your hands, then put a teaspoon-size blob of the filling in the middle. Draw the dough up and pinch it closed like a purse, then turn the bun over and sit it on a large baking sheet. Cover with oiled cling film and leave to rise for about 30 mins until the dough feels pillowy. Brush with egg and bake for 20 mins until golden. Serve warm with dipping sauce. Can be frozen after second rise for up to 1 month or baked up to a day ahead and re-warmed."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1582,6 +1693,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip all the dressing ingredients into a food processor with a pinch of salt and blitz to a dressing. Slash the fish three times on each side, coat with half of the dressing, then set aside to marinate for about 30 mins.",
       "Heat oven to 220C/fan 200C/gas 7. Place the fish on a roasting tray, then cook in the oven for 20 mins until the flesh is firm and the eyes have turned white. Serve the fish with the rest of the dressing and steamed couscous or rice.",
       "KNOW HOW: HOW TO COOK IT: Cooking barramundi on the bone, as we have done here, has its advantages – it will stay more moist during cooking, and some would say that the flavour is enhanced, too. If you want to take out the bones they are easy to locate and less likely to be lodged in the fillet if the fish is cooked whole. Fillets can be simply pan-fried or grilled. If you like trout, you will really enjoy the flavour of barramundi, which lends itself to similar ingredients and cooking methods – citrus flavours are particularly good, as are garlic and wild mushrooms. Simply roasting the fish with some fresh herbs, olive oil and seasoning is delicious, and in the summer months you could barbecue it, too. One thing that you mustn’t miss are the cheeks or ‘pearls’ of the fish, these are simply lovely, moist and really sweet – well worth leaving the head on for!"
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "blender"
     ]
   },
   {
@@ -1648,6 +1764,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take 2 x almond slices and 2 x pink slices and trim so they are all the same length. Roll out one marzipan block on a surface lightly dusted with icing sugar to just over 20cm wide, then keep rolling lengthways until the marzipan is roughly 0.5cm thick. Brush with apricot jam, then lay a pink and an almond slice side by side at one end of the marzipan, brushing jam in between to stick sponges, and leaving 4cm clear marzipan at the end. Brush more jam on top of the sponges, then sandwich remaining 2 slices on top, alternating colours to give a checkerboard effect. Trim the marzipan to the length of the cakes.",
       "Carefully lift up the marzipan and smooth over the cake with your hands, but leave a small marzipan fold along the bottom edge before you stick it to the first side. Trim opposite side to match size of fold, then crimp edges using fingers and thumb (or, more simply, press with prongs of fork). If you like, mark the 10 slices using the prongs of a fork.",
       "Assemble second Battenberg and keep in an airtight box or well wrapped in cling film for up to 3 days. Can be frozen for up to a month."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1698,6 +1817,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a drizzle of oil in a large pan over medium-high heat. Add chopped onion and season with salt and pepper. Cook, stirring, until softened, 4-5 minutes. Add garlic and cook until fragrant, 30 seconds more. Add pork and season with salt and pepper. Cook, breaking up meat into pieces, until browned and cooked through, 4-6 minutes.",
       "While pork cooks, in a third small bowl, combine BBQ sauce, pickling liquid from onion, 3 TBSP ketchup (6 TBSP for 4 servings), ½ tsp sugar (1 tsp for 4), and ¼ cup water (⅓ cup for 4). Once pork is cooked through, add BBQ sauce mixture to pan. Cook, stirring, until sauce is thickened, 2-3 minutes. Taste and season with salt and pepper.",
       "Meanwhile, toast buns in oven or toaster oven until golden, 3-5 minutes. Divide toasted buns between plates and fill with as much BBQ pork as you’d like. Top with pickled onion and hot sauce. Serve with sweet potato wedges on the side."
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "microwave"
     ]
   },
   {
@@ -1730,7 +1854,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "In a large casserole, fry the sausages until brown all over – about 10 mins.",
       "Add the tomato sauce, stirring well, then stir in the beans, treacle or sugar and mustard. Bring to the simmer, cover and cook for 30 mins. Great served with crusty bread or rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52928,
@@ -1781,7 +1906,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut dough into 12 pieces, and roll out into long oval-like shapes about 1/4 inch thick that resemble a beaver’s tail.",
       "In a large, deep pot, heat oil to 350 degrees. Gently place beavertail dough into hot oil and cook for 30 to 45 seconds on each side until golden brown.",
       "Drain on paper towels, and garnish as desired. Toss in cinnamon sugar, in white sugar with a squeeze of lemon, or with a generous slathering of Nutella and a handful of toasted almonds. Enjoy!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53366,
@@ -1836,7 +1962,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let the beef fry undisturbed for 1 minute. Flip the beef slices over, add the garlic to the pan, and fry for an additional 30 seconds to 1 minute until no longer pink.",
       "Add the sauce, cornstarch, and broccoli: Pour in the sauce and the cornstarch slurry (1 teaspoon cornstarch dissolved in 1 tablespoon of water). Stir until the sauce boils and thickens, about 30 seconds. Stir in the broccoli.",
       "Serve immediately, with steamed rice or on its own."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52874,
@@ -1896,6 +2023,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Trim the pastry so there is just enough excess to crimp the edges, then place in the oven and bake for 30 minutes, or until the pastry is golden-brown and cooked through.",
       "For the green beans, bring a saucepan of salted water to the boil, add the beans and cook for 4-5 minutes, or until just tender.",
       "Drain and toss with the butter, then season with black pepper."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -1952,6 +2082,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Increase the oven to 200C/400F/Gas 6. To make the pastry, put the flour and salt in a very large bowl. Grate the butter and stir it into the flour in three batches. Gradually add 325ml/11fl oz cold water – you may not need it all – and stir with a round-bladed knife until the mixture just comes together. Knead the pastry lightly into a ball on a lightly floured surface and set aside 250g/9oz for the pie lid.",
       "Roll the rest of the pastry out until about 2cm/¾in larger than the dish you’re using. Line the dish with the pastry then pile in the filling, tucking the oysters in as well. Brush the edge of the pastry with beaten egg.",
       "Roll the remaining pastry until slightly larger than your dish and gently lift over the filling, pressing the edges firmly to seal, then trim with a sharp knife. Brush with beaten egg to glaze. Put the dish on a baking tray and bake for 25-30 minutes, or until the pastry is golden-brown and the filling is bubbling."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2006,7 +2139,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Save 3 tablespoons of cooking oil from the pan where the potato was fried. Saute onion and garlic until onion softens.",
       "Pour-in the sauce from the beef stew. Let boil. Add the beef. Cook for 2 minutes.",
       "Add butter and let it melt. Continue cooking until the sauce reduces to half."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52997,
@@ -2046,7 +2180,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a medium bowl, combine cucumber, juice from half the lime, ¼ tsp sugar (½ tsp for 4 servings), and a pinch of salt. In a small bowl, combine mayonnaise, a pinch of garlic, a squeeze of lime juice, and as much sriracha as you’d like. Season with salt and pepper.",
       "Heat a drizzle of oil in a large pan over medium-high heat. Add onion and cook, stirring, until softened, 4-5 minutes. Add beef, remaining garlic, and 2 tsp sugar (4 tsp for 4 servings). Cook, breaking up meat into pieces, until beef is browned and cooked through, 4-5 minutes. Stir in soy sauce. Turn off heat; taste and season with salt and pepper.",
       "Fluff rice with a fork; stir in lime zest and 1 TBSP butter. Divide rice between bowls. Arrange beef, grated carrot, and pickled cucumber on top. Top with a squeeze of lime juice. Drizzle with sriracha mayo."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52904,
@@ -2102,6 +2237,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 150C/fan 130C/gas 2. Make a cartouche: tear off a square of foil slightly larger than the casserole, arrange it in the pan so it covers the top of the stew and trim away any excess foil. Then cook for 3 hrs. If the sauce looks watery, remove the beef and veg with a slotted spoon, and set aside. Cook the sauce over a high heat for a few mins until the sauce has thickened a little, then return the beef and vegetables to the pan.",
       "To make the celeriac mash, peel the celeriac and cut into cubes. Heat the olive oil in a large frying pan. Tip in the celeriac and fry for 5 mins until it turns golden. Season well with salt and pepper. Stir in the rosemary, thyme, bay and cardamom pods, then pour over 200ml water, enough to nearly cover the celeriac. Turn the heat to low, partially cover the pan and leave to simmer for 25-30 mins.",
       "After 25-30 mins, the celeriac should be soft and most of the water will have evaporated. Drain away any remaining water, then remove the herb sprigs, bay and cardamom pods. Lightly crush with a potato masher, then finish with a glug of olive oil and season to taste. Spoon the beef bourguignon into serving bowls and place a large spoonful of the celeriac mash on top. Garnish with one of the bay leaves, if you like."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2149,6 +2287,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Sauté the onions and garlic: When the brisket has browned, remove it from the pot and set aside. There should be a couple tablespoons of fat rendered in the pot, if not, add some olive oil. Add the chopped onions and increase the heat to high. Sprinkle a little salt on the onions. Sauté, stirring often, until the onions are lightly browned, 5-8 minutes. Stir in the garlic and cook 1-2 more minutes.",
       "Return brisket to pot, add herbs, stock, bring to simmer, cover, cook in oven: Preheat the oven to 300°F. Use kitchen twine to tie together the bay leaves, rosemary and thyme. Move the onions and garlic to the sides of the pot and nestle the brisket inside. Add the beef stock and the tied-up herbs. Bring the stock to a boil on the stovetop. Cover the pot, place the pot in the 300°F oven and cook for 3 hours. Carefully flip the brisket every hour so it cooks evenly.",
       "Add carrots, continue to cook: After 3 hours, add the carrots. Cover the pot and cook for 1 hour more, or until the carrots are cooked through and the brisket is falling-apart tender. 6 Remove brisket to cutting board, tent with foil: When the brisket is falling-apart tender, take the pot out of the oven and remove the brisket to a cutting board. Cover it with foil. Pull out and discard the herbs. 7 Make sauce (optional): At this point you have two options. You can serve as is, or you can make a sauce with the drippings and some of the onions. If you serve as is, skip this step. To make a sauce, remove the carrots and half of the onions, set aside and cover them with foil. Pour the ingredients that are remaining into the pot into a blender, and purée until smooth. If you want, add 1 tablespoon of mustard to the mix. Put into a small pot and keep warm. 8 Slice the meat across the grain: Notice the lines of the muscle fibers of the roast. This is the \"grain\" of the meat. Slice the meat perpendicular to these lines, or across the grain (cutting this way further tenderizes the meat), in 1/4-inch to 1/2-inch slices. Serve with the onions, carrots and gravy. Serve with mashed, roasted or boiled potatoes, egg noodles or polenta."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -2203,7 +2345,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add chili pepper, liver spread and peanut butter. Stir.",
       "Add bell peppers, fried potato and carrot. Cover the pot. Continue cooking for 5 to 7 minutes.",
       "Season with salt and ground black pepper. Serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52873,
@@ -2269,6 +2412,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "With floured hands, roll spoonfuls of the dough into small balls.",
       "After two hours, remove the lid from the stew and place the balls on top of the stew. Cover, return to the oven and cook for a further 20 minutes, or until the dumplings have swollen and are tender. (If you prefer your dumplings with a golden top, leave the lid off when returning to the oven.)",
       "To serve, place a spoonful of mashed potato onto each of four serving plates and top with the stew and dumplings. Sprinkle with chopped parsley."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2327,6 +2473,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the filling place tomatoes for about 30 seconds in boiling water, then cool with cold water and peel of skin and cut into cubes. Press garlic through garlic press, cut onions into cubes. Simmer garlic and onions in some olive oil until translucent. Take out onions and garlic and brown the meat at high heat from all sides. Season with all herbs and add the onions, garlic and tomatoes. Let simmer for a few minutes, add salt, pepper and additional spices to taste. You can prepare the meat the night before, chill in fridge if doing so. Boil eggs and also cut into cubes and mix with prepared meat.",
       "Cut dough into half and roll out one half thinnly on floured surface. Cut out circles about 12-15cm in diameter. Mine have a diameter of 12.5 cm. Place about 2-4 teaspoons of filling on one circle, put a bit of water all around the edges and fold over the other half so that you get half moons. Be sure to seal the edges with a fork. Repeat until you have no dough and filling left.",
       "Meanwhile preheat oven to 200 degrees Celsius. Brush empanadas with egg wash and bake about 8 empanadas on a baking sheet lined with parchment paper for about 25min or until golden. Serve warm with chimichurri sauce."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2389,7 +2538,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the noodles to wok",
       "To make the sauce, add oyster sauce, 1 pinch white pepper, 1 teaspoon sesame seed oil, sugar, and 1 Teaspoon of soy sauce.",
       "Next add the beef to wok and stir-fry"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53359,
@@ -2445,6 +2595,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place the beef pieces over the rice and steam on low heat for 10 minutes so flavors combine.",
       "Optional: For smoky flavor, place a small hot charcoal on foil in the pot, add 1 tsp butter/oil, immediately cover for 5 minutes. Remove coal before serving.",
       "Fluff rice and serve beef mandi with salad or chutney."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -2492,6 +2645,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Using a metal or bamboo skewer, assemble the beef kebob by skewering the vegetables and marinated beef tenderloin.",
       "Heat-up the grill and start grilling the beef kebobs for 3 minutes per side. This will give you a medium beef that is juicy and tender on the inside. Add more time if you want your beef well done, but it will be less tender.",
       "Transfer to a serving plate. Serve with Saffron rice."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -2547,6 +2703,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the beef stock along with 500ml of water into a large saucepan. Sit the onion and ginger in a frying pan over a high heat and char on all sides, around 3-5 mins (you can also do this under your grill). Once charred, add to the beef stock. In the same pan, toast the spices for 2-3 mins and once they begin to smell fragrant, add them to the beef stock as well. Bring the stock to the boil, then turn to a simmer and cook for 30mins before straining.",
       "Meanwhile, cut the fat from the steak and wrap in cling film, then put into the freezer for 15 mins – this will make your steak really easy to slice! Slice it thinly, then cover with cling film again and pop into the fridge.",
       "Taste the beef stock and use the palm sugar, fish sauce and soy to season. Cook the noodles according to package instructions and split between two bowls, topping each with the sliced beef. Bring the stock to the boil and then pour into the bowls (the heat will cook the beef). Top each with the spring onions, chilli slices and herbs. Serve with the lime wedges to squeeze over."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -2594,6 +2753,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Chop the spice paste ingredients and then blend it in a food processor until fine.",
       "Heat the oil in a stew pot, add the spice paste, cinnamon, cloves, star anise, and cardamom and stir-fry until aromatic. Add the beef and the pounded lemongrass and stir for 1 minute. Add the coconut milk, tamarind juice, water, and simmer on medium heat, stirring frequently until the meat is almost cooked. Add the kaffir lime leaves, kerisik (toasted coconut), sugar or palm sugar, stirring to blend well with the meat.",
       "Lower the heat to low, cover the lid, and simmer for 1 to 1 1/2 hours or until the meat is really tender and the gravy has dried up. Add more salt and sugar to taste. Serve immediately with steamed rice and save some for overnight."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -2636,7 +2798,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the olive oil in a non-stick frying pan then add the sliced onion and cook on a medium heat until completely softened, so around 15 mins, adding a little splash of water if they start to stick at all. Crush in the garlic and cook for a 2-3 mins further, then add the butter. Once the butter is foaming a little, add the mushrooms and cook for around 5 mins until completely softened. Season everything well, then tip onto a plate.",
       "Tip the flour into a bowl with a big pinch of salt and pepper, then toss the steak in the seasoned flour. Add the steak pieces to the pan, splashing in a little oil if the pan looks particularly dry, and fry for 3-4 mins, until well coloured. Tip the onions and mushrooms back into the pan. Whisk the crème fraîche, mustard and beef stock together, then pour into the pan. Cook over a medium heat for around 5 mins. Scatter with parsley, then serve with pappardelle or rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52824,
@@ -2674,6 +2837,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roast the Beef and Potatoes in the oven for 45mins, the potatoes may need to be checked regularly to not overcook.",
       "To make the Yorkshire puddings: Heat oven to 230C/fan 210C/gas 8. Drizzle a little sunflower oil evenly into 2 x 4-hole Yorkshire pudding tins or a 12-hole non-stick muffin tin and place in the oven to heat through To make the batter, tip 140g plain flour into a bowl and beat in four eggs until smooth. Gradually add 200ml milk and carry on beating until the mix is completely lump-free. Season with salt and pepper. Pour the batter into a jug, then remove the hot tins from the oven. Carefully and evenly pour the batter into the holes. Place the tins back in the oven and leave undisturbed for 20-25 mins until the puddings have puffed up and browned. Serve immediately.",
       "Plate up and add the Gravy as desired."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2714,6 +2880,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roll out the puff pastry on a floured surface to a large rectangle, the thickness of a £1 coin. Remove the cling film from the beef, then lay in the centre. Brush the surrounding pastry with egg yolk. Fold the ends over, the wrap the pastry around the beef, cutting off any excess. Turn over, so the seam is underneath, and place on a baking sheet. Brush over all the pastry with egg and chill for about 15 mins to let the pastry rest.",
       "Heat the oven to 200C, 400F, gas 6.",
       "Lightly score the pastry at 1cm intervals and glaze again with beaten egg yolk. Bake for 20 minutes, then lower the oven setting to 180C, 350F, gas 4 and cook for another 15 mins. Allow to rest for 10-15 mins before slicing and serving with the side dishes of your choice. The beef should still be pink in the centre when you serve it."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -2750,7 +2920,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Press the veg down in the bowl with your hands, then cover the surface and up the side of the bowl with a large sheet of compostable cling film or something reusable like a beeswax wrap. Now place another similar-sized bowl on top. Press down hard and add anything heavy (packs of rice or cans work well) to weigh it down so the juices rise to cover the surface. Cover again.",
       "Leave to ferment at room temperature for at least five days, but for maximum flavour, leave for one-five weeks (until the bubbling subsides).",
       "Check the sauerkraut. After a few days, you will see bubbles that have built up as it ferments. Give it a stir, then cover and weigh it down again as before. The cabbage will become increasingly sour the longer it’s fermented, so taste it now and again. When you like the flavour, transfer it to sterilised jars and keep chilled. Will keep chilled for up to six months."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53313,
@@ -2797,6 +2968,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 180C/160C fan/gas 4. Make the latkes by combining all of the ingredients.",
       "Heat the oil in a large non-stick pan. Spoon in the mixture to make six round latkes. Fry for 4-5 mins on each side, then transfer to a baking sheet and bake for 10 mins.",
       "Combine the yogurt and mint in a small bowl. Toss the salad leaves and tomatoes together, then serve the latkes with the mint yogurt and salad."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2842,6 +3016,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the beetroot in a jug with the milk and blend with a stick blender until smooth. Pour into a bowl with the rest of the pancake ingredients and whisk until smooth and vibrant purple.",
       "Put a small knob of butter in a large non-stick frying pan and heat over a medium-low heat until melted and foamy. Now create 3 or 4 pancakes each made from 2 tbsp of the batter. Cook for 2-3 mins then flip over and cook for a further minute until cooked through. Repeat with any remaining batter. Heat oven to lowest setting and keep the pancakes warm in there until needed.",
       "Serve with your favourite pancake toppings or make a simple compote by simmering frozen berries in with 1 tbsp blackcurrant jam until bubbling and syrupy (about 5-10 mins). In a small bowl stir together the remaining jam and the yogurt. Stack the cooked pancakes with the yogurt and pour the warm berry compote over the top."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -2877,7 +3055,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Chop the beetroot, add water and stock cube and cook for 15mins. Add the other ingredients and boil until soft. Finally add the beans and cook for 5mins. Serve in the soup pot."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53013,
@@ -2930,6 +3109,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Carefully slice each burger bun into three acrossways, then lightly toast.",
       "To assemble the burgers, spread a little Big Mac sauce over the bottom base. Top with some chopped onion, shredded lettuce, slice of cheese, beef patty and some pickle slices. Top with the middle bun layer, and spread with more Big Mac sauce, onion, lettuce, pickles, beef patty and then finish with more sauce. Top with burger lid to serve.",
       "After waiting half an hour for your food to settle, go for a jog."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -2994,6 +3176,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Deglaze the pan by pouring in the red wine and stirring to loosen all of the bits of food and flour that are stuck to the bottom. Season with the bay leaf, basil, marjoram, paprika, salt, pepper, caraway seeds and cayenne pepper; cook for 1 minute.",
       "Mix in the dried mushrooms, hot pepper sauce, Worcestershire sauce, beef stock, tomato paste and tomatoes. Heat through just until boiling. Pour the vegetables and all of the liquid into the casserole dish with the meat. Cover with a lid.",
       "Bake in the preheated oven for 2 1/2 to 3 hours, until meat is very tender."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3049,7 +3234,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the cabbage in a heavy casserole dish, add the stock and cook over a low heat for about 50 mins, until tender.",
       "Cut the soaked mushrooms into strips and save the soaking water. Heat the lard and fry the sausages and bacon, then scoop out, leaving the fat in the pan. Fry the onion in the same pan for 5-8 mins until lightly browned.",
       "Add the mushrooms and their liquid along with all the cooked meat, onions and prunes, then cover and cook for 20 mins. Add the spices, red wine and tomato purée and bring to a simmer, then cover and cook for 1 hr. Season well and leave to cool. Will keep covered and chilled for up to two days. Bigos improves in flavour over a couple of days. Leave to cool first. Reheat until piping hot before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53069,
@@ -3091,7 +3277,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add beef. Cover the pan and simmer until the meat is tender. Note: Add water as needed.",
       "Season with ground black pepper and salt as needed. Top with pan-fried onions.",
       "Transfer to a serving plate. Serve hot. Share and Enjoy!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52979,
@@ -3137,7 +3324,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the mixture into a shallow container, cover and refrigerate for several hours, or until the sauce has solidified.",
       "Take a heaping tablespoon of the cold, thick sauce and quickly roll it into a small ball. Roll lightly through the flour, then the egg and finally the breadcrumbs. Make sure that the egg covers the whole surface of the bitterbal. When done, refrigerate the snacks while the oil in your fryer heats up to 190C (375F). Fry four bitterballen at a time, until golden.",
       "Serve on a plate with a nice grainy or spicy mustard."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52891,
@@ -3194,6 +3382,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the cream and yoghurt in a large bowl and whip with an electric whisk until soft peaks form when the whisk is removed from the bowl – the acidity of the fruit will thicken the cream further, so don’t take it too far.",
       "When the purée is completely cold, adjust the sweetness to taste by adding more sugar if needed. Pour it into the bowl with the whipped cream and yoghurt and stir just once or twice until very lightly combined.",
       "Spoon the blackberry fool into individual wide, glass dishes – or one large, single bowl. It should look quite marbled, so don’t over-stir it. Scatter a few tiny mint leaves on top and decorate with the reserved blackberries. Sprinkle with a little sugar if you like and serve with the hazelnut biscuits."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3239,7 +3430,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Drop quarter-sized dollops of batter into the pan, being careful not to overcrowd the pan. Cook for about 1 minute or until bubbles form.",
       "Turn and cook for about 30 additional seconds.",
       "Remove the finished blini onto a plate and cover them with a clean kitchen towel to keep warm. Add more butter to the pan and repeat the frying process with the remaining batter."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53100,
@@ -3278,6 +3470,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Whisk the egg whites in another bowl until they form a light, floppy foam. Make a well in the centre of the dry ingredients, tip in the egg whites and lemon rind, then lightly stir in the butter to form a soft batter.",
       "Divide the batter among the tins, a large serving spoon is perfect for this job. Sprinkle a handful of blueberries over each cake and bake for 15-20 minutes until just firm to the touch and golden brown.",
       "Cool in the tins for 5 minutes, then turn out and cool on a wire rack. To serve, dust lightly with icing sugar."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3332,7 +3527,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the potatoes to the borscht, season well with salt and pepper and cook for 10-15 mins until tender. Meanwhile, heat the sunflower oil in a large, deep frying pan. Add the diced onion and carrot, and cook over a medium heat, stirring, until the carrot is soft and is about to start caramelising.",
       "Add the beetroot and cook for around 5 mins, stirring occasionally. Add the red pepper, if using, and cook for another 2 mins, then add the tomatoes and prunes, stir, then increase the heat and boil to reduce slightly, before adding everything to the borscht.",
       "Add the shredded cabbage and the kidney beans, and cook for 7-10 mins or until tender. Serve with a dollop of sour cream or crème fraîche, lots of chopped dill and some crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53385,
@@ -3375,6 +3571,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake in the oven for about 30 minutes or until golden brown. It will be wobbly. That's because butter cake only firms up when it cools.",
       "Cut into small pieces when it has cooled completely!",
       "Storing: Store in an airtight container outside of the fridge for about 2-3 days or in the fridge for 5 days. Freeze for up to three months."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3409,6 +3608,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/fan 180C/gas 6. Fry the onions and thyme sprigs in the oil until softened and lightly coloured (about 5 mins).",
       "Spread a layer of potatoes over the base of a 1.5-litre oiled gratin dish. Sprinkle over a few onions (see picture, above) and continue layering, finishing with a layer of potatoes. Pour over the stock and bake for 50-60 mins until the potatoes are cooked and the top is golden and crisp."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3453,6 +3655,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Whisk the egg white in a large bowl until it holds soft peaks. Fold in the buttermilk, then add the bicarbonate of soda. Fold into the potato mix.",
       "Heat a large non-stick frying pan over a medium heat, then add 1 tbsp butter and some of the oil. Drop 3-4 spoonfuls of the potato mixture into the pan, then gently cook for 3-5 mins on each side until golden and crusty. Keep warm on a plate in the oven while you cook the next batch, adding more butter and oil to the pan before you do so. You will get 16 crumpet-size boxty from the mix. Can be made the day ahead, drained on kitchen paper, then reheated in a low oven for 20 mins.",
       "Heat the grill to medium and put the tomatoes in a heavy-based pan. Add a good knob of butter and a little oil, then fry for about 5 mins until softened. Grill the bacon, then pile onto a plate and keep warm. Stack up the boxty, bacon and egg, and serve the tomatoes on the side."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -3512,6 +3718,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Set to one side and add another small slug of oil to brown the chorizo. Remove and add the onion and garlic, spices, herbs and chillies then cook until soft in the chorizo oil. Season with salt and pepper and add the vinegar, tomatoes, ketchup and sugar.",
       "Put all the meat back into the pot with 400ml water (or red wine if you prefer), bring up to a simmer and cook, covered, in the low oven.",
       "After 2 hours, check the meat and add the beans. Cook for a further hour and just before serving, pull the meat apart with a pair of forks."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -3559,6 +3769,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 180C/fan 160C/gas 4. Remove the tough central stalk from the cabbage leaves. Bring a large pan of salted water to the boil, add the cabbage, then cook for just 1-2 mins until the leaves are starting to wilt. Drain and refresh under cold running water. Drain well, then pat dry with a tea towel.",
       "Heat the oil in a pan, add the onion, then fry for 5 mins until slightly browned. Add the rosemary and celery, then cook for 8 mins more. Stir in the rice, then cook for a min or so until the grains are glistening. Remove from the heat, stir in the chestnuts and cranberries, then season.",
       "Spoon a little stuffing onto a cabbage leaf, roll up and fold in the sides to enclose the filling. Put in a single layer in a large, oiled, shallow ovenproof dish with the join underneath. Fill the remaining leaves in the same way. Mix the stock, vinegar and honey, then pour over the cabbage. Cover the dish tightly with foil, bake for 1 hr, uncover, then cook for a further 15 mins."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3606,6 +3819,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the custard over the prepared bread layers and sprinkle with nutmeg and the remaining sugar and leave to stand for 30 minutes.",
       "Preheat the oven to 180C/355F/Gas 4.",
       "Place the dish into the oven and bake for 30-40 minutes, or until the custard has set and the top is golden-brown."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3633,7 +3849,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Follow the recipe instructions."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52965,
@@ -3681,7 +3898,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let the garlic cook until fragrant, about one minute.",
       "Just before serving, drizzle over the maple syrup and toss. Let that cook another minute, giving the potatoes a caramelized effect.",
       "Serve in a warm bowl with a sunny side up egg!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52913,
@@ -3721,6 +3939,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Mix the flour, 1 tsp salt, caster sugar, yeast, milk and eggs together in a mixer using the dough attachment for 5 mins until the dough is smooth. Add the butter and mix for a further 4 mins on medium speed. Scrape the dough bowl and mix again for 1 min. Place the dough in a container, cover with cling film and leave in the fridge for at least 6 hrs before using.",
       "Wrap the Brie in the prosciutto and set aside. Turn out the dough onto a lightly floured surface. Roll into a 25cm circle. Place the wrapped Brie in the middle of the circle and fold the edges in neatly. Put the parcel onto a baking tray lined with baking parchment and brush with beaten egg. Chill in the fridge for 30 mins, then brush again with beaten egg and chill for a further 30 mins. Leave to rise for 1 hr at room temperature. Heat oven to 200C/180C fan/gas 6, then bake for 22 mins. Serve warm."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -3764,6 +3985,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the celery, leek, potato and a knob of butter. Stir until melted, then cover with a lid. Allow to sweat for 5 minutes. Remove the lid.",
       "Pour in the stock and add any chunky bits of broccoli stalk. Cook for 10 – 15 minutes until all the vegetables are soft.",
       "Add the rest of the broccoli and cook for a further 5 minutes. Carefully transfer to a blender and blitz until smooth. Stir in the stilton, allowing a few lumps to remain. Season with black pepper and serve."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -3814,7 +4038,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Lightly brown the chicken a few pieces at a time in very hot oil. Place browned chicken pieces on a plate to rest while you brown the remaining pieces.",
       "Drain off excess oil and return the chicken to the pan. Pour the marinade over the chicken and add the carrots. Stir and cook over medium heat for 10 minutes.",
       "Mix flour and coconut milk and add to stew, stirring constantly. Turn heat down to minimum and cook another 20 minutes or until tender."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53126,
@@ -3861,7 +4086,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Peel and cut the rutabaga and celery root into 1 inch (2.5 cm) cubes. Add to the pot, cover, and continue simmering for another 30 minutes.",
       "Peel and chop the rest of the vegetables into 1 inch (2.5 cm) cubes and add to the pot. Slice the leek into rings. Cover and continue simmering for about 20 minutes. Stir as little as possible.",
       "Top with fresh parsley."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53190,
@@ -3898,6 +4124,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let the dumplings cook until they float to the surface, usually within 2-3 minutes. Scoop them out with a slotted spoon and set aside in a large bowl.",
       "Prepare the Toppings Chop the bacon into small pieces and fry in a skillet over medium heat until crispy. If using a bryndza substitute, mix crumbled feta with a dollop of sour cream to mimic the tangy flavour of traditional Slovak sheep cheese.",
       "Assemble the Dish Toss the cooked dumplings with the bryndza cheese (or substitute) until they’re well-coated and creamy. Top with the crispy bacon and its drippings. Garnish with chopped chives or parsley for an extra touch of colour and flavour."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -3936,6 +4165,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Mash the ricotta and beat well with the egg yolks, stir in the flour, sugar, cinnamon, grated lemon rind and the rum and mix well. You can do this in a food processor. Beat the egg whites until stiff, fold in and pour into a buttered and floured 25cm cake tin. Bake in the oven at 180ºC/160ºC fan/gas 4 for about 40 minutes, or until it is firm.",
       "Serve hot or cold dusted with icing sugar."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -3969,6 +4202,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Fry the finely chopped onions and minced meat in oil. Add the salt and pepper. Grease a round baking tray and put a layer of pastry in it. Cover with a thin layer of filling and cover this with another layer of filo pastry which must be well coated in oil. Put another layer of filling and cover with pastry. When you have five or six layers, cover with filo pastry, bake at 200ºC/392ºF for half an hour and cut in quarters and serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4019,6 +4255,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the tomatoes (or undrained canned tomatoes) and bring the soup back to a boil over high heat. Reduce the heat to low and simmer, uncovered, for 5 minutes. Season to taste with salt and pepper.",
       "emove and discard the bay leaf from the pot.",
       "Serve topped with fresh sour cream and fresh dill."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4056,7 +4295,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the lemon juice, most of the olive oil and the dried mint to a bowl and stir well for the dried mint to soften and soak up the juices. Mix in the strained yogurt, then pour away the strained yogurt liquid and leave that bowl to one side.",
       "Halve the cucumber(s) lengthways and remove the seeds by running a teaspoon from the top to the bottom of the flesh, halve the cucumbers widthways to make them shorter and easier to handle, then coarsely grate each one into the bowl the yogurt was straining over. Using clean hands (or a clean muslin cloth), squeeze as much of the liquid out of the cucumber as possible.",
       "Add the strained, grated cucumber, garlic and ¾ tsp flaky salt to the rest of the ingredients and mix well. Garnish with a drizzle of extra virgin olive oil and a sprinkling of dried mint."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52819,
@@ -4102,6 +4342,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "On a large plate, mix the cajun spice and cayenne pepper with a little seasoning and use to coat the fish all over.",
       "Heat a little oil in a frying pan, add in the fish and cook over a medium heat until golden. Reduce the heat and continue frying until the fish is cooked through, about 10 minutes. Cook in batches if you don’t have enough room in the pan.",
       "Meanwhile, prepare the dressing by combining all the ingredients with a little seasoning. Soften the tortillas by heating in the microwave for 5-10 seconds. Pile high with the avocado, lettuce and spring onion, add a spoonful of salsa, top with large flakes of fish and drizzle over the dressing."
+    ],
+    "appliances": [
+      "microwave"
     ]
   },
   {
@@ -4146,7 +4389,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook bacon in skillet over medium heat until crispy. Remove bacon from heat and drain the majority of the bacon grease, leaving about 1 tablespoon in the skillet.",
       "Add yellow onion, green onion, scotch bonnet pepper, and garlic to the skillet and stir. Cook for about 2 minutes or until onions soften. Add salted fish to skillet and stir. Cook for about a minute.",
       "Next, add callaloo, roma tomatoes, thyme, and black pepper. Stir to combine and cook until heated through, about 2 minutes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52939,
@@ -4198,7 +4442,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let the plantains \"fry\" on medium heat, shaking the frying pan to redistribute them every few minutes.",
       "As the plantains brown, continue to add more cooking oil spray, salt and pepper (if needed) until they have reached the desired color and texture.",
       "Remove and serve with kale"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52923,
@@ -4238,6 +4483,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the oven to fan 170C/ conventional 190C/gas 5. Roll out the pastry on a lightly floured surface so it’s slightly thinner than straight from the pack. Then cut out 18-20 rounds with a 7.5cm fluted cutter, re-rolling the trimmings. Use the rounds to line two deep 12-hole tart tins (not muffin tins). If you only have a regular-sized, 12-hole tart tin you will be able to make a few more slightly shallower tarts.",
       "Beat the eggs in a large bowl and combine with the rest of the ingredients except the walnuts. Tip this mixture into a pan and stir continuously for 3-4 minutes until the butter melts, and the mixture bubbles and starts to thicken. It should be thick enough to coat the back of a wooden spoon. Don’t overcook, and be sure to stir all the time as the mixture can easily burn. Remove from the heat and stir in the nuts.",
       "Spoon the filling into the unbaked tart shells so it’s level with the pastry. Bake for 15-18 minutes until set and pale golden. Leave in the tin to cool for a few minutes before lifting out on to a wire rack. Serve warm or cold."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4282,7 +4530,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Enjoy hot, with a crusty piece of bread.",
       "Brown the beef in batches to ensure it gets a good sear, which adds depth to the stew's flavor.",
       "Adding the fruits towards the end of cooking preserves their texture and adds a subtle sweetness to the dish."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52897,
@@ -4330,6 +4579,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all of the ingredients for the carrot cake, except the carrots and walnuts, together in a bowl until well combined. Stir in the carrots and walnuts.",
       "Spoon the mixture into the cake tin and bake for 1 hour 15 minutes, or until a skewer inserted into the middle comes out clean. Remove the cake from the oven and set aside to cool for 10 minutes, then carefully remove the cake from the tin and set aside to cool completely on a cooling rack.",
       "Meanwhile, for the icing, beat the cream cheese, caster sugar and butter together in a bowl until fluffy. Spread the icing over the top of the cake with a palette knife."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4367,6 +4619,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a bowl, mix the cashews and icing sugar. Add the egg yolks and orange blossom water and mix to a smooth homogeneous paste.",
       "Take lumps of the cashew paste and shape into small balls. Roll the balls in icing sugar and transfer to the baking tray. Push an almond in the centre of each ghribia.",
       "Bake until the biscuits are lightly golden, about 20 minutes. Keep an eye on them, they burn quickly."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4409,6 +4664,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the bacon or chorizo, corn, turkey ham, some olives and paprika.",
       "Bake for 7 to 10 minutes.",
       "Remove from the oven and enjoy."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4456,6 +4714,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take portions of the meat mixture, about 50-55 g/ 1.7-1.9 oz/ ¼ cup portions, and form the cevapi. The rolls should be about as thick as your thumb and about 7-10 cm/ 3-4 inches long. I had 18 sausages. The recipe can be easily doubled.",
       "Grill the cevapcici on the hot grill pan or on the barbecue for about 12-14 minutes, turning them several times in between, or until brown and cooked through. I checked by cutting one in the middle and then grilling the following batches for the same period of time.",
       "Serve hot as suggested above. The cevapcici can be reheated in the oven at 180 degrees Celsius/ 350 degrees Fahrenheit for about 10 minutes or until heated through. Check one, if it is not hot enough, give the sausages a few more minutes."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -4500,7 +4762,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "In a large cast iron skillet or sauté pan with a lid, heat oil over medium high heat. Add the onion and sauté for 2-3 minutes, until softened. Add the peppers and garlic, and sauté for an additional 3-5 minutes. Add the tomatoes, cumin, paprika, salt, and chili powder. Mix well and bring the mixture to a simmer. Reduce the heat to medium low and continue to simmer, uncovered, 10-15 minutes until the mixture has thickened to your desired consistency. (Taste the sauce at this point and adjust for salt and spice, as desired.) Using the back of a spoon, make four craters in the mixture, large enough to hold an egg. Crack one egg into each of the craters. Cover the skillet and simmer for 5-7 minutes, until the eggs have set. Serve immediately with crusty bread or pita."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53310,
@@ -4537,6 +4800,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once the dough has come together, turn it out onto a lightly floured surface. Knead using both hands for 10 mins until smooth and a bit springy. If it gets very sticky, add a very small amount of flour – as little as possible. A dough scraper is useful if the dough is sticking to the work surface. Stretch the sides of the dough down and pull together to form a ball. Lightly oil a bowl, then lightly roll the dough ball around the bowl so it's coated in the oil. Cover with a clean tea towel and leave in a warm place for 1 hr, or until dough has doubled in size.",
       "Line a baking sheet with baking parchment. Turn the dough out onto a clean work surface and divide into three equal pieces, weighing for accuracy, if you like. Roll each piece into a long sausage shape about 25cm long, tapering them slightly at both ends. Lay the pieces out in front of you, parallel to one another with a couple centimetres between each. Bring the sausages together at the top end, then plait them down the length, tucking in the ends when you reach the bottom. Carefully transfer the loaf to the prepared baking sheet and loosely cover with a clean tea towel. Leave to rise until puffy and billowy, about 40 mins.",
       "Meanwhile, heat the oven to 200C/180C fan/gas 6. Gently brush the rest of the beaten egg all over the challah, getting it into all the crevices, and sprinkle with the poppy or sesame seeds, if using. Bake on a middle shelf of the oven for 25-30 mins, until the loaf is golden brown underneath and sounds hollow when tapped. Check after about 15 mins – if the top of the loaf has started to get too dark, cover it with foil. Leave to cool on a wire rack, then serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4578,6 +4844,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "One sheet at a time, place phyllo dough on a flat surface and brush with about 1 tablespoon butter. Cut lengthwise into 4 strips. Place a rounded teaspoon of the egg mixture at one end of each strip. Fold corner of strip over the filling, forming a triangular fold. Continue folding the length of the strip in triangular folds to form a small stuffed triangle. Repeat with remaining phyllo dough.",
       "Preheat oven to 350 degrees F (175 degrees C). Lightly butter a large baking sheet.",
       "Arrange stuffed phyllo triangles in a single layer on the prepared baking sheet. Bake in the preheated oven 30 minutes, or until lightly browned. Serve warm"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4636,6 +4905,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake the buns in the oven for 20-25 minutes, or until risen and golden-brown.",
       "Meanwhile, for the glaze, heat the milk and sugar in a saucepan until boiling. Reduce the heat and simmer for 2-3 minutes.",
       "Remove the buns from the oven and brush with the glaze, then set aside to cool on a wire rack."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4691,7 +4963,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a skillet (1/2 inch deep) to about 345-350.",
       "Fry each cutlet for 2 minutes on each side, or until golden and cooked through.",
       "Blot on paper and serve on toasted buns with pickle slices."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53161,
@@ -4739,7 +5012,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Lower the heat, add the onion and pepper, and gently cook for 10 mins until softened. Add the garlic and chorizo, and cook for a further 2 mins until the chorizo has released some of its oils into the dish. Stir in the tomato purée and cook for 1 min more.",
       "Return the chicken pieces to the dish along with the thyme, white wine and stock. Bring the liquid to a boil, cover the dish with a tight-fitting lid and lower the heat. Cook for 30 mins.",
       "Tip in the rice and stir everything together. Cover, set over a low heat and cook for a further 15 mins, or until the rice is cooked and has absorbed most of the cooking liquid. Remove from the heat and leave the dish to sit for 10 mins to absorb any remaining liquid. Season to taste and scatter with parsley to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52846,
@@ -4784,6 +5058,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take the roux off the heat. Slowly add the fresh stock, if using, or pour in 500ml water if you’ve used a stock cube, stirring all the time. Once all the liquid has been added, season with pepper, a pinch of nutmeg and mustard powder. Put the saucepan back onto a medium heat and slowly bring it to the boil, stirring all the time. Once the sauce has thickened, place on a very low heat. Add the cooked chicken and vegetables to the sauce and stir well. Grease a medium-size ovenproof pie dish with a little butter and pour in the chicken and mushroom filling.",
       "Carefully lay the potatoes on top of the hot-pot filling, overlapping them slightly, almost like a pie top.",
       "Brush the potatoes with a little melted butter and cook in the oven for about 35 mins. The hot-pot is ready once the potatoes are cooked and golden brown."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4841,7 +5118,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat 1 tablespoon of butter and 2 tablespoons of olive oil in a large skillet over medium-high heat. Season both sides of each chicken breast with seasoned salt and a pinch of pepper. Add the chicken to the skillet and cook for 5-7 minutes on each side, or until cooked through.  While the chicken is cooking, bring a large pot of water to a boil. Season the boiling water with a few generous pinches of kosher salt. Add the pasta and give it a stir. Cook, stirring occasionally, until al dente, about 12 minutes. Reserve 1/2 cup of  pasta water before draining the pasta.  Remove the chicken from the pan and transfer it to a cutting board; allow it to rest. Turn the heat down to medium and dd the remaining 1 tablespoon of butter and olive oil to the same pan you used to cook the chicken. Add the veggies (minus the garlic) and red pepper flakes to the pan and stir to coat with the oil and butter (refrain from seasoning with salt until the veggies are finished browning). Cook, stirring often, until the veggies are tender, about 5 minutes. Add the garlic and a generous pinch of salt and pepper to the pan and cook for 1 minute.  Deglaze the pan with the white wine. Continue to cook until the wine has reduced by half, about 3 minutes. Stir in the milk, heavy cream, and reserved pasta water. Bring the mixture to a gentle boil and allow to simmer and reduce for 2-3 minutes. Turn off the heat and add the Parmesan cheese and cooked pasta. Season with salt and pepper to taste. Garnish with Parmesan cheese and chopped parsley, if desired."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52934,
@@ -4903,6 +5181,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add a little more olive oil to the casserole and fry the onions over a medium heat for 10 minutes, stirring frequently, until softened but not browned. Add the rest of the oil, then the peppers and cook for another 5 minutes.",
       "Add the chorizo, sun-dried tomatoes and garlic and cook for 2-3 minutes. Add the rice, stirring to ensure it is well coated in the oil. Stir in the tomato paste, paprika, bay leaves and chopped thyme. Pour in the stock and wine. When the liquid starts to bubble, turn the heat down to a gentle simmer. Press the rice down into the liquid if it isn't already submerged and place the chicken on top. Add the lemon wedges and olives around the chicken.",
       "Cover and cook in the oven for 50 minutes. The rice should be cooked but still have some bite, and the chicken should have juices that run clear when pierced in the thickest part with a knife. If not, cook for another 5 minutes and check again."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -4953,7 +5234,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "After an additional 10 minutes add the green onions, sliced ginger, 1 pinch of salt, 1 pinch of white pepper and stir for 10 seconds.",
       "Serve the rice porridge in a bowl",
       "Optional: add Coriander on top of the rice porridge."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52850,
@@ -4993,7 +5275,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the olive oil in a large frying pan and cook the onion for 1-2 mins just until softened. Add the chicken and fry for 7-10 mins until cooked through and the onions have turned golden. Grate over the ginger, stir through the harissa to coat everything and cook for 1 min more.",
       "Tip in the apricots, chickpeas and couscous, then pour over the stock and stir once. Cover with a lid or tightly cover the pan with foil and leave for about 5 mins until the couscous has soaked up all the stock and is soft. Fluff up the couscous with a fork and scatter over the coriander to serve. Serve with extra harissa, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52765,
@@ -5024,6 +5307,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 375 F degrees.",
       "Start layering the casserole. Start with about ¼ cup of the leftover Enchilada sauce over the bottom of a baking dish. I used a longer baking dish, so that I can put 2 corn tortillas across. Place 2 tortillas on the bottom, top with ⅓ of the chicken and ⅓ of the remaining sauce. Sprinkle with ⅓ of the cheese and repeat starting with 2 more tortillas, then chicken, sauce, cheese. Repeat with last layer with the remaining ingredients, tortillas, chicken, sauce and cheese.",
       "Bake for 20 to 30 minutes uncovered, until bubbly and cheese has melted and started to brown on top."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5072,6 +5358,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add your cream, stock and macaroni.",
       "Cook on low for 20 minutes. Add your cheeses, stir to combine.",
       "Top with roasted peppers and parsley."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5128,6 +5417,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook the rice: Add the rice to the wok or pan on top of the vegetables and stir to combine. Using the back of your spatula, smash any large chunks of rice to break them apart. Add the white and green parts of the sliced scallions (save the dark green parts) and five-spice powder. Stir to incorporate. If the rice starts to stick to the pan, stir in a little more oil.",
       "Drizzle the soy sauce and sesame oil over the rice and stir to incorporate. Stir in the cooked chicken, scrambled eggs, and the dark parts of the scallions. Stir briefly to bring it together, and cook for another 1 to 2 minutes.",
       "Serve: Taste, and add more soy sauce if necessary. Serve immediately."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5190,6 +5482,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut the chicken breasts into 3cm/1¼in pieces. Stir the chicken, ham and leeks into the cooled sauce. Pour the chicken filling into the pie dish. Brush the rim of the dish with beaten egg. Roll out the reserved pastry for the lid.",
       "Cover the pie with the pastry lid and press the edges together firmly to seal. Trim any excess pastry.",
       "Make a small hole in the centre of the pie with the tip of a knife. Glaze the top of the pie with beaten egg. Bake on the preheated tray in the centre of the oven for 35-40 minutes or until the pie is golden-brown all over and the filling is piping hot."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -5251,7 +5547,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the oil separates from the spices, add the beaten yogurt keeping the heat on lowest so that the yogurt doesn’t split. Sprinkle the remaining coriander seeds and add half of the dried fenugreek leaves. Mix well.",
       "Finally add the cream and give a final mix to combine everything well.",
       "Sprinkle the remaining kasuri methi and garam masala and serve the chicken handi hot with naan or rotis. Enjoy!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52831,
@@ -5291,7 +5588,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add 1 inch of vegetable oil to a heavy bottomed pot and heat until the oil reaches 360 degrees F. Line a wire rack with 2 sheets of paper towels and get your tongs out. Put the potato starch in a bowl",
       "Add a handful of chicken to the potato starch and toss to coat each piece evenly.",
       "Fry the karaage in batches until the exterior is a medium brown and the chicken is cooked through. Transfer the fried chicken to the paper towel lined rack. If you want the karaage to stay crispy longer, you can fry the chicken a second time, until it's a darker color after it's cooled off once. Serve with lemon wedges."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53358,
@@ -5350,6 +5648,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Return the chicken to the rice pot on top, cover tightly and steam on low for 10–15 min so flavors meld.",
       "(Optional) For authentic smoky aroma: heat a small charcoal until red hot, place it on a small foil cup in the centre of the pot, add a tsp of butter/oil on the coal then cover immediately to trap smoke for 5–10 minutes. Remove coal.",
       "Garnish with fried onions, chopped coriander and serve with chutney or raita."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -5386,7 +5687,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a large flameproof casserole dish and stir-fry the mushrooms until they start to soften. Add the chicken legs and cook briefly on each side to colour them a little.",
       "Pour in the passata, crumble in the stock cube and stir in the olives. Season with black pepper – you shouldn’t need salt. Cover and simmer for 40 mins until the chicken is tender. Sprinkle with parsley and serve with pasta and a salad, or mash and green veg, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52879,
@@ -5444,6 +5746,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the filling, melt the butter in a large pan. Add the shallots, carrots and celery and gently fry until soft, then add the garlic. Pour in the wine and cook for 1 minute. Stir in the tomato purée, chopped tomatoes and stock and cook for 10–15 minutes, until thickened. Add the shredded chicken, olives and parsley. Season to taste with salt and pepper.",
       "Preheat the oven to 180C/160C Fan/Gas 4.",
       "Put the filling in a 20x30cm/8x12in ovenproof dish and top with the mashed potato. Grate over the Gruyère. Bake for 30–35 minutes, until piping hot and the potato is golden-brown."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5489,7 +5794,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook the quinoa following the pack instructions, then rinse in cold water and drain thoroughly.",
       "Meanwhile, mix the butter, chilli and garlic into a paste. Toss the chicken fillets in 2 tsp of the olive oil with some seasoning. Lay in a hot griddle pan and cook for 3-4 mins each side or until cooked through. Transfer to a plate, dot with the spicy butter and set aside to melt.",
       "Next, tip the tomatoes, olives, onion, feta and mint into a bowl. Toss in the cooked quinoa. Stir through the remaining olive oil, lemon juice and zest, and season well. Serve with the chicken fillets on top, drizzled with any buttery chicken juices."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53218,
@@ -5543,6 +5849,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "The pan should be pretty hot by now, add the chicken in 2 batches (unless you have a big fry pan) to avoid overcrowding. The chicken should get a nice sear and darker colour which is perfect. Cook for a further 5-8 minutes or until cooked through. Repeat with next chicken batch.",
       "While chicken is cooking, place your Greek yoghurt into a bowl. Combine garlic, finely chopped mint and parsley, squeeze or so of lemon and cumin. Combine and add salt to taste. In a small bowl, combine 1tsp garlic powder, paprika, cumin, onion powder, oregano, dried parsley, cayenne pepper (optional) mix and leave aside for fries.",
       "Season fries immediately once cooked and add salt to taste. Once the chicken is complete, serve immediately by laying out your flatbread, spreading the sauce evenly over the bread, add lettuce, onion, tomato, fries, chicken, feta and more sauce on top. Serve immediately."
+    ],
+    "appliances": [
+      "air-fryer"
     ]
   },
   {
@@ -5577,6 +5886,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Using a pair of sharp kitchen scissors, cut each wing at the knuckle into two pieces. Mix the garlic, lemon zest and juice, cumin and oil with plenty of seasoning, then tip into a dish with the chicken wings and toss to coat. Cover and put in the fridge to marinate for at least 1 hr, or overnight if you have time.",
       "Heat oven to 200C/180C fan/gas 6, or heat an outdoor barbecue. Bake the chicken wings on an oven tray for 45-50 mins until crisp, or barbecue for 20 mins, drizzling over the honey for the final 10 mins of each method. Serve on a platter with plenty of paper napkins. Fill small bowls with olives, pistachios or almonds, dates and pickled chillies and flatbreads to serve alongside, along with the dishes below."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -5621,6 +5934,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Lower the heat to medium. In the remaining fat, fry the onions for 3 mins, then add the garlic and saffron. Cook for 3-4 mins more. Add the sherry, then simmer for 3-5 mins until syrupy.",
       "Put the chicken leg pieces back into the pan, tip in the stock, thyme and raisins, cover, then gently cook on a low heat for 20 mins. Add the breast meat and any juices left on the plate. Simmer for 10 mins more until cooked through and the sauce in the pan has reduced.",
       "While the chicken is cooking, heat oven to 200C/180C fan/gas 6. Scatter the pine nuts over a baking sheet, then roast for 10 mins until golden and toasted. Once the chicken has cooked through, season to taste, scatter with pine nuts and parsley, then serve with rice."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5671,6 +5987,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, put the tomatoes and onion in a small bowl with the vinegar and set aside to pickle. Put the avocado in another bowl and mash with a fork, leaving some larger chunks. Stir in the lime juice and season well. Mix the soured cream with the harissa and set aside until ready to serve.",
       "Heat a griddle pan until nearly smoking. Add the tortillas , one at a time, charring each side until hot with griddle lines.",
       "Put everything on the table and build the fajitas : spread a little of the harissa cream over the tortilla, top with roasted chickpeas, guacamole, pickled salsa and coriander, if you like. Serve with the lime wedges for squeezing over."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -5719,7 +6038,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a large pan, then gently fry the onion for 3-4 mins until it begins to soften. Stir in the carrot, celery, thyme and bay leaves. Season, then cook for 2-3 mins, stirring occasionally. Add the garlic, chorizo, cinnamon and smoked paprika. Gently fry until the vegetables soften and the chorizo starts to release its oils and crisp up.",
       "Stir in the chickpeas, vinegar and 150ml water, then bring to a simmer for 1-2 mins until the chickpeas have heated up. Add the spinach, then stir through the chickpeas until it wilts a little. Remove from the heat, season to taste, then serve warm with crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53265,
@@ -5755,6 +6075,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the garlic in a bowl with the ginger, lemon juice, oil, spices and seasoning. Blitz with a hand blender until smooth, then use to coat the lamb chops on both sides. Leave to marinate in the fridge for a couple of hours or overnight.",
       "Heat a barbecue until hot. Barbecue the chops over the coals for 3 mins on each side until cooked but still pink and juicy in the centre."
+    ],
+    "appliances": [
+      "grill",
+      "blender"
     ]
   },
   {
@@ -5804,7 +6128,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.",
       "Add the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.",
       "Serve with salad leaves drizzled with the lime dressing, and warm crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53365,
@@ -5872,7 +6197,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once the sauce is lightly bubbling, add fried chicken and toss together to coat. The sauce should continue to thicken and stick to the chicken. Let simmer for a minute or two more. Serve orange chicken over cooked white rice, garnished with sesame seeds and fresh scallions.",
       "Did you love this recipe? Let us know with a rating and review!",
       "LEFTOVERS! The orange chicken keeps well in the fridge for 5 days. Reheat in a skillet with a splash of water over low heat. Freeze the orange chicken for up to 3 months, but be sure to thaw it before reheating so the chicken doesn’t clump together."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53372,
@@ -5917,7 +6243,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook, gently stirring the whole time, until the scramble eggs are mostly set but still slightly wet and shiny, 2 to 5 minutes. Remove the eggs to a plate and, if needed, wipe out the pan.",
       "Stir-fry the tomatoes and seasonings: Add the sesame oil to the pan followed by the tomatoes and stir-fry over medium heat until the tomatoes are softened but not mushy, about 3 minutes. Add the chicken bouillon powder, sugar, and white pepper. Toss until combined and the sugar and bouillon have dissolved, about 1 minute.",
       "Add eggs, stir-fry, and garnish: Add the eggs back to the pan with the tomatoes. Stir-fry for about 2 minutes to heat through and combine. Taste, adding salt only if needed. Sprinkle with the green onions and serve with steamed rice.on of water, plus salt to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52910,
@@ -5957,6 +6284,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take the pastry out of the fridge and leave at room temperature for 10 mins, then unroll. Heat the grill to high and heat the oven to 180C/160C fan/gas 4. Cut out 2 x 13cm circles of pastry, using a plate as a guide, and place on a non-stick baking sheet. Sprinkle each circle with 1 tbsp sugar and grill for 5 mins to caramelise, watching carefully so that the sugar doesn’t burn. Remove from the grill. Can be done a few hours ahead, and left, covered, out of the fridge.",
       "Peel, quarter and core the apples, cut into 2mm-thin slices and arrange on top of the pastry. Sprinkle over the remaining sugar and pop in the oven for 20-25 mins until the pastry is cooked through and golden, and the apples are softened. Remove and allow to cool slightly. Warm 3 tbsp of the red wine jelly in a small pan over a low heat with 1 tsp water to make it a little more runny, then brush over the top of the tarts.",
       "Tip the crème fraîche into a bowl, sift over the icing sugar and cardamom, and mix together. Carefully lift the warm tarts onto serving plates and serve with the cardamom crème fraîche."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -6020,6 +6351,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "The next morning knead dough on a generously floured surface for a little and cut into eight equal pieces. Shape these into balls and place on a baking sheet lined with parchment paper. Cover again with damp towel and let rise for about an hour or until double in size.",
       "Heat oven to 220 degrees Celsius. Brush the buns with either milk, heavy cream or egg wash and sprinkle with sesame seeds, if desired. Bake for about 15-20min or until golden. Let cool.",
       "For the toppings chop the onions and sauté in a bit of butter, let caramelize, this may take ten to 15 minutes, stir occasionally. Rub the steaks with a bit of garlic and then grill or fry the steaks, the bacon, and eggs with salt and pepper, toast the buns after having cut in half. Spread mustard on one bun half, layer each chivito with steak, a slice of ham, a slice of cheese, one bacon stripe, a tomato slice, and some lettuce. Place fried egg on top and sprinkle generously with chimichurri and some onions right before serving."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -6060,7 +6395,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Crush the meat so that it is finite and we put it on a griddle to brown. Put the eggs, bacon and ham to fry.",
       "Cut the bread in half, put the beef brisket, the fried eggs, the bacon, the ham, the mozzarella, the tomato and the lettuce. Cover with the other half of the bread and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52856,
@@ -6108,6 +6444,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove the pastry from the fridge and leave at room temperature for 5 mins to soften. Flour the work surface, then unwrap the pastry and roll to a circle the thickness of a £1 coin. Use the pastry to line a deep, 23cm round fluted tin – mine was about 3cm deep. Press the pastry into the corners and up the sides, making sure there are no gaps. Leave 1cm pastry overhanging (save some of the pastry scraps for later). Line with baking parchment (scrunch it up first to make it more pliable) and fill with baking beans. Blind-bake for 15-20 mins until the sides are set, then remove the parchment and beans and return to the oven for 5 mins until golden brown. Trim the pastry so it’s flush with the top of the tin – a small serrated knife is best for this. If there are any cracks, patch them up with the pastry scraps.",
       "Meanwhile, weigh the butter, syrup and sugars into a pan, and add 1 /4 tsp salt. Heat until the butter has melted and the sugar dissolved, stirring until smooth. Remove from the heat and cool for 10 mins. Reduce oven to 160C/140C fan/gas 3.",
       "Beat the eggs in a bowl. Add the syrup mixture, vanilla and pecans, and mix until well combined. Pour half the mixture into the tart case, scatter over half the chocolate chips, then cover with the remaining filling and chocolate chips. Bake on the middle shelf for 50-55 mins until set. Remove from the oven and leave to cool, then chill for at least 2 hrs before serving."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -6159,6 +6499,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Divide dough into two parts, put one part back in the fridge before using. Roll out second part to about 2 millimeters and cut out round cookies with 5-6 centimeters in diameter. This can be done with a cookie cutter or glass. You should get 30 cookies in total or even more, I get about 40. Bake one baking sheet at the time for about 8-10min. Let cookies cool.",
       "For the filling look for two cookies of the same size and place about one teaspoon of dulce de leche onto the bottom one before sandwiching together.",
       "Chop semi-sweet chocolate and melt with butter and orange zest on low heat. Dunk each sandwich cookie into the chocolate and let cool off on parchment paper before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6201,6 +6544,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Taste and add a few drops of stevia if you feel you need more sweetness.",
       "Fill little cups or shot glasses with the mousse, sprinkle with the cacao powder or nibs and serve.",
       "Tip If you don’t have a frozen banana to hand you can just use a normal one and then chill the mousse before serving for a cooling dessert."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -6235,6 +6581,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour over the rice krispies in a mixing bowl and mix until all the ingredients are evenly combined. Press evenly into the prepare baking tin and set aside.",
       "Melt the milk chocolate in the microwave or over a pan of barely simmering water.",
       "Spread the melted chocolate over the rice krispie mixture and leave to set in a cool place. Once set slice into squares and serve!"
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -6284,6 +6634,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the sauce, tip the sugar and butter into a saucepan and bring to a simmer until the sugar has melted, then stir in the cream and simmer until you have a smooth sauce, about 2-3 mins. Remove from the heat, stir through a pinch of sea salt and the chocolate, and continue to stir for 2-3 mins, or until it has completely melted. Keep warm or leave to cool for reheating later. For the coating, mix the sugar with the cinnamon and a small pinch of fine sea salt and set aside.",
       "For the churros, tip the flour, cocoa, baking powder and a large pinch of salt into a bowl. Add the vanilla extract and melted butter, then carefully pour in 250-300ml boiling water and whisk to make a smooth, very thick batter. Leave to cool for a few minutes, then scrape the mixture into a piping bag fitted with a medium star nozzle.",
       "Tip sunflower oil into a deep-fat fryer following the manufacturer’s instructions, or a heavy-based pan, ensuring it is no more than a third full. Heat to 170C, or until a cube of bread dropped in browns in 30 seconds. Pipe 12-15cm lengths of dough into the oil, snipping off the end of each one with a pair of scissors as you go. Pipe four or five at a time and cook for around 4 mins, or until golden and crisp, turning them with tongs or a slotted spoon as they cook. Remove from the oil and place on a wire rack. Repeat with the rest of the dough. Leave to cool if reheating later, otherwise roll the churros in the cinnamon sugar and serve immediately with the warm chocolate sauce and ice cream. To reheat the churros, put on a tray and bake for 5-8 mins, then roll in the sugar coating. Meanwhile, warm the sauce in a pan and serve alongside for dipping."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6330,6 +6683,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Sieve in the flour, baking powder and cocoa and fold in with a metal spoon. Stir in the milk. Scrape mix into the tin and level the top. Bake for 18-20 mins or until the cake springs back when pressed. Allow to cool in the tin.",
       "To make the icing, put the chocolate, butter and 4 tbsp water in a pan and gently heat until melted. Allow to cool slightly, then beat in the icing sugar.",
       "Remove cake from tin and peel away paper. Cut into 16 squares. Dip the squares into the icing, then roll in the coconut. Allow to set on cooling rack."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6376,6 +6732,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roll out the dough on a lightly floured surface, it should be thin. Cut out circles of 12cm either with a cookie cutter or with a smaller plate/dish. Put two to three teaspoons of the dulce de leche in the middle of each circle. Brush the edges with milk, I do this with my pinkie. Fold each circle in half so that you have a half moon and press down the edges with a fork. You can also turn the edges about half a centimeter inwards every centimeter or so to create a pattern.",
       "Place the prepared empanadas on the baking sheet and brush with egg wash. Bake for about 20-25min.",
       "Towards the end of the baking time, melt the remaining butter and mix the sugar and cinnamon in a small bowl. Once you take the empanadas out, immediately brush with the butter and sprinkle with the sugar mix. Empanadas can be enjoyed either still warm or cold. If eating warm, be careful not to burn yourself with hot filling!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6412,6 +6771,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Break the chocolate into a heatproof bowl and place over a saucepan of gently simmering water and stir until it melts. (or melt in the microwave for 2-3 mins stirring occasionally)",
       "Place the butter and sugar in a mixing bowl and cream together with a wooden spoon until light and fluffy. Gradually beat in the eggs, adding a little flour if the mixture begins to curdle. Fold in the remaining flour with the cooled, melted chocolate and milk. Mix until smooth.",
       "Spread the mixture into the cake tin and bake for 50-55 mins or until firm in the centre and a skewer comes out cleanly. Cool for 10 minutes, then turn out and cool completely."
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -6450,6 +6813,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 180C/160C fan/gas 4. Line a 20 x 30cm baking tray tin with baking parchment. Put the chocolate, butter and sugar in a pan and gently melt, stirring occasionally with a wooden spoon. Remove from the heat.",
       "Stir the eggs, one by one, into the melted chocolate mixture. Sieve over the flour and cocoa, and stir in. Stir in half the raspberries, scrape into the tray, then scatter over the remaining raspberries. Bake on the middle shelf for 30 mins or, if you prefer a firmer texture, for 5 mins more. Cool before slicing into squares. Store in an airtight container for up to 3 days."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6499,6 +6865,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Brush 6 x 150ml ramekins with melted butter, sprinkle with the 2 tbsp caster sugar, then tip out any excess. Melt the chocolate and cream in a bowl over a pan of simmering water, cool, then mix in the egg yolks. Whisk the egg whites until they hold their shape, then add the sugar, 1 tbsp at a time, whisking back to the same consistency. Mix a spoonful into the chocolate, then gently fold in the rest.",
       "Working quickly, fill the ramekins, wipe the rims clean and run your thumb around the edges. Turn oven down to 200C/fan 180C/gas 6, place the ramekins onto the baking tray, then bake for 8-10 mins until risen with a slight wobble. Don’t open the oven door too early as this may make them collapse.",
       "Once the soufflés are ready, dust with icing sugar, scoop a small hole from their tops, then pour in some of the hot chocolate sauce. Replace the lids and serve straight away."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6560,7 +6929,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Set a steamer over the pot; add tomatoes. Cover and steam tomatoes until soft, about 5 minutes. Crush tomatoes using a wooden spoon, so pulp drips into soup. Remove the steamer and discard leftover tomato peels.",
       "Add potato to soup and just enough water to cover. Simmer until potato is soft, about 10 minutes.",
       "Drain freekeh and add to soup. Simmer until soft, about 15 minutes. Remove celery stalk and discard. Sprinkle soup with remaining 1/2 cilantro and remaining 1/2 mint before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53136,
@@ -6590,6 +6960,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Enjoy immediately while hot.",
       "Grill the chorizo slowly on medium heat to prevent the skin from bursting and to ensure it cooks evenly throughout.",
       "Toast the bread on the grill to absorb some of the chorizo's flavors."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -6624,7 +6997,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put a medium pan on the heat and tip in the tomatoes, followed by a can of water. While the tomatoes are heating, quickly chop the chorizo into chunky pieces (removing any skin) and shred the cabbage.",
       "Pile the chorizo and cabbage into the pan with the chilli flakes and chickpeas, then crumble in the stock cube. Stir well, cover and leave to bubble over a high heat for 6 mins or until the cabbage is just tender. Ladle into bowls and eat with crusty or garlic bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53157,
@@ -6661,7 +7035,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook the potatoes in a large pan of boiling salted water for 12 mins, adding the eggs after 6 mins, and the beans for the final 2 mins. Drain everything and cool the eggs under cold running water.",
       "Meanwhile fry chorizo slices for 1-2 mins, until beginning to crisp. Remove from the pan with a slotted spoon and set aside, leaving the oil from the chorizo in the pan. Add the garlic to the pan and cook gently for 1 min.",
       "Remove the pan from the heat, stir in the vinegar and parsley, then toss with the potatoes, beans, chorizo and seasoning. Shell the eggs, cut into quarters and add to the salad."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53185,
@@ -6695,7 +7070,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the tomatoes in a bowl with the onion and thyme. Season, then drizzle with the vinegar and oil. Let the flavours mingle while you cook the chorizo.",
       "In a hot, dry pan, fry the chorizo slices until browned on both sides. Serve the tomatoes with the fried chorizo, drizzled with a little oil from the pan."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53159,
@@ -6728,7 +7104,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Cook the potato in boiling water for 8-10 mins or until tender. Drain and allow to steam-dry. Heat oil in an omelette pan, add chorizo and cook for 2 mins. Add the potato and cook for a further 5 mins until the potato starts to crisp. Spoon pan contents out, wipe pan and cook a 2 or 3-egg omelette in the same pan. When almost cooked, scatter with the chorizo and potato, parsley and cheese. Fold the omelette in the pan and cook for 1 min more to melt the cheese."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52990,
@@ -6783,6 +7160,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 160C/fan 140C/gas 3. Line the base and sides of a 20 cm round, 7.5 cm deep cake tin. Beat the butter and sugar with an electric hand mixer for 1-2 mins until very creamy and pale in colour, scraping down the sides of the bowl half way through. Stir in a spoonful of the flour, then stir in the beaten egg and the rest of the flour alternately, a quarter at a time, beating well each time with a wooden spoon. Stir in the almonds.",
       "Mix in the sherry (the mix will look curdled), then add the peel, cherries, raisins, cherries, nuts, lemon zest, spice, rosewater and vanilla. Beat together to mix, then stir in the baking powder.",
       "Spoon mixture into the tin and smooth the top, making a slight dip in the centre. Bake for 30 mins, then lower temperature to 150C/fan 130C/gas 2 and bake a further 2-2¼ hrs, until a skewer insterted in the middle comes out clean. Leave to cool in the tin, then take out of the tin and peel off the lining paper. When completely cold, wrap well in cling film and foil to store until ready to decorate. The cake will keep for several months."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6819,6 +7199,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the oven to 180°C/fan 160°C/gas mark 4 and grease and line a 25cm x 20cm tin. Melt the butter, sugar, syrup and orange zest in a large saucepan over a medium heat. The aim is to dissolve all the ingredients so that they are smooth, but to not lose any volume through boiling so be careful not to overheat.",
       "Add the oats and stir well until evenly coated. Stir through the leftover Christmas pudding and tip into the prepared tin. Use a spoon to flatten the top and bake for 40 minutes until the edges start to brown. Whilst still warm in the tin, score into 12 squares. Allow to cool completely before cutting along the scores.",
       "Keeps for 5 days in an air tight tin or freeze for up to 1 month."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -6862,7 +7245,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Crumble the Christmas pudding into large pieces and scatter over the bottom of a trifle bowl. Lift the oranges onto the pudding in a layer and pour over any juices.",
       "Beat the mascarpone until smooth, then stir in the custard. Spoon the mixture over the top of the oranges.",
       "Lightly whip the cream and spoon over the custard. Sprinkle with the flaked almonds and grated chocolate. You can make this a day in advance if you like, chill until ready to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53283,
@@ -6911,7 +7295,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Combine garlic, chile pepper, cumin, paprika, black pepper, cayenne, and salt in a mortar; grind with a pestle until it forms a paste. Add olive oil and mix dersa well.",
       "Heat a large saucepan over medium heat and stir-fry dersa until fragrant, 2 to 4 minutes. Add potato halves and stir to combine with the dersa. Stir in tomato paste. Pour in enough water to just cover the potatoes and bring to a boil. Reduce heat and simmer until potatoes are tender, about 40 minutes.",
       "Ladle potatoes into a serving bowl. Spoon any remaining sauce over the potatoes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53153,
@@ -6962,6 +7347,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Fill a large deep saucepan one-third full of oil. Cooking with hot oil can be dangerous – before you start, read up on how to deep-fry safely to avoid accidents in the kitchen. Heat until a cube of bread browns in 45 seconds to 1 min. Cover a tray with kitchen paper and mix the caster sugar and cinnamon together.",
       "Fit a star nozzle to a piping bag – 1.5-2cm wide is a good size. Fill with the rested dough, then pipe 2-3 strips directly into the pan, snipping off each dough strip with a pair of kitchen scissors. Fry until golden brown and crisp. Be very careful here – if air bubbles form in the churros they can explode, especially if the oil overheats or you use old flour. Cooking with hot oil can be dangerous – before you start, read up on how to deep-fry safely to avoid accidents in the kitchen. Keep children out of the kitchen and protect yourself by wearing long sleeves and eye protection, and keeping your face away from the pan.",
       "Once the churros are crisp and golden brown, remove them from the oil with a slotted spoon and drain on the kitchen paper-lined tray. Carry on cooking the rest of the dough in batches, sprinkling the cooked churros with some cinnamon sugar as you go. When you’ve cooked all the churros, toss with any remaining cinnamon sugar and serve with the chocolate sauce, for dipping. To see a video of how to prepare churros, take a look at our churros ice cream sandwich recipe."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7022,6 +7410,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place each slice onto a flattened out paper cupcake case on a baking tray, or into a greased muffin tin. (Baking in a muffin tin will make your cinnamon buns taller and domed.)",
       "Cover with a clean tea towel and set aside to prove again for 30–45 minutes, or until risen.",
       "Preheat the oven to 200C/180C Fan/Gas 6."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7065,7 +7456,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Rinse the clams in several changes of cold water and drain well. Tip the clams into a large pan with 500ml of water. Cover, bring to the boil and simmer for 2 mins until the clams have just opened. Tip the contents of the pan into a colander over a bowl to catch the clam stock. When cool enough to handle, remove the clams from their shells – reserving a handful of empty shells for presentation if you want. Strain the clam stock into a jug, leaving any grit in the bottom of the bowl. You should have around 800ml stock.",
       "Heat the butter in the same pan and sizzle the bacon for 3-4 mins until it starts to brown. Stir in the onion, thyme and bay and cook everything gently for 10 mins until the onion is soft and golden. Scatter over the flour and stir in to make a sandy paste, cook for 2 mins more, then gradually stir in the clam stock then the milk and the cream.",
       "Throw in the potatoes, bring everything to a simmer and leave to bubble away gently for 10 mins or until the potatoes are cooked. Use a fork to crush a few of the potato chunks against the side of the pan to help thicken – you still want lots of defined chunks though. Stir through the clam meat and the few clam shells, if you've gone down that route, and simmer for a minute to reheat. Season with plenty of black pepper and a little salt, if needed, then stir through the parsley just before ladling into bowls or hollowed-out crusty rolls."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53154,
@@ -7106,7 +7498,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Fry the chorizo in a large frying pan with a lid, over a medium heat until it is starting to crisp up and release its oil. Add the onion and cook for 5 mins until starting to soften. Then add the garlic and finely chopped parsley, and fry for 1 min more.",
       "Pour on the stock and tomatoes. Bring to the boil, reduce the heat, then add the beans and sherry vinegar. Simmer for 10 mins until the liquid is slightly reduced.",
       "Scatter over the clams, cover with the lid and steam for 2-4 mins, shaking the pan occasionally until the clams are open. Have a little taste before seasoning, as the clams can be quite salty. Then scatter over the chopped parsley. Eat with lots of crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52988,
@@ -7156,6 +7549,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Boil or oven steam the puddings for 8 hrs, topping up with water as necessary. Remove from the pans and leave to cool overnight. When cold, discard the messy wrappings and re-wrap in new baking parchment, foil and string. Store in a cool, dry place until Christmas.",
       "To make the brandy butter, cream the butter with the orange zest and icing sugar. Gradually beat in the brandy or cognac and chopped stem ginger. Put in a small bowl, fork the top attractively and put in the fridge to set. The butter will keep for a week in the fridge, or it can be frozen for up to six weeks.",
       "On Christmas Day, boil or oven steam for 1 hr. Unwrap and turn out. To flame, warm 3-4 tbsp brandy in a small pan, pour it over the pudding and set light to it."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -7211,6 +7608,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the oven to 375 °F (190 °C). On a lightly floured surface, roll out one disc of the pie dough to less than the 1/4-inch thickness and line the 9-inch pie plate. Fill this with the cooled tourtière mixture and spread out evenly. Roll out the remaining dough to the same thickness, cut a hole in the centre (for steam to escape) and place on top of the filling. Trim the dough to 1/2-inch beyond the edge of the pie plate and pinch the edges of the crust together. Brush the crust with the egg wash.",
       "Bake tourtière for about 45 minutes or until the pastry is a rich golden brown. Let cool for 15 minutes before slicing to serve.",
       "Serves: 8-10 (makes 2 9-inch pies)"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7254,7 +7654,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the butter in a casserole dish until sizzling, then fry the pork for 2-3 mins on each side until browned. Remove from the pan.",
       "Tip the bacon, carrot, potatoes and swede into the pan, then gently fry until slightly coloured. Stir in the cabbage, sit the chops back on top, add the bay leaf, then pour over the cider and stock. Cover the pan, then leave everything to gently simmer for 20 mins until the pork is cooked through and the vegetables are tender.",
       "Serve at the table spooned straight from the dish."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52832,
@@ -7314,7 +7715,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Return the chicken legs and thighs to the pan along with any juices, then pour in a little of the wine, stirring the bottom of the pan again. Stir in the rest of the wine, the stock and tomato purée, drop in the bouquet garni, season with pepper and a pinch of salt, then return the bacon and shallots to the pan. Cover, lower the heat to a gentle simmer, add the chicken breasts and cook for 50 mins-1hr.",
       "Just before ready to serve, heat the oil for the mushrooms in a large non-stick frying pan. Add the mushrooms and fry over a high heat for a few mins until golden. Remove and keep warm.",
       "Lift the chicken, shallots and bacon from the pan and transfer to a warmed serving dish. Remove the bouquet garni. To make the thickener, mix the flour, olive oil and butter in a small bowl using the back of a teaspoon. Bring the wine mixture to a gentle boil, then gradually drop in small pieces of the thickener, whisking each piece in using a wire whisk. Simmer for 1-2 mins. Scatter the mushrooms over the chicken, then pour over the wine sauce. Garnish with chopped parsley."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52977,
@@ -7369,6 +7771,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "After it has come to a boil, reduce heat to medium-low, cover the pot halfway, and cook for 15-20 minutes or until the lentils have fallen apart and the carrots are completely cooked.",
       "After the soup has cooked and the lentils are tender, blend the soup either in a blender or simply use a hand blender to reach the consistency you desire. Taste for seasoning and add more salt if necessary.",
       "Serve with crushed-up crackers, torn up bread, or something else to add some extra thickness.  You could also use a traditional thickener (like cornstarch or flour), but I prefer to add crackers for some texture and saltiness.  Makes great leftovers, stays good in the fridge for about a week."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -7400,6 +7805,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place corned beef in large pot or Dutch oven and cover with water. Add the spice packet that came with the corned beef. Cover pot and bring to a boil, then reduce to a simmer. Simmer approximately 50 minutes per pound or until tender.",
       "Add whole potatoes and peeled and cut carrots, and cook until the vegetables are almost tender. Add cabbage and cook for 15 more minutes. Remove meat and let rest 15 minutes.",
       "Place vegetables in a bowl and cover. Add as much broth (cooking liquid reserved in the Dutch oven or large pot) as you want. Slice meat across the grain."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7447,7 +7855,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add shredded cabbage and stir. Cook for about about 3-5 minutes, stirring often until softened.",
       "Add corned beef, Roma tomatoes, and thyme and stir. Add ketchup and scotch bonnet pepper sauce and stir. Reduce heat and cook on medium for about 3-5 minutes, until the corned beef is heated through. Remove from heat.",
       "Serve with white rice, bread, or on its own."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53096,
@@ -7487,7 +7896,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Use a metal spatula to peek underneath and see if they are browning. If nicely browned, use the spatula to flip sections over in the pan so that they brown on the other side. Press down again with the spatula.",
       "If there is too much sticking, you can add a little more butter to the pan. Continue to cook in this manner until the potatoes and the corned beef are nicely browned.",
       "Stir in the parsley and season: Remove from heat, stir in chopped parsley. Add plenty of freshly ground black pepper, and add salt to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53291,
@@ -7542,6 +7952,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roll out half of the pastry dough on a lightly floured surface until very thin. Place one of the almond paste logs on the edge of the pastry, fold pastry over the filling, covering it completely, and seal the edges. Mold with your fingers into a crescent shape. Using a pastry cutter, cut around the crescent, and transfer to the prepared baking sheet. Repeat with remaining dough and filling.",
       "Bake in the preheated oven until gazelle horns are lightly golden and baked through, about 20 minutes. They should not get too dark. Let cool slightly, about 3 minutes.",
       "Heat honey in a small saucepan over low-medium heat. Remove from heat and stir in 1 tablespoon orange blossom water. Dip gazelle horns into the honey and place on a serving plate. Sprinkle with crushed pistachios."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -7587,6 +8001,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Crust: make a dough from 250g flour (I like mixing different flours like plain and wholegrain spelt flour), 125g butter, 1 egg and a pinch of salt, press it into a tart form and place it in the fridge. Filling: stir 300g cream cheese and 100ml milk until smooth, add in 3 eggs, 100g grated parmesan cheese and season with salt, pepper and nutmeg. Take the crust out of the fridge and prick the bottom with a fork. Pour in the filling and bake at 175 degrees C for about 25 minutes. Cover the tart with some aluminium foil after half the time. In the mean time, slice about 350g mini tomatoes. In a small pan heat 3tbsp olive oil, 3tbsp white vinegar, 1 tbsp honey, salt and pepper and combine well. Pour over the tomato slices and mix well. With a spoon, place the tomato slices on the tart, avoiding too much liquid on it. Decorate with basil leaves and enjoy"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7637,6 +8054,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the oil, onions, celery, carrots, potatoes and bay leaves in a big casserole dish, or two saucepans. Fry gently until the onions are softened – about 10-15 mins. Fill the kettle and boil it.",
       "Stir in the tomato purée, sugar, vinegar, chopped tomatoes and passata, then crumble in the stock cubes. Add 1 litre boiling water and bring to a simmer. Cover and simmer for 15 mins until the potato is tender, then remove the bay leaves. Purée with a stick blender (or ladle into a blender in batches) until very smooth. Season to taste and add a pinch more sugar if it needs it. The soup can now be cooled and chilled for up to 2 days, or frozen for up to 3 months.",
       "To serve, reheat the soup, stirring in the milk – try not to let it boil. Serve in small bowls with cheesy sausage rolls."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -7680,6 +8100,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the saucepan over a medium-high heat and whisk for around 10-12 mins. The mixture should start thickening to a custard-like consistency – you can tell it’s ready by dipping a wooden spoon in the mixture, then running a finger through the mixture on the back of the spoon. If the line holds, it's ready. Sieve the mixture into a jug to remove any froth.",
       "Divide the custard between six 150ml ramekins or small terracotta dishes, then leave to cool for 1 hr at room temperature until set with a slight wobble. Chill overnight.",
       "Just before serving, sprinkle 1 tbsp caster sugar over the top of each ramekin and caramelise using a kitchen blowtorch. Alternatively, slide the ramekins under a hot grill until the sugar turns golden and starts to bubble. Serve straightaway."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -7719,7 +8142,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a large bowl/plate place breadcrumbs and sesame seeds. In another bowl beat 2 eggs with pinch salt and pepper.",
       "Heal oil in a large skillet over high heat.",
       "Dip eggplant slices in egg, then in crumbs, and place in hot oil. Fry 2 to 3 minutes on each side, or until golden brown. Drain on a paper towel."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52999,
@@ -7759,6 +8183,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Preheat the oven to 350°. Remove the stems from one bunch of Tuscan kale and tear the leaves into 1\" pieces (mustard greens, collards, spinach, and chard are great, too). Coarsely chop half a head of green cabbage. Combine the greens in a large baking dish and add 4 cloves of thinly sliced garlic. Adding some sliced onions and shiitake mushrooms at this point is optional, but highly recommended (I'll sauté the onions and mushrooms in a cast iron baking dish right on the stove before adding to the greens). Coat the greens with some olive oil and pour ½ cup chicken stock or broth over everything. Cover the dish with foil and bake until the greens are wilted, about 15 minutes. Remove foil and season with salt and pepper. Continue to bake until cabbage is tender, about 20-25 minutes more.",
       "Meanwhile, heat a little olive oil in a large skillet over medium-high. Prick four sweet Italian sausages with a fork and cook until browned on all sides and cooked through, 10 to 12 minutes. When the greens are done, slice the sausage and toss into the greens with a splash of your favorite vinegar (I like sherry or red wine)."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7794,6 +8221,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat the oil in a pan. Add the chopped vegetables and sauté until tender. Take a pot, empty the beans together with the vegetables into it, put the sausages inside and cook for further 20 minutes on a low heat. Or, put it in an oven and bake it at a temperature of 180ºC/350ºF for 30 minutes. This dish is even better reheated the next day."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7852,6 +8282,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the rosemary, thyme and sage, trying to keep the herbs on top.",
       "So you can easily remove the herb stalks once cooked.",
       "Chunks of lamb coated in a sundried tomato oil sauce and covered with thyme, rosemary and sage which is on top of chopped red onion, aubergine, courgette and potatoes in a cast iron pan"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -7911,6 +8344,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake at 450 for 10-15 minutes just until the cheese is melted and bubbling.",
       "Out of the oven top all the tacos with the sliced grape tomaotes, jalapeno and cilantro.",
       "Finish with a drizzle of guacamole and sour cream."
+    ],
+    "appliances": [
+      "oven",
+      "slow-cooker"
     ]
   },
   {
@@ -7948,7 +8385,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put cucumber in a sieve. Sprinkle with 1 tsp salt and the sugar, then leave for 10 mins. Add fennel.",
       "Mix soured cream, lemon juice, vinegar and dill, then season with black pepper and add to fennel mix."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53098,
@@ -8001,6 +8439,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, cook potatoes in a pan of boiling water until they’re not done but about ¾ of the way there.",
       "Transfer meat to a baking dish. Slice spuds into 1cm thick rounds and gently toss with seasoning, the remaining oil and thyme leaves. Layer on the beef, scattering with the cheese as you layer. You can cover and chill the pie now for 1 day, or freeze for up to 3 months.",
       "Increase oven to 200C/180C fan/gas 6 and bake for 30-40 mins until golden and crispy, and sauce bubbling if the dish went in cold. Serve with peas."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8061,7 +8502,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add tomatoes, salt and sugar stir and cook until tomatoes are tender and mushy.",
       "Add cilantro and garam masala cook for about one minute.",
       "Pour the seasoning over dal mix it well and cook for another minute."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53338,
@@ -8104,6 +8546,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Combine rolled oats, flour, sugar, baking soda and salt in a food processor. Pulse 3 times (careful not to overmix, you don’t want the mixture to be powdery, just combined). Add butter and pulse again until the mixture is crumbly in pea-sized clumps. Transfer to a mixing bowl to thoroughly mix in the butter.",
       "Spread half of the oat mixture on the bottom of the prepared baking pan, pressing down to make a flat, equal bottom later. Add the date mixture over the crust and then spread evenly. Layer with the remaining oat mixture and press down to flatten the top layer.",
       "Bake in the centre of the oven until the top is golden brown, 30 to 35 minutes. Let cool completely in the pan before cutting and serving. Date Squares keep well, covered in the refrigerator for up to a week, and frozen for 2 to 3 months."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -8147,7 +8593,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Prepare the noodles following pack instructions, then drain and set aside. Combine all the ingredients for the sauce in a small bowl or jug, and set aside.",
       "Heat the oil in a large wok or frying pan over a high heat and stir-fry the garlic and chilli for 20 seconds until just starting to turn golden. Add the steak and stir-fry for 1 minute until seared and starting to brown. Add the broccoli and stir-fry for another minute, then tip in the noodles and add the sauce. Stir-fry for another 1-2 mins until well combined and piping hot.",
       "Stir through the basil and turn off the heat. Serve immediately to avoid overcooking."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52907,
@@ -8183,6 +8630,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the wine into a saucepan that will snugly fit the duck legs in a single layer. Brush the salt off the duck legs and place them, skin-side down, in the wine. Cover the pan with a lid and place over a medium heat. As soon as the wine starts to bubble, turn the heat down to the lowest setting and cook for 2 hours, checking occasionally that the liquid is just barely simmering. (If you own a heat diffuser, it would be good to use it here.) After 2 hours, the duck legs should be submerged in their own fat and the meat should feel incredibly tender when prodded. Leave to cool.",
       "The duck legs are now cooked and can be eaten immediately – or you can follow the next step if you like them crisp. If you are preparing ahead, pack the duck legs tightly into a plastic container or jar and pour over the fat, but not the liquid at the bottom of the pan. Cover and leave in the fridge for up to a month, or freeze for up to 3 months. The liquid you are left with makes a tasty gravy, which can be chilled or frozen until needed.",
       "To reheat and crisp up the duck legs, heat oven to 220C/fan 200C/gas 7. Remove the legs from the fat and place them, skin-side down, in an ovenproof frying pan. Roast for 30-40 mins, turning halfway through, until brown and crisp. Serve with the reheated gravy, a crisp salad and some crisp golden ptoatoes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8218,6 +8668,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cool: Let the dulce de leche cool, then transfer to a jar. It will thicken further as it cools.",
       "Stir continuously and keep the heat low to prevent the milk from burning and sticking to the bottom of the pan.",
       "A drop of vanilla extract added at the end of cooking enhances the flavor."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8274,6 +8727,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spoon the mixture into the prepared tin and spread level using the back of a spoon. Arrange the whole almonds close together in neat circles on the top of the cake. Bake in the oven for 45 mins.",
       "Lower the oven temperature to 160C/140 C fan/Gas Mark 3 and cook for a further 60–80 minutes. Check the cake after 50 minutes by inserting a wooden or metal skewer into the cake. When it’s done it should have just a few crumbs attached. Check every 10 minutes - it’s important not to overcook this cake so the centre will be a little soft.",
       "When cooked, remove the cake briefly from the oven, put the milk and sugar into a small pan and heat gently until the sugar has dissolved. Brush over the top of the cake and return the cake to the oven for 2-3 mins. Remove and allow the cake to cool in the tin. When quite cold remove from the tin and wrap in foil and keep for at least 2 days before cutting."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8322,6 +8778,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once the bottom and sides are covered with the dough, take the rusks and crumble them over the bottom. You can use breadcrumbs for this as well. Shake it a bit so it is divided equally across the bottom.",
       "Add the apple mixture and divide well over the tin. Rol out the rest of the dough and cut into strips. Place that over the top of the pie in a diamond shaped pattern. Brush the strokes and sides with the other egg yolk and place in the preaheated oven.",
       "Bake the apple pie for about 1 hour or until golden and cooked through. Leave to cool in the tin and make sure the sides are loose before opening the tin."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -8357,7 +8817,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat your deep fryer or add the oil to a large pot. The oil should be a t 180˚C (350˚F) for best results.",
       "Before starting stir your batter through and scoop the batter with two spoons or with an ice cream scoop. Let it drop into the oil carefully. It is easiest to do this if you dip your spoons or scoop into the oil before dipping into the batter. That way it will slide of the spoons easily. Don't over crowd the fryer to prevent the oil cooling down too quickly and everything sticking together. Once one side is golden brown it usually turns around to the other side automatically. If not help it along with two forks.",
       "Take the balls out once golden brown and leave to drain on a piece of kitchen paper."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53379,
@@ -8400,6 +8861,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the eggs, salt and vanille sugar and stir through. Leave to stand and rise for about 45 minutes.",
       "Heat the poffertjespan and add a bit of butter into each hole. Fill halfway with batter and first bake one side until you can see the top dry out a little. Turn the poffertjes around with a small fork and bake the other side until cooked and golden brown.",
       "Serve the poffertjes with butter and icing sugar"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8440,6 +8904,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all the dry ingredients together in a large bowl. Place the milk in a small saucepan and heat it until it is almost boiling but not quite.",
       "Pour the milk slowly into the dry ingredients while whisking. Don't overmix! As soon as it is combined to a smooth batter you pour it into the cake pan. Sprinkle the pearl sugar over the top and bake it in the oven for about 1 hour.",
       "Check after about 50 minutes how the cake is progressing. If a cake tester comes out clean the cake it cooked. If not let it cook for a little longer."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8490,6 +8957,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the waffle is done, work quickly. Remove the waffle from the iron and immediately use a round cutter to cut out a nice circle of about 8 to 9 cm (3 to 3.5 inches).",
       "Place the hot waffle on a cutting board and cut horizontally with a sharp knife. The stroopwafel is very hot, so use an oven mitt to hold it in place.",
       "Take half a waffle and spread the (hot!) stroop on it. Place the other half on top, pressing gently if necessary, and place the waffle on a wire rack to cool. Repeat for all the balls."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8554,6 +9024,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a food processor, finely grind the almonds. Measure 3 cups of the finely ground almonds into a mixing bowl, and stir together with 1 cup sugar, baking powder, vanilla powder, lemon zest, and 2 tablespoons orange flower water. Mix in three eggs one at a time, stirring constantly; mix until you get a sticky, paste-like mixture.",
       "Sprinkle cornstarch on the rolling surface to prevent sticking. Roll each portion of dough very thinly, 1 to 2 millimeters (1/16 inch). Cut the rolled dough into circles of about 10 centimeters (4 inches) in diameter each. Lightly wipe the surface of each circle with cornstarch, and fit into a tart mold, cornstarch side down to prevent sticking. Gently press the dough onto the sides and bottom of the mold, and trim extra dough from around the rim. Fill three quarters of each mold with the almond filling.",
       "Bake on the top shelf at 350 degrees F (175 degrees C) for 20 to 25 minutes, or until the surface of the tart is golden and the dough is firm. Remove the tarts from the molds as soon as they come out of the oven. Dip each tart in the sugar syrup while still hot. Stick a pine nut into the middle of each tart for decoration. Place on a wire rack to drain."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -8601,6 +9075,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 200C/180C fan/gas 6. Heat the olive oil in a large ovenproof frying pan over a medium heat and fry the onion, chorizo and peppers along with a pinch of salt and pepper for 15 mins until the veg has softened and the chorizo has released its oils. Add the paprika and garlic, and cook for another few minutes until fragrant.",
       "Tip in the chopped tomatoes, olives and butter beans, stir to combine and season. Nestle in the chicken thighs and season well. Transfer to the oven and bake for 40 mins until the chicken skin is crisp and the meat cooked through and tender. Scatter with the parsley and serve.",
       "Watch after ad (0.04): 3 Budget Egg Ideas"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8652,6 +9129,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the filling, melt the butter in a large saucepan. Take it off the heat and stir in all the other ingredients until completely mixed, then set aside.",
       "To make the cakes, roll the pastry out until it’s just a little thicker than a £1 coin and cut out 8 rounds about 12cm across. Re-roll the trimming if needed. Place a good heaped tablespoon of mixture in the middle of each round, brush the edges of the rounds with water, then gather the pastry around the filling and squeeze it together (pic 3). Flip them over so the smooth top is upwards and pat them into a smooth round. Flatten each round with a rolling pin to an oval until the fruit just starts to poke through, then place on a baking tray. Cut 2 little slits in each Eccles cakes, brush generously with egg white and sprinkle with the sugar (pic 4).",
       "Heat the oven to 220C/200C fan/gas 8. Bake the Eccles cakes for 15-20 mins until just past golden brown and sticky. Leave to cool on a rack and enjoy while still warm or cold with a cup of tea. If you prefer, Eccles cakes also go really well served with a wedge of hard, tangy British cheese such as Lancashire or cheddar."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -8698,7 +9179,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To thicken the sauce, whisk together 1 Tablespoon of cornstarch and 2 Tablespoon of water in a bowl and slowly add to your soup until it's the right thickness.",
       "Next add 1 egg slightly beaten with a knife or fork and add it to the soup slowly and stir for 8 seconds",
       "Serve the soup in a bowl and add the green onions on top."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53370,
@@ -8759,6 +9241,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip Egg foo young can be a bit tricky to flip. The easiest method is to put a tool in each hand (a spider, slotted spoon, tongs, and large chopsticks are all good candidates) and gently coax the omelet over, pulling up on one side and pushing down and around on the other.",
       "Remove the omelet and place it on a paper towel-lined baking sheet. Let it cool for 5 minutes. Meanwhile, repeat with the remaining batter to make 4 omelets. If needed, add more oil to the pan between batches.",
       "Serve and enjoy: Plate each egg foo young over a bed of rice. Spoon the warm gravy over the top and serve immediately."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8804,6 +9289,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Working in batches and adding more oil if needed, cook eggplant in the same pot until lightly browned, about 3 minutes per side. Transfer to a plate with pork.",
       "Pour 1½ cups of water into the pot and scrape up browned bits from the bottom with a wooden spoon. Add remaining garlic, 3 Tbsp. coconut vinegar or unseasoned rice vinegar, 2 Tbsp. soy sauce, 2 bay leaves, 1 tsp. freshly ground black pepper, and remaining 1 Tbsp. sugar. Bring to a simmer, then return pork and eggplant to pot. Reduce heat to medium-low, partially cover, and simmer until eggplant is tender and silky and sauce is reduced by half, 20–25 minutes. Taste and season with more salt and pepper and add a little more sugar if needed.",
       "Top with garlic chips and serve with cooked white rice."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8860,6 +9348,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To prepare red sauce: In a pan, add a little oil or butter, crushed tomato, a half teaspoon of tomato paste, salt & pepper, 2 cloves of fresh crushed garlic and cumin. Add also approximately 3 tablespoons of vinegar, stir this until you smell aroma and it is a bit smooth. It should be a bit thick, not watery, but if too thick you can add a bit of water. Spread with a wooden spoon atop the rice to cover.",
       "To fry meat: In a pan add a bit of butter or oil, the meat, just a touch of tomato paste, about a tablespoon of fresh crushed garlic, salt & pepper, a teaspoon of cumin. Cook until meat is golden fried.",
       "Spoon this atop the rice and serve. Enjoy!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -8908,6 +9399,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook: Bake at 200°C (400°F) for 20-25 minutes, or until golden.",
       "For a flakier crust, incorporate a tablespoon of vinegar into the dough mixture. This helps prevent gluten formation.",
       "Seal the edges of the empanadas with a fork to ensure they do not open during baking or frying."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -8949,6 +9444,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For 'proper' fried bread it's best to cook it in a separate pan. Ideally, use bread that is a couple of days old. Heat a frying pan to a medium heat and cover the base with oil. Add the bread and cook for 2-3 minutes each side until crispy and golden. If the pan becomes too dry, add a little more oil. For a richer flavour, add a knob of butter after you turn the slice.",
       "For the fried eggs, break the egg straight into the pan with the fried bread and leave for 30 seconds. Add a good knob of butter and lightly splash/baste the egg with the butter when melted. Cook to your preferred stage, season and gently remove with a fish slice.",
       "Once all the ingredients are cooked, serve on warm plates and enjoy straight away with a good squeeze of tomato ketchup or brown sauce."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -8986,6 +9485,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut a strip from each of the shorter sides and lay these beside each other along one of the longer sides of the rectangle; this is what we call the heart of the ensaimada. From there, begin rolling the dough until you have a long pastry snake. Repeat with the remaining portions of dough.",
       "Take the first roll of dough and stretch it until it is over a metre long. Then, roll it up into a spiral, leaving 1cm between each turn of the spiral so the dough can expand. Flatten a little and transfer to a baking sheet lined with baking parchment. Repeat with the remaining dough. Leave to rise in a warm place for at least 12 hrs, or ideally 24 hrs.",
       "Heat the oven to 200C/180C fan/gas 6. Put the ensaimadas in the top third of the oven and immediately reduce the temperature to 180C/160C fan/gas 4. Bake for 18 mins until dark golden. Leave to cool on a wire rack. To fill your ensaimada with whipped cream, slice and open, then spread over the cream and close. Dust with a generous amount of icing sugar, if you like and cut into pieces to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9045,6 +9547,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Rinse fish; rub with lemon or lime, seasoned with salt and pepper or use your favorite seasoning. I used creole seasoning. Set aside or place in the oven to keep it warm until sauce is ready.",
       "In large skillet heat oil over medium heat, until hot, add the fish, cook each side- for about 5-7 minutes until cooked through and crispy on both sides. Remove fish and set aside. Drain oil and leave about 2-3 tablespoons of oil Add, bay leave, garlic and ginger, stir-fry for about a minute making sure the garlic does not burn Then add onion, bell peppers, thyme, scotch bonnet, sugar, all spice-continue stirring for about 2-3 minutes. Add vinegar, mix an adjust salt and pepper according to preference. Let it simmer for about 2 more minutes.",
       "Discard bay leave, thyme spring and serve over fish with a side of this bammy. You may make the sauce about 2 days in advance."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9079,6 +9584,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Purée half the strawberries in a blender. Chop the remaining strawberries, reserving four for decoration.",
       "Whip the double cream until stiff peaks form, then fold in the strawberry purée and crushed meringue. Fold in the chopped strawberries and ginger cordial, if using.",
       "Spoon equal amounts of the mixture into four cold wine glasses. Serve garnished with the remaining strawberries and a sprig of mint."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -9129,6 +9637,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the tomatoes and all of the peppers in a food processor and blitz until finely chopped. Tip out into a sieve, set over a bowl and leave to strain. Add the onions, garlic and parsley to the food processor and blitz until finely chopped, then set aside.",
       "Add red pepper paste, tomato purée, pomegranate molasses, pul biber, sumac, dried mint and most of the extra virgin olive oil to a serving bowl and whisk well so everything comes together as a sauce. Tip in the blitzed onion mixture and the strained pepper mixture along with 1 tsp flaky sea salt . Stir well, then drizzle with the remaining extra virgin olive oil to serve."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -9165,6 +9676,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Slice and serve hot, optionally with black pepper on top.",
       "Let the batter rest for at least 2 hours, or overnight in the refrigerator, to ensure the chickpea flour fully hydrates and the flavors meld.",
       "For a crispy edge, preheat the baking pan with oil in the oven before adding the batter."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9204,7 +9718,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat 1 tbsp oil in a large pan, then fry the onion and garlic over a low heat for 5 mins until softened. Tip into a large mixing bowl with the chickpeas and spices, then mash together with a fork or potato masher until the chickpeas are totally broken down. Stir in the parsley or dried herbs, with seasoning to taste. Add the egg, then squish the mixture together with your hands.",
       "Mould the mix into 6 balls, then flatten into patties. Heat the remaining oil in the pan, then fry the falafels on a medium heat for 3 mins on each side, until golden brown and firm. Serve hot or cold with couscous, pitta bread or salad."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53091,
@@ -9255,6 +9770,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bake in the preheated oven until heated through, 8 to 10 minutes.",
       "While falafel bake, whisk tahini, water, lemon juice, garlic, and paprika together in a bowl.",
       "Cut about 1 inch from the top of each pita to form a pocket. Add 2 falafel to each pita with equal amounts lettuce, tomato, cucumber, pickle, and red onion. Drizzle each with about 1 tablespoon tahini sauce and some harissa."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9291,7 +9809,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Optional: Sprinkle a couple of tablespoons on top of the lamb for a thicker stew.",
       "Add water to the pot and bring to a boil. Cover and reduce heat. Cook on low heat for 2 – 3 hours, until the lamb gently falls away from the bone.",
       "Serve with boiled potatoes and fresh parsley, covering generously with the fårikål broth."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53188,
@@ -9351,7 +9870,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Dip into beaten egg, then coat with breadcrumbs for a crispy finish.",
       "Heat vegetable oil in a pan over medium heat.",
       "Fry the patties for 4-5 minutes per side until golden brown and fully cooked."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53092,
@@ -9385,7 +9905,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Place the green beans into a large pot, and drizzle with olive oil. Season with salt to taste, and put the lid on the pot. Cook over medium-high heat, stirring occasionally, until beans are cooked to your desired doneness. Syrians like it cooked until the green beans are turning brownish in color. The idea is not to saute them, but to let them steam in the moisture released by the ice crystals.",
       "Add cilantro and garlic to the beans, and continue to cook just until the cilantro has started to wilt. Eat as a main course by scooping up with warm pita bread or serve as a side dish."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52919,
@@ -9422,6 +9943,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 180C/160C fan/gas 4. Put potatoes, fennel, and garlic in a medium non-stick pan. Pour in milk and double cream, season well and simmer gently, covered, for 10 mins, stirring halfway through, until potatoes are just tender.",
       "Divide the mixture between 2 small (about 150ml) buttered ramekins and scatter with Parmesan. Bake for 40 mins until the potatoes are golden and tender when pierced with a knife. Snip the reserved fennel fronds over before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9464,6 +9988,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stretch the second one thin as we have done for the first ball.",
       "Place the previous one on the middle seam side down. Fold the outer one over brushing with more butter mixture as you fold. Set aside.",
       "Keep doing this for the third and fourth balls. Now we have one ready, place on a 10 inch baking/pie dish seam side down and brush the top with more butter."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9498,7 +10025,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Cook pasta according to package instructions in a large pot of boiling water and salt. Add heavy cream and butter to a large skillet over medium heat until the cream bubbles and the butter melts. Whisk in parmesan and add seasoning (salt and black pepper). Let the sauce thicken slightly and then add the pasta and toss until coated in sauce. Garnish with parsley, and it's ready."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52835,
@@ -9536,7 +10064,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, put the cheese and nutmeg in a small bowl and add a good grinding of black pepper, then stir everything together (don’t add any salt at this stage).",
       "Put the pasta in another pan with 2 tsp salt, pour over some boiling water and cook following pack instructions (usually 3-4 mins). When cooked, scoop some of the cooking water into a heatproof jug or mug and drain the pasta, but not too thoroughly.",
       "Add the pasta to the pan with the clotted cream mixture, then sprinkle over the cheese and gently fold everything together over a low heat using a rubber spatula. When combined, splash in 3 tbsp of the cooking water. At first, the pasta will look wet and sloppy: keep stirring until the water is absorbed and the sauce is glossy. Check the seasoning before transferring to heated bowls. Sprinkle over some chives or parsley, then serve immediately."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53342,
@@ -9582,6 +10111,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Boil pudding for 1.5 hours. (In NL, this is typically done in the pot along with Jiggs Dinner, but it can be done independently.)",
       "When the duff is firm, remove it from the boiling water and let it cool slightly before removing it from the pudding bag.",
       "Slice pudding like a cake and serve with the warm sauce of your choice: rum butter sauce, warmed molasses or Molasses Coady sauce (1 cup (250 mL) molasses, 1/4 cup (60 mL) butter, 1/4 cup (60 mL) water) is common in Newfoundland."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9630,7 +10162,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the fish, potato, green chilli, coriander, cumin, black pepper, garlic and ginger in a large bowl. Season, add the rice flour, mix well and break in 1 egg. Stir the mixture and divide into 15, then form into small logs. Break the remaining eggs into a bowl and whisk lightly. Put the breadcrumbs into another bowl. Dip each fofo in the beaten egg followed by the breadcrumb mixture. Chill for 20 minutes.",
       "Heat 1cm of oil in a large frying pan over a medium heat. Fry the fofos in batches for 2 minutes on each side, turning gently to get an even golden brown colour all over. Drain on kitchen paper and repeat with the remaining fofos.",
       "For the onion salad, mix together the onion, coriander and lemon juice with a pinch of salt. Serve with the fofos and mango chutney."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52802,
@@ -9683,6 +10216,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the remaining oil in a pan, stir in the flour and cook for 30 seconds. Gradually stir in 200-250ml of the reserved milk (discard the rest). Grate in nutmeg, season, then bubble until thick. Stir in the cream.",
       "Preheat the oven to 190°C/fan170°C/gas 5. Grate the artichokes and add to the dish with the leek, prawns and herbs. Stir the lemon zest and juice into the sauce, then pour over. Mix gently with a wooden spoon.",
       "Spoon the mash onto the fish mixture, then use a fork to make peaks, which will crisp and brown as it cooks. Sprinkle over the cheese, then bake for 35-40 minutes until golden and bubbling. Serve with wilted greens."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9725,7 +10261,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the stock, water, potatoes, bay leaves, and black peppercorns. Season with salt and bring to a boil. Reduce heat, cover and cook for 10 minutes. Add the millet and cook for 15 more minutes until millet and potatoes are cooked.",
       "Gently add the fish cubes. Stir and bring the soup to a simmer. The fish will cook through very fast, so make sure to not overcook them. They are done when the flesh is opaque and flakes easily.",
       "Garnish the soup with chopped fresh dill or parsley before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52918,
@@ -9785,7 +10322,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir in the tomato purée, cook for 2 mins, then add the tomatoes and stock. Simmer for 10 mins until the sauce thickens slightly. Season to taste. The sauce can be made ahead, then reheated later in the day. Meantime, scrub the mussels or clams and pull away any stringy beards. Any that are open should be tapped sharply on the worktop – if they don’t close after a few seconds, discard them.",
       "Reheat the sauce if necessary, then stir the potato, chunks of fish and prawns very gently into the stew. Bring back to the boil, then cover and gently simmer for 3 mins. Scatter the mussels or clams over the stew, then cover and cook for 2 mins more or until the shells have opened wide. Discard any that remain closed. The chunks of fish should flake easily and the prawns should be pink through. Scatter with the thyme leaves.",
       "To make the quick rouille, stir the rest of the harissa through the mayonnaise. Serve the stew in bowls, topped with spoonfuls of rouille, which will melt into the sauce and enrich it. Have some good bread ready, as you’ll definitely want to mop up the juices."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53122,
@@ -9833,7 +10371,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the vegetables and milk and bring to a boil. Cook for about 10 minutes.",
       "Add the crème fraîche (or sour cream). Bring the soup back to a simmer and once the soup begins to bubble again turn off the heat. Keep the soup on the burner and add the fish. Let the fish cook in the hot soup for 5 minutes. If using shrimp, add right before serving.",
       "Sprinkle with chives (or dill or parsley) before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52906,
@@ -9883,6 +10422,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Melt the 75g butter in a saucepan over a low heat, then add the leeks and the salt. Cover and cook for ?10 minutes until soft. Uncover the pan, increase the heat and cook ?for 2 minutes, stirring occasionally, until the liquid has evaporated. Spoon onto a plate and leave to cool.",
       "Preheat the oven to 200°C/fan180°C/gas 6. Line the pastry case with baking paper and baking beans or rice and blind bake for 15-20 minutes until the edges are biscuit-coloured. Remove the paper and beans/rice and return the case to the oven for 7-10 minutes until the base is crisp and lightly golden. Remove and set aside. Reduce the oven temperature to 190°C/fan170°C/gas 5.",
       "Put the crème fraîche into a bowl with the whole egg, egg yolks and nutmeg. Lightly beat together, then season. Stir in the leeks. Spoon ?the mixture into the tart case and bake for 35-40 minutes until set ?and lightly golden. Remove from ?the oven and leave for 10 minutes. Take out of the tin and serve."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -9922,6 +10465,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 150 degrees Celsius and look for a casserole or container all your four flan containers fit into.",
       "Heat milk with 45 grams of sugar and the cut and scraped out vanilla pod. The milk does not need to boil, just needs to be heated. Take out vanilla pod after a few minutes. Meanwhile stir the egg yolks and eggs gently, try not to incorporate any air in it. Them pour milk-mix into egg-mix and again only stir very gently. Pour into prepared flan containers and place these into your casserole or container. Boil water and pour the water into the large casserole. Be sure not to touch the flan mixture. Place on middle rack in the oven and let bake for about 35-40 minutes. An inserted toothpick should come out clean.",
       "Let cool inside the container for an hour before transferring to the fridge. Chill overnight. The next day gently release the rim and then turn upside down on a plate. Serve with some dulce de leche on the side."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -9975,6 +10521,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To assemble the pie, pour the filling into the crust and top with a thick layer of the meringue, making little spikes that will brown on top. Sprinkle the reserved crumb over the top and place it into the preheated oven.",
       "Bake until the meringue browns, around 10 minutes, making sure to watch it carefully.",
       "Chill in the fridge and eat within a few hours of baking. This pie is best eaten the same day as the meringue will soften and liquify."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10019,7 +10568,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add 6 cups water, lentils, thyme, bay leaves and salt. Bring to a boil, then reduce to a fast simmer.",
       "Simmer lentils until they are tender and have absorbed most of the water, 20 to 25 minutes. If necessary, drain any excess water after lentils have cooked. Serve immediately, or allow them to cool and reheat later.",
       "For a fuller taste, use some chicken stock and reduce the water by the same amount."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52915,
@@ -10057,7 +10607,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Get everything ready. Warm a 20cm (measured across the top) non-stick frying pan on a medium heat. Crack the eggs into a bowl and beat them with a fork so they break up and mix, but not as completely as you would for scrambled egg. With the heat on medium-hot, drop one knob of butter into the pan. It should bubble and sizzle, but not brown. Season the eggs with the Parmesan and a little salt and pepper, and pour into the pan.",
       "Let the eggs bubble slightly for a couple of seconds, then take a wooden fork or spatula and gently draw the mixture in from the sides of the pan a few times, so it gathers in folds in the centre. Leave for a few seconds, then stir again to lightly combine uncooked egg with cooked. Leave briefly again, and when partly cooked, stir a bit faster, stopping while there’s some barely cooked egg left. With the pan flat on the heat, shake it back and forth a few times to settle the mixture. It should slide easily in the pan and look soft and moist on top. A quick burst of heat will brown the underside.",
       "Grip the handle underneath. Tilt the pan down away from you and let the omelette fall to the edge. Fold the side nearest to you over by a third with your fork, and keep it rolling over, so the omelette tips onto a plate – or fold it in half, if that’s easier. For a neat finish, cover the omelette with a piece of kitchen paper and plump it up a bit with your fingers. Rub the other knob of butter over to glaze. Serve immediately."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52996,
@@ -10107,6 +10658,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "While potatoes cook, heat a drizzle of oil in a large pan over medium-high heat. Add onion and cook, stirring occasionally, until lightly browned and softened, 8-10 minutes. Sprinkle with 1 tsp sugar (2 tsp for 4 servings). Stir in stock concentrate and 2 TBSP water (¼ cup for 4); season with salt and pepper. Cook until jammy, 2-3 minutes more. Turn off heat; transfer to a small bowl. Wash out pan.",
       "Pat chicken dry with paper towels; season all over with salt and pepper. Heat a drizzle of oil in pan used for onion over medium-high heat. Add chicken and cook until browned and cooked through, 5-6 minutes per side. In the last 1-2 minutes of cooking, top with caramelized onion and cheese. Cover pan until cheese melts. (If your pan doesn’t have a lid, cover with a baking sheet!)",
       "Heat pot with drained potatoes over low heat; mash with sour cream, 2 TBSP butter (4 TBSP for 4 servings), salt, pepper, and a splash of water (or milk, for extra richness) until smooth. Divide chicken, roasted carrots, and mashed potatoes between plates."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10148,6 +10702,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Melt the butter with the oil in a large heavy-based pan. Add the onions and fry with the lid on for 10 mins until soft. Sprinkle in the sugar and cook for 20 mins more, stirring frequently, until caramelised. The onions should be really golden, full of flavour and soft when pinched between your fingers. Take care towards the end to ensure that they don’t burn.",
       "Add the garlic for the final few mins of the onions’ cooking time, then sprinkle in the flour and stir well. Increase the heat and keep stirring as you gradually add the wine, followed by the hot stock. Cover and simmer for 15-20 mins.",
       "To serve, turn on the grill, and toast the bread. Ladle the soup into heatproof bowls. Put a slice or two of toast on top of the bowls of soup, and pile on the cheese. Grill until melted. Alternatively, you can complete the toasts under the grill, then serve them on top."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -10178,7 +10735,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Wash the fish under the cold tap. Roll in the flour and deep fry in oil until crispy. Lay on kitchen towel to get rid of the excess oil and serve hot or cold with a slice of lemon."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53178,
@@ -10216,7 +10774,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut the squid into rings about ½cm thick. Tip the flour into a freezer bag and season well. Add the capers, then give everything a good shake to mix together. Tip the squid into the bag, then shake again until all the rings are well coated. Mix together the garlic and mayonnaise, then place in a serving bowl.",
       "Pour some oil into a large pan until it comes about 7cm up the sides, but the pan is no more than a third full. Place over a medium heat and let the oil warm up. To test that the oil is ready, place a small piece of bread in the pan – it should sizzle when it touches the oil.",
       "Remove a handful of squid from the flour and shake off any excess. Gently drop into the oil, then cook for about 3 mins until crisp. Remove with a slotted spoon and place on kitchen paper. Repeat with the remaining squid. Serve straight away with the mayonnaise and lemon wedges."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52957,
@@ -10258,6 +10817,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place 1 to 2 teaspoons of the cream cheese filling in the middle, then place berries on top.",
       "Repeat with the remaining pastry squares and place them onto the parchment covered baking sheet.",
       "Bake for 15-20 minutes or until pastry is golden brown and puffed."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10303,7 +10865,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In Syria and Lebanon, they eat ful medames with yogurt or feta cheese, olives, and small cucumbers.",
       "A traditional way of thickening the sauce is to throw a handful of red lentils (1/4 cup) into the water at the start of the cooking.",
       "In Iraq, large brown beans are used instead of the small Egyptian ones, in a dish called badkila, which is also sold for breakfast in the street."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52896,
@@ -10346,6 +10909,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For 'proper' fried bread it's best to cook it in a separate pan. Ideally, use bread that is a couple of days old. Heat a frying pan to a medium heat and cover the base with oil. Add the bread and cook for 2-3 minutes each side until crispy and golden. If the pan becomes too dry, add a little more oil. For a richer flavour, add a knob of butter after you turn the slice.",
       "For the fried eggs, break the egg straight into the pan with the fried bread and leave for 30 seconds. Add a good knob of butter and lightly splash/baste the egg with the butter when melted. Cook to your preferred stage, season and gently remove with a fish slice.",
       "Once all the ingredients are cooked, serve on warm plates and enjoy straight away with a good squeeze of tomato ketchup or brown sauce."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -10403,6 +10970,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roll out of the rest of the dough and slice into long strips. Lay the strips of dough across the cake in a grid. Don't worry of the strips break – simply press them back together on the cake.",
       "Gently brush the dough with egg wash.",
       "Bake for about 45 minutes. The top of the cake should be golden brown while the almond filling will remain soft."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -10435,7 +11006,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Peel the prawns, leaving the tails intact, and, using a cocktail stick, remove the digestive tracts. Or, if you are using a frying pan rather than a terracotta pot, you can cook the prawns in their shells. Season with a little sea salt.",
       "Put the garlic, olive oil and chillies in a flameproof terracotta pot or frying pan and set over a high heat. When the garlic starts to turn golden, add the prawns and cook for 1-2 mins on each side until just pink. Sprinkle over the chopped parsley and some freshly cracked black pepper, and serve immediately. If using a terracotta pot, you can take that straight to the table, but be careful with it as the oil and terracotta will remain hot for several minutes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52764,
@@ -10476,7 +11048,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "While the sauce is simmering, the prawns should become cool enough to handle. First remove the legs by pinching them, and then pull off the shells, leaving the head and tail on.",
       "When the sauce has thickened, stir in the prawns. Bring to a simmer again if the sauce has cooled with the prawns, and cook for about 5 minutes. Add the feta and remove from the heat. Let stand until the cheese starts to melt. Serve warm with slices of crusty bread.",
       "Though completely untraditional, you can add a few tablespoons of stock or passata to this recipe to make a delicious pasta sauce. Toss with pasta after adding the feta, and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53180,
@@ -10508,7 +11081,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the olive oil in a large frying pan. Tip in the garlic slices and cook for a few secs. Then stir through the prawns and cook for a couple of mins until they start to turn pink.",
       "Pour over the sherry and cook for a few mins more, just until the prawns are cooked through. Sprinkle with parsley before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52951,
@@ -10576,7 +11150,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the sauce to the wok and then the broccoli and wait until it is boiling.",
       "To thicken the sauce, whisk together 2 Tablespoon of cornstarch and 4 Tablespoon of water in a bowl and slowly add to your stir-fry until it's the right thickness.",
       "Next add in the chicken and stir-fry for a minute and serve on a plate"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53381,
@@ -10622,6 +11197,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take half of the dough and roll it out to 20 x 20 cm. Place in a baking pan lined with parchment paper. Spread the almond paste mixture evenly. Roll out the remaining dough and place on top of the almond paste.",
       "Brush the top with the remaining beaten egg. Garnish with almonds and top with another layer of egg wash.",
       "Bake the filled speculaas for 40 minutes at 180°C/350℉ (conventional oven) or until done."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10665,6 +11243,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Soak the beans overnight in plenty of water. Drain, rinse, then place in a pan covered with water. Bring to the boil, reduce the heat, then simmer for approx 50 mins until slightly tender but not soft. Drain, then set aside.",
       "Heat oven to 180C/160C fan/gas 4. Heat the olive oil in a large frying pan, tip in the onion and garlic, then cook over a medium heat for 10 mins until softened but not browned. Add the tomato purée, cook for a further min, add remaining ingredients, then simmer for 2-3 mins. Season generously, then stir in the beans. Tip into a large ovenproof dish, then bake for approximately 1 hr, uncovered and without stirring, until the beans are tender. The beans will absorb all the fabulous flavours and the sauce will thicken. Allow to cool, then scatter with parsley and drizzle with a little more olive oil to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10713,6 +11294,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place about 1/2 cup beef mixture on a cabbage leaf. Roll cabbage around beef mixture, tucking in sides to create an envelope around the meat. Repeat with remaining leaves and meat mixture. Place cabbage rolls in a layer atop the chopped cabbage in the casserole dish; season rolls with salt and black pepper.",
       "Whisk tomato soup, tomato juice, and ketchup together in a bowl. Pour tomato soup mixture over cabbage rolls and cover dish wish aluminum foil.",
       "Bake in the preheated oven until cabbage is tender and meat is cooked through, about 1 hour."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -10746,7 +11330,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Fold in the cereal and stir until evenly distributed throughout the mixture.",
       "Pour the mixture into a freezer-safe container (such as a loaf pan). Lay plastic wrap on top of the ice cream to avoid freezer burn. Cover the container and freeze for at least 6 hours or until solid.",
       "Once frozen, let the ice cream sit at room temperature for a few minutes to soften slightly before scooping and serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53274,
@@ -10787,6 +11372,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Brush each aubergine slice with some oil, then season. Heat a griddle pan or barbecue. When hot, griddle the aubergine slices for 2-3 mins on each side until golden brown and tender.",
       "Mix the yogurt with the tahini, garlic, lemon juice and herbs, then season. Top the aubergines with the dressing and scatter over extra herb leaves."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -10821,6 +11409,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the flours into a food processor. Add the yeast, sugar and 1tsp salt, then mix well. Pour in 350ml warm water and the oil, then process to a soft dough. Mix for 1 min, then leave until doubled in size, about 1 hour.",
       "Pulse the dough a couple of times just to knock out the air, then tip onto a floured surface. Cut the dough in half and roll out one half to a rectangle about 20 x 40cm. Trim the edges using a large sharp knife, then cut into eight 10cm squares. Line a large tray or two baking sheets with non-stick paper and arrange the bread rectangles over the tray in one layer. Repeat with the other half of the dough. Leave in a warm place for about 30 mins until the dough is just starting to rise.",
       "Place bread directly onto the BBQ racks and cook for a couple of mins until they puff up, then flip over and cook on the other side. Tip into a basket and serve with the dips."
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "blender"
     ]
   },
   {
@@ -10871,6 +11464,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat 2 tbsp oil in a pan, add the onion and fry until soft and lightly browned, about 10 mins. Add the chilli, ginger and spices and mix well. Stir in the chickpeas, tomatoes and 5 tbsp water, bring to the boil, then simmer for 10 mins. Add a little salt and pepper and the lemon juice.",
       "Arrange the aubergines over a grill pan. Brush lightly with oil, sprinkle with salt and pepper, then grill until golden. Flip them over, brush again with oil, season and grill again until tender and golden.",
       "Mix the yogurt with the garlic, most of the walnuts and coriander and a little salt and pepper. Arrange the aubergine slices over a warm platter and spoon over the chickpea mix. Drizzle with the walnut sauce and scatter with the remaining walnuts and coriander."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -10908,6 +11504,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Grill the eggplants, turning them over frequently to ensure even cooking.  Grill until the skins are dark brown, even black and the eggplant is soft when you touch it.",
       "Soak the grilled eggplant in a bowl of water to cool it down.  Peel the skin off the eggplant.  Place the whole eggplants in a shallow dish (my mom actually cuts the eggplant into small, bite-sized pieces).",
       "In a small mixing bowl, mix together the coconut milk or cream, lemon powder, salt and hot pepper.  Mix until the lemon powder and salt dissolve.  Taste, then adjust the amount of lemon powder, salt and hot pepper to your liking.  Pour the mixture over the eggplant.  Sprinkle the green onions over the eggplant and coconut milk.  Stir gently to combine."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -10965,6 +11564,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Make the mac and cheese",
       "Bring a medium saucepan of generously salted water (you want it to taste like seawater) to a boil. Add the pasta and cook, stirring occasionally, until al dente, 8 to 10 minutes, or according to the package directions. The pasta should be tender but still chewy. 2. While the pasta is cooking, in a small bowl, whisk together the flour, mustard powder, garlic powder, salt, black pepper, and cayenne pepper. 3. Drain the pasta in a colander. Place the empty pasta pan (no need to wash it) over low heat and add the butter. When the butter has melted, whisk in the flour mixture and continue to cook, whisking frequently, until the mixture is beginning to brown and has a pleasant, nutty aroma, about 1 minute. Watch carefully so it does not scorch on the bottom of the pan. 4. Slowly whisk the milk and cream into the flour mixture until everything is really well combined. Cook, whisking constantly, until the sauce is heated through and just begins to thicken, about 2 minutes. Remove from the heat. Gradually add the cheese while stirring constantly with a wooden spoon or silicone spatula and keep stirring until the cheese has melted into the sauce. Then stir in the drained cooked pasta. 5. Line a 9-by-13-inch (23-by-33-centimeter) rimmed baking sheet with parchment paper or aluminum foil. Coat the paper or foil with nonstick cooking spray or slick it with butter. Pour the warm mac and cheese onto the prepared baking sheet and spread it evenly with a spatula. Coat another piece of parchment paper with cooking spray or butter and place it, oiled or buttered side down, directly on the surface of the mac and cheese. Refrigerate until cool and firm, about 1 hour.",
       "Make the grilled cheese 6. Heat a large cast-iron or nonstick skillet over medium-low heat. 7. In a small bowl, stir together the 4 tablespoons (55 grams) butter and garlic powder until well blended. 8. Remove the mac and cheese from the refrigerator and peel off the top layer of parchment paper. Carefully cut into 8 equal pieces. Each piece will make 1 grilled mac and cheese sandwich. (You can stash each individual portion in a double layer of resealable plastic bags and refrigerate for up to 3 days or freeze it for up to 1 month.) 9. Spread 3/4 teaspoon garlic butter on one side of each bread slice. Place half of the slices, buttered-side down, on a clean cutting board. Top each with one slice of Cheddar, then 1 piece of the mac and cheese. (Transfer from the baking sheet by scooting your hand or a spatula under each piece of mac and cheese and then flipping it over onto a sandwich.) Place 1 slice of Jack on top of each. Finish with the remaining bread slices, buttered-side up. 10. Using a wide spatula, place as many sandwiches in the pan as will fit without crowding it. Cover and cook until the bottoms are nicely browned, about 4 minutes. Turn and cook until the second sides are browned, the cheese is melted, and the mac and cheese is heated through, about 4 minutes more. 11. Repeat with the remaining ingredients. Cut the sandwiches in half, if desired, and serve."
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "blender"
     ]
   },
   {
@@ -11003,6 +11607,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put all of the ingredients, except the sardines, into a bowl and mix together with some seasoning. Pour into a baking dish, add the sardines and toss really well. Cover and chill for a few hours.",
       "Heat a BBQ or griddle pan until hot. Cook the sardines for 4-5 minutes on each side or until really caramelised and charred. Put onto a serving plate, drizzle with oil, sprinkle with a little more paprika and squeeze over the lemon wedges."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -11054,6 +11662,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Roll a spoonful of the mixture between your palms. The size and shape of the croquetas is up to you, but the easiest is a walnut-sized ball. Then begin coating as follows.",
       "Dunk the croquetas into the flour – you want a dusting – followed by the egg, then the breadcrumbs. Put them on a tray and, when you’ve used up all the mixture, place in the fridge for 30 mins.",
       "If you have a deep-fat fryer, heat the oil to 180C and fry for a couple of mins. If not, heat the oil in a deep, heavy-bottomed saucepan until it starts to shimmer. Then add 5-6 croquetas at a time and fry until golden all over. Once cooked, drain on kitchen paper and eat straight away."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11094,7 +11705,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, melt the butter in a large sauté pan over a medium heat. Add the garlic, cabbage, spring onions and some seasoning. Stir occasionally until the cabbage is wilted but still retains a little bite, then set aside.",
       "Drain the potatoes, leave to steam-dry for a couple of mins, then mash with the cream, mustard and seasoning in the same saucepan. Stir in the cabbage and ham hock. Keep warm over a low heat.",
       "Reheat the pan you used to cook the cabbage (no need to wash first), add a splash of oil, crack in the eggs and fry to your liking. To serve, divide the colcannon between bowls and top each with a fried egg."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53340,
@@ -11141,6 +11753,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a heavy-bottomed pot or Dutch oven, melt butter over medium heat, add vegetables, and cook to warm through.",
       "Add milk and cream and bring the soup to a boil. Turn the heat down to low and season with salt and pepper.",
       "Add dill and chives and let simmer for at least 10 minutes. Serve warm."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11181,7 +11796,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Using a sharp small knife, cut the dough into the desired size setting aside ready for deep frying.",
       "Heat your oil in a suitable pot and gently dip the mandazi pieces to cook until light brown on the first side then turn to cook on the second side.",
       "Serve them warm or cold"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52993,
@@ -11227,6 +11843,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "While veggies roast, pat chicken dry with paper towels; season all over with salt and pepper. Heat a drizzle of oil in a large pan over medium-high heat. Add chicken and cook until browned and cooked through, 5-6 minutes per side. (If chicken browns too quickly, reduce heat to medium.) Turn off heat; set chicken aside to rest. Wash out pan.",
       "Heat pan used for chicken over medium-high heat. Add a drizzle of oil and remaining garlic; cook until fragrant, 30 seconds. Stir in vinegar, honey, stock concentrate, and 1/4 cup water (1/3 cup for 4 servings). Simmer until thick and glossy, 2-3 minutes. Remove from heat and stir in 1 TBSP butter (2 TBSP for 4). Season with salt and pepper.",
       "Return chicken to pan and turn to coat in glaze. Divide chicken, broccoli, and potatoes between plates. Spoon any remaining glaze over chicken and serve."
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -11258,6 +11878,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all the ingredients in the Honey Teriyaki Glaze together. Whisk to blend well. Combine the salmon and the Glaze together.",
       "Heat up a skillet on medium-low heat. Add the oil, Pan-fry the salmon on both sides until it’s completely cooked inside and the glaze thickens.",
       "Garnish with sesame and serve immediately."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -11302,6 +11925,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 160C/140C fan/gas 3. Crush the biscuits and most of the almonds inside a plastic food bag using a rolling pin. Mix with the butter, then press into the bottom of a deep, oval, 23cm dish (or something similar in size – a roasting tin, baking dish or cake tin will work). Bake for 10 mins until crisp.",
       "Stir or mash together the yogurt and mascarpone, then whisk in the eggs, one at a time. Stir in the lemon and orange zests, then stir in most of the honey, reserving about 3 tbsp. Spread over the biscuit base, cover loosely with foil and cook for 1 hr. Remove the foil and cook for 15 mins more until lightly golden and the top is firm with just the slightest wobble in the middle. Leave to cool. Can be kept in the fridge for up to 2 days.",
       "To serve, scatter with almonds, drizzle over the remaining honey, and hand around fresh fruit to go with it."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11356,6 +11982,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To thicken the sauce, whisk together 1 Tablespoon of cornstarch and 2 Tablespoon of water in a bowl and slowly add to your soup until it's the right thickness.",
       "Next add 1 egg slightly beaten with a knife or fork and add it to the soup and stir for 8 seconds",
       "Serve the soup in a bowl and add the bbq pork and sliced green onions on top."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -11399,6 +12028,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Refrigerate for 4 hours, or until set.",
       "Remove the fudge and wax paper from the pan. Carefully peel all of the wax paper from the fudge.",
       "Cut the fudge into bite-sized pieces and serve."
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -11442,6 +12075,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a griddle pan. Rub the lamb steaks with the oil, cumin and some seasoning. Griddle for about 3-4 mins on each side or until cooked to your liking. Place to one side on a plate to rest.",
       "In a large bowl, stir the sugar into the vinegar until dissolved. Add the carrots, spring onions, cabbage and some seasoning, and toss together.",
       "Blitz the whole peppers and the mayo in a food processor. Add a heap of the salad to each flatbread. Slice the lamb, trimming off any excess fat and lay on top of the salad, drizzling with the resting juices. Spoon over the mayo and scatter with a few of the sliced peppers. Roll up and eat. If using pitta, split and stuff. Serve any extra salad on the side."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -11476,6 +12112,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Drain the chickpeas into a sieve set over a bowl or jug to catch the liquid. Tip the chickpeas, tahini, garlic and yogurt into a food processor or blender and whizz to smooth.",
       "Whizz in a tbsp of the chickpea liquid at a time until you have a nice consistency, then scrape into a bowl.",
       "Stir in a squeeze of lemon juice and season to taste."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -11527,6 +12166,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Lay the aubergine halves in a baking dish and divide the tomato mixture between them. Pour over the juice from the tomatoes, drizzle with more olive oil and bake for 30 mins until the aubergines have collapsed.",
       "Meanwhile, mix the tzatziki ingredients together and put in a small serving bowl.",
       "Season the lamb with salt, black pepper and a pinch of paprika. Griddle, grill or barbecue for 3 mins on each side or until the fat is nicely browned, then put in a serving dish and squeeze over the lemon halves. Scatter the aubergines with parsley, then serve with the lamb and tzatziki."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -11577,6 +12220,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once all the vegetables are seared and removed from the pan, add the wine along with the sugar, herbs, a teaspoon of salt and a good grind of black pepper. Boil on a high heat for about three minutes.",
       "Tip the lamb, vegetables and whole wheat back into the pot, and add the stock. Cover and boil for five minutes, then transfer to the oven for an hour and a half.",
       "Remove the stew from the oven and check the liquid; if there is a lot, remove the lid and boil for a few minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11628,6 +12274,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Portion dough with a small spoon, roll them into balls and place them on the lined cookie sheet, press them into flat discs using a floured glass or your moistened palm.",
       "Place cookies on parchment-lined baking sheets and bake for 10-12 mins. Remove from the oven and let them cool for at least 10 minutes.",
       "Once cooled the cookie sandwiches by spreading at least two teaspoons of your favourite jam between the two cookies. Repeat and enjoy with a cup of tea."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11666,6 +12315,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip butter, flour and vanilla seeds into a food processor; pulse until the butter has disappeared. Tip into a mixing bowl. Stir through the suet, pour in the milk and work together with a cutlery knife until you get a sticky dough. You may need a drop more milk, depending on your flour.",
       "Tip the dough out onto a floured surface, quickly pat together to smooth, then roll out to a square roughly 25 x 25cm. Spread the jam all over, leaving a gap along one edge, then roll up from the opposite edge. Pinch the jam-free edge into the dough where it meets, and pinch the ends roughly, too. Carefully lift onto the greased paper, join-side down (you might find a flat baking sheet helpful for this), loosely bring up the paper and foil around it, then scrunch together along the edges and ends to seal. The roly-poly will puff quite a bit during cooking so don’t wrap it tightly. Lift the parcel directly onto the rack above the tin and cook for 1 hr.",
       "Let the pudding sit for 5 mins before unwrapping, then carefully open the foil and paper, and thickly slice to serve."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -11707,7 +12360,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add brown sugar, vanilla, extract, cinnamon, nutmeg and a pinch of salt. Sift in flour and stir with spoon until fully combined.",
       "Add oil to a 10 inch skillet over medium-high heat. Once oil is hot, drop banana fritter batter in oil by the spoonful. Once one side is golden and bubbles appear on the top, flip fritter and cook until the other side is browned as well.",
       "Remove fritters and drain on paper towels. Enjoy"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52938,
@@ -11775,6 +12429,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take a fork and crimp the edges. Cut off any extra to make it look neat and uniform. Place on a parchment-lined baking sheet and continue work until you have rolled all the dough and filled the patties.",
       "Frying and Serving the Patties",
       "After forming the patties, place the pans in the refrigerator while you heat the oven to 350 F. Just before adding the pans with the patties to the oven, brush the patties with egg wash. Bake patties for 30 minutes or until golden brown. Cool on wire racks. Serve warm."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -11813,7 +12470,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Boil the dumplings for 15-20 minutes, or until they are cooked through and have risen to the surface of the water. Stir occasionally to prevent sticking.",
       "Use a slotted spoon to remove the cooked dumplings from the pot, allowing any excess water to drain.",
       "Serve with your favorite recipes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53363,
@@ -11854,7 +12512,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, add 1 cup cornmeal and 1 ½ cup water to a large mixing cup and whisk until smooth.",
       "Once the pot begins to boil, whisk in cornmeal mixture and continue to whisk for about 1 minute, ensuring there are no lumps. Reduce heat to low and cover with a tight fitting lid.",
       "Cook over low heat for 15-20 minutes, stirring occasionally. When there is about 5 minutes left, stir in vanilla extract, cinnamon, nutmeg, and all-spice. Remove from heat and sweeten with condensed milk."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53345,
@@ -11903,7 +12562,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Add chicken thighs, all-purpose seasoning, 1 tablespoon of curry powder, onion, green onions, green pepper, garlic cloves, scotch bonnet pepper (if using), and thyme to a large bowl and combine, making sure all chicken pieces are covered with the seasoning. Cover and refrigerate for at least 1 hour or up to overnight. One the chicken is done marinating, remove onions, peppers, and garlic cloves from chicken and set aside. Heat olive oil in a large heavy bottom pot over medium heat. Add remaining curry powder and stir, cooking for about 20-30 seconds. Add onions, green pepper, garlic cloves, thyme, and scotch bonnet pepper (if using) to pot and stir until onions have softened, about 3-5 minutes. If your onions and peppers are looking dry, add about 1 tablespoon of water. Add chicken and ¼ cup of water to the pot. Cover and reduce heat to medium low. Cook, stirring occasionally, for 30-35 minutes. When there is about 15 minutes remaining, stir in potato and continue to cook covered. Once chicken is cooked and potatoes are softened, remove from heat. Salt and pepper to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53354,
@@ -11954,7 +12614,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Rinse goat meat with vinegar and water. Season goat meat with 1 ½ tablespoon curry powder, all-purpose seasoning, ground ginger, allspice, onion, garlic cloves, and thyme. Marinate for at least 4 hours or up to overnight. Remove onion and garlic from goat and set aside. Set an electric pressure cooker, like an Instant Pot, on high sauté and add oil. Add goat meat and brown, about 2-3 minutes per side. Remove goat from insert and add 1 tablespoon oil and remaining curry powder and sauté for about 10 seconds. Then add onions and garlic and sauté until softened. About 4 minutes. If the onions look dry, add a little water and continue to sauté. Add goat and water to the pressure cooker and cover the pressure cooker. Cook for 40 minutes on high pressure. Allow to naturally release for 10 minutes, then release the remaining pressure. Once all the pressure has been released, open the pressure cooker. Place on sauté for 10-15 minutes, add potatoes and a whole scotch bonnet pepper. Cook until potatoes have softened. Remove scotch bonnet pepper."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53362,
@@ -12007,7 +12668,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add 1.5 Tablespoons of curry powder to the skillet and stir for an additional minute.",
       "Then add coconut milk, seasoned shrimp, ketchup, and thyme, making sure the shrimp is covered in the sauce.",
       "Allow the sauce to come to a simmer and continue to cook over medium heat, stirring occasionally and flipping the shrimp halfway, until the shrimp is fully cooked on both sides. This should take about 5-6 minutes. Salt and pepper to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53355,
@@ -12049,6 +12711,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pinch off pieces of dough and roll them into long oval shapes. Make about 12 dumplings.",
       "Once the oil has reached the temperature of 350 degrees Fahrenheit, fry the dough on all sides, until golden brown. This should take about 4-6 minutes.",
       "Remove dough and drain off any excess grease. Serve and enjoy."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12084,6 +12749,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a 10-inch skillet, heat enough oil over medium heat to fry the dumplings, until the oil is about 350 degrees.",
       "Once the dumplings are browned on one side, flip them and cook until both sides are browned, about 2-3 minutes each.",
       "Once done, remove the dumplings from the oil and place them on paper towels or a cooling rack to drain off any excess oil."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12131,7 +12799,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Set Instant Pot to \"Sauté.\" Once Hot, add olive oil. Then add yellow onion and stir until softened, about 3 minutes. Add garlic and green onions and stir for about 30 more seconds. Press “Cancel” on the Instant Pot. Add rice, coconut milk, water, salt, allspice, and black pepper and stir. Pour undrained kidney beans on top of the rice mixture. Do not stir. Lay sprigs of thyme on top. Cover the Instant Pot, ensuring the valve is set to “Sealing.” Press “Manual” or “Pressure Cook” on the Instant Pot and set for High pressure for 6 minutes. Once the pressure cooking time is done, allow it to natural release for 10 minutes, then quick release any remaining pressure by moving valve to \"Venting\" Open lid and remove thyme sprigs. Fluff rice with fork and Enjoy!",
       "Stove Top Instructions Heat olive oil in a large pot over medium heat. Add yellow onion and stir until softened, about 3 minutes. Add garlic and green onions and stir for about 30 more seconds. Add rice, undrained kidney beans, coconut milk, water, salt, allspice, and black pepper and stir until combined. Lay thyme on top. Bring mixture to a simmer. Cover with a lid and reduce heat to low. Allow to cook for 18 minutes over low heat, then remove from heat. Leave the lid on for an additional 5 minutes. Open the lid and remove the thyme. Fluff rice with fork. Enjoy."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53349,
@@ -12177,7 +12846,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a large pan over medium heat. Add the shrimp stock and bring to a gentle simmer. Stir in the diced onion and garlic, cooking until softened and fragrant, about 2 minutes.",
       "Add the seasoned shrimp and thyme sprigs, spreading the shrimp in the pan. Cover and cook for about 5–7 minutes, stirring occasionally, until the shrimp turn bright orange and are cooked through.",
       "Add the white vinegar, stir, and cook for another minute. Taste; add salt to taste. Using a slotted spoon, transfer the shrimp to a plate. Serve hot with some cooking liquid drizzled on top."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53357,
@@ -12221,7 +12891,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add rice, coconut milk, kidney beans, water, kosher salt, allspice, and black pepper to a large pot and stir until combined. Lay green onions, thyme and Scotch bonnet pepper on top. Bring mixture to a boil.",
       "Once boiling, reduce heat to low and cover with a lid. Allow to cook covered for 18 minutes over low heat, then remove from heat. Leave the lid on for an additional 5 minutes.",
       "Open the lid and remove the green onion, Scotch bonnet pepper, and thyme. Fluff the rice and peas with a fork. Serve and enjoy."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53348,
@@ -12281,6 +12952,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Make a well in the middle of the bowl of dry ingredients and pour in wet mixture, stirring until fully combined. And the fruits to the mixture and stir until incpororated.",
       "Pour mixture into prepared loaf pan and bake in the preheated oven for 50-60 minutes or until a toothpick comes out clean.",
       "Cool for 5 minutes in the pan and then move to a cooling rack to finish cooling. Serve with slices of cheddar cheese."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12331,7 +13005,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add all the ingredients to a large pan over medium heat and cover with a lid.",
       "Cook on medium heat for 10 minutes, stirring occasionally.",
       "After 10 minutes, reduce the heat to low and continue to cook for an additional 5 minutes, until the cabbage is soft and tender. Remove from the heat and remove the stalks of thyme before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53344,
@@ -12385,6 +13060,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place your cut sweet potatoes in the bowl of a food processor and process until finely grated. In a small bowl, toss raisins in 2 teaspoons flour from the ½ cup. Set aside.",
       "In a large bowl, combine grated sweet potatoes, light brown sugar, all-purpose flour, vanilla extract, allspice, cinnamon, nutmeg, ginger, and salt. Stir in 1½ cups of coconut milk until a batter forms. Fold in the raisins that were tossed in the flour.",
       "Pour the batter into the prepared pan and smooth the top. Bake uncovered for 1 hour 30 minutes, until mostly set but still slightly soft in the center"
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -12428,6 +13107,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the manchego, jamón and wild garlic to the pan, and beat to combine. Tip out onto a lightly oiled baking tray or plate, spread out then cover and chill for at least 1 hr. Will keep chilled for up to 24 hrs.",
       "Lightly oil your hands and shape the mixture into 18-20 even-sized balls. Arrange on a baking tray and freeze for 30 mins to firm up.",
       "Beat the egg in a shallow dish with a little seasoning. Tip the panko into a second dish. Dip each of the croquetas in the egg, then turn to coat in the breadcrumbs. At this point, the raw croquetas can be frozen for up to three months. Pour the oil into a large, deep pan ensuring it is no more than a third full and heat to 170C, or until a cube of bread browns lightly in 30 seconds. Fry the croquetas in batches for 2-3 mins until deeply golden. To cook from frozen, fry at 160C for a few minutes longer until they’re piping hot inside. Remove to a sheet of kitchen paper using a slotted spoon and leave to drain. Serve warm with a glass of sherry."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12460,7 +13142,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Rinsing and soaking your rice is key to achieving the perfect texture. Measure the rice into a bowl, cover with cold water, then use your fingers to massage the grains of rice – the water will become cloudy. Drain and rinse again with fresh water. Repeat five more times until the water stays clear.",
       "Tip the rinsed rice into a saucepan with 400ml water, or 200ml dashi and 200ml water, bring to the boil, then turn down the heat to a low simmer, cover with a tight-fitting lid with a steam hole and cook for 15 mins. Remove from the heat and leave to sit for another 15 mins, then stir through the mirin. Remove the lid and give it a good stir. Serve with any or all of the optional toppings."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53034,
@@ -12500,7 +13183,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a pan, fry the sliced onion until golden brown, then add the tonkatsu (see recipe here), placing it in the middle of the pan. Mix the dashi, soy, mirin and sugar together and tip three-quarters of the mixture around the tonkatsu. Sizzle for a couple of mins so the sauce thickens a little and the tonkatsu reheats.",
       "Tip the beaten eggs around the tonkatsu and cook for 2-3 mins until the egg is cooked through but still a little runny. Divide the rice between two bowls, then top each with half the egg and tonkatsu mix, sprinkle over the chives and serve immediately, drizzling with a little more soy if you want an extra umami kick."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52937,
@@ -12564,6 +13248,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "If you want to barbecue your chicken, get the coals burning 1 hr or so before you’re ready to cook. Authentic jerked meats are not exactly grilled as we think of grilling, but sort of smoke-grilled. To get a more authentic jerk experience, add some wood chips to your barbecue, and cook your chicken over slow, indirect heat for 30 mins. To cook in the oven, heat to 180C/160C fan/gas 4. Put the chicken pieces in a roasting tin with the lime halves and cook for 45 mins until tender and cooked through.",
       "While the chicken is cooking, prepare the rice & peas. Rinse the rice in plenty of cold water, then tip it into a large saucepan with all the remaining ingredients except the kidney beans. Season with salt, add 300ml cold water and set over a high heat. Once the rice begins to boil, turn it down to a medium heat, cover and cook for 10 mins.",
       "Add the beans to the rice, then cover with a lid. Leave off the heat for 5 mins until all the liquid is absorbed. Squeeze the roasted lime over the chicken and serve with the rice & peas, and some hot sauce if you like it really spicy."
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "blender"
     ]
   },
   {
@@ -12607,7 +13296,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add your cabbage to the pot and boil for 20 more minutes. Then add turnip, carrots and potatoes then boil for 20 more, or until vegetables are tender.",
       "Remove salt beef and vegetables from the pot and put them on a platter.",
       "Use the cooking liquid in two ways; as a pot liquor which some people like to drink or reduce it to make a jus or gravy to pour over the meal."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53220,
@@ -12655,6 +13345,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In another pot, add all the veggies and caramelize them till they are soft.",
       "Once everything is done, add the rice, raisins & spices to the veggies and add 2 and a half cups of water for the rice to cook.",
       "Once the rice is done put everything in the oven."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12700,6 +13393,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In the meantime, heat more olive oil another pan. Peel the onions and cut into thin rings. Fry for 15 minutes until golden brown, turning them often. Add the Ras el hanout at the end.",
       "Cut the pumpkin into 5cm cubes and fry in the same pan you used for the potatoes for 10-15 minutes until it is soft and slightly browned. Place on kitchen paper.",
       "Pour the remaining olive oil out of the pan and put all the cooked vegetables into the pan and mix. Whisk eggs and pour them over the vegetables. Put the lid on the pan so that the eggs cook. Put the contents of the pan onto a large chopping board, add salt and pepper and chopped and mix everything with a big knife."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -12743,6 +13440,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add a layer of cheese over the meat. You can also use grated cheese. When done put in the oven for a few minutes until the cheese is melted.",
       "Chop the lettuce, tomato and cucumber in small pieces and mix together. for a basic salad. As extra you can add olives jalapenos and a red union.",
       "Dived the salad over the dish and Serve with garlicsauce and hot sauce"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -12786,7 +13486,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Form into a sausage and cut 6 patties. Using a knife make a light grid pattern in each patty.",
       "Brown both sides of the karbonader in butter on high heat, then turn down to low heat and fry for another 2 – 3 minutes.",
       "Serve the karbonader and onions with potatoes, stewed peas, and brown sauce for dinner, or on a slice of bread for lunch or a snack."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52820,
@@ -12843,7 +13544,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the chicken: Season both sides of chicken breasts with salt and pepper. Place flour, egg and breadcrumbs in separate bowls and arrange in a row. Coat the chicken breasts in flour, then dip them into the egg, then coat in breadcrumbs, making sure you cover both sides.",
       "Heat oil in large frying pan over medium-high heat. Place chicken into hot oil and cook until golden brown, about 3 or 4 minutes each side. Once cooked, place on kitchen paper to absorb excess oil.",
       "Pour curry sauce over chicken, serve with white rice and enjoy!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52887,
@@ -12889,7 +13591,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the rice, heat the oil in a large, lidded pan, add the onion, then gently fry for 5 mins until softened but not coloured. Add the spices, season with salt, then continue to fry until the mix start to go brown and fragrant; about 3 mins.",
       "Add the rice and stir in well. Add 600ml water, stir, then bring to the boil. Reduce to a simmer, then cover for 10 mins. Take off the heat and leave to stand, covered, for 10-15 mins more. The rice will be perfectly cooked if you do not lift the lid before the end of the cooking.",
       "Meanwhile, put the haddock and bay leaves in a frying pan, cover with the milk, then poach for 10 mins until the flesh flakes. Remove from the milk, peel away the skin, then flake the flesh into thumbsize pieces. Place the eggs in a pan, cover with water, bring to the boil, then reduce to a simmer. Leave for 4½-5 mins, plunge into cold water, then peel and cut the eggs into quarters. Gently mix the fish, eggs, parsley, coriander and rice together in the pan. Serve hot, sprinkled with a few extra herbs."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52974,
@@ -12927,7 +13630,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the vegetable oil in a large frying pan over medium-high heat. Add the lamb and cook until browned on all sides, about 5 minutes. Season with saffron, salt and pepper to taste; stir in all but 4 tablespoons of the onion, and pour in the water. Bring to the boil, then cover, reduce heat to medium-low, and simmer until the lamb is tender, about 15 minutes.",
       "Uncover the pan, stir in the butter and allow the sauce reduce 5 to 10 minutes to desired consistency. Season to taste with salt and pepper, then pour into a serving dish. Sprinkle with the remaining chopped onions and parsley. Garnish with lemon wedges to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52813,
@@ -12985,6 +13689,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let chicken pieces rest for 5 minutes so crust has a chance to dry a bit.",
       "Fry chicken in batches. Breasts and wings should take 12-14 minutes, and legs and thighs will need a few more minutes. Chicken pieces are done when a meat thermometer inserted into the thickest part reads 165°F.",
       "Let chicken drain on a few paper towels when it comes out of the fryer. Serve hot."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13041,6 +13748,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the paprika, pepper, curry powder, tomato paste, and salt to taste, and stir well.",
       "Add back the excess water that was used for cooking the beef, along with enough extra water to cover. Bring to a boil, reduce heat, and simmer, uncovered, stirring occasionally, for about 1 hour, or until the meat is tender and the sauce is thickened. Add additional water if your beef curry begins to dry and stick, or if would like your curry to have more of a soupy consistency.",
       "When the beef curry is ready, remove from the heat, give it a taste, and adjust the seasonings as desired. Garnish with fresh chilis and cilantro."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13081,6 +13791,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 160C/fan 140C/gas 3. Whizz the biscuits to crumbs in a food processor (or put in a strong plastic bag and bash with a rolling pin). Mix with the melted butter and press into the base and up the sides of a 22cm loose-based tart tin. Bake in the oven for 10 minutes. Remove and cool.",
       "Put the egg yolks in a large bowl and whisk for a minute with electric beaters. Add the condensed milk and whisk for 3 minutes then add the zest and juice and whisk again for 3 minutes. Pour the filling into the cooled base then put back in the oven for 15 minutes. Cool then chill for at least 3 hours or overnight if you like.",
       "When you are ready to serve, carefully remove the pie from the tin and put on a serving plate. To decorate, softly whip together the cream and icing sugar. Dollop or pipe the cream onto the top of the pie and finish with extra lime zest."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -13135,6 +13849,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 400 degrees F (200 degrees C).",
       "Beat egg yolk and water in a bowl with a fork; brush over the entire surface of the loaf. Sprinkle 1 tablespoon sesame seeds on top.",
       "Bake in the preheated oven until loaf is golden brown, about 20 to 25 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13182,7 +13899,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a large frying pan over a low-medium heat. Add the onion and a pinch of salt and cook slowly, stirring occasionally, until softened and just starting to colour. Add the garlic, ginger and coriander stalks and cook for a further 2 mins, until fragrant.",
       "Add the spices to the pan and cook for another 1 min, by which point everything should smell aromatic. Tip in the chopped tomatoes and kidney beans in their water, then bring to the boil.",
       "Turn down the heat and simmer for 15 mins until the curry is nice and thick. Season to taste, then serve with the basmati rice and the coriander leaves."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53216,
@@ -13238,6 +13956,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Boil water in a pan and dissolve sugar in it for 4–5 minutes. OR cook it until slightly thicken and keep on stirring. Add lemon juice with rose water, mix well.",
       "Evenly pour the syrup over the kunafa as soon as it comes out of the oven.",
       "Your kunafa is ready to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13280,6 +14001,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Tip the mince into a large bowl (use a clean washing-up bowl if you don’t have anything big enough) with all the other burger ingredients and a good pinch of salt. Roll up your sleeves, get your hands into the mix and squelch everything together through your fingers until completely mixed. Pat the mix into 16 small burgers. These may now be frozen for up to 1 month or chilled up to a day ahead.",
       "To cook, heat grill to its highest setting and lay the burgers in a single layer on a baking tray (you may need to do this in batches, depending on how big your tray is). Grill on the highest shelf for 5-6 mins on each side until browned and cooked through. Pile burgers onto a platter and serve with all the accompaniments, so everyone can construct their own sandwich."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -13321,6 +14046,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cook the lentils. Bring lentils and 4 cups of water to a boil in a medium pot or saucepan over high heat. Reduce the heat to low and cook until lentils are just tender (15-17 minutes). Drain from water and season with a little salt. (Note: when the lentils are ready, they should not be fully cooked. They should be only par-cooked and still have a bite to them as they need to finish cooking with the rice). Now, for the rice. Drain the rice from its soaking water. Combine the par-cooked lentils and the rice in the saucepan over medium-high heat with 1 tbsp cooking oil, salt, pepper, and coriander. Cook for 3 minutes, stirring regularly. Add warm water to cover the rice and lentil mixture by about 1 1/2 inches (you’ll probably use about 3 cups of water here). Bring to a boil; the water should reduce a bit. Now cover and cook until all the liquid has been absorbed and both the rice and lentils are well cooked through (about 20 minutes).  Keep covered and undisturbed for 5 minutes or so. Now make the pasta. While the rice and lentils are cooking, make the pasta according to package instructions by adding the elbow pasta to boiling water with a dash of salt and a little oil. Cook until the pasta is al dente. Drain. Cover the chickpeas and warm in the microwave briefly before serving.",
       "Make the crispy onion topping.",
       "Sprinkle the onion rings with salt, then toss them in the flour to coat. Shake off excess flour. In a large skillet, heat the cooking oil over medium-high heat, cook the onion rings, stirring often, until they turn a nice caramelized brown. Onions must be crispy, but not burned (15-20 minutes)."
+    ],
+    "appliances": [
+      "microwave"
     ]
   },
   {
@@ -13372,7 +14100,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Dissolve yeast in warm water in 2 1/2-quart bowl. Add milk, sugar, salt, eggs, shortening and 2 cups flour. Beat on low for 30 seconds, scraping bowl constantly. Beat on medium speed for 2 minutes, scraping bowl occasionally. Stir in remaining flour until smooth. Cover and let rise until double, 50-60 minutes. (Dough is ready when indentation remains when touched.) Turn dough onto floured surface; roll around lightly to coat with flour. Gently roll dough 1/2-inch thick with floured rolling pin. Cut with floured doughnut cutter. Cover and let rise until double, 30-40 minutes.",
       "Heat vegetable oil in deep fryer to 350°. Slide doughnuts into hot oil with wide spatula. Turn doughnuts as they rise to the surface. Fry until golden brown, about 1 minute on each side. Remove carefully from oil (do not prick surface); drain. Dip the doughnuts into creamy glaze set on rack.",
       "Heat butter until melted. Remove from heat. Stir in powdered sugar and vanilla until smooth. Stir in water, 1 tablespoon at a time, until desired consistency."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52978,
@@ -13409,7 +14138,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Grate (roughly – you can use as much as you like) 150g of cheese.",
       "Finely chop one onion and one sweet red pepper.",
       "Put these ingredients into a large bowl with a good sprinkling of salt and pepper, chilli flakes (optional)."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52945,
@@ -13457,7 +14187,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a glass dish or bowl, combine half of the sake mixture with the chicken pieces and toss to coat. Cover dish and place in refrigerator for about 30 minutes.",
       "In a medium frying pan, combine remaining sake mixture, chillies, vinegar and sugar. Mix together and add spring onion, garlic, water chestnuts and peanuts. Heat sauce slowly over medium heat until aromatic.",
       "Meanwhile, remove chicken from marinade and sauté in a large frying pan until juices run clear. When sauce is aromatic, add sautéed chicken and let simmer together until sauce thickens."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52946,
@@ -13502,7 +14233,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix the cornflour and 1 tbsp soy sauce, toss in the prawns and set aside for 10 mins. Stir the vinegar, remaining soy sauce, tomato purée, sugar and 2 tbsp water together to make a sauce.",
       "When you’re ready to cook, heat a large frying pan or wok until very hot, then add 1 tbsp oil. Fry the prawns until they are golden in places and have opened out– then tip them out of the pan.",
       "Heat the remaining oil and add the peanuts, chillies and water chestnuts. Stir-fry for 2 mins or until the peanuts start to colour, then add the ginger and garlic and fry for 1 more min. Tip in the prawns and sauce and simmer for 2 mins until thickened slightly. Serve with rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53128,
@@ -13566,6 +14298,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once the cake has cooled, cut it in half. You can use scissors for this, or a knife on a cutting board, slicing through the baking paper as well.",
       "Place half of the cake on a serving platter with the meringue side down and peel off the baking paper.",
       "Spread the cream filling across the cake. Then carefully remove the other half of the cake from the baking paper and place it over the cream filling, meringue side up."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13607,7 +14342,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a medium saucepan and add the chilli. Cook for 1 min, then add the curry paste, stir and cook for 1 min more. Dissolve the stock cube in a large jug in 700ml boiling water, then pour into the pan and stir to combine. Tip in the coconut milk and bring to the boil.",
       "Add the fish sauce and a little seasoning. Toss in the noodles and cook for a further 3-4 mins until softening. Squeeze in the lime juice, add the prawns and cook through until warm, about 2-3 mins. Scatter over some of the coriander.",
       "Serve in bowls with the remaining coriander and lime wedges on top for squeezing over."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53277,
@@ -13652,7 +14388,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat 2 tsp oil in a pan and soften the onions for 5 mins. Add the garlic and spices and cook for a few mins more. Spoon half the onion mixture into a bowl and set aside to cool. Add the tomatoes, sugar and seasoning to the remaining onions in the pan and simmer for about 10 mins until reduced.",
       "Meanwhile, add the mint, lamb, apricots and breadcrumbs to the cooled onions, season and mix well with your hands. Shape into little meatballs.",
       "Heat the rest of the oil in a non-stick pan and fry the meatballs until golden (in batches if you need to). Stir in the sauce with a splash of water and gently cook everything for a few mins until the meatballs are cooked through. Serve with pitta bread and salad."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53009,
@@ -13686,6 +14423,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Pound the garlic with sea salt in a pestle and mortar (or use a small food processor), until the garlic forms a paste. Whisk together the oil, lemon juice, zest, dill and garlic. Mix in the lamb and combine well. Cover and marinate for at least 2 hrs or overnight in the fridge. If you’re going to use bamboo skewers, soak them in cold water.",
       "If you’ve prepared the lamb the previous day, take it out of the fridge 30 mins before cooking. Thread the meat onto the soaked or metal skewers. Heat the grill to high or have a hot griddle pan or barbecue ready. Cook the skewers for 2-3 mins on each side, basting with the remaining marinade. Heat the pitta or flatbreads briefly, then stuff with the souvlaki. Add Greek salad (see 'Goes well with', right) and Tzatziki (below), if you like."
+    ],
+    "appliances": [
+      "grill",
+      "blender"
     ]
   },
   {
@@ -13730,6 +14471,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the drained potato cubes to the lamb.",
       "Turn the mixture into a pie dish or casserole and cover with the shortcrust pastry. Make three slits in the top of the pastry to release any steam while cooking.",
       "Brush with beaten egg and bake for about 40 minutes, until the pastry is golden brown."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -13798,6 +14542,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take another big pan, add thrice the cup of rice you use, and boil it. When it is boiling high, add the rice, salt and jeera and mix well. After 7 minutes exact or when the rice is 80% done. Switch off and drain the rice.",
       "Now, the layering starts. To the lamb, pat and level it. Add the drained hot rice on the top of it. Garnish with fried onions, ghee, mint, coriander leaves and saffron dissolved in milk.",
       "Cover the dish and bake in a 350f oven for 15 minutes or till the cooked but not mushy. Or cook in the stove medium heat for 12 minutes and lowest heat for 5 minutes. And switch off. Mix and serve hot! Notes 1. If you are cooking in oven, do make sure to cook in a big oven safe pan and cover it tight and then keep in oven for the final step. 2. You can skip biryani masala if you don’t have and add just garam masala (1 tsp and red chilli powder – 3 tsp instead of 1 tsp) 3. If it is spicy in the end, squeeze some lemon, it will reduce the heat and enhance the flavors also."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -13845,7 +14593,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour 2/3 cup (150 milliliters) of stock into the pan. Bring to a boil, then lower the heat, cover, and simmer for 1 hour, or until the lamb is tender.",
       "Add the remaining stock and bring to a boil. Add rinsed long-grain white rice and a large pinch of saffron. Stir, then cover, and simmer for 15 minutes, or until the rice is tender.",
       "Add the drained raisins, drained chopped prunes, and salt and pepper to taste. Heat through for a few minutes, then turn out onto a warmed serving dish and garnish with sprigs of flat-leaf parsley."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52808,
@@ -13896,6 +14645,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the onions in a food processor and whizz until very finely chopped. Heat the oil in a large heavy-based pan, then fry the onion with the lid on, stirring every now and then, until it is really golden and soft. Add the garlic and ginger, then fry for 5 mins more.",
       "Tip the curry paste, all the spices and the bay leaves into the pan, with the tomato purée. Stir well over the heat for about 30 secs, then add the meat and 300ml water. Stir to mix, turn down the heat, then add the yogurt.",
       "Cover the pan, then gently simmer for 40-60 mins until the meat is tender and the sauce nice and thick. Serve scattered with coriander, with plain basmati or pilau rice."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -13948,7 +14700,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the diced lamb and brown all over. Stir in the garlic and all the spices and cook for a few mins more or until the aromas are released.",
       "Add the honey and apricots, crumble in the stock cube and pour over roughly 500ml boiling water or enough to cover the meat. Give it a good stir and bring to the boil. Turn down to a simmer, put the lid on and cook for 1 hour.",
       "Remove the lid and cook for a further 30 mins, then stir in the squash. Cook for 20 – 30 mins more until the squash is soft and the lamb is tender. Serve alongside rice or couscous and sprinkle with parsley and pine nuts, if using."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52782,
@@ -14013,7 +14766,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "While the sauce is bubbling away, prepare the vine leaves. Use any torn or broken leaves to line the base of a wide, heavy saucepan. Trim any leaves from the fennel, cut it vertically into 0.5cm-thick slices and spread over the base of the pan to cover completely.",
       "Lay a prepared vine leaf (see intro) on a work surface, veiny side up. Put two teaspoons of filling at the base of the leaf in a 2cm-long by 1cm-wide strip. Fold the sides of the leaf over the filling, then roll it tightly from bottom to top, in a cigar shape. Place in the pan, seam down, and repeat with the remaining leaves, placing them tightly next to each other in lines or circles (in two layers if necessary).",
       "Pour the sauce over the leaves (and, if needed, add water just to cover). Place a plate on top, to weigh the leaves down, then cover with a lid. Bring to a boil, reduce the heat and cook on a bare simmer for 70 minutes. Most of the liquid should evaporate. Remove from the heat, and leave to cool a little - they are best served warm. When serving, bring to the table in the pan - it looks great. Serve a few vine leaves and fennel slices with warm rice. Spoon the braising juices on top and garnish with coriander."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53010,
@@ -14056,6 +14810,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the bulghar into a pan, cover with water and boil for 10 mins. Drain really well in a sieve, pressing out any excess water.",
       "To make the tzatziki, squeeze and discard the juice from the cucumber, then mix into the yogurt with the chopped mint and a little salt.",
       "Work the bulghar into the lamb with the spices, garlic (if using) and seasoning, then shape into 4 burgers. Brush with a little oil and fry or barbecue for about 5 mins each side until cooked all the way through. Serve in the buns (toasted if you like) with the tzatziki, tomatoes, onion and a few mint leaves."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -14110,6 +14867,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the icing, whisk together the melted butter and milk in a bowl. Sieve the cocoa powder and icing sugar together in a seperate bowl. Gradually add the cocoa and sugar to the butter and milk mixture, whisking continuously to ensure there are no lumps. If it gets lumpy, whizz with a hand blender until smooth.",
       "Divide the coconut between three shallow bowls (this keeps it from getting coated in too much chocolate whilst you’re dipping).",
       "Dip each lamington in the icing until completely covered. Roll in the coconut and set on a wire rack. Repeat with the remaining sponges. Chill for a minimum of 1 hr."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -14151,6 +14912,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 160C/fan 140C/gas 3. Heat some dripping or butter in a large shallow casserole dish, brown the lamb in batches, lift to a plate, then repeat with the kidneys.",
       "Fry the onions and carrots in the pan with a little more dripping until golden. Sprinkle over the flour, allow to cook for a couple of mins, shake over the Worcestershire sauce, pour in the stock, then bring to the boil. Stir in the meat and bay leaves, then turn off the heat. Arrange the sliced potatoes on top of the meat, then drizzle with a little more dripping. Cover, then place in the oven for about 1½ hrs until the potatoes are cooked.",
       "Remove the lid, brush the potatoes with a little more dripping, then turn the oven up to brown the potatoes, or finish under the grill for 5-8 mins until brown."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -14190,7 +14955,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a small bowl, combine the first four ingredients; spread on four slices of bread. Layer with bacon, tomato and cheese; top with remaining bread.",
       "In a large skillet or griddle, melt 2 tablespoons butter. Toast sandwiches until lightly browned on both sides and cheese is melted, adding butter if necessary.",
       "Nutrition Facts 1 sandwich: 445 calories, 24g fat (12g saturated fat), 66mg cholesterol, 1094mg sodium, 35g carbohydrate (3g sugars, 2g fiber), 21g protein."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52844,
@@ -14245,6 +15011,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir in the tomato purée and cook for 1 min, mixing in well with the beef and vegetables. Tip in the chopped tomatoes. Fill each can half full with water to rinse out any tomatoes left in the can, and add to the pan. Add the honey and season to taste. Simmer for 20 mins.",
       "Heat oven to 200C/180C fan/gas 6. To assemble the lasagne, ladle a little of the ragu sauce into the bottom of the roasting tin or casserole dish, spreading the sauce all over the base. Place 2 sheets of lasagne on top of the sauce overlapping to make it fit, then repeat with more sauce and another layer of pasta. Repeat with a further 2 layers of sauce and pasta, finishing with a layer of pasta.",
       "Put the crème fraîche in a bowl and mix with 2 tbsp water to loosen it and make a smooth pourable sauce. Pour this over the top of the pasta, then top with the mozzarella. Sprinkle Parmesan over the top and bake for 25–30 mins until golden and bubbling. Serve scattered with basil, if you like."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14292,7 +15061,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In the meantime toast the cumin in a small ungreased frying pan, then grind them in a mortar. Add the garlic and salt and pound to a fine paste.",
       "Add the paste and the harissa to the soup and simmer until the chickpeas are tender, about 30 minutes.",
       "Season to taste with salt, pepper and lemon juice and serve hot."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53211,
@@ -14338,6 +15108,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the ginger, garlic, lemongrass, coriander and 1 chilli in a food processor, then pulse until puréed. Heat the oil in a pan over a low heat. Add the purée and cook for 5 mins. Stir in the beef, soy, five-spice, sugar and stock. Put on a lid and bring to the boil, then lower heat and simmer for 1 hr 15 mins. Remove the lid and cook for a further 15 mins until the beef is tender.",
       "Just before serving, prepare noodles following pack instructions. Drain well, then divide between 2 bowls and spoon over the beef stew. Serve sprinkled with the remaining chilli and coriander leaves, with lime wedges for squeezing over."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -14386,7 +15159,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Enjoy hot, with bread on the side.",
       "Toasting the corn slightly before adding it to the stew enhances its flavor.",
       "Add a spoonful of paprika or a dash of cumin for an extra layer of warmth and complexity"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52947,
@@ -14447,7 +15221,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir the water starch and then pour half of the mixture to the simmering pot. Wait for around 30 seconds and then pour the other half. You can slightly taste the tofu and add pinch of salt if not salty enough. By the way, if you feel it is too spicy, add some sugar can milder the taste. But be carefully as the broth is very hot at this point.",
       "Transfer out when almost all the seasonings stick to tofu cubes. Sprinkle Szechuan peppercorn powder (to taste)and chopped garlic greens if using.",
       "Serve immediately with steamed rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52900,
@@ -14487,6 +15262,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spoon the mixture into the prepared tin and lightly level the top. Bake on the middle shelf of the oven for 30-40 minutes, or until golden-brown on top and a skewer inserted into the centre comes out clean.",
       "Remove from the oven and set aside to cool in the tin for 10 minutes, then turn it out on to a wire rack and leave to cool completely.",
       "To serve, decorate the cake with the candied peel."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14530,6 +15308,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take the date filling out of the fridge and start to stuff each dough ball with dates ball.",
       "Then use the mamoul mould to give it this shape.",
       "In a preheated oven 180 degrees, put it for 20 minutes until golden from below and little bit golden from above."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14579,6 +15360,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/180C fan/gas 6, then roast the peanuts on a baking tray for 5 mins until golden brown. When cool enough to handle, roughly chop. Reduce oven to 180C/160C fan/gas 4.",
       "Heat 2 tbsp coconut cream in a large casserole dish with a lid. Add the curry paste and fry for 1 min, then stir in the beef and fry until well coated and sealed. Stir in the rest of the coconut with half a can of water, the potatoes, onion, lime leaves, cinnamon, tamarind, sugar, fish sauce and most of the peanuts. Bring to a simmer, then cover and cook for 2 hrs in the oven until the beef is tender.",
       "Sprinkle with sliced chilli and the remaining peanuts, then serve straight from the dish with jasmine rice."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14619,6 +15403,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Slice and serve hot.",
       "Tenderize the matambre by scoring it lightly on both sides. This helps it cook more evenly and absorb the flavors.",
       "Precook the matambre on the grill before adding the toppings to ensure it's fully cooked without burning the cheese."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -14666,7 +15453,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a frying pan over high heat until it’s shimmering hot. Add the paneer, then turn the heat down a little. Fry until it starts to brown at the edges, then turn it over and brown on each side – the paneer will brown faster than you think, so don’t walk away. Remove the paneer from the pan and drain on kitchen paper.",
       "Put the ginger, cumin, turmeric, ground coriander and chilli in the pan, and fry everything for 1 min. Add the tomatoes, mashing them with the back of a spoon and simmer everything for 5 mins until the sauce smells fragrant. Add a splash of water if it’s too thick. Season well. Add the peas and simmer for a further 2 mins, then stir in the paneer and sprinkle over the garam masala. Divide between two bowls, top with coriander leaves and serve with naan bread, roti or rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53132,
@@ -14721,6 +15509,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pipe or spoon the almond filling onto the shells, filling the shells about 3/4 full.",
       "Bake the mazariner for 20 – 25 minutes, until light golden brown. Cool on a wire rack.",
       "Mix together the powdered sugar and liquid until you get a spreadable glaze. Spread the glaze on top of the mazariner and if you wish, decorate with sprinkles, or anything you like."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -14762,6 +15554,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove from heat and allow to cool.",
       "Place the ugali into a large serving bowl. Wet your hands with water, form a ball and serve.",
       "Steps for Kachumbari: Mix the tomatoes, onions, chili and coriander leaves in a bowl."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14822,6 +15617,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the filling into the pastry-lined tin bit by bit. As you reach the top, form a slight peak. Roll out the reserved pastry and top the pie with it. Pinch the edges to seal and trim the excess. Poke a hole in the top of the pie and insert a small tube made from aluminium foil to allow steam to escape.",
       "Brush the top of the pie with a little beaten egg yolk, and bake in the preheated oven for 30 minutes (put a tray on the shelf below to catch any drips). Then reduce the temperature to 160C/325F/Gas 3 and cook for a further 1¼ hours until golden-brown. Leave to cool completely before refrigerating for two hours, or overnight.",
       "Run a knife around the edge of the pie, remove from the tin and serve with chutneys, salads or pickles."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -14868,7 +15666,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Toss the pasta into the salad bowl with the tomatoes and basil.",
       "Add the sliced olives, drained mozzarella balls, and chunks of tuna. Mix well and let the salad rest for at least half an hour to allow the flavours to mingle.",
       "Sprinkle the pasta with a generous grind of black pepper and drizzle with the remaining olive oil just before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53048,
@@ -14923,6 +15722,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To fry one portion of mee goreng mamak, heat oil and add 1/4 of the following ingredients in this order: garlic, onion, paste. Sauté until fragrant. Optionally, add prawns.",
       "Add in 1/4 amount of tofu, boiled potatoes, cabbage, Chinese flowering cabbage and prawn fritters. Sauté for another 30 seconds.",
       "Add noodles to the wok. Add 3 tablespoons of dark soy sauce mixture. Mix evenly for the next 1 minute. Then, move the noodles to the side of the wok. Stir in an egg. Garnish with a slice of lime and slices of green chilies. To cook another plate of noodles, repeat from step 5 onwards."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -14953,7 +15755,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat 2 tsp of olive oil in a deep pan. Add the garlic cloves separated, skins on; just make a small cut with a knife to open them and keep frying for 5 minutes. Set the garlic aside.",
       "In the same oil, where we fried everything, simmer the bread, stirring constantly for 15 minutes and add a grinding of black pepper.",
       "Add the garlic, continue stirring for about 20 minutes. It will be ready when the bread is soft and golden."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53135,
@@ -14991,7 +15794,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Serve: Serve hot with lemon wedges or a side salad.",
       "For an extra crispy crust, use panko breadcrumbs mixed with finely grated Parmesan cheese.",
       "Gently pound the cutlets to an even thickness for uniform cooking."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52991,
@@ -15029,6 +15833,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Top the pies with their lids, pressing the edges gently together to seal – you don’t need to seal them with milk or egg as they will stick on their own. (The pies may now be frozen for up to 1 month).",
       "Beat 1 small egg and brush the tops of the pies. Bake for 20 mins until golden. Leave to cool in the tin for 5 mins, then remove to a wire rack.",
       "To serve, lightly dust with icing sugar."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15074,6 +15881,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut some leaf shapes out of the pastry trimmings and decorate the top of the pie, sticking them to the pastry with the beaten egg yolk.",
       "Make three or four slits in the pastry to allow the steam to escape, then brush the pie with the rest of the beaten egg yolk and bake in the oven for 20-25 minutes, or until golden-brown.",
       "To serve, slice into wedges."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15114,6 +15924,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spoon 1 tbsp of the plain batter into each hole of the bundt tin. Mix the remaining plain batter with the cocoa powder mixture, then divide this between the holes. Bake for 15-18 mins, or until a skewer inserted into the cakes comes out clean. Leave to cool in the tin for 5 mins, then turn out onto a wire rack and leave to cool completely. Dust with icing sugar to serve.",
       "Pour 1 tablespoon of light batter into each mold. Mix the remaining batter with the stirred cocoa mixture and then fill the molds with a tablespoon.",
       "Bake the mini Bundt cakes in the preheated oven for 15-18 minutes , depending on the size of the molds. After 15 minutes of baking time, use a toothpick to test with a skewer and, if necessary, bake for another 3 minutes. Let the mini Bundt cakes cool down completely in the tin. Then carefully remove from the mold. Dust with some icing sugar and serve. Enjoy your meal!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15163,6 +15976,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make chilli, heat oil in a pan and fry onion for 5 mins until soft. Add spices; fry for 1 min. Stir in beef and cook for a few mins. Add tomato purée, stock and cinnamon. Give it a stir, bring to the boil, then simmer for 15-20 mins until very little liquid is left. Add beans 5 mins before the end of cooking. Check seasoning and cool.",
       "Heat oven to 200C/fan 180C/gas 6. Using a 7cm pastry cutter, stamp out 12 circles from the pastry. Use to line a 12-hole mini muffin tray, prick the base of the pastry with a fork, and bake for 10 mins. Remove from oven and cool on a wire tray. Repeat with remaining pastry.",
       "Meanwhile, cook the potato in boiling water until tender. Drain, mash with soured cream and seasoning, then stir through chives. Spoon 1-2 tsp of chilli mix into the pastry cases and top with a tsp of mash. Ruffle mash with a fork; return to the oven for 15 mins or until golden."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15207,6 +16023,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the beans back to the pot, along with molasses, brown sugar, apple cider vinegar, ground mustard, salt and pepper and 3 cups (750 mL) of reserved bean water.",
       "Bake uncovered for 3 to 5 hours until the beans are tender, and the sauce has thickened, and the edges of the pot get sticky.",
       "(Note: if beans get dry, add another cup of water.)"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15265,6 +16084,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Fire up smoker or grill to 225 degrees, adding chunks of smoking wood chunks when at temperature. When wood is ignited and producing smoke, place brisket in, fat side up, and smoke until an instant read thermometer registers 165 degrees when inserted into thickest part of the brisket, about 6 hours.",
       "Transfer brisket to large roasting pan with V-rack. Place roasting pan over two burners on stovetop and fill with 1-inch of water. Bring water to a boil over high heat, reduce heat to medium, cover roasting pan with aluminum foil, and steam brisket until an instant read thermometer registers 180 degrees when inserted into thickest part of the meat, 1 to 2 hours, adding more hot water as needed.",
       "Transfer brisket to cutting board and let cool slightly. Slice and serve, preferably on rye with mustard."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -15309,6 +16132,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Grind the baked carrot mixture along with some water to make a smooth paste and strain in a bowl.",
       "Heat the carrot mixture in a non-stick pan. Add two cups of water and bring to a boil. Add garam masala powder and mix. Add salt and mix well.",
       "Remove from heat, add lemon juice and mix well."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15347,6 +16173,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the grill to high. Brown the beef in a deep ovenproof frying pan over a high heat for 5 mins. Meanwhile, prick the aubergine with a fork, then microwave on High for 3-5 mins until soft. Mix the yogurt, egg and parmesan together, then add a little seasoning.",
       "Stir the tomatoes, purée and potatoes in with the beef with some seasoning and heat through. Smooth the surface of the beef mixture with the back of a spoon, then slice the cooked aubergine and arrange on top. Pour the yogurt mixture over the aubergines, smooth out evenly, then grill until the topping has set and turned golden."
+    ],
+    "appliances": [
+      "grill",
+      "microwave"
     ]
   },
   {
@@ -15387,7 +16217,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the oil and garlic to the mulukhyia and lower the heat and simmer for 5-10 minutes Add salt to taste",
       "Serve with a generous amount of lemon juice.",
       "You can serve it with some short grain rice or some pita bread"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52864,
@@ -15438,6 +16269,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 180C/160C fan/gas 4. Bring a large pan of salted water to the boil and get a large bowl of ice water ready. Drop the lasagne sheets into the boiling water for 2 mins or until pliable and a little cooked, then immediately plunge them into the cold water. Using your fingers, carefully separate the sheets and transfer to a clean tea towel. Spread a good spoonful of the sauce on the bottom two thirds of each sheet, then, rolling away from yourself, roll up the shorter ends. Cut each roll in half, then position the rolls of pasta cut-side up in a pie dish that you are happy to serve from at the table. If you have any mushroom sauce remaining after you’ve rolled up all the sheets, simply push it into some of the exposed rolls of pasta.",
       "Pour the rest of the sauce over the top of the pasta, then bake for 10 mins or until the pasta no longer has any resistance when tested with a skewer.",
       "Meanwhile, put the breadcrumbs, the last 2 tbsp olive oil, sage leaves and some seasoning in a bowl, and toss everything together. Scatter the rotolo with the crumbs and sage, then bake for another 10 mins, until the top is golden and the sage leaves are crispy. Leave to cool for 10 mins to allow the pasta to absorb the sauce, then drizzle with a little truffle oil, if you like, before taking your dish to the table."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15479,7 +16313,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Chop the onion and garlic, slice the mushrooms and wash the buckwheat. Heat the oil and lightly sauté the onion. Add the mushrooms and the garlic and continue to sauté. Add the salt, vegetable seasoning, buckwheat and the bay leaf and cover with water. Simmer gently and just before it is completely cooked, add pepper, sour cream mixed with flour, the chopped parsley and vinegar to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53038,
@@ -15515,7 +16350,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Boil the potatoes for 15 mins or until tender. Drain, then mash.",
       "Heat the milk and half the butter in the corner of the pan, then beat into the mash, along with the wholegrain mustard.",
       "Gently fry the spring onions in the remaining butter for 2 mins until just soft but still a perky green. Fold into the mash and serve. Great with gammon or to top a fish pie."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53223,
@@ -15569,6 +16405,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Get another big bowl. Add in egg, chopped tomato, chopped spring onion and minced meat.",
       "Get one 2 sheets of filo pastry or 1 sheet spring roll wrap. Brush it with some butter and then put some filling in the middle. Fold the pastry and brush more butter on the seal part.",
       "Heat a frying pan and add in some oil to cook the parcel until its both sides and 4 edges all turn into golden brown. (Or brush melted butter all over the parcel and bake it in 180°C oven for 10-15 minutes)"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -15619,6 +16458,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Start by making the biscuit base. In a bowl, over a pan of simmering water, melt the butter with the sugar and cocoa powder, stirring occasionally until smooth. Whisk in the egg for 2 to 3 mins until the mixture has thickened. Remove from heat and mix in the biscuit crumbs, coconut and almonds if using, then press into the base of a lined 20cm square tin. Chill for 10 mins.",
       "For the middle layer, make the custard icing; whisk together the butter, cream and custard powder until light and fluffy, then gradually add the icing sugar until fully incorporated. Spread over the bottom layer and chill in the fridge for at least 10 mins until the custard is no longer soft.",
       "Melt the chocolate and butter together in the microwave, then spread over the chilled bars and put back in the fridge. Leave until the chocolate has fully set (about 2 hrs). Take the mixture out of the tin and slice into squares to serve."
+    ],
+    "appliances": [
+      "microwave"
     ]
   },
   {
@@ -15670,7 +16512,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Reduce the heat to medium low and add the leafy green pieces of cabbage into the pan. Cook until the leaves are wilted, about 2 minutes.",
       "Make a cornstarch slurry: In a small bowl, combine the soy sauce, cold water, and cornstarch, stirring to make a slurry. Then pour over the cabbage and continue to cook and stir until a sauce has thickened slightly to the consistency of whole milk.",
       "Season the stir fry: Season the stir fry with salt and pepper, then taste and add more salt and pepper if you wish. The cabbage will be translucent and silky looking, with specks of dried shrimp all over."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53051,
@@ -15731,7 +16574,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, in a large skillet or wok, heat 1 cup vegetable oil over medium-high heat. Stir in peanuts and cook briefly, until lightly browned. Remove peanuts with a slotted spoon and place on paper towels to soak up excess grease. Return skillet to stove. Stir in the contents of one package anchovies; cook briefly, turning, until crisp. Remove with a slotted spoon and place on paper towels. Discard oil. Wipe out skillet.",
       "Heat 2 tablespoons oil in the skillet. Stir in the onion, garlic, and shallots; cook until fragrant, about 1 or 2 minutes. Mix in the chile paste, and cook for 10 minutes, stirring occasionally. If the chile paste is too dry, add a small amount of water. Stir in remaining anchovies; cook for 5 minutes. Stir in salt, sugar, and tamarind juice; simmer until sauce is thick, about 5 minutes.",
       "Serve the onion and garlic sauce over the warm rice, and top with peanuts, fried anchovies, cucumbers, and eggs."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52858,
@@ -15781,6 +16625,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Brush the sides of the springform tin with melted butter and put on a baking sheet. Pour in the filling - if there are any lumps, sink them using a knife - the top should be as smooth as possible. Bake for 10 minutes. Reduce oven temperature to fan 90C/conventional 110C/gas 1⁄4 and bake for 25 minutes more. If you gently shake the tin, the filling should have a slight wobble. Turn off the oven and open the oven door for a cheesecake that's creamy in the centre, or leave it closed if you prefer a drier texture. Let cool in the oven for 2 hours. The cheesecake may get a slight crack on top as it cools.",
       "Combine the reserved soured cream with the 142ml carton, the sugar and lemon juice for the topping. Spread over the cheesecake right to the edges. Cover loosely with foil and refrigerate for at least 8 hours or overnight.",
       "Run a round-bladed knife around the sides of the tin to loosen any stuck edges. Unlock the side, slide the cheesecake off the bottom of the tin onto a plate, then slide the parchment paper out from underneath."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -15826,7 +16674,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Gently fold the whipped cream into the condensed milk mixture until fully combined, being careful not to deflate the cream. Fold in the drained rum-soaked raisins to distribute them evenly.",
       "Pour the mixture into a loaf pan or freezer-safe container. Smooth the top and cover with plastic wrap or an airtight lid. Freeze for at least 6 hours, or until firm.",
       "Let the ice cream sit at room temperature for 5–10 minutes before scooping for the best texture."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53245,
@@ -15872,7 +16721,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Drop the noodles into a large bowl, then pour over enough boiling water to cover. Tip in the sliced sugar snaps and leave for 4 minutes. Drain in a colander, put under cold running water to cool off, then drain again. Tip into a bowl and toss in the sesame oil.",
       "Mix the dressing ingredients. Pile spring onions, coriander and salmon onto the noodles, pour over the dressing and toss everything together. Serve with a pretzel or bread roll."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53117,
@@ -15931,6 +16781,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add ice to a bowl of cold water. Use a slotted spoon to remove the asparagus from the boiling water and immediately transfer to the iced water to stop cooking. Thinly slice the remaining asparagus lengthwise to serve raw.",
       "Pre-heat the grill until hot. Spread the rye bread with butter and grill until golden and crisp.",
       "To serve, place the grilled bread slices on serving plates. Arrange both the blanched and raw asparagus on the bread. Drizzle with horseradish cream, then sprinkle grated cheese over the top. Garnish with the crispy shallots and some fresh dill to finish."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -15974,6 +16827,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spoon about one heaping tablespoon of batter onto iron and bake. If the batter is too thick, add some water to it.",
       "While still hot, shape the krumkake with a wooden krumkake roller or over a cup (if using a cup, make them a bit thicker). The krumkaker harden quickly, so you can just let them sit on the roller/cup until the next krumkake is ready to be shaped.",
       "After completely cooled, store the krumkaker in a metal or glass tin lined with paper towels at the bottom. You can also freeze them!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16023,7 +16879,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Flour your rolling surface and roll the lefse dough into a large circle slightly smaller than your griddle or frying pan. Begin rolling with a smooth rolling pin, then switch to a corrugated rolling pin as the lefse gets thinner. Don't use too much flour, as then the edges can become hard.",
       "Roll the lefse onto your lefse stick and then gently unroll it onto your griddle. After a minute or two check the underside of the lefse for brown spots and then use the lefse stick to flip the lefse and cook on the other side.",
       "Use the lefse stick to remove the lefse from the griddle and place it in a folded damp sheet or tablecloth."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52851,
@@ -16063,6 +16920,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Finely slice a quarter of the chilli, then put the rest in a food processor with the ginger, garlic, coriander stalks and one-third of the leaves. Whizz to a rough paste with a splash of water if needed.",
       "Heat the oil in a frying pan, then quickly brown the chicken chunks for 1 min. Stir in the paste for another min, then add the peanut butter, stock and yogurt. When the sauce is gently bubbling, cook for 10 mins until the chicken is just cooked through and sauce thickened. Stir in most of the remaining coriander, then scatter the rest on top with the chilli, if using. Eat with rice or mashed sweet potato."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -16109,7 +16969,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Grease a hot frying pan with a little butter and pour a little of the mixture.",
       "When it starts to bubble on the surface, turn over with a spatula. Cook over medium-low heat so that they do not burn.",
       "Finally, add the caramel and strawberries."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52810,
@@ -16175,6 +17036,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Finishing the sauce: Set the braising pot on top of the stove and evaluate the sauce: if there is a visible layer of fat floating on the surface, use a large spoon to skim it off and discard it. Taste the sauce for concentration of flavor. If it tastes a bit weak or flat, bring it to a boil over high heat, and boil to reduce the volume and intensify the flavor for 5 to 10 minutes. Taste again for salt and pepper. If the sauce wants more zip, stir in a teaspoon or two of the remaining gremolata.",
       "Portioning the veal shanks: if the shanks are reasonably sized, serve one per person. If the shanks are gargantuan or you’re dealing with modest appetites, pull apart the larger shanks, separating them at their natural seams, and serve smaller amounts. Be sure to give the marrow bones to whomever prizes them most.",
       "Serving: Arrange the veal shanks on warm dinner plates accompanied by the risotto, if serving. Just before carrying the plates to the table, sprinkle on the remaining gremolata and then spoon over a generous amount of sauce – the contact with the hot liquid will aromatize the gremolata and perk up everyone’s appetite with the whiff of garlic and lemon."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16224,7 +17088,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Toss the oxtail with the onion, spring onion, garlic, ginger, chilli, soy sauce, thyme, salt and pepper. Heat the vegetable oil in a large frying pan over medium-high heat. Brown the oxtail in the pan until browned all over, about 10 minutes. Place into a pressure cooker, and pour in 375ml water. Cook at pressure for 25 minutes, then remove from heat, and remove the lid according to manufacturer's directions.",
       "Add the broad beans and pimento berries, and bring to a simmer over medium-high heat. Dissolve the cornflour in 2 tablespoons water, and stir into the simmering oxtail. Cook and stir a few minutes until the sauce has thickened, and the broad beans are tender."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52774,
@@ -16270,7 +17135,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mince garlic into wok with oil. Place over high heat, when hot, add chicken and Chinese broccoli stems, cook until chicken is light golden.",
       "Push to the side of the wok, crack egg in and scramble. Don't worry if it sticks to the bottom of the wok - it will char and which adds authentic flavour.",
       "Add noodles, Chinese broccoli leaves and sauce. Gently mix together until the noodles are stained dark and leaves are wilted. Serve immediately!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53191,
@@ -16318,7 +17184,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the lime juice, cayenne, sugar and fish sauce in a bowl and mix well. Have all the other ingredients ready by the cooker.",
       "Heat the oil and fry the prawns until warmed through. Add the spring onions and noodles and toss around. Tip in the lime juice mixture, then stir in the beansprouts and half the peanuts and coriander. Cook for 1 minute until everything is heated through.",
       "Pile into a large dish, scatter with the rest of the peanuts and coriander, and serve with lime wedges and sweet chilli sauce."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53151,
@@ -16371,7 +17238,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Wipe out the pan and add the rest of the olive oil. Sizzle the chorizo until it releases its oil, then add the onion and garlic and cook until softened. Add the squid and turn over until it turns white. Add the tomatoes and cook down for a minute, then pour over most of the stock, give everything a good stir and bring to the boil. Scatter the rice over the stock, stir well once, then boil vigorously for 5 mins. Reduce the heat to the lowest setting and slowly simmer for 10 mins without stirring until the rice has absorbed most of the liquid.",
       "Tuck the prawn tails into the rice and simmer for 5 mins, turning them over until cooked through. Stir through the mussels and broad beans or peas. Taste the rice – if it is still a little raw but the pan is dry, add a splash more stock and continue to cook; if it’s too soupy, then increase the heat to cook off the last of the stock.",
       "Once the rice is just cooked, turn off the heat and cover with a tea towel for a few minutes. Scatter over the parsley leaves and lemon zest, then season with smoked salt if you like. Stir everything once, then serve straight from the pan, with lemon wedges on the side."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53152,
@@ -16417,7 +17285,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, heat 2 tbsp oil in a frying pan. Fry the bread with the remaining garlic clove. When golden and crisp, scoop out and drain on kitchen paper. Add the chorizo to the pan, fry until crisp, tip out and keep warm with the bread.",
       "Add another 2 tbsp oil and the onion to the pan, and cook for 5 mins until softened. Stir in the paprika. Drain the beans and add to the onions with the chicken stock and 2 tsp salt. Cook for 5-10 mins. Stir through the parsley and keep warm.",
       "Season the hake and heat the remaining 2 tbsp oil in the frying pan. Put the hake, skin-side down, in the pan and cook for 3-5 mins over a mediumhigh heat to crisp up the skin. Flip the fish over and cook for a further 3-5 mins until cooked through. Spoon the white bean mix into bowls, place the hake on top and finish with the fried bread, chorizo and a little more thyme."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53192,
@@ -16481,6 +17350,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add 2-3 tbsp of the thick part of the coconut milk into a saucepan over a medium-high heat. When the coconut milk starts bubbling, add 1-2 tbsp of the curry paste and stir well for about 1 min, until fragrant.",
       "Stir in the chicken and let it cook for about 3-4 mins until beginning to brown all over. Follow with the French beans and stir well.",
       "Season with the fish sauce and sugar, then add the rest of coconut milk. Mix well, add half the makrut lime leaves and simmer for 3-5 mins until the chicken is cooked through. Taste and add more sugar or fish sauce if necessary – it should be salty and nutty, and the sweetness should come through. Add the Thai basil leaves, give it a quick mix and take off the heat. Serve with steamed jasmine rice, garnished with the sliced chilli and the rest of the makrut lime leaves."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -16518,6 +17390,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the flour, eggs, milk, 1 tbsp oil and a pinch of salt into a bowl or large jug, then whisk to a smooth batter. Set aside for 30 mins to rest if you have time, or start cooking straight away.",
       "Set a medium frying pan or crêpe pan over a medium heat and carefully wipe it with some oiled kitchen paper. When hot, cook your pancakes for 1 min on each side until golden, keeping them warm in a low oven as you go.",
       "Serve with lemon wedges and sugar, or your favourite filling. Once cold, you can layer the pancakes between baking parchment, then wrap in cling film and freeze for up to 2 months."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16559,6 +17434,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 160C/140C fan/gas 3. Grease a deep 22cm/9in square cake tin and line with baking parchment. Beat the egg and milk together with a fork.",
       "Gently melt the syrup, treacle, sugar and butter together in a large pan until the sugar has dissolved. Remove from the heat. Mix together the oatmeal, flour and ginger and stir into the syrup mixture, followed by the egg and milk.",
       "Pour the mixture into the tin and bake for 50 mins - 1 hr until the cake feels firm and a little crusty on top. Cool in the tin then wrap in more parchment and foil and keep for 3-5 days before eating if you can – it’ll become softer and stickier the longer you leave it, up to 2 weeks."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16596,7 +17474,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, in clean mixing bowl, using electric mixer, beat egg whites until stiff (peaks of egg whites will not droop, and egg whites will not move when bowl is tilted).",
       "Stir 1/3 egg whites into cooled passion fruit mixture until combined. Using spatula, gently fold in remaining egg whites until combined. Divide mousse evenly among clear glass serving cups; cover. Refrigerate mousse until well chilled, at least 2 hrs.",
       "Serve chilled. Garnish with mint, if desired."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53017,
@@ -16650,6 +17529,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove from heat and let cool, then stir in 1 egg, and season with salt and pepper.",
       "Preheat oven to 350°F.",
       "On a lightly floured surface, roll the dough out into a 13x8\" rectangle (1/8\" thick)."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16696,6 +17578,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a pan and fry the onion for about 5 mins until softened. Add the garlic, chopped tomatoes, tomato purée, sweet paprika, chilli powder, sugar and a pinch of salt, then bring to the boil, stirring occasionally. Lower to a simmer and cook for 10 mins until pulpy. Can be kept chilled for up to 24 hrs.",
       "Heat oven to 200C/180C fan/gas 6. Pat the potatoes dry with kitchen paper, then tip into a roasting tin and toss in the olive oil and some seasoning. Roast for 40-50 mins until crisp and golden. Tip the potatoes into serving dishes and spoon over the tomato sauce. Sprinkle with some fresh parsley to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16742,6 +17627,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a large skillet, brown the onion in the remaining butter. Add the meat and cook until golden brown. Season with salt and pepper. Remove from the heat.",
       "Lightly press the meat at the bottom of a 20-cm (8-inch) square baking dish. Cover with the corn and the mashed potatoes. Sprinkle with paprika and parsley.",
       "Bake for about 30 minutes. Finish cooking under the broiler. Let cool for 10 minutes."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -16788,6 +17677,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the flour into a mixing bowl and add the 50g butter. Rub the butter into the flour until it resembles fine breadcrumbs, then stir in half the sugar. Mix the remaining sugar with the cinnamon and set aside.",
       "Add the milk to the dry ingredients and mix to a soft dough. Turn out onto a lightly floured surface and knead briefly. Roll out to an oblong roughly 16 x 24cm. Brush with melted butter and sprinkle evenly with the spicy sugar. Roll up from one long side and cut into 12 slices. Arrange around the top of the dish, leaving the centre uncovered.",
       "Bake for 20-25 mins, until the topping is crisp and golden. Serve warm."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -16835,6 +17728,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To freeze, leave in the tin and as soon as it is solid, cover the surface with cling film, then wrap the tin with cling film and foil.",
       "To defrost, thaw in the fridge overnight.",
       "To serve, carefully remove from the tin. Whisk the cream with the sugar until it holds its shape, then spread on top of the cheesecake and scatter with the peanut brittle."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -16868,6 +17764,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For extra decoration and to make them cook more evenly, flatten the cookie balls by pressing a fork down on top of them, then press it down again at a 90º angle to make a criss-cross pattern.",
       "Bake for 8-10 minutes or until the bottom of the cookies are golden brown.",
       "Remove from baking sheet and cool."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16911,6 +17810,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/fan 180C/gas 6. Roll the pastry out to the thickness of a £1 coin. Using a plate slightly larger than the top of the pan, cut out a circle, then press the edges of the circle of pastry to thin them out.",
       "When the pears have cooled slightly, arrange them in the pan, cut side up, in a floral shape, with the pears around the edge pointing inwards. Rest the cinnamon stick on the top in the centre, with the cardamom pods scattered around.",
       "Drape the pastry over the pears, then tuck the edges down the pan sides and under the fruit (see Gordon’s guide). Pierce the pastry a few times, then bake for 15 mins. If a lot of juice bubbles up the side of the pan, pour it off at this stage (see guide). Reduce oven to 180C/fan 160C/gas 4 and bake for 15 mins more until the pastry is golden. Leave the tart to stand for 10 mins, then invert it carefully onto a serving dish."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -16962,6 +17864,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 160C/140C fan/gas 3. Grease and line the base and sides of a deep 20cm cake tin with baking parchment. Put the honey, sugar and butter in a medium saucepan and cook over a medium heat until fully melted. Remove from the heat and allow to cool. Put the flour and spices in a large bowl and mix everything together.",
       "Once the liquid ingredients have cooled, whisk in the eggs. Pour over the dry ingredients, whisking them together to form a smooth batter – be careful not to overmix as this can lead to a dry cake. Pour into the prepared tin and bake for 50-55 mins or until risen and a skewer inserted into the middle of the cake comes out clean. Allow the cake to cool in the pan for 20 mins before turning out onto a wire rack to cool completely.",
       "Once cooled, use a large serrated knife to slice the cake into 3 layers. Spread the jam across the 2 bottom cake layers, then reassemble the cake and set aside while you make the glaze. Put the cream, chocolate and honey in a medium pan and cook over a low-medium heat until the chocolate is melted and you have a smooth, pourable mixture. Put the cake on a wire rack set over a parchment-lined baking tray and pour over the glaze, making sure to cover the entire cake. Use a fish slice to carefully transfer the cake to a serving plate and allow the glaze to set. To decorate, dust with a little edible gold powder, if you like. Uniced, this cake will keep for up to 5 days. Once iced, enjoy within 3 days – just keep in the fridge, but remove before serving and eat at room temperature."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17009,6 +17914,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the dough, beat together the eggs and sour cream until smooth. Sift together the flour, salt, and baking powder; stir into the sour cream mixture until dough comes together. Knead the dough on a lightly floured surface until firm and smooth. Divide the dough in half, then roll out one half to 1/8 inch thickness. Cut into 3 inch rounds using a biscuit cutter.",
       "Place a small spoonful of the mashed potato filling into the center of each round. Moisten the edges with water, fold over, and press together with a fork to seal. Repeat procedure with the remaining dough and the sauerkraut filling.",
       "Bring a large pot of lightly salted water to a boil. Add perogies and cook for 3 to 5 minutes or until pierogi float to the top. Remove with a slotted spoon."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17050,7 +17958,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Cook the pasta following pack instructions. Heat the oil in a non-stick frying pan and cook the onion, garlic and chilli for 3-4 mins to soften. Stir in the tomato purée and cook for 1 min, then add the pilchards with their sauce. Cook, breaking up the fish with a wooden spoon, then add the olives and continue to cook for a few more mins.",
       "Drain the pasta and add to the pan with 2-3 tbsp of the cooking water. Toss everything together well, then divide between plates and serve, scattered with Parmesan."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53039,
@@ -17106,6 +18015,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Whizz together all of the marinade ingredients in a small food processor. Rub the marinade onto the chicken and leave for 1 hour at room temperature.",
       "Heat the oven to 190C/fan 170C/gas 5. Put the chicken in a roasting tray and cook for 1 hour 20 minutes. Rest under loose foil for 20 minutes. While the chicken is resting, mix together the slaw ingredients and season. Serve the chicken with slaw, fries and condiments."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -17155,6 +18068,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 180C/160C fan/gas 4. Butter and line a 23cm springform cake tin. Tip 150g of the pistachios into a food processor and blitz until finely ground. Tip into a bowl and mix in the flour, baking powder and pinch of salt. Beat the butter and sugar in a separate bowl until fluffy and pale, around 5 mins. Crack in the eggs one at a time, beating well for 1 min after each addition, until they have all been added. Beat in the vanilla, then fold in the flour mixture gently. Carefully spoon into the prepared tin and bake for 35-40 mins until a skewer inserted into the middle comes out clean. Set aside to cool completely on a wire rack in the tin.",
       "Meanwhile, sift the icing sugar into a bowl, then tip in the mascarpone, double cream and pistachio paste. Beat until well combined, then set aside in the fridge for 20-30 mins to thicken to a spooning consistency.",
       "Cut the cooled cake in half horizontally using a serrated knife, so you have two layers. Put the bottom layer on a plate or cake stand and spread over a generous spoonful of the pistachio cream. Top with a generous handful of the raspberries so the cake is covered. Top with the other sponge half, then cover the top and sides of the cake with the remaining cream. Scatter over the last of the raspberries, the remaining pistachios and the lime zest to serve. Will keep chilled in an airtight container for two days."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -17214,6 +18131,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "I also prepared Kunafa cupcakes. Cut and enjoy. The cake looked so pretty that we could either save it or have it!! ☺",
       "Cross sectional view of the Pistachio Kunafa Chocolate Cake.",
       "Enjoy with a new sweet delicacy this festive season with family and friends."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17263,7 +18183,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Next, throw in the peppers and cook over a medium heat, covered, for about 5 mins, stirring every so often, until the peppers are just tender.",
       "Mix in the oregano, thyme, bay leaves, some black pepper and a little salt, if needed. Tip in the courgettes and aubergine, combine thoroughly, and cook over a medium heat, covered, for 10 mins. Stir in the tomatoes, cover and cook for 20 mins, stirring occasionally.",
       "Carefully crack the eggs over the pisto – try not to break the yolks. Cook in the sauce on a medium heat for 5-6 mins until the eggs are cooked through but still a little soft, then scatter with parsley before serving"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53014,
@@ -17317,6 +18238,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Evenly place the mozzarella (or other cheese) on top, season with the oregano and black pepper, then drizzle with a little olive oil.",
       "Cook in the oven for 10 – 12 minutes until the cheese slightly colours.",
       "When ready, place the basil leaf on top and tuck in!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17363,6 +18287,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the meringue, whisk the whites until stiff, then gradually whisk in the sugar, one tablespoon at a time. When you have a stiff and shiny meringue, fold in the finely chopped walnuts, flour and startch. Spread the mixture into the re-lined tin and cook for 40 mins on the same heat. Remove from the oven and leave to cool.",
       "For the chocolate glaze, heat the cream over low heat, then remove from the heat, pour the chopped chocolate into it and mix it until it melts and becomes shiny.",
       "Cut the cooled chocolate sponge cake and meringue into two layers. Put the nut meringue on top of the bottom layer of sponge and sprinkle on some of the reserved walnuts. Add another layer of meringue and then the upper layer of chocolate sponge cake and cover the top with chocolate glaze. Decorate with walnuts. Put the finished cake in the fridge for 1-2 hrs before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17425,7 +18352,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the dough stops sticking to your hands, pour in the cooled melted butter and knead for a few more minutes. Cover with a cloth and leave in a warm place to rise for at least 1 hr-1 hr 30 mins.",
       "Mix the jam with the ground almonds and spoon into a piping bag or jam syringe. Divide the dough into 16 pieces and shape them into doughnuts. Cover and leave to rise for 30 mins.",
       "Fill a deep pan or a deep fat fryer one third full of oil or melted lard and heat it until it is 180C – if you don’t have a thermometer, drop in a small chunk of bread. The oil is ready when it browns in about 30 secs. Add the doughnuts and fry, turning them once for about 1-2 mins on each side (a thin lighter ring should form in the middle). After removing, drain the doughnuts of excess fat on some kitchen paper."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53299,
@@ -17463,7 +18391,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Soak the bread roll in the milk so it softens completely. Meanwhile, fry the onion in the oil for around 8 mins or until soft and golden. Add the fried onion to the beef mince along with the egg, garlic, marjoram and some seasoning. Squeeze the excess milk from the bread roll and add it to the mince mixture. Mix everything together and season well.",
       "Divide the meat into 8 patties. Tip the dried breadcrumbs into a shallow bowl and coat the patties in it, all over. Heat some oil in a deep frying pan and fry the patties in batches on both sides until browned and cooked through, about 6-7 mins on each side."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53162,
@@ -17520,6 +18449,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove all but about 2 tbsp of chicken fat from the pan and cook the onion, carrot and celery until golden. Add the sherry, stirring to dislodge any brown bits that have stuck to the pan. Pour in the stock and the saffron (with its water), and bring to the boil, then turn the heat down to a simmer. Add the spices and bay leaves, and put the chicken back in the pan with any juices. Season and gently cook the chicken for about 40 mins with the lid on.",
       "Transfer the chicken to a bowl again, leaving the sauce in the pan, and cover with foil to keep warm. Remove the yolks from the eggs and roughly chop the whites. Mash the egg yolks in a small bowl and gradually mix in a couple of tbsp of the sauce. Bring the remaining sauce to the boil to reduce a bit (you want it to just coat the chicken), then turn the heat down. Remove the bay and cinnamon stick. Add the egg yolks and cook for a few mins until the mixture has thickened. Stir in the almond mixture that you made earlier (this will thicken the sauce, too). Put the chicken back in the pan and heat it for about 3 mins, spooning the sauce over it. Season to taste.",
       "Scatter over the extra parsley, the almonds pieces and the chopped egg whites (if you’re going to use them). You can serve this straight from the dish with some rice, if you like."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -17560,7 +18492,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the pancake starts pulling away a bit from the sides, and the top is no longer wet, flip it and cook shortly on the other side as well.",
       "Transfer to a plate. Cook the remaining batter until all used up.",
       "Serve warm, with the filling of your choice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53297,
@@ -17603,7 +18536,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Combine the olive oil, lemon juice, honey and thyme leaves in a large bowl. Season well, then tip in the lettuce, tomatoes, spring onions and chilli, and toss to combine.",
       "Scoop out the pomegranate seeds over a bowl and remove any white membrane. Arrange the dressed salad on a platter, then scatter over the pomegranate seeds and feta."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53301,
@@ -17649,7 +18583,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour in half of the stock, add the bay leaves, and simmer with the lid on over a low heat for 30 mins.",
       "Add the sauerkraut, remaining stock and a drizzle of the sauerkraut pickling juices. Simmer with the lid for 30 mins, stirring occasionally, until the meat is tender. Stir in the cream and simmer for 5 mins to combine the flavours. Season to taste, the serve garnished with a spoonful of soured cream.",
       "This recipe has been provided by Apetit Online and not been re-tested by us."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52847,
@@ -17702,6 +18637,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 140C/120C fan/gas 1. Put a large ovenproof pan (with a tight-fitting lid) on a high heat. Add your fat and diced meat, cook for a few mins to seal the edges, giving it a quick stir to cook evenly. Reduce the heat to low, add the sliced onion, whole garlic cloves, carrot and fennel seeds, and cook gently to soften the veg for a few mins.",
       "Pour over the red wine vinegar, scraping any meaty bits off the bottom of the pan. Add the stock, tomato purée, and half the rosemary and parsley. Bring to the boil and simmer for 10 mins, then season, cover with a lid and put into the oven for 2 hrs, removing the lid for the final hour of cooking. Stir occasionally and add the beans with 30 mins to go.",
       "Remove the pan from the oven and heat the grill. Scatter the top with the remaining herbs and breadcrumbs, drizzle a little oil over the top, and return to the oven for 5-10 mins, until the breadcrumbs are golden. Serve with crusty bread and green veg."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -17755,7 +18694,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cut the meat into large pieces, put in your largest saucepan and cover with 5 litres water. Bring to the boil over a high heat, skimming away any foam that rises to the surface. Add the bay leaves. Season. Turn the heat down to a simmer and cook for 1 hr, or until the meat is soft and falls off the bone. Add the beans if using dried.",
       "Turn the heat up. Bring back to the boil, then reduce the heat and simmer for another 20 mins – the beans should still be slightly raw. Add the carrots, onions, garlic and pepper. Stir well, then add the chillies, if using. Cook for 15 mins more.",
       "Stir in the beetroot and cook for 10 mins before adding the potatoes. After 15 mins, add the tomato purée to taste and beans, if using canned, and bring to the boil. Cook for 5 mins, add the cabbage and cook for 5 mins more. Season, then garnish with the parsley and dill. Turn off the heat and leave to stand for 5 mins. Serve with soured cream on the side."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53044,
@@ -17799,6 +18739,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a deep fryer or a deep heavy-based pan with a lid to 130C and lower the chips into the oil (in batches). Blanch for 8-10 minutes. Remove from the oil and drain well. Place on a tray to cool. Reheat the oil to 180C (make sure it’s hot or your chips will be soggy) and lower the basket of chips into the oil (again, do this in batches). Leave to cook for 2 minutes and then give them a little shake. Cook for another minute or so until they are well coloured and crisp to the touch. Drain well for a few minutes, tip into a bowl and sprinkle with sea salt.",
       "The pork will cook quickly so do it in 2 batches. Take the pieces out of the marinade, rub them with oil, and drop them onto the barbecue (you could also use a chargrill). Cook for 1 minute on each side – they may flare up as you do so. This should really be enough time as they will keep on cooking. Take them off the barbecue and pile onto a plate. Repeat with the remaining batch.",
       "Serve by piling a plate with chips, drop the pork on top of each pile and pouring the juices from the plate over so the chips take up the flavours. Top with a spoon of mayonnaise and a wedge of lemon."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -17852,6 +18795,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add syrup to custard Add the cooled sugar syrup to the custard and whisk until thickened slightly.",
       "Pour custard into the tins Pour the custard through a sieve. Pour into the pastry cases and bake for 15 minutes until the pastry is golden and the custard has darkened.",
       "cool and dust with icing sugar Cool completely in the tins then sift over icing sugar and ground cinnamon to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -17907,7 +18853,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a drizzle of oil in a large, deep-sided frying pan, and fry the onion and pepper on a medium heat until softened but not browned. Finely chop the coriander stalks (keep the leaves for later), and add to the pan with the chilli and chopped garlic. Fry for another few minutes. Add the wine, saffron and bay leaf and let it simmer until reduced by half.",
       "Add the potatoes, tomatoes, and 300ml water and bring to a gentle boil. Break up the tomatoes with a spoon on the side of the pan and simmer for 20-25 minutes until the potatoes are just tender, and the tomatoes have broken down.",
       "Season well, then gently push the fish into the sauce, and arrange the squid, prawns, clams and mussels on the surface. Put the lid on and cook for 6-8 minutes until the mussel and clam shells have opened, the prawns are cooked and the fish is flaky. Toast the bread, rub lightly with the halved garlic clove and drizzle with olive oil. Serve the stew scatted with chopped coriander leaves, and the toasts for dunking."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53042,
@@ -17959,6 +18906,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the sauce, put all the ingredients into a blender with 1 tbsp water and whizz until as smooth as possible. This will make more than you’ll need for the recipe but will keep for a week in an airtight jar.",
       "Heat a griddle or frying pan to high. Brush away the garlic and parsley stalks from the steaks and season well. Sear the steaks for 2 minutes on each side then rest on a plate. Put the ciabatta halves onto the plate, toasted-side down, to soak up any juices.",
       "Slice the steaks then stuff into the rolls with the green sauce and rocket."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -18011,6 +18961,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Gently pour one third of the egg whites on top of the mixed egg yolks and sift the flour and cornstarch on top. Don't skip this step. It is important that the flour mix was sifted. Gently mix all ingredients with a spatula. Try to incorperate the flour mix and egg whites without losing volume. Add the last two thirds of beaten egg whites and gently fold the mixture. Don't overmix. Put batter into the prepared cake pans and immediately bake. Don't let the batter sit for too long as it will quickly lose volume. Bake for 35 minutes if using one springform or 25 minutes if using two. Let cool a little before gently getting them out of the form. Tip: if making the day before, wrap in cling wrap, it is much easier to cut in half once cold.",
       "For the meringue beat egg white until soft peaks form, add pinch of salt and continue beating on high while adding the sugar. Beat for at least three more minutes until glossy and shiny. Pipe small stars or other shapes with the meringue on a baking sheet lined with parchment paper. Dry for about 45min at 100 degrees Celsius in the oven. Keep in airtight container until further use.",
       "For the filling beat heavy cream, vanilla extract and sugar until stiff peaks form, slice peaches in thin slices. Cut cake in four layers, this is much easier done once the cake layers are cold. Brush cake layer with some of the peach juice left, then pipe thin layer of whipped cream around the edges, place the peach slices in the middle on first layer on cake, on the second layer only spread the dulce de leche. Repeat layer with brushed peach juice, whipped cream and peaches for the third and final layer. Be sure to reserve enough peach slices for the top. Spread thin layer of whipped cream on the sides of the cake and pipe on some roses around the edges if desired. Heat the peach juice and mix the cornstarch with a bit of water until you see no lumps. Once juice is hot, add the cornstarch and stir until glaze thickenes. Pour over peaches of the top layer cake. Crush the meringue and pat around the sides. Serve immediately."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18052,6 +19005,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "minute potato gratin with chicken and bacon greens: a gratin always seems more effort and more indulgent than ordinary boiled or roasts, but it doesn't have to take 45mins, it's nice for a change and you can control the calorie content by going with full fat to low fat creme fraiche. (It's always tastes better full fat though obviously!) to serve 4: use 800g of potatoes, finely slice and boil in a pan for about 5-8 mins till firmish, not soft. Finely slice 3 onions and place in an oven dish with 2 tblsp of olive oil and 100ml of chicken stock. Cook till the onions are soft then drain the potatoes and pour onto the onions. Season and spoon over cream or creme fraiche till all is covered but not swimming. Grate Parmesan over the top then finish under the grill till nicely golden. serve with chicken and bacon, peas and spinach."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -18101,7 +19058,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a large bowl, combine potatoes, carrots, sausage, pickles, peas and green onions.",
       "Add mayo and dill and mix until well combined.",
       "Salt and pepper to taste. Cover with a plastic wrap and refrigerate for at least 1 hour before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52932,
@@ -18152,6 +19110,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Reduce heat and and gently cook 2 minutes or till sauce has reduced a little bit.",
       "Pour sauce gently over cake.",
       "Bake at 325°f (160°c) about 35 minutes or till cake is light brown and when toothpick inserted comes out clean."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18195,6 +19156,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 350 degrees F (175 degrees C).",
       "Mix water, onion, olive oil, balsamic vinegar, Dijon mustard, garlic, black pepper, cayenne pepper, and salt together in a roasting dish. Add chicken; turn until well coated with mixture.",
       "Bake in the preheated oven until an instant-read thermometer inserted into the thickest part of the thigh, near the bone, reads 165 degrees F (74 degrees C), about 1 hour 30 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18229,6 +19193,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove to a paper towel lined plate to drain.",
       "Place the fries on a serving platter, and sprinkle the cheese over them.",
       "Ladle gravy over the fries and cheese, and serve immediately."
+    ],
+    "appliances": [
+      "microwave"
     ]
   },
   {
@@ -18276,6 +19243,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Shell the prawns, then fry the shells in the oil in a large pan for about 5 mins. Add the onion, fennel and carrots and cook for about 10 mins until the veg start to soften. Pour in the wine and brandy, bubble hard for about 1 min to drive off the alcohol, then add the tomatoes, stock and paprika. Cover and simmer for 30 mins. Meanwhile, chop the prawns.",
       "Blitz the soup as finely as you can with a stick blender or food processor, then press through a sieve into a bowl. Spend a bit of time really working the mixture through the sieve as this will give the soup its velvety texture.",
       "Tip back into a clean pan, add the prawns and cook for 10 mins, then blitz again until smooth. You can make and chill this a day ahead or freeze it for 1 month. Thaw ovenight in the fridge. To serve, gently reheat in a pan with the cream. If garnishing, cook the 8 prawns in a little butter. Spoon into small bowls and top with the prawns and snipped fennel fronds."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -18326,7 +19296,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "For the crispy shallots, heat 5cm of oil until hot in a wok. You will know the oil is hot enough when one piece of shallot sizzles as soon as it’s dropped in. Toss the shallot slices with flour, shake off excess and fry in the oil until golden. They fry quickly, about 1 min. Drain on kitchen paper, sprinkle with salt and set aside.",
       "To make the dressing, mix the lime juice, sugar, fish sauce and garlic and set aside. In a large mixing bowl, pour boiling water over the noodles. Leave them for 2 mins or until they are just cooked, then rinse under cold water. Drain well, shaking the sieve numerous times to get out the excess water, then place back in the bowl. Add prawns, onion, chilli, cucumber and herbs. Pour the dressing over, mix, then sprinkle with the shallots and peanuts."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53200,
@@ -18379,6 +19350,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the prawns in a bowl. Put the chilli, garlic, coriander stalks (snip these up using scissors first) and caster sugar in a spice grinder or small food processor and whizz together. Add half of the lime juice and the fish sauce, then pour this over the prawns.",
       "Heat 1 tbsp oil in a wok, add the ginger and spring onions and fry for 1 min. Add the red pepper and fry for 1 min, until the pepper starts to soften. Add the water chestnuts and bean sprouts, and toss together until the bean sprouts start to wilt. Add the soy sauce and a really good grind of black pepper, then tip the lot into a serving dish.",
       "Heat the remaining oil in the wok and add the prawns, lifting them out of their juices. Toss for 1-2 mins until they turn pink, add the marinade and swirl the wok quickly, then tip the lot onto the veg. Snip over the coriander leaves and sprinkle on the remaining lime. Serves over noodles with extra lime for squeezing over."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -18424,6 +19398,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Spread nuts over the foil and grill until toasted. Finely chop the nuts and parsley in a food processor. Tip into a small bowl.",
       "Heat 3 tablespoons of oil in a frying pan, add the pepper, garlic and chilli and fry for 3 minutes. Tear up the bread and add to the pan, turning it in the oil until lightly browned. Pulse in food processor with the tomatoes, salt, vinegar and oil until roughly chopped. Tip into a bowl. Leave to cool and store in fridge for up to 3 days.",
       "On the day add the nuts and parsley to the sauce and mix. Serve in a small bowl on a plate with the peeled prawns. Supply cocktail sticks for spearing the prawns."
+    ],
+    "appliances": [
+      "grill",
+      "blender"
     ]
   },
   {
@@ -18475,6 +19453,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a little oil in a 20-23cm frying pan, preferably non-stick. Pour the eggs with courgette into a measuring jug, then pourabout one-third of the mixture into the pan, swirling it to cover the base of the pan. Cook until the egg is set and lightly browned underneath, then cover the pan with a plate and invert the omelette onto it. Slide it back into the pan to cook the other side. Repeat with the remaining mix to make two more omelettes, adding a little oil to the pan each time. Stack the omelettes onto a plate. Make three omelettes in the same way with the red pepper mixture, then stack them on a separate plate.",
       "Now make the filling. Beat the cheese to soften it, then beat in the milk to make a spreadable consistency. Stir in the herbs, salt and pepper. Line a deep, 20-23cm round cake tin with cling film (use a tin the same size as the frying pan). Select the best red pepper omelette and place in the tin, prettiest side down. Spread with a thin layer of cheese filling, then cover with a courgette omelette. Repeat, alternating the layers, until all the omelettes and filling are in the tin, finishing with an omelette. Flip the cling film over the omelette, then chill for up to 24 hrs.",
       "To serve, invert the omelette cake onto a serving plate and peel off the cling film. Pile rocket on the top and scatter over the cheese, a drizzle of olive oil and a little freshly ground black pepper. Serve cut into wedges."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18521,6 +19502,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 180C/160C fan/gas 4. Roll out the pastry on a lightly floured surface and use it to line a 22cm loose-bottomed tart tin. Chill for 15 mins. Line the pastry with baking parchment and baking beans, then bake for 15 mins. Remove the beans and paper, and cook for a further 10 mins until the base is pale golden and biscuity. Remove from the oven and allow to cool slightly.",
       "Increase oven to 220C/200C fan/gas 7. Push the cooled pumpkin through a sieve into a large bowl. In a separate bowl, combine the sugar, salt, nutmeg and half the cinnamon. Mix in the beaten eggs, melted butter and milk, then add to the pumpkin purée and stir to combine. Pour into the tart shell and cook for 10 mins, then reduce the temperature to 180C/160C fan/gas 4. Continue to bake for 35-40 mins until the filling has just set.",
       "Leave to cool, then remove the pie from the tin. Mix the remaining cinnamon with the icing sugar and dust over the pie. Serve chilled."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18562,7 +19546,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the nuoc cham, whisk together all of the ingredients with 5 tbsp hot water in a small bowl. Set aside while you make the tempura.",
       "Whisk the cornflour, plain flour, sesame seeds (if using) and a large pinch of salt together. Fill a large, deep pan no more than a third full with the vegetable oil and heat until it reaches 180C or a cube of bread dropped in browns in 20 seconds.",
       "Quickly whisk the soda water into the flour mixture, being careful not to overmix, then dunk in the broccoli using tongs. Carefully lower into the hot oil and cook for 2-3 mins until crisp. Drain on kitchen paper, then serve with the nuoc cham on the side for dipping."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53173,
@@ -18597,6 +19582,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "In a blender (or with a stick blender), whizz together the passata, red pepper, chilli, garlic, sherry vinegar and lime juice until smooth. Season to taste, then serve with ice cubes"
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -18634,6 +19622,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Ask the fishmonger to clean the squid; little ones often come ready-cleaned. Using kitchen scissors, cut open the body and open out. Wash well, then pat dry. If you have a large squid, cut the body into four portions, roughly square. Small squid can just be opened up.",
       "Using the tip of a very sharp knife, score the top in a neat criss-cross. Brush with oil and set aside while you heat the barbecue or griddle until ready to cook.",
       "Mix together 2 tsp sea salt, Chinese five-spice and 1 tsp freshly ground black pepper. Sprinkle on both sides of the squid just before cooking, according to taste. You may not need it all. Heat the griddle pan to hot and cook about 1 min each side, until it starts to curl. Remove with tongs to a serving plate and drizzle with a little sesame oil. To serve, garnish with coriander leaves and serve with small bowls of sweet chilli sauce to dip into."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -18674,7 +19665,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Ice Bath: Immediately transfer the eggs to a bowl of ice water for 3–5 minutes to stop cooking.",
       "Marinate (Optional but recommended): Peel the eggs and marinate in a mix of 2 tbsp soy sauce, 2 tbsp mirin, 1 tsp sugar, and 4 tbsp water for at least 4 hours (or overnight).",
       "Serve: Slice in half, letting the yolk flow into the broth"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52933,
@@ -18714,6 +19706,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Juice potatoes with an electric juicer; place dry potato flesh into a bowl and discard juice. Stir salt and pepper into potatoes; stir in enough reserved broth to make the mixture the consistency of oatmeal. Set remaining broth aside.",
       "Spread half of potato mixture evenly into the prepared pan. Lay cooked chicken breast evenly over potatoes; scatter caramelized onion evenly over chicken. Spread remaining potato mixture over onions and chicken to cover.",
       "Bake in the preheated oven until golden brown, about 1 hour. Reheat chicken broth; pour over individual servings as desired."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -18748,7 +19743,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the gelatine leaves in a bowl, cover with warm water and leave to soak for 5 mins. Drain and squeeze out any excess water.",
       "Tip the raspberries into a pan over a medium-low heat along with the sugar and lemon juice. Cook for 5-6 mins until the berries have completely broken down. Push the mixture through a sieve set over a bowl, discarding the seeds. Stir in the gelatine leaves until dissolved (if they don’t dissolve, pour the mixture into a clean saucepan and heat gently until dissolved). Set aside to cool for 15 mins.",
       "Whip the cream to soft peaks using an electric whisk, then gently fold this into the raspberry mixture. Spoon into the ramekins or moulds and chill overnight, or for at least 6 hrs. Serve with raspberries scattered over the top."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53124,
@@ -18803,6 +19799,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let the raspeballer simmer for about 30 minutes. If you're making smoked sausage, you can heat the sausage in the same pot with the raspeballer. Top with fresh chopped parsley.",
       "Peel the rutabaga and carrots and cut into small pieces. Boil in water for about 30 minutes, or until tender. Then drain the water, add the cream/milk, butter and nutmeg and mash until smooth.",
       "Serve alongside the raspeballer and meat."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -18849,7 +19848,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Score a small cross on the base of each tomato, then put them into a heatproof bowl. Pour boiling water over the tomatoes, leave for 20 secs, then remove. Pour the water away, replace the tomatoes and cover with cold water. Leave to cool, then peel the skin away. Quarter the tomatoes, scrape away the seeds with a spoon, then roughly chop the flesh.",
       "Set a sauté pan over medium heat and when hot, pour in 2 tbsp olive oil. Brown the aubergines for 5 mins on each side until the pieces are soft. Set them aside and fry the courgettes in another tbsp oil for 5 mins, until golden on both sides. Repeat with the peppers. Don’t overcook the vegetables at this stage, as they have some more cooking left in the next step.",
       "Tear up the basil leaves and set aside. Cook the onion in the pan for 5 mins. Add the garlic and fry for a further min. Stir in the vinegar and sugar, then tip in the tomatoes and half the basil. Return the vegetables to the pan with some salt and pepper and cook for 5 mins. Serve with basil."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52809,
@@ -18911,7 +19911,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Ensure the masala paste is thick else the result won't be good.",
       "If you aren't able to find kashmiri chilies then use bedgi chilies or kashmiri red chili powder.",
       "You could use white vinegar or coconut vinegar."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53204,
@@ -18946,6 +19947,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Fire up the barbecue or heat a griddle pan to high. Tip chicken, curry paste and coconut milk into a bowl, then mix well until the chicken is evenly coated. Thread vegetables and chicken onto skewers. Cook the skewers on the barbecue or griddle for 5-8 mins, turning every so often, until the chicken is cooked through and charred. Serve with herby rice, salad and a lime half to squeeze over."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -18983,7 +19987,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Peel the onions, cut them in half from top to bottom and finely slice into half-moon pieces. Put in a colander placed over a bowl and sprinkle with salt, lightly turning over the onion pieces with your hands so the surfaces are all covered. Set aside for an hour or so to brine.",
       "Meanwhile put the vinegar, 50ml/2fl oz water and the sugar in a saucepan. Bring to a simmer, stirring to help the sugar dissolve, and cook for a couple of minutes. Set aside.",
       "Pack the onions into the sterilised jars, sprinkling in a little pepper as you go. Cover with the warm vinegar and finish by tucking a couple of bay leaves down the side of the jars. Seal. The onions are best kept in the fridge and used within to 4 weeks."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52941,
@@ -19039,7 +20044,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add them to the pot, stir well and continue cooking for another 15 minutes on a rolling boil.",
       "You’ll notice that I didn’t add any salt to the pot as the remaining salt from the salted pigtails will be enough to properly season this dish. However you can taste and adjust accordingly. Lets recap the timing part of things so you’re not confused. Cook the base of the soup for 1 hr and 15 minute or until tender, then add the potatoes and cook for 15 minutes, then add the dumplings and cook for a further 15 minutes. Keep in mind that this soup will thicken quite a bit as it cools.",
       "While this is not a traditional recipe to any one specific island, versions of this soup (sometimes called stewed peas) can be found throughout the Caribbean, Latin America and Africa. A hearty bowl of this soup will surely give you the sleepies (some may call it ethnic fatigue). You can certainly freeze the leftovers and heat it up another day."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52811,
@@ -19091,6 +20097,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 500 degrees. Drain the beans; if they’re canned, rinse them as well. Add them to the pot along with tomatoes and their juices and stock, rosemary and thyme. Bring to a boil, then reduce heat so the soup bubbles steadily; cover and cook, stirring once or twice to break up the tomatoes, until the flavors meld, 15 to 20 minutes.",
       "Fish out and discard rosemary and thyme stems, if you like, and stir in kale. Taste and adjust seasoning. Lay bread slices on top of the stew so they cover the top and overlap as little as possible. Scatter red onion slices over the top, drizzle with the remaining 3 tablespoons oil and sprinkle with Parmesan.",
       "Put the pot in the oven and bake until the bread, onions and cheese are browned and crisp, 10 to 15 minutes. (If your pot fits under the broiler, you can also brown the top there.) Divide the soup and bread among 4 bowls and serve."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -19143,6 +20153,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Soak the spring roll sheets for a couple of seconds in a shallow dish of warm water, then transfer to an oiled chopping board. Working with one sheet at a time, spoon 1 heaped tbsp of the filling into the middle, then fold the bottom up and over the filling. Fold down the top of the sheet, then the sides to fully encase and make a neat square. If the dumpling feels a little fragile, soak another sheet and wrap it again. Repeat with the remaining sheets and filling, transferring the dumplings to an oiled plate as you go.",
       "Heat the oil in a large, non-stick frying pan (ensuring it is no more than a third full) over a medium-high heat and fry the dumplings for 3-5 mins until golden brown. Use a slotted spoon or spider to turn them, then cover with a lid and cook for another 3-4 mins until golden. Remove the lid and cook for 1-2 mins.",
       "Meanwhile, combine all the dipping sauce ingredients in small bowl. Serve the dumplings with the dipping sauce on the side."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -19201,6 +20214,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bring a large pot of salted water to a boil, add the pasta and cook for 12-14 minutes (or according to the instructions on the packet), until al dente. Meanwhile, reheat the sauce. Drain the pasta, return it to the pot, stir in a tablespoon of oil, then divide between the bowls.",
       "Put all the pesto ingredients except the basil in the small bowl of a food processor. Add a tablespoon of water and blitz to a rough paste. Add the basil, then blitz until just combined (the pesto has a much better texture if the basil is not overblended).",
       "Spoon over the ragù and top with a spoonful of pesto. Finish with a sprinkling of chopped fennel fronds, if you have any, and serve at once."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -19246,6 +20262,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/180C fan/gas 6. Brush the aubergine slices with 1 tbsp of the oil, then season. Arrange on a baking tray or sheet and roast for 20 mins until browned, popping the tomatoes on the tray for the final 5 mins. Tear the flatbread into pieces and place on a separate baking sheet. Brown in the oven for 8 mins, or until crisp, then remove.",
       "For the dressing, in a small bowl, mix the vinegar, mint, chopped shallots, chilli, remaining oil and some salt and pepper.",
       "Scatter the aubergine slices, tomatoes, sliced shallot and crisp flatbread into a serving bowl. Pour over the dressing, sprinkle with the goat’s cheese and scatter over a little rocket."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19302,6 +20321,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, heat a paella pan or large frying pan over a low– medium heat and add a glug of olive oil. Sauté the onion for 8–10 minutes until softened. Increase the heat to medium and stir in the rice, paprika and saffron. Cook for around 1 minute to start toasting the rice, then add the white wine. Reduce by about half before stirring in two-thirds of the stock. Reduce to a simmer and cook for 10 minutes without a lid, stirring a couple of times.",
       "Stir in the peas, add some seasoning, then gently mix in the roasted veg. Pour over the remaining stock, arrange the lemon wedges on top and cover with a lid or some aluminium foil. Cook for a further 10 minutes.",
       "To ensure you get the classic layer of toasted rice at the bottom of the pan, increase the heat to high until you hear a slight crackle. Remove from the heat and sit for 5 minutes before sprinkling over the parsley and serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19347,6 +20369,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/180C fan/gas 6. In a roasting tin, toss together the chicken, cumin, paprika, 1 tbsp olive oil and seasoning. Cook for 40 mins until the chicken is crisp and cooked through.",
       "Meanwhile, tear up 1 pitta bread and place in a small bowl. Pour over a couple of tbsp chicken stock and leave to soak. Dry-fry the walnuts in a frying pan for about 3 mins until golden and toasted. Set aside. Heat the remaining oil in the pan and cook the onion and garlic until softened. Place the softened pitta bread, onion mixture and most of the nuts into a blender. Pour over the rest of the chicken stock and whizz together until a rough paste forms. Return the mixture to the pan. Add the cream and lemon juice, season and keep warm.",
       "When the chicken is cooked, arrange on a platter. Stir the coriander through the sauce and spoon into a bowl. Roughly chop the remaining walnuts and scatter over the chicken. Toast the pittas, cut into wedges and serve alongside"
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -19401,6 +20427,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "For the Lentils: Adjust oven rack to center position and preheat oven to 450°F to prepare for roasting eggplant. Meanwhile, heat 2 tablespoons olive oil in a medium saucepan over medium heat until shimmering. Add carrots, celery, and onion and cook, stirring, until softened but not browned, about 4 minutes. Add garlic and cook, stirring, until fragrant, about 30 seconds. Add lentils, bay leaves, stock or water, and a pinch of salt. Bring to a simmer, cover with the lid partially ajar, and cook until lentils are tender, about 30 minutes. (Top up with water if lentils are at any point not fully submerged.) Remove lid, stir in vinegar, and reduce until lentils are moist but not soupy. Season to taste with salt and pepper, cover, and keep warm until ready to serve.",
       "For the Eggplant: While lentils cook, cut each eggplant in half. Score flesh with the tip of a paring knife in a cross-hatch pattern at 1-inch intervals. Transfer to a foil-lined rimmed baking sheet, cut side up, and brush each eggplant half with 1 tablespoon oil, letting each brushstroke be fully absorbed before brushing with more. Season with salt and pepper. Place a rosemary sprig on top of each one. Transfer to oven and roast until completely tender and well charred, 25 to 35 minutes. Remove from oven and discard rosemary.",
       "To Serve: Heat 2 tablespoons olive oil and pine nuts in a medium skillet set over medium heat. Cook, tossing nuts frequently, until golden brown and aromatic, about 4 minutes. Transfer to a bowl to halt cooking. Stir half of parsley and rosemary into lentils and transfer to a serving platter. Arrange eggplant halves on top. Spread a few tablespoons of tahini sauce over each eggplant half and sprinkle with pine nuts. Sprinkle with remaining parsley and rosemary, drizzle with additional olive oil, and serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19443,6 +20472,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the egg mixture to the dry ingredients and stir with a spoon until the mixture just comes together as a thick, lumpy dough. Add a teaspoon more milk if you really need it to make the mixture stick together.",
       "Place golfball-sized spoons of the mixture onto the prepared baking tray. Leave space between them as they will flatten and spread out to double their size during baking.",
       "Bake for 15-20 minutes, until golden-brown. Remove from the oven, allow to cool for a couple of minutes then turn them out onto a wire rack to cool."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19484,6 +20516,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Refrigerate for 4 hours, or until set.",
       "Remove the fudge and wax paper from the pan. Carefully peel all of wax paper from the fudge.",
       "Cut the fudge into bite-sized pieces and serve."
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -19525,6 +20561,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When you take them out, put aside and sprinkle with powdered sugar on top.",
       "This makes about 3 batches of 20 cookies each.",
       "Total count about 60 cookies."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -19563,7 +20603,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Turn down the heat and add half of the flour and stir well with a whisk. Once the flour is fully incorporated, let the mixture continue to cook, stirring occasionally, until fat starts to release. Use a spoon to gather as much of the fat as you can in a small bowl, saving for later. (Don't worry if you can't get any fat – in that case you can add butter later.)",
       "Whisk in the rest of the flour and then slowly add the milk, whisking constantly to avoid lumps. Let the porridge continue to cook on low heat for 5 minutes and then add salt.",
       "Serve with sugar, cinnamon, and the fat from the porridge. If you're using lower fat sour cream you can top the rømmegrøt with some butter instead."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53315,
@@ -19606,7 +20647,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Halve the cabbage, remove the tough stem and thinly slice. Place in a large pan with all the other ingredients apart from the sausages, then mix in 300ml water and some salt and pepper.",
       "Bring to a simmer, then reduce the heat, cover with a well-fitting lid and gently cook for 1½ hrs, stirring frequently. If too dry, you can add a little more water.",
       "Add the kabanos to the cabbage mixture, place a lid on the pan and gently simmer for 20 mins. Remove the lid and cook for a further 10 mins. Serve alongside some simple mash or boiled potatoes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53020,
@@ -19661,6 +20703,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Return the chicken and carrots to the broth",
       "Cook noodles according to package instructions if you’re using them",
       "Add noodles to bowl and then top with hot soup"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19704,6 +20749,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Turn the bread over to make it a little crispy.",
       "Remove from pan and cut the bread into small portions.",
       "Add mayonnaise and/or Sambal before cutting the sandwich (optional)."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -19750,7 +20798,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a small skillet with a little butter and sauté the onion until translucent. Add the garlic and cook briefly. Add the runner beans to the pan and stir-fry for a few minutes.",
       "Meanwhile, mash the potatoes with a masher. Add a knob of butter and a splash of milk. Add the bean mixture and grated cheese. Season with salt, pepper and mustard.",
       "Fry the bacon and serve with the bean mash."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53308,
@@ -19787,6 +20836,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place the dough in a well oiled bowl, cover with cling film and leave to rise in a warm place for 1-2 hrs, or until roughly doubled in size. Dust a 2lb/900g loaf tin with flour.",
       "Tip the dough back onto your work surface and knead briefly to knock out any air bubbles. If using caraway seeds work these in to the dough. Shape into a smooth oval loaf and pop into your tin. Cover the tin with oiled cling film and leave to rise somewhere warm for a further 1 – 1.5 hr, or until doubled in size.",
       "Heat oven to 220C/200C fan/gas 7. Remove the cling film and dust the surface of the loaf with rye flour. Slash a few incisions on an angle then bake for 30 mins until dark brown and hollow sounding when tapped. Transfer to a wire cooling rack and leave to cool for at least 20 mins before serving"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19825,7 +20877,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Season the salmon, then rub with oil. Mix the dressing ingredients together. Halve, stone, peel and slice the avocados. Halve and quarter the cucumber lengthways, then cut into slices. Divide salad, avocado and cucumber between four plates, then drizzle with half the dressing.",
       "Heat a non-stick pan. Add the salmon and fry for 3-4 mins on each side until crisp but still moist inside. Put a salmon fillet on top of each salad and drizzle over the remaining dressing. Serve warm."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52962,
@@ -19866,7 +20919,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "First make the Hollandaise sauce. Put the lemon juice and vinegar in a small bowl, add the egg yolks and whisk with a balloon whisk until light and frothy. Place the bowl over a pan of simmering water and whisk until mixture thickens. Gradually add the butter, whisking constantly until thick – if it looks like it might be splitting, then whisk off the heat for a few mins. Season and keep warm.",
       "To poach the eggs, bring a large pan of water to the boil and add the vinegar. Lower the heat so that the water is simmering gently. Stir the water so you have a slight whirlpool, then slide in the eggs one by one. Cook each for about 4 mins, then remove with a slotted spoon.",
       "Lightly toast and butter the muffins, then put a couple of slices of salmon on each half. Top each with an egg, spoon over some Hollandaise and garnish with chopped chives."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53234,
@@ -19906,7 +20960,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Pour the stock into a large pan, bring to the boil, then stir in the curry paste. Add the noodles and cook for 8 mins. Tip in the mushrooms and corn and cook for 2 mins more.",
       "Add the salmon to the pan and cook for 3 mins or until cooked through. Remove from the heat and stir in the lime juice, soy sauce and a pinch of sugar. Ladle into 4 bowls and sprinkle over the coriander just before you serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53248,
@@ -19940,6 +20995,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/fan 180C/gas 6. Put the noodles in a bowl and pour over enough boiling water to just cover them. Leave for 2 mins, until they are bendable, but not too soft, then drain well. Return to the bowl with the spring onions, petit pois, salt and pepper and a third of the butter. Mix well until the butter has melted.",
       "Pile the noodles and vegetables onto two large squares of baking parchment, then sit the salmon on top. Slice the remaining butter and arrange over the top of the salmon. Bring the ends of the paper over the fish, fold them together to seal, then tuck the ends of the paper underneath so there are no gaps. Put the parcels on a baking sheet and bake for 15-20 mins. Transfer to dinner plates and serve without delay."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -19989,6 +21047,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Season with the lemon juice and zest, and pepper to taste. (there will probably be sufficient saltiness from the salmon to not need to add salt) Stir gently to heat through",
       "Serve scattered with the Parmesan and seasonal vegetables.",
       "Grill the salmon and gently place onto the risotto with the prawns and asparagus"
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -20037,7 +21098,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "To make the dipping sauce, mix all the ingredients in a small bowl until the sugar has dissolved, then set aside. Mix the cornflour and plain flour with both peppers and 2 tsp sea salt in a large bowl, then set aside. Line a tray with kitchen paper and make sure you have more salt to sprinkle with.",
       "Heat about 7cm of oil to 180C in a deep fryer, wok or deep pan. If you don’t have a thermometer, you can test it with a cube of bread – it should brown in 20 secs. Coat the squid well with the flour mix and fry in batches for about 2 mins each or until crisp. Use a slotted spoon to lift out the squid, then drain on the kitchen paper and sprinkle with a little more salt. Serve the squid scattered with the spring onion and chilli, with the dipping sauce on the side."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53171,
@@ -20075,6 +21137,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat half the oil in a frying pan, and sauté the onion over a medium heat until soft and pale gold – this will take about 8 mins. Remove from the pan, set aside, and add the potatoes to the pan. Cook until they are tender but not falling apart, carefully turning every so often. Cover the pan some of the time to help the slices cook through. Add the onions back to the pan along with the garlic and cook for another 4 mins. Tip into a bowl with the eggs, parsley and some seasoning and mix together. Leave to sit for half an hour.",
       "Meanwhile, put the cod in a saucepan and cover with water. Bring up to a simmer. Remove from the heat, cover and leave for 10 mins. Drain, leave to cool and remove the skin and any bones. Break into large flakes and add to the potato and egg mixture.",
       "Heat the rest of the oil in a non-stick frying pan. Pour in the tortilla mix and cook over a medium-low heat until it is just set and coming away from the sides of the pan. You might need to cover it to help the centre set. Be careful not to overcook it. Put a spatula underneath the tortilla every so often to make sure it isn’t sticking. Slide the tortilla onto a plate, then put the pan on top and flip the tortilla into it, uncooked side-down. Cook over a low heat until golden, or grill until just set. Leave to cool a little before serving."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -20124,6 +21189,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Using an electric mixer, I use my KitchenAid with the whisk attachment, whisk together the cream cheese, vanilla, and icing sugar until smooth and then add the caramel and whisk again until smooth and lump free – this could take a couple of minutes, I whisk it at half speed so not too quick or slow!",
       "Pour in the double cream & Salt flakes and continue to whisk for a couple of minutes until its very thick and mousse like (I mix it on a medium speed, level 6/10) – Now this could take up to 5 minutes depending on your mixer, but you seriously have to stick at it – it will hold itself completely when finished mixing (like a meringue does!) If you don’t mix it enough it will not set well enough, but don’t get impatient and whisk it really quick because that’ll make it split! Spread over the biscuit base and leave to set in the fridge overnight.",
       "Remove the Cheesecake from the tin carefully and decorate the cheesecake – I drizzled over some of the spare caramel, and then some Toffee Popcorn and more Pretzels!"
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -20189,7 +21257,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When you’re almost ready to eat, heat about 1cm/½in vegetable oil in a frying pan and heat until just smoking.",
       "Shape the dumpling mix into plum-size balls and shallow-fry until golden-brown. (CAUTION: hot oil can be dangerous. Do not leave the pan unattended.)",
       "Drain the dumplings on kitchen paper and serve with the saltfish and ackee."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53337,
@@ -20244,6 +21313,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the filling, place the saskatoon berries in a large bowl and stir in the 1/2 cup sugar and the cornstarch until well combined. Pour the berry mixture into the bottom of the pie. Dot with the butter. On a lightly floured surface, roll out the pastry in another 12-inch circle for the top crust. Use a ruler to guide you when cutting the pastry into 6 wide, long strips to keep the edges straight. Save the 2 end pieces in case you need to do any patching. I like wide strips, but if you like a thinner look, feel free to cut thin strips of pastry. Weave the pastry strips, going over and under, making sure they connect with the edges of the pie crust. Fold over the edges of the bottom crust, tucking in the lattice ends. This will help to trap the juices and give a rustic look.",
       "If you prefer a cleaner, tidier look, you can trim the overhanging pieces and crimp the edges with a fork. Brush the top of the pie with the egg wash. Sprinkle with the remaining Tbsp sugar. Place the pie on the prepared baking sheet and bake it for about 90 – 100 minutes, until it’s golden brown and bubbling. Remove the pie from the oven and place it on a wire rack to cool.",
       "Serve the pie warm or at room temperature with whipped cream or ice cream. Makes 6 servings. This keeps well if covered with plastic and refrigerated for up to 4 days."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -20297,7 +21370,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Have a well-floured tray ready. Put 1 tsp of the filling into the centre of each disc. In your hand, fold in half around the filling and seal to create half-moon shapes. Put them on the floured tray, making sure they don’t touch each other.",
       "Bring a large saucepan of salted water to the boil and carefully lower the pierogi in. Boil them for 2 mins or until they float to the top.",
       "Drain and serve with a knob of butter and some soured cream. Finish by sprinkling the crispy shallots on top to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53314,
@@ -20350,7 +21424,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Have a well-floured tray ready. Put 1 tsp of the filling into the centre of each disc. In your hand, fold in half around the filling and seal to create half-moon shapes. Put them on the floured tray, making sure they don’t touch each other.",
       "Bring a large saucepan of salted water to the boil and carefully lower the pierogi in. Boil them for 2 mins or until they float to the top.",
       "Drain and serve with a knob of butter and some soured cream. Finish by sprinkling the crispy shallots on top to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53247,
@@ -20391,7 +21466,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Turn over, cook for another 30 seconds - 1 minute, then transfer to a serving plate and keep warm. You’ll need to fry the sea bass fillets in 2 batches.",
       "Heat 2 tbsp sunflower oil, then fry the large knob of peeled ginger, cut into matchsticks, 3 thinly sliced garlic cloves and 3 thinly shredded red chillies for about 2 mins until golden.",
       "Take off the heat and toss in the bunch of shredded spring onions. Splash the fish with 1 tbsp soy sauce and spoon over the contents of the pan."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52836,
@@ -20442,7 +21518,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a large frying pan with at least a 3cm lip, or a 40cm paella pan. Add the onion and stir around the pan for 5 mins until soft. Add the garlic and cook for 1 min more, then tip in the vermicelli and cook for 5 mins, stirring from time to time, until the vermicelli is toasted brown. Stir in the paprika.",
       "Keeping the heat moderate, stir through the monkfish, squid and saffron with its water, seasoning well. Spread the ingredients out in an even layer, then pour over the hot stock and scatter the tomatoes on top. Bring to a simmer, then cover the whole dish with a tight-fitting lid (or foil). Turn the heat to medium and cook for 6 mins.",
       "Uncover and stir to incorporate the dry top layer of pasta. Push the mussels into the pasta so the hinges are buried in the bottom of the dish, and they stand straight up. Arrange the prawns on top, cover tightly and cook for another 6 mins or until the mussels are open, the prawns are pink and the pasta is cooked through. Leave to simmer for another 2-3 mins to cook off most of the remaining liquid (leave a little in the pan to prevent the pasta from sticking together). Allow to sit for 2-3 mins, then squeeze over the lemon juice and arrange the wedges on top. Scatter with parsley before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53167,
@@ -20480,7 +21557,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a deep frying pan, then soften the leek for 5 mins without browning. Add the chorizo and fry until it releases its oils. Stir in the turmeric and rice until coated by the oils, then pour in the stock. Bring to the boil, then simmer for 15 mins, stirring occasionally.",
       "Tip in the peas and cook for 5 mins, then stir in the seafood to heat through for a final 1-2 mins cooking or until rice is cooked. Check for seasoning and serve immediately with lemon wedges."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53054,
@@ -20530,7 +21608,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir continuously and cook till custard starts to thicken. (15 minutes)",
       "Pour pandan custard into glutinous rice layer, give it a little tap (for air bubbles) and continue to steam for 30 minutes.",
       "Remove kuih seri muka from the steamer and allow to cool completely before cutting into rectangles or diamond shapes."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53378,
@@ -20568,7 +21647,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Peel the cucumbers. Cut them into quarters, lengthwise. (If the seeds are bitter, scrape out the seeds and discard.) Cut the cucumbers again, crosswise, into 1/2-inch thick pieces.",
       "Place cucumbers into a serving bowl. Sprinkle with salt. Toss with sesame oil, seasoned rice vinegar, basil (if using), and chili flakes. Sprinkle with toasted sesame seeds if using."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53215,
@@ -20609,7 +21689,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cover the eggs and leave it for 5 minutes without lifting the lid.",
       "Remove from the heat and let the residual heat steam the eggs for 1-2 minutes.",
       "Serve with flatbread. Enjoy!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52963,
@@ -20650,7 +21731,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a frying pan that has a lid, then soften the onions, chilli, garlic and coriander stalks for 5 mins until soft. Stir in the tomatoes and sugar, then bubble for 8-10 mins until thick. Can be frozen for 1 month.",
       "Using the back of a large spoon, make 4 dips in the sauce, then crack an egg into each one. Put a lid on the pan, then cook over a low heat for 6-8 mins, until the eggs are done to your liking. Scatter with the coriander leaves and serve with crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53219,
@@ -20700,7 +21782,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the cumin powder and salt and pepper and the tomato sauce and let it cook for another 7 mins.",
       "Add the eggs, cover and leave to coo for 8 mins. Add the fresh spinach and feta cheese at the end.",
       "Serve with fresh bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53028,
@@ -20757,6 +21840,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove chicken from the grill and cover loosely with foil. Set aside to rest for 5 minutes.",
       "Slice chicken and pile onto platter alongside flatbreads, Salad and the Yoghurt Sauce.",
       "To make a wrap, get a piece of flatbread and smear with Yoghurt Sauce. Top with a bit of lettuce and tomato and Chicken Shawarma. Roll up and enjoy!"
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -20797,6 +21884,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat ur pan and put it",
       "It'll start puffing then you turn it",
       "And lastly put it in in a warm place, then you'll see it has pocket"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -20850,6 +21940,11 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Build wrap by spreading garlic sauce on the pita. Top with beef and add garnishes to your liking.",
       "Fold it burrito style.",
       "Heat a grill pan and grill the wrap."
+    ],
+    "appliances": [
+      "oven",
+      "grill",
+      "slow-cooker"
     ]
   },
   {
@@ -20914,7 +22009,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the noodles to the wok",
       "Next add sherry cooking wine, oyster sauce, sugar, vinegar, sesame seed oil, 1 pinch white pepper, and soy sauce",
       "Add back in the shrimp"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53375,
@@ -20961,7 +22057,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir-fry the ginger and garlic: Heat a wok or large sauté pan over high heat for 1 minute. Add the peanut oil and let it get hot, about 30 seconds. Add the ginger and garlic and toss to combine. Stir-fry for about 30 seconds.",
       "Add the shrimp, snow peas, soy sauce, stock: Add the shrimp and all the marinade to the pan (scrape out all the marinade with a rubber spatula). Add the snow peas, soy sauce and chicken stock. Stir-fry until the shrimp turns pink, about 2 minutes.",
       "Add the scallions and finish with sesame oil: Add the scallions and stir-fry 1 more minute. Turn off the heat and add the sesame oil. Toss to combine once more and serve with steamed rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53374,
@@ -21017,7 +22114,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the chili bean paste, garlic, ginger, and sichuan peppercorns and sauté: until fragrant, about 30 seconds.",
       "Add the chicken stock mixture: turn the heat to medium-low and simmer for 90 seconds.",
       "Add the cornstarch mixture: and stir together until the sauce thickens a bit."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53371,
@@ -21056,7 +22154,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Chinese long beans can be found in both green and purple varieties. Both have similar flavors and textures, and either kind can be used for this recipe.",
       "If you don't have a wok, use a sturdy, large sauté pan that has at least a two-inch lip."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53369,
@@ -21090,7 +22189,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Prepare the tofu:  Drain the tofu and gently remove it from its packaging onto a large plate. Carefully slice the tofu into 1/2-inch slabs widthwise. With the palm of your hands, gently push the sliced tofu sidewise so that they fan out over the plate.",
       "Garnish with toppings and serve: Drizzle the soy sauce and sesame sauce on top. Then garnish it with scallions and sesame seeds, and serve.",
       "Tightly cover leftovers and refrigerate for up to 2 days. You can enjoy it cold straight out of the fridge or you can reheat it by microwaving in 30-second increments until warmed through"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53368,
@@ -21155,6 +22255,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the noodles in batches: Add the eggs, the sauce mixture, and half the noodles to the pan. Toss for 1 minute.",
       "Add the remaining noodles and continue tossing for 1 minute more until they are thoroughly combined and the mixture is heated through.",
       "Serve: Taste for seasoning and add more salt or soy sauce, if you like. Sprinkle with cilantro leaves and serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21201,6 +22304,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once sweet potatoes have roasted 12 minutes, transfer baking sheet with zucchini to middle rack and continue roasting until both veggies are browned and softened, 12-15 minutes more.",
       "Meanwhile, melt 1 TBSP butter (2 TBSP for 4 servings) in pan used for pork over medium-high heat. Add apple and season with salt and pepper. Cook, scraping up any browned bits from bottom of pan, until apple is slightly softened, 2-3 minutes. Add garlic; cook until fragrant, 30 seconds. Add 1/z cup water (3/4 cup for 4), stock concentrate, and 11/2 tsp sugar (3 tsp for 4). Cook, stirring, until sauce has thickened and apple is very tender, 3-5 minutes. Season with salt and pepper.",
       "Remove pan with apple from heat; stir in 1 TBSP butter (2 TBSP for 4 servings) and a squeeze of lemon juice. Divide pork, zucchini, and sweet potatoes between plates. Top pork with glazed apple sauce. Top zucchini with a squeeze of lemon juice."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21246,6 +22352,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the batter into a greased baking pan. Bake the cake base at 180°C/350°F (conventional oven) for 30 minutes. The cake is done when you press lightly on the top and it springs back. Allow the cake to cool in the pan for a few minutes before removing it to a cake rack.",
       "Meanwhile, prepare the nougatine and jam according to the recipe if you haven’t already.",
       "Let the cake cool completely before you cut it. If, like me, you used a 20 cm/8 inch spring form pan, cut the cake into three layers."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21285,7 +22394,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place in a jar large enough to accommodate the pieces and cover with oil, allspice, peppercorns, and bay leaf. Close the jar.",
       "Refrigerate for 2 to 3 days before eating. This will keep refrigerated up to 2 weeks.",
       "Serve with finely chopped onion or onion slices, lemon, and parsley or dill."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53260,
@@ -21325,6 +22435,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "The next day, take the lamb out of the fridge 1 hr before you want to cook it. Heat oven to 220C/200C fan/gas 7. Take the lamb out of the marinade (reserve remaining marinade) and pat dry. Rub with half the oil and roast for 15-20 mins until browned. Remove lamb and reduce oven to 160C/140C fan/gas 3.",
       "Mix the zests, remaining oil, honey, spices and garlic with plenty of seasoning. Lay a large sheet of baking parchment on a large sheet of foil. Sit the lamb leg on top, rub all over with the paste and pull up the sides of the foil. Drizzle marinade into base, and scrunch foil to seal.",
       "Roast for 4 hrs, until very tender. Rest, still wrapped, for 30 mins. Unwrap and serve with juices."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21363,6 +22476,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Line a large baking tray with a double layer of foil and put the pork on top, skin-side up. Bring the sides of the foil up around the pork to create a parcel, then pour the wine into the tray around the sides. Transfer to the oven and reduce the temperature to 140C/120C fan/gas 1. Roast for 4-5 hrs, or until a meat thermometer inserted into the thickest part of the pork reads 70C.",
       "Turn the oven up to 240C/220C fan/gas 9. Carefully spoon the pork roasting juices from the pan into a saucepan and cook over a medium heat for 10-15 mins, or until reduced by a third. Season to taste.",
       "Meanwhile, arrange the foil around the meat so only the skin is exposed, then return to the oven for 10-15 mins until the skin is puffed up and browned all over. Leave to rest for 20 mins before slicing. Serve with the sauce drizzled over."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21396,6 +22512,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat grill to very hot. Slice the aubergines in half lengthways, then grill for 25 mins, turning occasionally, until soft – the skin will remain firm, but the flesh will soften. Lift the aubergines off the grill and leave until cool enough to handle.",
       "Using a sharp knife, score the grilled flesh and scoop out the flesh with a spoon. Tip into a bowl and mash with a fork until you get a thick pulp. Beat in the lemon juice and garlic. Add the yogurt and dill, and season. Serve while still warm."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -21449,7 +22568,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Flake the fish, discarding any skin and bones. Drain the eggs, cool slightly, then peel and chop.",
       "Uncover the rice and remove the bay leaves, cinnamon stick and cardamom pods if you wish to. Gently fork in the fish and the chopped eggs, cover again and return to the heat for 2-3 minutes, or until the fish has heated through.",
       "Gently stir in almost all the 3 tbsp chopped fresh parsley, and season with a little salt and black pepper to taste. Serve scattered with the remaining parsley and garnished with 1 lemon, cut into wedges."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53264,
@@ -21487,6 +22607,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "You need 15 skewers: if wooden, soak in water for 10 mins. Cut chicken into 3cm pieces and place in a bowl. Add 1 tbsp olive oil, the spices, garlic and vinegar, toss well and season. You can do this up to a day before and refrigerate.",
       "Thread 2-3 pieces on each skewer. Pour remaining oil in a frying pan or rub onto a griddle pan. Get the pan hot and sear the chicken for 3-4 mins on each side – you may have to do this in batches, keeping the cooked skewers warm in a low oven. Serve with smoky aïoli if you like."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21551,6 +22674,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "SIMPLE CASHEW SOUR CREAM",
       "Cup Raw Unsalted Cashews Pinch Sea Salt 1 tsp. Apple Cider Vinegar Water",
       "Bring some water to the boil, and use it to soak the cashews for at least four hours. Alternatively, you can use cold water and let the cashews soak overnight, but I’m forgetful/lazy, so often use the boil method which is much faster. After the cashews have soaked, drain them and add to a high speed blender. Begin to puree, slowly adding about 1/2 cup fresh water, until a creamy consistency is reached. You may need to add less or more water to reach the desired consistency. Add a pinch of sea salt and vinegar (or lemon juice)."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -21600,6 +22727,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the smoked sausage for the last 15 minutes of cooking time. When the vegetables are tender, remove the bacon and smoked sausage, slice thinly and set aside.",
       "If you prefer a smooth consistency, purée the soup with a stick blender. Season to taste with salt and pepper. Add the meat back to the soup, setting some slices of rookworst aside.",
       "Serve in heated bowls or soup plates, garnished with slices of rookworst and chopped celery leaf."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -21646,6 +22776,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Once meatloaves and carrots have baked 20 minutes, remove from oven. Spoon half the ketchup glaze over meatloaves (save the rest for serving); return to oven until carrots are browned and tender, meatloaves are cooked through, and glaze is tacky, 4-5 minutes more.",
       "Meanwhile, melt 2 TBSP butter (4 TBSP for 4 servings) in pot used for potatoes over medium heat. Add remaining garlic and cook until fragrant, 30 seconds. Add potatoes and 1/4 tsp wasabi. Mash, adding splashes of reserved potato cooking liquid as necessary until smooth. Season with salt and pepper. (If you like things spicy, stir in more wasabi!)",
       "Divide meatloaves, mashed potatoes, and roasted carrots between plates. Sprinkle with scallion greens and serve with remaining ketchup glaze on the side for dipping."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21690,7 +22823,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Take the pan of spaghetti and pancetta off the heat. Now quickly pour in the eggs and cheese. Using the tongs or a long fork, lift up the spaghetti so it mixes easily with the egg mixture, which thickens but doesn’t scramble, and everything is coated.",
       "Add extra pasta cooking water to keep it saucy (several tablespoons should do it). You don’t want it wet, just moist. Season with a little salt, if needed.",
       "Use a long-pronged fork to twist the pasta on to the serving plate or bowl. Serve immediately with a little sprinkling of the remaining cheese and a grating of black pepper. If the dish does get a little dry before serving, splash in some more hot pasta water and the glossy sauciness will be revived."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52770,
@@ -21737,7 +22871,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the onion and oil in a large pan and fry over a fairly high heat for 3-4 mins. Add the garlic and mince and fry until they both brown. Add the mushrooms and herbs, and cook for another couple of mins.",
       "Stir in the tomatoes, beef stock, tomato ketchup or purée, Worcestershire sauce and seasoning. Bring to the boil, then reduce the heat, cover and simmer, stirring occasionally, for 30 mins.",
       "Meanwhile, cook the spaghetti in a large pan of boiling, salted water, according to packet instructions. Drain well, run hot water through it, put it back in the pan and add a dash of olive oil, if you like, then stir in the meat sauce. Serve in hot bowls and hand round Parmesan cheese, for sprinkling on top."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53177,
@@ -21773,7 +22908,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the water is boiling briskly, add the spaghetti with a good measure of salt, stir and return to the boil. Cook for 3 minutes.",
       "In a large frying pan, heat the oil, add the chorizo and peppers and plenty of black pepper. Cook for a minute or so, until heated through and the juices are stained red from the paprika in the chorizo. Scoop half a mugful of pasta water from the pan, drain the remainder and tip the spaghetti into the frying pan.",
       "Add the parsley and parmesan, toss well and splash in the pasta water, to moisten. Hand round extra parmesan at the table."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53181,
@@ -21816,7 +22952,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Soak the beans for at least 4 hrs or overnight in a large bowl with plenty of water to cover. Next day, rinse and drain, then put in a large heavy based pan with the onion, paprika, herb bundle and chicken. Pour over enough water or stock to cover, bring to the boil, then reduce the heat, cover and simmer for 45 mins.",
       "Remove the chicken to a plate, then add the potatoes and chorizo to the pan. Continue cooking for 30 mins until the beans and potatoes are tender.",
       "Discard the skin and bones from the chicken and tear into large chunks. Return the chicken to the pan with the spinach and simmer for 5 mins."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53164,
@@ -21852,6 +22989,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 190C/170C fan/gas 5. Put all the ingredients into a large, wide ovenproof dish. Mix everything together with your hands and season.",
       "Bake for 45 mins, stirring the onions after 20 mins, until the chicken is golden and the onions tender. Serve with rice."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21893,6 +23033,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/fan 180C/gas 6. Boil the potatoes for 15-20 mins until tender. Drain, return to the pan, then mash with some seasoning and 2 tsp of the paprika.",
       "Meanwhile, heat the oil in a large pan, then fry the onions and garlic for a few mins until softened. Stir in the remaining paprika for 1 min, add the tomatoes , then, bring to a simmer. Tip into a large ovenproof dish, then stir in the chicken, peppers, olives and some seasoning.",
       "Spoon over the mash, then bake for 15 mins until the mash is golden on top and the sauce is bubbling."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -21933,6 +23076,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Whizz the almonds in a food processor until most are finely chopped, then tip into a large bowl. Roughly chop the figs, then whizz to a smooth sticky paste. Scrape onto the almonds then, using your hands, mix together well with the dried fruit, brandy, honey and cloves.",
       "Divide the mixture into 6 and roll into balls. Tip the sesame seeds onto a tray, then roll the balls in them until covered. Cover the tray loosely with a clean tea towel, then leave the fig balls to dry for a week before packaging. Will keep in a cool place for 2 months."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -21987,7 +23133,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Melt the butter in a heavy-based casserole, then soften the shallots for 5 mins. Add the paprika and crushed garlic and cook for 1 min until the paprika becomes fragrant. Splash in the sherry, then pour the whole lot into a bowl with the breadcrumbs. Season and cool.",
       "Add the pork mince and the egg yolk to the bowl, then beat well. Shape into 18 small meatballs. Wipe the pan, put on a medium-high heat, then add the oil. Fry the meatballs for 5 mins, just to colour, then lift onto a plate, but keep the oil in the pan. Sizzle the chorizo with the sliced garlic. Add the squid and fry to give a little colour. Now tip in the white wine and bring to the boil, scraping the bottom. Stir in the pulped tomatoes, bring to the boil, then add the meatballs and the clams. Cover and cook for 5 mins until the clam shells open. Discard any that stay shut. Sprinkle with the chopped parsley, drizzle with the extra virgin oil, then serve with crusty bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53184,
@@ -22027,7 +23174,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Boil the kettle. In a non-stick frying or shallow pan with a lid, fry the onion, peppers, chorizo and garlic in the oil over a high heat for 3 mins. Stir in the rice and chopped tomatoes with 500ml boiling water, cover, then cook over a high heat for 12 mins.",
       "Uncover, then stir – the rice should be almost tender. Stir in the prawns, with a splash more water if the rice is looking dry, then cook for another min until the prawns are just pink and rice tender."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53182,
@@ -22074,7 +23222,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a large saucepan and soften the onion for 6-7 mins. Add the pepper and garlic, cook for 2 mins more, then stir in the paella rice and cook for 1 min, stirring to coat.",
       "Pour in the stock, add the saffron and bring to the boil. Cook, uncovered, at a gentle bubble, for 20 mins, stirring occasionally until the rice is tender.",
       "Stir in the seafood and lemon juice and cook for 2 mins or until piping hot and completely cooked through. Serve in warm bowls scattered with the parsley."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53176,
@@ -22110,7 +23259,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Mix together the chopped tomatoes, garlic clove, olive oil, salt and pepper. Keep in the fridge until needed.",
       "To serve, toast 20 slices of baguette. Spoon a little tomato topping on to each piece of toast. Tear 5-6 slices of jamón Serrano into pieces and put one piece on each slice of bread."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52872,
@@ -22155,7 +23305,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the potatoes are soft and the onion is shiny, crush 2 garlic cloves and stir in, followed by the beaten eggs.",
       "Put the lid back on the pan and leave the tortilla to cook gently. After 20 mins, the edges and base should be golden, the top set but the middle still a little wobbly. To turn it over, slide it onto a plate and put another plate on top, turn the whole thing over and slide it back into the pan to finish cooking. Once cooked, transfer to a plate and serve the tortilla warm or cold, scattered with the chopped parsley.",
       "To accompany, take slices of warmed baguette, stab all over with a fork and rub with the remaining garlic, pile on grated tomatoes and season with sea salt and a drizzle of olive oil."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53175,
@@ -22206,6 +23357,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the spice mix, combine all of the ingredients together with a large pinch of salt. Slash the lamb shoulder all over with a sharp knife and rub in. If you have the time, marinate for up to 24 hrs, but this is not essential.",
       "Heat the oven to 150C/130C fan/gas 2. Heat the oil in a large flameproof casserole dish or roasting tin over a medium-high heat, add the onions, carrots and garlic and sizzle for 5 mins until the onions and carrots are softened. Pour over the stock, then bring to the boil. Nestle the lamb in the pan and cover, then transfer to the oven and roast for 2 hrs.",
       "Uncover and transfer the lamb to a plate using tongs. Stir the beans, peppers and olives through the stock in the pan, sit the lamb back on top and return to the oven, uncovered, for 1 hr 30 mins until the lamb is cooked through. Transfer the lamb to a board and shred using two forks. Stir the parsley through the braised beans before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22250,6 +23404,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Make the marinade. Smash the garlic with a little salt using a pestle and mortar. Add the lemon zest and juice, the spice mix, chilli, oil and a good grinding of black pepper. Mix to a paste. This can be done in a mini food processor.",
       "Toss the chicken in the marinade and set aside while you light the barbecue. When the barbecue’s hot, lay the bunches of herbs on the grid and put the chicken, skin side up, on top. Close the lid, if your barbecue has one, and cook the chicken on the smouldering herbs for about 10 minutes until the meat starts to colour. Turn the chicken and continue to cook for a further 20-30 minutes, turning as necessary, until it is slightly charred from the burnt herbs and cooked through to the bone."
+    ],
+    "appliances": [
+      "grill",
+      "blender"
     ]
   },
   {
@@ -22289,6 +23447,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a large frying pan. Fry the onion and half the chilli for 5 mins until softened. Tip in the spices, fry for 1 min more, then add the cherry tomatoes, potatoes and coriander stalks to the pan. Season the eggs well, pour over the top of the veg and leave to cook gently for 8-10 mins until almost set.",
       "Heat the grill and flash the tortilla underneath for 1-2 mins until the top is set. Scatter the coriander leaves and remaining chilli over the top, slice into wedges and serve with a green salad."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -22329,7 +23490,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes.",
       "In a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes. Add the chopped tomatoes, red chile flakes, Italian seasoning and salt and pepper to taste. Bring to a boil and cook for 5 minutes. Remove from the heat and add the chopped basil.",
       "Drain the pasta and add it to the sauce. Garnish with Parmigiano-Reggiano flakes and more basil and serve warm."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52797,
@@ -22380,7 +23542,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Top with potato mix and toss.",
       "Add fetta, mint and sprinkle over pine nuts.",
       "Adjust salt and pepper to taste."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53209,
@@ -22422,7 +23585,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Cook the noodles following the pack instructions, drain and set aside for later. Heat the oil in a large frying pan and pour in the beaten egg. Swirl around the pan to make a thin omelette, cook for 1-2 mins, then flip over and cook the other side for 1 min. Tip out and slice into thin strips.",
       "Add the chilli and ginger to the pan, fry for 1-2 mins then tip in the noodles, prawns and egg. Splash in the soy sauce and stir-fry for 1 min more. Throw in the chopped herbs and pour over the lime juice and zest, then sprinkle over the chopped peanuts and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52849,
@@ -22476,6 +23640,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "First make the tomato sauce. Heat the oil in a large pan and fry the garlic for 1 min. Add the sugar, vinegar, tomatoes and some seasoning and simmer for 20 mins, stirring occasionally, until thick. Add the basil and divide the sauce between 2 or more shallow ovenproof dishes (see Tips for freezing, below). Set aside. Make a sauce by beating the mascarpone with the milk until smooth, season, then set aside.",
       "Put the spinach in a large colander and pour over a kettle of boiling water to wilt it (you may need to do this in batches). When cool enough to handle squeeze out the excess water. Roughly chop the spinach and mix in a large bowl with 100g Parmesan and ricotta. Season well with salt, pepper and the nutmeg.",
       "Heat oven to 200C/180C fan/gas 6. Using a piping bag or plastic food bag with the corner snipped off, squeeze the filling into the cannelloni tubes. Lay the tubes, side by side, on top of the tomato sauce and spoon over the mascarpone sauce. Top with Parmesan and mozzarella. You can now freeze the cannelloni, uncooked, or you can cook it first and then freeze. Bake for 30-35 mins until golden and bubbling. Remove from oven and let stand for 5 mins before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22513,6 +23680,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the gammon in a very large pan with 2 litres water and bring to the boil. Remove from the heat and drain off the water – this helps to get rid of some of the saltiness. Recover with 2 litres cold water and bring to the boil again. Put everything but the frozen peas into the pan and bring to the boil. Reduce to a simmer and cook for 1½-2½ hrs, topping up the water as and when you need to, to a similar level it started at. As the ham cooks and softens, you can halve it if you want, so it is all submerged under the liquid. When the ham is tender enough to pull into shreds, it is ready.",
       "Lift out the ham, peel off and discard the skin. While it is still hot (wear a clean pair of rubber gloves), shred the meat. Remove bay from the soup and stir in the frozen peas. Simmer for 1 min, then blend until smooth. Add a splash of water if too thick, and return to the pan to heat through if it has cooled, or if you are making ahead.",
       "When you are ready to serve, mix the hot soup with most of the ham – gently reheat if made ahead. Serve in bowls with the remaining ham scattered on top, and eat with crusty bread and butter."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -22556,6 +23726,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Shape into a fat roll about 20cm long. Place on a large rectangle of baking parchment. Wrap loosely to allow for the pudding to rise and tie the ends with string like a Christmas cracker.",
       "Place a steamer over a large pan of boiling water, add the pudding to the steamer, cover and steam for 1 1/2 hours. Top up the pan with water from time to time.",
       "Remove from the steamer and allow to cool slightly before unwrapping. Serve sliced with custard."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22598,6 +23771,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 180c/fan 160c/gas 4. Trim the green ends of the spring onions and then finely slice the rest. Heat a little oil in a pan and fry them gently until soft but not browned. Add the chilli and garlic, stir and then add the prawns and cook until they are opaque. Season well. Scoop out the prawns and bubble the juices until they thicken, then add back the prawns.",
       "Divide the empanada dough into eight balls and roll out to thin circles on a floured surface. Put some filling on one half of the dough, sprinkle the feta on top and fold the other half over. Trim the edge and then fold and crimp the dough together so the empanada is tightly sealed, put it on an oiled baking sheet either on its side or sitting on its un-crimped edge like a cornish pasty. Repeat with the remaining dough and mixture. Mix the leftover egg yolk with a splash of water and brush the top of the empanadas.",
       "Bake for 30 minutes or until golden and slightly crisp around the edges."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22630,6 +23806,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/180C fan/gas 6. Put the squash and garlic on a baking tray and drizzle with the olive oil. Roast for 35-40 mins until soft. Season.",
       "Cook the pasta according to pack instructions. Drain, reserving the water. Use a stick blender to whizz the squash with 400ml cooking water. Heat some oil in a frying pan, fry the sage until crisp, then drain on kitchen paper. Tip the pasta and sauce into the pan and warm through. Scatter with sage."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -22670,6 +23850,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Cook the peppers whole under a grill, on a barbecue or griddle, until completely charred. Place the peppers in a bowl, cover with a plate until cool enough to handle, then peel, deseed and finely slice. In a large bowl mix the peppers and any juices with the chickpeas, parsley, chilli and garlic. Set aside.",
       "Heat a large frying pan until smoking. Working quickly and carefully, add a splash of oil to the pan, then the squid. Stir-fry for about 30 secs. Scatter the chorizo over the squid, continue to cook for 30 secs more, then tip into the bowl with the peppers. Season everything with salt and pepper, then dress with the remaining oil, lemon juice and lemon zest. Mix together, pile onto a platter and let everyone help themselves."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -22719,6 +23902,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Drain, shake and dry the potatoes with kitchen towels before mashing with a potato masher or ricer. Working quickly, add the warm milk and the remaining butter. Season to taste with nutmeg, salt, and pepper.",
       "Mix the cooked curly kale through the cooked mashed potato mixture.",
       "Top with slices of the smoked sausage and serve hot with your favorite mustard or gravy."
+    ],
+    "appliances": [
+      "microwave"
     ]
   },
   {
@@ -22766,7 +23952,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all the ingredients for the dressing together in a bowl with 1 tbsp water until the sugar has dissolved.",
       "Cook the noodles following pack instructions, then plunge into a bowl of cold water to cool completely. Drain the noodles, then add the carrot, cabbage, spring onion and dressing, and toss to combine.",
       "Heat the oil in a frying pan over a high heat. Season the steak, then cook to your liking; 2-3 mins on each side for medium rare. Leave to rest for 5 mins, then slice. Divide the salad and steak slices between bowls and scatter over some coriander to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52881,
@@ -22818,6 +24005,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Using a rolling pin, lift the pastry and place it over the top of the pie dish. Trim and crimp the edges with your fingers and thumb.",
       "Brush the surface with the beaten egg mixture and bake for 30-40 minutes until golden-brown and puffed.",
       "Serve with creamy mash and steamed vegetables to soak up the gravy."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22872,7 +24062,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oil in a 12\" skillet over medium-high heat. Season steaks with salt and pepper, and add to skillet; cook, turning once, until browned on both sides and cooked to desired doneness, about 4 to 5 minutes for medium-rare. Transfer steaks to a plate, and set aside.",
       "Return skillet to high heat, and add stock; cook until reduced until to 1⁄2 cup, about 10 minutes. Pour into a bowl, and set aside. Return skillet to heat, and add butter; add garlic and shallots, and cook, stirring, until soft, about 2 minutes. Add mushrooms, and cook, stirring, until they release any liquid and it evaporates and mushrooms begin to brown, about 2 minutes. Add cognac, and light with a match to flambée; cook until flame dies down. Stir in reserved stock, cream, Dijon, Worcestershire, and hot sauce, and then return steaks to skillet; cook, turning in sauce, until warmed through and sauce is thickened, about 4 minutes. Transfer steak to serving plates and stir parsley and chives into sauce; pour sauce over steaks to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53110,
@@ -22904,6 +24095,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Make 3 slashes on each of the drumsticks. Mix together the soy, honey, oil, tomato purée and mustard. Pour this mixture over the chicken and coat thoroughly. Leave to marinate for 30 mins at room temperature or overnight in the fridge. Heat oven to 200C/fan 180C/gas 6.",
       "Tip the chicken into a shallow roasting tray and cook for 35 mins, turning occasionally, until the chicken is tender and glistening with the marinade."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -22956,6 +24150,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the butter, sugar, eggs, flour, baking powder, bicarbonate of soda and treacle into a mixing bowl. Beat using an electric handheld whisk for about 30 seconds or until combined. Pour in the milk gradually and whisk again until smooth. Pour into the prepared dish. Bake for 35–40 minutes or until well risen and springy in the centre.",
       "To make the sauce, put all the ingredients into a saucepan and stir over a low heat until the sugar has dissolved and the butter has melted. Bring to the boil, stirring for a minute.",
       "To serve, pour half the sauce over the pudding in the baking dish. Serve with the cream or ice cream."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23011,6 +24208,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, put the sugar and butter for the sauce in a medium saucepan with half the cream. Bring to the boil over a medium heat, stirring all the time, until the sugar has completely dissolved. Stir in the black treacle, turn up the heat slightly and let the mixture bubble away for 2-3 mins until it is a rich toffee colour, stirring occasionally to make sure it doesn’t burn. Take the pan off the heat and beat in the rest of the cream.",
       "Remove the puddings from the oven. Leave in the tins for a few mins, then loosen them well from the sides of the tins with a small palette knife before turning them out. You can serve them now with the sauce drizzled over, but they’ll be even stickier if left for a day or two coated in the sauce. To do this, pour about half the sauce into one or two ovenproof serving dishes. Sit the upturned puddings on the sauce, then pour the rest of the sauce over them. Cover with a loose tent of foil so that the sauce doesn’t smudge (no need to chill).",
       "When ready to serve, heat oven to 180C/fan 160C/gas 4. Warm the puddings through, still covered, for 15-20 mins or until the sauce is bubbling. Serve them on their own, or with cream or custard."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23050,7 +24250,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat a wok or large frying pan until it is very hot, then add 1 tbsp of the oil. When it is very hot, add the chicken and stir-fry over a high heat for 8-10 minutes, until browned all over. Using a slotted spoon, take the chicken from the pan and set aside.",
       "Reheat the wok and add the remaining oil. Toss in the garlic and shallots and stir fry for 3 minutes, until golden brown.",
       "Return the chicken to the wok and add the chillies, fish sauce, dark soy sauce and sugar. Stir fry over a high heat for a further 8-10 minutes or until the chicken is cooked through. Stir in the basil leaves and serve at once."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52817,
@@ -23090,7 +24291,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a 12-inch skillet over high heat until shimmering. Add the eggplants and lower the heat to medium. Season with salt and pepper as you rotate the eggplants, browning them on all sides. Continue to cook, turning regularly, until a fork inserted into the eggplant meets no resistance (you may have to stand them up on their fat end to finish cooking the thickest parts), about 20 minutes, lowering the heat and sprinkling water into the pan as necessary if the eggplants threaten to burn or smoke excessively.",
       "Mix the harissa, chickpeas and tomatoes together, then add to the eggplants. Cook until the tomatoes have blistered and broken down, about 5 minutes more. Season with salt and pepper and add water as necessary to thin to a saucy consistency. Meanwhile, combine the yogurt and cumin in a serving bowl. Season with salt and pepper.",
       "Top the eggplant mixture with the parsley, drizzle with more extra virgin olive oil, and serve with the yogurt on the side."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53082,
@@ -23125,6 +24327,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Two photos of cut strawberries in a bowl with one having sugar being added to the bowl Two photos of cut up strawberries for Strawberry Romanoff",
       "Just before serving, in a large mixing bowl, combine 1 cup cold heavy cream and 1/4 cup powdered sugar, and beat with an electric mixer until stiff peaks form. Using a spatula, fold in 1/4 cup sour cream just until well blended.",
       "To serve, stir strawberries then divide between 6 serving glasses or bowls. You can spoon a little syrup over the berries if you like. You can also use this syrup to soak a cake. Spoon cream over strawberries, dividing evenly. You can also use an ice cream scoop with trigger release for a nice rounded puff of cream. Serve right away or chill and enjoy within 2 hours of assembly."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -23183,6 +24388,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.",
       "Remove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.",
       "Makes one 9 inch (23 cm) pie."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -23241,6 +24450,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove the bell peppers from the oven, and carefully stuff each pepper half with the quinoa and black bean mixture. Top the stuffed peppers with the remaining 1/2 cup of shredded cheese, if using.",
       "Return the stuffed peppers to the oven, and bake for another 15-20 minutes, until the cheese is melted and the peppers are tender.",
       "Remove from the oven, and allow the stuffed peppers to cool for 5 minutes before serving. Garnish with fresh chopped cilantro."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23290,6 +24502,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 180C/160C fan/gas 4. Slice the tops off the tomatoes and reserve. Scoop out most of the pulp with a teaspoon, being careful not to break the skin. Finely chop the pulp, and keep any juices. Sprinkle the insides of the tomatoes with a little sugar to take away the acidity, then place them on a baking tray.",
       "Heat 2 tbsp olive oil in a large frying pan, add the onion and garlic, then gently cook for about 10 mins until soft but not coloured. Add the lamb, cinnamon and tomato purée, turn up the heat, then fry until the meat is browned. Add the tomato pulp and juice, the rice and the stock. Season generously. Bring to the boil, then simmer for 15 mins or until the rice is tender and the liquid has been absorbed. Set aside to cool a little, then stir in the herbs.",
       "Stuff the tomatoes up to the brim, top tomatoes with their lids, drizzle with 2 tbsp more olive oil, sprinkle 3 tbsp water into the tray, then bake for 35 mins. Serve with salad and crusty bread, hot or cold."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23327,6 +24542,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 350 degrees F (175 degrees C). Grease a 9-inch pie dish.",
       "Place the brown sugar and butter in a mixing bowl, and beat them together with an electric mixer until creamy and very well combined, without lumps. Beat in eggs, one at a time, incorporating the first egg before adding the next one. Add the vanilla extract and salt; beat the flour in, a little at a time, and then the milk, making a creamy batter. Pour the batter into the prepared pie dish.",
       "Bake in the preheated oven for 35 minutes; remove pie, and cover the rim with aluminum foil to prevent burning. Return to oven, and bake until the middle sets and the top forms a crusty layer, about 15 more minutes. Let the pie cool to room temperature, then refrigerate for at least 1 hour before serving."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23374,6 +24592,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add egg yolks, heavy cream, sugar, and vanilla to a saucepan. Heat over low/medium heat while stirring constantly until the mixture thickens – about 15 minutes. Turn up the heat if the mixture doesn't thicken, but be careful not to boil.",
       "Let the mixture cool to room temperature and then add the butter. You can use an electric mixer for a fluffy egg cream.",
       "Wait for the cake to cool completely before removing from form and frosting."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -23409,7 +24631,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the shredded kale to the onions and mix well. Turn the heat to medium-low, cover and cook for 5 minutes.",
       "After 5 minutes, remove the lid, add salt to taste, and stir in the cream. Continue cooking for another 5 minutes, uncovered, stirring occasionally. The cream will thicken slightly, making for a deliciously rich creamed kale and onions. Yumm!",
       "Serve it up with your favorite Kenyan stew, and a side of ugali!"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53187,
@@ -23451,7 +24674,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a separate bowl, mix ground poppy seeds and powdered sugar. Melt the butter and keep it ready. 6. Assemble the Dish",
       "Drizzle the cooked dumplings with melted butter. Toss them in the poppy seed-sugar mixture until evenly coated. 7. Serve and Enjoy",
       "Serve warm, optionally with a dusting of extra powdered sugar or a drizzle of honey."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52911,
@@ -23494,6 +24718,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a large pan and fry the leeks and courgette for 5 mins to soften. Pour in the stock, add three-quarters of the haricot beans with the green beans, half the tomatoes, and simmer for 5-8 mins until the vegetables are tender.",
       "Meanwhile, blitz the remaining beans and tomatoes, the garlic and basil in a food processor (or in a bowl with a stick blender) until smooth, then stir in the Parmesan. Stir the sauce into the soup, cook for 1 min, then ladle half into bowls or pour into a flask for a packed lunch. Chill the remainder. Will keep for a couple of days."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -23531,7 +24758,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Line the bowl with cling film and prepare the bread: Line the 1.25-litre basin with cling film as this will help you to turn out the pudding. Overlap two pieces of cling film in the middle of the bowl as it’s easier than trying to get one sheet to stick to all of the curves. Let the edges overhang by about 15cm. Cut the crusts off the bread. Cut 4 pieces of bread in half, a little on an angle, to give 2 lopsided rectangles per piece. Cut 2 slices into 4 triangles each and leave the final piece whole.",
       "Build the pud: Dip the whole piece of bread into the juice for a few secs just to coat. Push this into the bottom of the basin. Now dip the wonky rectangular pieces one at a time and press around the basin’s sides so that they fit together neatly, alternately placing wide and narrow ends up. If you can’t quite fit the last piece of bread in it doesn’t matter, just trim into a triangle, dip in juice and slot in. Now spoon in the softened fruit, adding the strawberries here and there as you go.",
       "Let flavours mingle then serve: Dip the bread triangles in juice and place on top – trim off overhang with scissors. Keep leftover juice for later. Bring cling film up and loosely seal. Put a side plate on top and weight down with cans. Chill for 6 hrs or overnight. To serve, open out cling film then put a serving plate upside-down on top and flip over. serve with leftover juice, any extra berries and cream."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53065,
@@ -23577,7 +24805,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip it out like a sandcastle. Turn block of sushi onto a chopping board. Get a grown-up to cut into fingers, then remove the cling film.",
       "TO MAKE SUSHI BALLS: Choose your topping. Get a small square of cling film and place a topping, like half a prawn or a small piece of smoked salmon, on it. Use damp hands to roll walnut-sized balls of rice and place on the topping.",
       "Make into tight balls. Bring the corners of the cling film together and tighten into balls by twisting it up, then unwrap and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53376,
@@ -23633,7 +24862,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Let simmer for 1 to 2 minutes, until the chicken is cooked through. Timing depends on how thick you've cut your chicken. The best way to tell if the chicken is done is to take a piece out and cut into it. If it's pink, add another minute to the cooking.",
       "Adjust the seasoning and serve: Taste the sauce and add more brown sugar or vinegar to suit your tastes, if you’d like.",
       "Serve hot with steamed white or brown rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52949,
@@ -23681,7 +24911,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add some water to the wok and thoroughly heat the sweet and sour sauce before adding the pork strips to it.",
       "Pour in the starchy sauce. Stir-fry all the ingredients until the pork and sauce are thoroughly mixed together.",
       "Serve on a plate and add some coriander for decoration."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53275,
@@ -23721,6 +24952,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/180C fan/gas 6. Toss the sweet potato chunks with the olive oil and some seasoning, and spread on a baking parchment-lined baking sheet. Roast for 30 - 35 mins until tender and golden. Cool at room temperature.",
       "When just about cool whisk together all the dressing ingredients with a little more seasoning and gently toss through the potato chunks – use your hands to avoid breaking them up."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23758,6 +24992,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "When the Dough cycle is almost complete, preheat the oven to 475 degrees F (245 degrees C).",
       "Turn dough out onto a lightly floured surface. Divide into eight equal pieces and form into rounds. Cover the rounds with a damp cloth and let rest.",
       "Roll dough into thin flat circles, about 8 inches in diameter. Cook two at a time on preheated baking sheets or a baking stone until puffed up and golden brown, about 5 minutes. Repeat for remaining loaves."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23802,7 +25039,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir chicken broth and rice into beef in the saucepan; bring to a boil. Reduce heat to low, cover, and cook until liquid is absorbed, about 20 minutes.",
       "Meanwhile, melt 2 tablespoons butter in a small skillet over medium heat. Cook and stir pine nuts in hot butter until lightly browned, 3 to 5 minutes.",
       "Mix pine nuts into beef-rice mixture before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53093,
@@ -23841,6 +25079,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 350 degrees F (175 degrees C). Grease a 9x13 inch baking dish.",
       "Bring a large pot of lightly salted water to a boil. Add spaghetti and cook for 8 to 10 minutes or until al dente; drain and stir in tomato sauce, tomato paste, cinnamon, oil, salt and pepper. Transfer to prepared dish.",
       "Bake in preheated oven for 1 hour, or until top is crunchy."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -23907,7 +25148,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To make the sauce add oyster sauce, hot pepper sauce, and sugar.",
       "add the cooked beef and 1 spoon of soy sauce",
       "To thicken the sauce, whisk together 1 Tablespoon of cornstarch and 2 Tablespoon of water in a bowl and slowly add to your stir-fry until it's the right thickness."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52869,
@@ -23952,7 +25194,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a jug, mix the tahini with the zest and juice of the lemon and 50ml of cold water to make a runny dressing. Season to taste, then set aside.",
       "Heat the oil in a wok or large frying pan over a medium-high heat. Add the red onion, along with a pinch of salt, and fry for 2 mins until starting to soften and colour. Add the garlic, pepper, green beans and courgette and fry for 5 min, stirring frequently.",
       "Tip in the kale, lentils and the tahini dressing. Keep the pan on the heat for a couple of mins, stirring everything together until the kale is wilted and it’s all coated in the creamy dressing."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53287,
@@ -24013,6 +25256,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 400 degrees F (200 degrees C).",
       "Transfer chicken mixture into an oven-safe tagine or casserole dish. Add sweet potato and carrots. Cover with lid or aluminum foil.",
       "Bake in the preheated oven until sweet potato is soft, about 40 minutes. Add drained raisins and prunes. Continue baking, covered, until raisins and prunes are heated through, about 10 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -24067,7 +25313,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the sugar, cardamom, vanilla, and about 2/3 of the flour.",
       "Mix the dough together either by hand or in a mixer with a dough hook, slowly adding the rest of the flour. You might need a bit more or less flour to form dough that isn't too sticky to knead. When the dough forms a nice ball, add the softened butter and continue to knead the dough for about ten minutes.",
       "Roll the dough into a cylinder and cut into six equal parts. Roll each piece into a round bun and set them in a greased muffin/cake tin. Cover and let rise until doubled in size (about an hour)."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53026,
@@ -24111,6 +25358,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Shape the bean mixture into 1-inch balls.Flatten slightly and coat with flour.",
       "Heat at least 1½-inches of oil over medium heat to 365 degrees.",
       "Fry the patties in batches, turning once, until golden brown on all sides, about 5 minutes.Remove with a wire mesh skimmer or slotted spoon. Serve as part of a meze or in pita bread with tomato-cucumber salad and tahina sauce."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -24158,6 +25409,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix the lemon juice with the paprika and red onions in a large shallow dish. Slash each chicken thigh three times, then turn them in the juice and set aside for 10 mins.",
       "Mix all of the marinade ingredients together and pour over the chicken. Give everything a good mix, then cover and chill for at least 1 hr. This can be done up to a day in advance.",
       "Heat the grill. Lift the chicken pieces onto a rack over a baking tray. Brush over a little oil and grill for 8 mins on each side or until lightly charred and completely cooked through."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -24202,7 +25457,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Whisk together mayonnaise, lemon zest and juice, vinegar, mustard and celery salt in a small bowl, then season generously.",
       "Add cabbage, carrots, onion and celery. Mix well and refrigerate. Can be made up to 1 day ahead."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53246,
@@ -24245,7 +25501,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Tip the carrots, cabbage and onions into a bowl. Make the dressing by stirring the ingredients together until the sugar has dissolved. Pour over salad, tossing the vegetables in the dressing. Add the herbs, toss again, then scatter over the peanuts."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52909,
@@ -24282,6 +25539,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To assemble the Tarte Tatin, arrange the apple quarters very tightly in a circle around the edge of the dish first, rounded-side down, then fill in the middle in a similar fashion. Gently press with your hands to ensure there are no gaps. Brush the fruit with the melted butter.",
       "Bake in the oven for 30 mins, then remove and place the disc of frozen puff pastry on top – it will quickly defrost. Tuck the edges down the inside of the dish and, with a knife, prick a few holes in the pastry to allow steam to escape. Bake for a further 40-45 mins until the pastry is golden brown and crisp.",
       "Allow to cool to room temperature for 1 hr before running a knife around the edge of the dish and inverting it onto a large serving plate that is deep enough to contain the juices. Serve with crème fraîche or vanilla ice cream."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -24324,6 +25584,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks.",
       "*Meanwhile, steam or cook the vegetables according to package directions.",
       "Add the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!"
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -24355,7 +25618,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat a wok or large frying pan until smoking hot. Pour in the oil and swirl around the pan, then tip in the beef strips and chilli. Cook, stirring all the time, until the meat is lightly browned, about 3 mins, then pour over the oyster sauce. Cook until heated through and the sauce coats the meat. stir in the basil leaves and serve with plain rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53206,
@@ -24399,6 +25663,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Toss the chicken, garlic, ginger, onion, coriander and chilli into a food processor and season well. Blitz until the chicken is finely ground and everything is well mixed. Use your hands to shape six small cakes.",
       "Heat the oil in a frying pan, then fry the cakes over a medium heat for about 6-8 mins, turning once. Serve hot, with sweet chilli sauce, lime wedges, coriander, shredded spring onion and red chilli."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -24447,7 +25714,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Place the curry paste in a large saucepan or wok with the oil. Fry for 1 min until fragrant. Tip in the vegetable stock, coconut milk and brown sugar. Simmer for 3 mins.",
       "Add the noodles, carrots and Chinese leaf and simmer for 4-6 mins, until all are tender. Mix in beansprouts and tomatoes. Add lime juice to taste and some extra seasoning, if you like. Spoon into bowls and sprinkle with spring onions and coriander."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53195,
@@ -24489,7 +25757,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a saucepan over a medium heat and cook the curry paste for 1 min before adding the stir-fry veg and prawns. Cook for 3 mins until the prawns are mostly pink, then add the coconut milk, veg stock and noodles.",
       "Bring to the boil, then reduce the heat to a simmer and cook for 5 mins until the noodles are cooked through and the veg is tender but still has a bite. Divide between two bowls and sprinkle over the herbs, chilli and spring onion."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53212,
@@ -24523,6 +25792,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/180C fan/gas 6 and line a baking tray with foil. Mix the chilli sauce with the orange zest and juice, garlic, curry paste and ¼ tsp salt. Add the chicken and coat really well.",
       "Arrange the drumsticks on the foil, spaced apart. Coat the chicken with any marinade left in the bowl, then roast for 35-40 mins until tender. Wrap in foil or pack into a food container."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -24567,7 +25839,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat 1 tbsp of the oil in a wok, add the onion, garlic and chilli, and cook for 2-3 mins until golden. Add the prawns and cook for 1 min. Tip in the rice and peas, and keep tossing until very hot. Add the soy and fish sauce, then stir through the chopped coriander. Keep warm while you fry the eggs.",
       "Heat the remaining oil in a frying pan and fry the eggs with some seasoning. Divide the fried rice mix between 4 bowls and top each with a fried egg. Serve scattered with coriander, with chilli sauce, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53214,
@@ -24618,6 +25891,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in your largest pan, add the onion and fry for 3 mins to soften. Add the chicken and garlic, and cook until the chicken changes colour.",
       "Add the curry paste, coconut milk, stock, lime leaves and fish sauce, then simmer for 12 mins. Add the chopped onion tops, green beans and bamboo shoots and cook for 4-6 mins, until the beans are just tender.",
       "Meanwhile, put the lime juice and basil in a narrow jug and blitz with a hand blender to make a smooth green paste. Pour into the soup with the sliced spring onion and heat through. Serve with lime wedges for a light lunch or supper or as a make-ahead starter."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -24666,7 +25942,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a wok or large frying pan, heat the oil until very hot, then drop in the garlic and cook until golden, this should take only a few seconds. Don’t let it go very dark or it will spoil the taste. Spoon in the curry paste and stir it around for a few seconds to begin to cook the spices and release all the flavours. Next, pour in the coconut milk and let it come to a bubble.",
       "Stir in the fish sauce and sugar, then the pieces of chicken. Turn the heat down to a simmer and cook, covered, for about 8 minutes until the chicken is cooked.",
       "Tip in the potatoes and beans and let them warm through in the hot coconut milk, then add a lovely citrussy flavour by stirring in the shredded lime leaves (or lime zest). The basil leaves go in next, but only leave them briefly on the heat or they will quickly lose their brightness. Scatter with the lime garnish and serve immediately with boiled rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53197,
@@ -24711,7 +25988,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a large saucepan or flameproof casserole. Add the spring onions and coriander stalks and cook for 1 min. Add the pork slices and cook for 5 mins until starting to brown.",
       "Stir in the curry paste and peanut butter. After 30 secs, add the sugar, soy and coconut milk, plus ½ can of water. Mix well, put a lid on and leave to simmer for 15 mins, stirring occasionally.",
       "Remove the lid, add the baby corn and increase the heat. Bubble for 3 mins until the corn is cooked and the sauce has thickened a little. Stir in the lime juice and check the seasoning. Can now be frozen for up to 2 months. To cook from frozen: thoroughly defrost, then heat in a pan on the hob until curry is hot all the way through. Serve scattered with the coriander leaves and rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53205,
@@ -24749,7 +26027,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat the oil in a medium saucepan. Tip in the onion and ginger, then cook for a few mins until softened. Stir in the curry paste, then cook for 1 min more. Pour over the chopped tomatoes and coconut cream. Bring to the boil, then leave to simmer for 5 mins, adding a little boiling water if the mixture gets too thick.",
       "Tip in the prawns, then cook for 5-10 mins more, depending on how large they are. Serve alongside some plain rice and sprinkle with a little chopped coriander, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53210,
@@ -24794,6 +26073,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 200C/180C fan/gas 6. Toss the pumpkin or squash in a roasting tin with half the oil and seasoning, then roast for 30 mins until golden and tender.",
       "Meanwhile, put the remaining oil in a pan with the onion, ginger and lemongrass. Gently cook for 8-10 mins until softened. Stir in the curry paste for 1 min, followed by the roasted pumpkin, all but 3 tbsp of the coconut milk and the stock. Bring to a simmer, cook for 5 mins, then fish out the lemongrass. Cool for a few mins, then whizz until smooth with a hand blender, or in a large blender in batches. Return to the pan to heat through, seasoning with salt, pepper, lime juice and sugar, if it needs it. Serve drizzled with the remaining coconut milk and scattered with chilli, if you like."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -24846,7 +26129,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Stir together the lime zest and juice, fish or soy sauce and sugar. Stir into the noodles with the red onion and lettuce.",
       "To make with mince, heat a little oil in a non-stick frying pan and stir-fry 500g minced pork, a small knob of grated ginger and pinch cayenne pepper or chilli powder for 10 mins, until the mince is browned and cooked through. Mix into the noodles, divide between four bowls and serve warm.",
       "To make with steak, make the rice noodle salad. Heat 1 tsp sunflower oil in a frying pan. Tip 2 tbsp sesame seeds onto a plate. Rub 1 tsp oil into 4 x 175g sirloin steaks and press into sesame seeds. Fry for 5 mins for medium rare, turning halfway. Leave to rest for 5 mins, then thinly slice. Toss 1 deseeded and shredded red chilli, and a handful mint leaves into noodles. Top with steak to serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53213,
@@ -24886,7 +26170,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the stock in a large saucepan and stir in the curry paste, lime leaves, fish sauce and 250ml cold water. Bring to a simmer and cook for 5 mins.",
       "Cut the fish into roughly 3cm cubes and add to the pan. Return to a simmer, then cook for 2 mins uncovered.",
       "Stir in the noodles, prawns and pak choi, and simmer for 2-3 mins or until the fish and prawns are just cooked. Serve in bowls scattered with coriander."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53202,
@@ -24923,7 +26208,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Nestle the fish fillets side by side on a large square of foil and scatter the ginger, garlic, chilli and lime zest over them. Drizzle the lime juice on top and then scatter the pieces of pak choi around and on top of the fish. Pour the soy sauce over the pak choi and loosely seal the foil to make a package, making sure you leave space at the top for the steam to circulate as the fish cooks.",
       "Steam for 15 minutes. (If you haven’t got a steamer, put the parcel on a heatproof plate over a pan of gently simmering water, cover with a lid and steam.)"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52882,
@@ -24975,6 +26261,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the milk to the leeks, bring to the boil and then add the wine mixture. Stir briskly until thickened. Season and add the parsley and fish. Stir over the heat for two minutes, then spoon into an ovenproof casserole. Scatter over the eggs. Allow to cool until firm.",
       "Spoon the mashed potatoes over the fish mixture and mark with a fork. Sprinkle with cheese.",
       "Bake for 30-40 minutes, or until lightly golden-brown on top and bubbling around the edges."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25027,6 +26316,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Top each soufflé with a slice of goat’s cheese, then place on a baking tray. Bake for 20-25 mins or until springy and well risen but cooked through.",
       "Leave to cool, then run a knife around the edge of each dish and remove the soufflés. If preparing in advance, place soufflés upside down (for neat presentation), on a tray. Cover tray in cling film. Chill for a few days or freeze for up to 1 month.",
       "When ready to re-bake, heat oven to 200C/180C fan/gas 6. Place the upside-down soufflés in a shallow baking dish, top with the remaining goat’s cheese slices and pour over the cream (this stops them from drying out when baked for the second time). Cook for 8-10 mins until golden. Serve immediately alongside some simply dressed salad."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25069,7 +26361,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix together wet ingredients and incorporate into dry. Stir until smooth.",
       "Drop by teaspoonfuls(no bigger) into hot oil (365 degrees, no hotter), turning after a few moments until golden brown on all sides.",
       "Roll in cinnamon sugar while still warm and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52822,
@@ -25105,6 +26398,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Drizzle vegetable oil in a 30cm x 25cm x 6cm deep roasting tray and heat in the oven for 5 minutes.",
       "Put the plain flour in a bowl, crack in the medium free-range eggs, then stir in the grated horseradish. Gradually beat in the semi-skimmed milk. Season.",
       "Put the sausages into the hot roasting tray and pour over the batter. Top with cherry tomatoes on the vine and cook for 30 minutes until puffed and golden."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25149,7 +26445,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat the oil in a non-stick wok. Add the broccoli, then fry on a high heat for 5 mins or until just tender, adding a little water if it begins to catch. Add the garlic and chilli, fry for 1 min, then toss through the spring onions, soya beans, pak choi and tofu. Stir-fry for 2-3 mins. Add the hoisin, soy and nuts to warm through."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53207,
@@ -25198,7 +26495,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the chicken stock and coconut milk into a large saucepan set over a medium heat. Tip in the galangal, lemongrass and lime leaves, and bring to a gentle simmer, around 6-8 mins. Keeping at a gentle simmer, add the chicken. Cook for 8-10 mins until tender and cooked through.",
       "Stir in the mushrooms and chillies, and simmer for a further 3-5 mins until everything is cooked through. Sprinkle in the sugar and 3 tbsp each of the fish sauce and lime juice. Taste and add the remaining if required.",
       "Remove the galangal, lemongrass and lime leaves before serving using a slotted spoon. Ladle into bowls and serve with coriander leaves sprinkled over and steamed rice on the side. Will keep chilled for up to three days. Leave to cool first."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53196,
@@ -25238,7 +26536,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Bring the stock to a boil in a medium-sized saucepan. Add the lemongrass, galangal, coriander roots and lime leaves, then simmer for 2 mins.",
       "Add the prawns, fish sauce, chillies and lime juice, then return to the boil. Taste and adjust the seasoning with either more lime juice or fish sauce, then garnish with coriander leaves and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53194,
@@ -25289,7 +26588,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour 1.3 litres water into a large saucepan over a high heat. Add the onion, tomato, chilli, galangal, lemongrass, prawn heads and chicken stock cube. Stir and bring to a boil, then reduce the heat to medium and simmer for 20 mins until the liquid has reduced.",
       "Carefully strain the hot broth into a large heatproof bowl or jug, then discard the prawn heads. Return the strained veg and herb mixture to the saucepan and pour over the broth. Stir through the mushrooms and lime leaves, then cook for 3 mins until the mushrooms are tender.",
       "Add 1 tbsp sugar, the fish sauce, lime juice, coconut milk and prawns. Bring to the boil and cook until the prawns are cooked through, about 1-2 mins. Remove from the heat. Remove the lemongrass, then stir in the Thai chilli jam, if using. Scatter over the coriander to finish, if you like, and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53032,
@@ -25329,6 +26629,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the flour, eggs and panko breadcrumbs into three separate wide-rimmed bowls. Season the meat, then dip first in the flour, followed by the eggs, then the breadcrumbs.",
       "In a large frying or sauté pan, add enough oil to come 2cm up the side of the pan. Heat the oil to 180C – if you don’t have a thermometer, drop a bit of panko into the oil and if it sinks a little then starts to fry, the oil is ready. Add two pork chops and cook for 1 min 30 secs on each side, then remove and leave to rest on a wire rack for 5 mins. Repeat with the remaining pork chops.",
       "While the pork is resting, make the sauce by whisking the ingredients together, adding a splash of water if it’s particularly thick. Slice the tonkatsu and serve drizzled with the sauce."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25370,6 +26673,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In a wide, shallow bowl, beat the eggs with the cream, milk, golden caster sugar and sherry. Cut each slice of bread in two and dip them into the egg mix, turning to make sure they get a good coating on either side. Soak bread in egg mixture for 10 mins to absorb the liquid (carefully turn them over from time to time and make sure they don’t get too soggy).",
       "Heat 1½ tbsp olive oil in a large frying pan and cook the bread for about 3 mins on each side until dark golden and crisp on the edge. Keep the slices warm in a low oven as you cook the rest.",
       "Divide the torrijas between plates and dust with the icing sugar. Serve with crème fraîche or Greek yogurt on the side."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25411,6 +26717,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all remaining ingredients in a large bowl for about one to two minutes.",
       "Pour half the batter into the prepared pan, it is going to be very liquid. Then place ham and cheese on top and pour the remaining batter on top.",
       "Bake for about 20-25 minutes or until top is golden. Wait for a few minutes before releasing from the pan and enjoy either hot or cold with some fresh herbs."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25447,6 +26756,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Dip the flattened eggplant in the beaten egg mixture",
       "Heat the pan and pour the cooking oil",
       "Fry the eggplant (that was dipped in the beaten mixture). Make sure that both sides are cooked. Frying time will take you about 3 to 4 minutes per side on medium heat."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -25492,6 +26804,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/180C fan/gas 6. Boil the potato until tender, drain and mash, then leave to cool. Heat the oil in a non-stick pan, add the mince and onion and quickly fry until browned. Add the garlic, spices, stock, plenty of pepper and a little salt and mix well. Remove from the heat, stir into the potato and leave to cool.",
       "Roll out half the pastry and line the base of a 20-23cm pie plate or flan tin. Fill with the pork mixture and brush the edges of the pastry with water. Roll out the remaining dough and cover the pie. Press the edges of the pastry to seal, trimming off the excess. Prick the top of the pastry case to allow steam to escape and glaze the top with the beaten egg.",
       "Bake for 30 mins until the pastry is crisp and golden. Serve cut into wedges with a crisp green salad. Leftovers are good cold for lunch the next day, served with a selection of pickles."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25543,7 +26858,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cover the pot and cook over low heat for an hour, stirring occasionally. After the first hour, pour over the rest of the water or stock and cook for another 30-45 minutes",
       "Allow the stew to cool slightly and serve it with a sprinkle of chopped parsley and few slices of fresh hot pepper if you like to spice it up a bit",
       "Slice ​​some fresh bread, season the salad and simply enjoying these wonderful flavors"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53391,
@@ -25595,6 +26911,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oven to 180°C. For the dough, mix flour and sugar in a bowl. Heat the 100 grams of milk to lukewarm and dissolve the yeast in it. Let stand for a while until it starts to bubble. Then add to the flour along with the coconut oil and mix into a smooth dough. Let rise for 30 minutes, covered, in a warm place.",
       "Meanwhile, make the rice pudding by putting the rice with sugar, milk and vanilla extract in a saucepan. Add the cardamom, star anise and cinnamon. Bring to a boil and cook, stirring constantly. Take out the spices. In a small bowl, mix baking soda with lemon juice/apple vinegar. Stir well until baking soda is dissolved, then mix into the rice pudding.",
       "Roll out the dough on a floured work surface (it is very sticky, but don’t stress it will be fine) and line the bottom and edges of a greased mold with it. Spread the rice pudding over the bottom and bake for about 25 to 30 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25639,6 +26958,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Remove the reserved pastry from the fridge and cut into long strips, 1cm/½in wide. Make sure they are all longer than the edges of the tart tin.",
       "Egg wash the edge of the pastry in the tin, and start to make the woven laying lattice pattern over the mixture, leave the strips hanging over the edge of the tin.",
       "Once the lattice is in place, use the tin edge to cut off the strips by pressing down with your hands, creating a neat finish."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -25688,6 +27011,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Place a heaped tbsp of the filling in the middle of the round, then fold the pastry over to make a half-moon shape. Fold in the edges, twisting them to seal, and place on a non-stick baking sheet. Repeat with the remaining pastry and filling to make 8 briks in all.",
       "Lightly brush the briks with the remaining oil. Bake for 12–15 minutes or until the pastry is crisp and golden brown.",
       "Meanwhile, combine the tomatoes and cucumber in a bowl and sprinkle with the lemon juice and seasoning to taste. Serve the briks hot with this salad and the chutney."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25729,6 +27055,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat oven to 200C/fan 180C/gas 6. Toss the potatoes with 2 tsp oil and some seasoning. Tip onto a large baking tray, then roast for 20 mins, stirring halfway, until crisp, golden and cooked through.",
       "Meanwhile, put eggs in a small pan of water, bring to the boil, then simmer for 8-10 mins, depending on how you like them cooked. Plunge into a bowl of cold water to cool for a few mins. Peel away the shells, then cut into halves.",
       "In a large salad bowl, whisk together the remaining oil, red wine vinegar, capers and chopped tomatoes. Season, tip in the onion, spinach, tuna and potatoes, then gently toss together. Top with the eggs, then serve straight away."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -25779,7 +27108,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Keep a tablespoon of fat in the casserole and discard the rest. Reduce to medium heat then add the garlic, onion and spinach and cook until the onion is translucent and the spinach wilted or about 5 minutes.",
       "Return the lamb to the casserole with the onion-spinach mixture, add the tomato puree, cumin, harissa, chicken, chickpeas, lemon juice, salt and pepper in the pan. Simmer over low heat for about 20 minutes.",
       "Add the pasta and cook for 15 minutes or until pasta is cooked."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52970,
@@ -25818,6 +27148,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Sieve together flour and baking powder.",
       "Beat the eggs and the remaining sugar with an electric hand mixer for at least five minutes until very fluffy. Fold in half of the flour mixture, then the orange and the vanilla, then fold in the remaining flour. Mix well but not for too long.",
       "Pour cake mixture into prepared tin and smooth out. Bake in preheated oven for 20 minutes. Reduce the oven temperature to 160 C / Gas 2 and bake again for 30 minutes Bake until the cake is golden brown and a skewer comes out clean. Cool on a wire cake rack."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -25864,7 +27198,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "To make the pickled slaw, tip the carrots and cabbage into a large bowl. In a small bowl, combine the ginger, rice vinegar, sugar and a few pinches of salt. Pour over the vegetables and toss together. Set aside for at least 15 mins.",
       "Halve the baguettes lengthways and spread the pâté over the bottom half. Top with the pickled slaw, cucumber and turkey. Mix the mayonnaise with the chopped chilli and dollop over the top. Scatter over the mint leaves and sliced chilli. Sandwich together and dig in."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52845,
@@ -25908,6 +27243,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the turkey mince, egg, breadcrumbs and cooled onion mix in a large bowl and season well. Mix everything to combine, then shape into a rectangular loaf and place in a large roasting tin. Spread 2 tbsp barbecue sauce over the meatloaf and bake for 30 mins.",
       "Meanwhile, drain 1 can of beans only, then pour both cans into a large bowl. Add the remaining barbecue sauce and tomato purée. Season and set aside.",
       "When the meatloaf has had its initial cooking time, scatter the beans around the outside and bake for 15 mins more until the meatloaf is cooked through and the beans are piping hot. Scatter over the parsley and serve the meatloaf in slices."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -25962,6 +27301,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Put the tomatoes, chillies, spring onions, finely chopped parsley, beef mince, spices, 1 tsp salt and ½ tsp freshly ground black pepper into a bowl and mix well.",
       "Take the dough and knead it briefly, then divide into four pieces and shape each into a ball. Roll each ball into a thin circle, place on the prepared baking trays. Spread with a thin layer of the meat mixture.",
       "Bake each flatbread for 10-15 mins until the edges begin to darken. After removing from the oven, sprinkle the lahmacun with the roughly chopped parsley and sliced onion, then squeeze over a few drops of lemon juice. Serve straightaway."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -26002,7 +27344,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Dry-fry the pine nuts or almonds in a large pan until lightly toasted, then tip onto a plate. Add the oil to the pan, then fry the onion and cinnamon together until starting to turn golden. Turn up the heat, stir in the lamb, fry until the meat changes colour, then tip in the rice and cook for 1 min, stirring all the time.",
       "Pour in 500ml boiling water, crumble in the stock cube, add the apricots, then season to taste. Turn the heat down, cover and simmer for 12 mins until the rice is tender and the stock has been absorbed. Toss in the pine nuts and mint and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53252,
@@ -26033,7 +27376,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the rice into a very large bowl under cold running water and carefully drain the water out of the bowl through a sieve. Repeat a few times until the water in the bowl is clear, then fill the bowl up with cold water and leave rice to soak for 10 mins while you cook the vermicelli.",
       "Put the oil into a medium pan over medium heat. Add the vermicelli and stir continuously until the strands turn a rich golden brown, 2-3 mins. Remove from the heat, stir through the butter until it melts and allow the vermicelli to cool for 1-2 mins.",
       "Drain the rice thoroughly through a sieve. Add the rice to the pan and stir well. Pour the hot stock into the pan, sprinkle in ½ tsp salt, stir well then return the pan to the hob over a high heat. Bring to the boil, then reduce the heat to the lowest it will go, put the lid on the pan and simmer for 7-9 mins. Remove the pan from the heat, cover with a couple of sheets of kitchen paper or a light tea towel and the pan lid, and let the rice sit in the pan for 10 mins. Fluff up with a fork before serving."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53270,
@@ -26071,6 +27415,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat grill to high. Season the lamb, then grill for 2 mins on each side until browned, but still very rare. Meanwhile, mix the seasoning, oregano and half of the mint into one of the tubs of yogurt, smother this over the lamb, then return to the grill for another 2-3 mins or until the yogurt is blistered and the meat is cooked to your liking.",
       "Leave the meat to rest on a board for a few mins while you toast the pittas, shred the lettuce and thinly slice the red onion. Stir the rest of the mint into the second tub of yogurt. Thickly slice the meat and stuff into the pitta bread with the salad and minted yogurt. Squeeze over lemon juice before tucking in, if you like."
+    ],
+    "appliances": [
+      "grill"
     ]
   },
   {
@@ -26119,6 +27466,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat oven to 180 degrees Celsius and line two baking sheets with parchment paper.",
       "Divide dough in half, put one back in the fridge and roll out the other thickly on a lightly floured surface. Cut out cookies with either the bottom of a glass or a cookie cutter around 6cm in diameter. Repeat with all the dough.",
       "Bake for about 8-10min, the cookies will look very pale. Let cool off before filling half with each a teaspoon of dulce de leche. Place other half of cookies on top and roll the sides of each cookie in the coconut flakes (it helps if the dulce de leche was pressed down to the sides of the cookie). Enjoy."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -26161,6 +27511,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the shredded veg in a bowl and add the vinegar, sugar and 1 tsp salt. Toss everything together, then set aside to pickle quickly while you prepare the rest of the sandwich.",
       "Heat oven to 180C/160C fan/gas 4. Cut the baguette into four, then slice each piece horizontally in half. Put the baguette pieces in the oven for 5 mins until lightly toasted and warm. Spread each piece with a layer of hummus, then top four pieces with the tempeh slices and pile the pickled veg on top. To serve, sprinkle over the herbs and squeeze over some hot sauce, then top with the other baguette pieces to make sandwiches."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -26198,6 +27551,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Simply mix all dry ingredients with wet ingredients and blend altogether. Bake for 45 min on 180 degrees. Decorate with some melted vegan chocolate"
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -26248,6 +27605,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Top up the pan with water and cook the lasagne sheets. When cooked, drain and set aside.",
       "To make the sauce, melt the butter and add the flour, then gradually add the soya milk along with the mustard and the vinegar. Cook and stir until smooth and then assemble the lasagne as desired in a baking dish.",
       "Bake in the preheated oven for about 25 minutes."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -26314,6 +27674,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Strain mixture into a large saucepan and bring to a boil; discard solids in strainer. Stir cornstarch and 2 Tbsp. water in a small bowl to dissolve. Add cornstarch mixture; simmer until thickened, about 5 minutes. Whisk in miso. Season sauce with salt and pepper. Set aside.",
       "Preheat oven to 450°. Toss vegetables and pearl onions with remaining 2 Tbsp. oil, 5 garlic cloves, and rosemary sprigs in a large bowl; season with salt and pepper. Divide between 2 rimmed baking sheets. Roast, stirring once, until tender, 20–25 minutes. Transfer garlic cloves to a small bowl; mash well with a fork and stir into sauce. Discard rosemary. DO AHEAD: Lentils, sauce, and vegetables can be made 1 day ahead. Cover separately; chill. Arrange lentils in an even layer in a 3-qt. baking dish; set dish on a foil-lined rimmed baking sheet. Toss roasted vegetables with fresh mushrooms and chopped herbs; layer on top of lentils. Pour sauce over vegetables. Spoon potato mixture evenly over.",
       "Bake until browned and bubbly, about 30 minutes. Let stand for 15 minutes before serving."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -26370,7 +27734,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the garlic, spices, dried thyme, carrots, celery and peppers and cook for 5 minutes.",
       "Add the tomatoes, stock, courgettes and fresh thyme and cook for 20 - 25 minutes.",
       "Take out the thyme sprigs. Stir in the lentils and bring back to a simmer. Serve with wild and white basmati rice, mash or quinoa."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52867,
@@ -26401,6 +27766,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat oven to 200C/180C fan/ gas 6. Cook the vegetables in a casserole dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot. Heat the pouch in the microwave on High for 1 min and serve with the chilli."
+    ],
+    "appliances": [
+      "oven",
+      "microwave"
     ]
   },
   {
@@ -26450,7 +27819,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Simmer for about 20 minutes",
       "Make indents for in the sauce and crack an egg into each one",
       "Once egg whites are cooked through, garnish and serve with toast"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52838,
@@ -26501,7 +27871,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the oil in a large pan. Add the duck legs and brown on all sides for about 10 mins. Remove to a plate and set aside. Add the onions to the pan and cook for 5 mins until softened. Add the garlic and cook for a further 1 min, then stir in the cinnamon and flour and cook for a further min. Return the duck to the pan, add the wine, tomatoes, stock, herbs, sugar and seasoning. Bring to a simmer, then lower the heat, cover with a lid and cook for 2 hrs, stirring every now and then.",
       "Carefully lift the duck legs out of the sauce and place on a plate – they will be very tender so try not to lose any of the meat. Pull off and discard the fat, then shred the meat with 2 forks and discard the bones. Add the meat back to the sauce with the milk and simmer, uncovered, for a further 10-15 mins while you cook the pasta.",
       "Cook the pasta following pack instructions, then drain, reserving a cup of the pasta water, and add the pasta to the ragu. Stir to coat all the pasta in the sauce and cook for 1 min more, adding a splash of cooking liquid if it looks dry. Serve with grated Parmesan, if you like."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53325,
@@ -26543,6 +27914,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Cross your hands, so that one is on top of the other, with the masa ball between them. Rotate your right hand in a circle, so that you are at the same time both pressing the masa into a flat disc and keeping its round shape.",
       "The last step in shaping your arepa is to quickly pass and lightly press the masa disc from one hand to the other until it is about ¾ of an inch thick and 4 inches wide. Smooth the edges with your fingertips (quickly dip them into the water bowl first) so that they stay as round as possible and without cracks.",
       "Place your arepas in batches on the preheated surface of your budare griddle or nonstick pan. Let each side turn golden, about 4 to 5 minutes per side. Check them often so that they don’t burn."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -26598,6 +27973,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "In the same pan you cooked the onion, add the chicken and brown all sides. This should take about 3 minutes.",
       "Add the blender ingredients and bay leaves to the pan, bring to a simmer and cook until the chicken is white inside and the liquid is creamy. (15 to 20 minutes)",
       "Remove the bay leaves and serve with white rice."
+    ],
+    "appliances": [
+      "blender"
     ]
   },
   {
@@ -26658,7 +28036,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add yautia, white yam, and butternut squash. Mix to combine. Simmer covered over medium heat for 5 – 6 minutes, until all the root vegetables are tender. NOTE: Do not cook too much, or they will fall apart.",
       "Taste and add salt to your taste, if necessary. Add cilantro and the remaining 2 minced garlic cloves. Mix and let simmer for 2 more minutes.",
       "Serve hot in large soup bowls, dividing the meat and vegetables evenly. Add a squish of lime juice and/or hot sauce, if desired. Serve along with arepas and or casabe (cassava bread)."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53328,
@@ -26718,7 +28097,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Add the shredded beef back in the pot and mix",
       "Pour in 1 1/2 cups of the saved stock, the Worcestershire sauce, tomato paste, ketchup and cumin. Mix",
       "If sauce seems to dry, add a tad more of stock"
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53332,
@@ -26767,7 +28147,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Season meat with Adobo. In skillet, heat oil on medium high. Cook meat until pink is gone. Stir in onion, pepper, garlic, alcaparras, tomato sauce and Sazón. Cook, stirring often until most of the liquid has evaporated (about 20 minutes). Cool.",
       "Prepared dough should be moist and should hold together, but it should not stick to your fingers. Start with about ½ cup of dough and roll into a ball between palms of your hands. Working on a sheet of non-stick parchment paper, form the ball into a 5-inch circle about ⅛ inch thick. Place a generous tbsp. of filling on one half of circle and using parchment paper close dough over to form a semi-circle. To seal and trim edges of the empanada, press lip of inverted bowl over semi-circle shaped patty. Repeat for all the Empanadas.",
       "In large skillet on medium high, heat ½ inch of oil until hot but not smoking. Cook empanadas in batches, turning once or twice until lightly browned. Drain on paper towel. Do not over crowd skillet or let oil get too hot."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53228,
@@ -26807,7 +28188,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Put the sugar in a large shallow pan, along with a small splash of water. Heat gently, swirling the pan, until the sugar has dissolved. Increase the heat and bubble the syrup until it turns a dark amber colour. Add the fish sauce, most of the chilli and ginger, then splash in 1 tbsp water to dilute. Boil again until syrupy, then add the fish fillets, skin-side down, and the bok choi, cut-side down.",
       "Cover the pan with a lid and simmer for 4-5 mins until the fish is cooked and the bok choi has wilted. Turn off the heat, squeeze over the lemon and scatter with the remaining chilli, ginger and the coriander sprigs. Serve with rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53232,
@@ -26853,7 +28235,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "To make the dressing, whisk all the ingredients together in a large serving bowl. Cook the noodles following pack instructions, then drain and add to the bowl with the dressing.",
       "Peel the carrot into long strips using a vegetable peeler. Do the same for the cucumber, until you reach the seeds (discard them). Add the carrot and cucumber to the noodle mixture along with the shredded chicken, radishes, red onion and mint. Toss well to coat in the dressing, scatter over the peanuts and serve."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52828,
@@ -26902,6 +28285,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Marinate the meat for 1 hour, or overnight for better results.",
       "Bake the pork at 375F for 10-15 minutes or until about 80% cooked. Finish cooking by broiling in the oven until a nice golden brown color develops, flipping the pieces midway.",
       "Assemble your bowl with veggies, noodles, and garnish. Many like to mix the whole bowl up and pour the fish sauce on top, but I like to make individual bites and sauce it slowly."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -26960,6 +28347,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat oven to 160C/140C fan/gas 3. Heat 1 tbsp oil in a heavy-bottomed casserole, season the shanks, then brown them 2 at a time on all sides, adding the remaining oil for the second batch. Remove the lamb and add the onions. Fry them quite briskly, about 30 secs, add the ginger, garlic and chopped chilli, then turn the heat down and cook for 1 min. Add 1 tbsp sugar, stir, then add the star anise, lemongrass, stock, purée and seasoning. Bring to the boil.",
       "Cover and cook in the oven for 1½ hrs, then add the sweet potatoes and cook for 1 hr more. The lamb should be completely tender and almost falling off the bones. Stir in the fish sauce, lime juice and 1 tsp sugar to just lift the flavour, then scatter with the mint, basil and the sliced chilli to serve."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -27017,6 +28407,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "The day before: make the dressing. Put the sugar and lime juice in a pan with 1 tbsp water and bring to the boil to dissolve the sugar. Add the chilli and coriander and stir well, then pulse in a blender until smooth. Tip into a bowl, then stir in the sesame oil, fish sauce, soy sauce and sesame seeds to make a dressing. Cover and chill until needed.",
       "Two hours before serving: heat a griddle pan. Preheat the oven to 200C/gas 6/fan 180C. Brush the pork with oil and griddle on all sides for a few minutes until seared. Transfer to a baking tray and put in the oven for about 10-12 minutes until cooked through. Cool, thinly slice against the grain of the meat. Tip into a bowl and pour over half the dressing.",
       "To serve: toss the remaining salad ingredients in a bowl with the remaining dressing. Pile on to a platter, top with the pork slices and spoon over any juices."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -27063,7 +28457,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "To assemble the rolls, fill a wide bowl with warm water and grab a clean damp tea towel to work on. Dip a rice paper wrapper into the water for a few seconds until it softens then carefully place onto the tea towel.",
       "Put a few mint and coriander leaves in the centre of the wrapper then top with two prawns and a small handful of the spiralized veg, which may need to be cut up if the spirals are too long.",
       "Fold the sides of the wrapper into the centre, over the filling, then fold in the edges, so that the filling is completely encased, then tightly roll. Repeat until all of the wrappers and filling have been used. To serve, slice on a diagonal and eat with the dipping sauce."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53241,
@@ -27110,7 +28505,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Soak the rice fl our pancakes according to pack instructions or in boiling water for 30 secs. Remove and cool on kitchen paper. Soak the rice noodles according to pack instructions, then drain and cut them into 2cm strips.",
       "Lay a rice pancake on a board and arrange some rice noodles, chicken, vegetables and herb leaves about a third of the way up, leaving a 1cm edge at the side. Fold the sides over the vegetables and then roll up lengthways to make a cigar. Store in the fridge, covered with moist kitchen paper for up to 1 day.",
       "Mix together the ingredients for the dipping sauce and put into a bowl. To serve, arrange the rolls on a plate along with the leaves and herbs. To eat, wrap each roll in a piece of lettuce with a herb sprig and dunk into the sauce."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53235,
@@ -27154,7 +28550,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Heat 1 tbsp of the oil in a wok over a high heat and stir-fry the pork in batches until browned all over. Remove with a slotted spoon and set aside.",
       "Turn the heat right down and add the remaining oil, then stir in the shallots, ginger and chilli. Cook over a low heat for a couple of mins until just starting to soften. Add the sugar, fish sauce and 200ml water to the pan and stir everything together. Bring to the boil, stirring, so that the sugar dissolves, then return the pork to the pan. Bubble vigorously for 8-10 mins until the sauce thickens to coat the meat and become glossy. Taste and stir in a little more fish sauce, if needed, along with the chilli sauce. Sprinkle with the spring onions and serve with steamed rice and pak choi."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53236,
@@ -27197,7 +28594,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "servings": 4,
     "steps": [
       "Heat the oil in a medium-size, lidded saucepan. Add the ginger and garlic, then stir-fry for about 5 mins. Add the squash, soy sauce, sugar and stock. Cover, then simmer for 10 mins. Remove the lid, add the green beans, then cook for 3 mins more until the squash and beans are tender. Stir the spring onions through at the last minute, then sprinkle with coriander and serve with rice."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53062,
@@ -27246,6 +28644,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Mix all the ingredients for the dough together and knead well. Cover the dough and put to rise until doubled in size which should take about 2 hours. Knock back the dough and knead lightly.",
       "Divide the dough into two equal pieces; roll each piece into an oblong about 12 inches by 8 inches. Mix the filling ingredients together and divide between the dough, spreading over each piece. Roll up the oblongs as tightly as possible to give two 12 inch sausages. Place these side by side, touching each other, on a greased baking sheet. Cover and leave to rise for about 40 minutes. Heat oven to 200ºC (425ºF). Bake for 30-35 minutes until well risen and golden brown. Bread should sound hollow when the base is tapped.",
       "Remove from oven and brush the hot bread top with milk. Sift with a generous covering of icing sugar."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -27288,6 +28689,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Tip the flour, cinnamon, butter, sugar, 2 tablespoons of the honey and the eggs into a large mixing bowl. Mash the bananas and chop the dates (kitchen scissors are easiest for this) and add to the bowl. Beat the mixture for 2-3 minutes, using a wooden spoon or hand-held mixer, until well blended.",
       "Spoon into the prepared tin and level the top. Scatter the walnut pieces over. Bake for 1 hour, then lightly press the top – it will feel firm if cooked. If not, bake for a further 10 minutes.",
       "Cool for 15 minutes, then lift out of the tin using the paper. When cold, drizzle the remaining honey over. Cut into thick slices."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -27331,6 +28736,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Preheat the oven to 200C/Gas 6/fan 180C. Snap off the woody ends of the asparagus and discard. Arrange the asparagus in a single layer in a baking tray with sides. Cut the tomatoes in half widthways, nestle them in with the asparagus, season with sea salt and pepper and drizzle with olive oil. Roll each bacon rasher into a tight roll (if large, first cut in half crosswise), and arrange in the tray. Drizzle the bacon rolls with the honey and bake for 20 minutes until the tomatoes are soft and the bacon is crisp.",
       "In the meantime, boil the potatoes until tender. Whisk the vinegar, olive oil, mustard, some sea salt and pepper in a large bowl until blended. Toss the rocket or spinach leaves in half of the dressing, and arrange on a large serving platter.",
       "Drain the potatoes and cut in half. Gently toss them in the rest of the dressing, and arrange on the platter with the asparagus. Tuck in the tomatoes and bacon."
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -27367,6 +28776,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the cream, chocolate and vanilla pod in a pan until the chocolate has melted. Take off the heat and allow to infuse for 10 mins, scraping the pod seeds into the cream. If using the vanilla extract, add straight away. Heat oven to 160C/fan 140C/gas 3.",
       "Beat yolks and sugar until pale. stir in the chocolate cream. Strain into a jug and pour into ramekins. Place in a deep roasting tray and pour boiling water halfway up the sides. Bake for 15-20 mins until just set with a wobbly centre. Chill in the fridge for at least 4 hrs.",
       "To serve, sprinkle some sugar on top of the brûlées and caramelise with a blowtorch or briefly under a hot grill. Leave caramel to harden, then serve."
+    ],
+    "appliances": [
+      "oven",
+      "grill"
     ]
   },
   {
@@ -27415,7 +28828,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pinch the two long outside points together.",
       "Heat oil to 450 degrees and fry 4 to 5 at a time until golden.",
       "Drain and serve with sauce."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 52871,
@@ -27458,7 +28872,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
     "steps": [
       "Boil some water in a large saucepan. Add 250ml cold water and the udon noodles. (As they are so thick, adding cold water helps them to cook a little bit slower so the middle cooks through). If using frozen or fresh noodles, cook for 2 mins or until al dente; dried will take longer, about 5-6 mins. Drain and leave in the colander.",
       "Heat 1 tbsp of the oil, add the onion and cabbage and sauté for 5 mins until softened. Add the mushrooms and some spring onions, and sauté for 1 more min. Pour in the remaining sesame oil and the noodles. If using cold noodles, let them heat through before adding the ingredients for the sauce – otherwise tip in straight away and keep stir-frying until sticky and piping hot. Sprinkle with the remaining spring onions."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53225,
@@ -27496,7 +28911,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "First, On medium heat, heat the olive oil and add the diced onion until it wethers. Next, add the tomatoes and cook for another 4-5 min. Lastly, add the all spice, salt, and cracked pepper.",
       "Add the eggs and mix throughly for 2 minutes and cover to cook 5-6 minutes until top is solidified. Lastly, spread the liquid cheese and have it covered for a minute.",
       "I served mine Mediterranean style with hash-browns, Egyptian fava beans, Turkish salami and olives, cheese wedges, and greek feta."
-    ]
+    ],
+    "appliances": []
   },
   {
     "id": 53097,
@@ -27531,6 +28947,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Pour the batter into a jug, then remove the hot tins from the oven. Carefully and evenly pour the batter into the holes.",
       "Place the tins back in the oven and leave undisturbed for 20-25 mins until the puddings have puffed up and browned.",
       "Serve immediately. You can now cool them and freeze for up to 1 month."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -27583,6 +29002,9 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat 2 tsp of the butter and 1 tsp of the oil in a pan over a low heat and cook the chopped onion for 5 mins until soft. Stir in the mushrooms, turn the heat to medium and cook for 5-10 mins more until the veg is soft and the mushroom liquid has evaporated. Stir in the garlic and cook for 1-2 mins until soft. Season, then stir in the mayonnaise and remove from the heat.",
       "Halve the baguettes lengthways, then return to the baking tray, cut-side up and spread over the mushroom mixture, then sprinkle over the cheddar, ham, kabanos and mozzarella. Bake for 8-10 mins, or until the cheese has melted and turned golden.",
       "Meanwhile, heat the remaining butter and oil in a pan over a medium heat and fry the sliced onions for 5 mins until golden and soft. Remove from the heat and set aside. Once the pizzas are cooked, top with the caramelised onions, dill pickles (if using), the chives and a zig-zag drizzle of ketchup."
+    ],
+    "appliances": [
+      "oven"
     ]
   },
   {
@@ -27636,6 +29058,10 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Meanwhile, preheat the oven to 250 degrees Celsius/480 Fahrenheit top and bottom heat",
       "Bake the Zeeland Boluses for about 8 minutes until done. Be careful – if you bake them too long, they will get dry and you will want something sticky 😉 .",
       "Let them cool out of the oven for 1 minute, then turn them over and let them cool further (on a wire rack if necessary). Enjoy!"
+    ],
+    "appliances": [
+      "oven",
+      "blender"
     ]
   },
   {
@@ -27679,7 +29105,8 @@ export const EXTENDED_RECIPES: Recipe[] = [
       "Heat the Oil In a large frying pan, heat a generous amount of oil over medium heat. The oil should be hot but not smoking.",
       "Fry the Pancakes Spoon portions of the batter into the pan, flattening each into a thin pancake. Fry until golden brown and crispy on one side, then flip and cook the other side until equally golden and crispy.",
       "Drain & Serve Transfer the cooked pancakes onto a plate lined with paper towels to remove excess oil. Serve immediately while hot, with sour cream, garlic dip, or as a side dish."
-    ]
+    ],
+    "appliances": []
   }
 ];
 

@@ -5,6 +5,7 @@ import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
 import { computeMatch, ingMatches } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
+import { amazonShopUrl, getEquipmentSuggestions } from '../lib/affiliate';
 
 interface RecipeDetailProps {
   recipeId: number;
@@ -179,21 +180,32 @@ export function RecipeDetail({
               )}
             </h2>
             {match.missing.length > 0 && (
-              <button
-                onClick={async () => {
-                  await shareShoppingList(match.missing, recipe.name);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
-                style={{
-                  background: copied ? 'var(--success-100)' : theme.soft,
-                  color: copied ? 'var(--success-700)' : theme.dark,
-                }}
-              >
-                <ShoppingCart size={13} strokeWidth={2.5} />
-                {copied ? 'Copied!' : `${match.missing.length} to buy`}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={async () => {
+                    await shareShoppingList(match.missing, recipe.name);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
+                  style={{
+                    background: copied ? 'var(--success-100)' : theme.soft,
+                    color: copied ? 'var(--success-700)' : theme.dark,
+                  }}
+                >
+                  <ShoppingCart size={13} strokeWidth={2.5} />
+                  {copied ? 'Copied!' : `${match.missing.length} to buy`}
+                </button>
+                <a
+                  href={amazonShopUrl(match.missing)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
+                  style={{ background: '#FF9900', color: 'white' }}
+                >
+                  Buy on Amazon →
+                </a>
+              </div>
             )}
           </div>
           <div className="bg-white rounded-2xl p-2">
@@ -235,6 +247,38 @@ export function RecipeDetail({
           </div>
         </div>
       </div>
+
+      {/* Equipment suggestions */}
+      {(() => {
+        const gear = getEquipmentSuggestions(recipe);
+        return (
+          <div className="mb-8">
+            <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] mb-3">
+              Useful kit
+            </h2>
+            <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+              {gear.map((item) => (
+                <a
+                  key={item.name}
+                  href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=easypeasy-20`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-95 transition-transform"
+                  style={{
+                    minWidth: 110,
+                    boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.12)',
+                    border: '1.5px solid var(--border-default)',
+                  }}
+                >
+                  <span className="text-[32px]">{item.emoji}</span>
+                  <span className="font-body text-[12px] font-semibold text-[var(--text-primary)] text-center leading-snug">{item.name}</span>
+                  <span className="font-body text-[10px] text-[var(--brand-500)] font-bold">Amazon →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Sticky actions */}
       <div className="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-[var(--bg-page)]/95 backdrop-blur-md p-5 pb-7 border-t border-[var(--border-default)]">

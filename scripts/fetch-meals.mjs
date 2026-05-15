@@ -110,6 +110,18 @@ async function fetchWithRetry(url, retries = 3) {
   }
 }
 
+function inferAppliances(steps) {
+  const text = steps.join(' ').toLowerCase();
+  const tags = [];
+  if (/\boven\b|preheat|bak(e|ing|ed)|roast(ing|ed)?/.test(text))         tags.push('oven');
+  if (/air.?fr(y|ier|yer)/.test(text))                                     tags.push('air-fryer');
+  if (/\bgrill(ed|ing)?\b|barbecue|\bbbq\b|charcoal|broil/.test(text))     tags.push('grill');
+  if (/slow.?cook|crock.?pot/.test(text))                                   tags.push('slow-cooker');
+  if (/\bmicrowave\b/.test(text))                                           tags.push('microwave');
+  if (/\bblend(er|ed|ing)?\b|food.?process/.test(text))                    tags.push('blender');
+  return tags;
+}
+
 async function main() {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
   const byId = new Map();
@@ -153,6 +165,7 @@ async function main() {
       dietary:     getDietary(ingredients),
       servings:    4,
       steps:       parseSteps(meal.strInstructions),
+      appliances:  inferAppliances(parseSteps(meal.strInstructions)),
     });
 
     if (meal.strMealThumb) imageMap[parseInt(meal.idMeal)] = meal.strMealThumb;

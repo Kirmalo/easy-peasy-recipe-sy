@@ -4,13 +4,30 @@ import { Plus, X, Check, Mic, Square, AlertCircle, Sparkles, ChevronDown } from 
 import { COMMON_INGREDIENTS } from '../data/commonIngredients';
 import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
 
+import type { ApplianceTag } from '../types';
+
+const APPLIANCE_OPTIONS: { id: ApplianceTag; label: string; icon: string }[] = [
+  { id: 'oven',        label: 'Oven',        icon: '♨️' },
+  { id: 'air-fryer',   label: 'Air Fryer',   icon: '💨' },
+  { id: 'grill',       label: 'Grill / BBQ', icon: '🔥' },
+  { id: 'slow-cooker', label: 'Slow Cooker', icon: '🥘' },
+  { id: 'microwave',   label: 'Microwave',   icon: '⚡' },
+  { id: 'blender',     label: 'Blender',     icon: '🥤' },
+];
+
 interface KitchenViewProps {
   pantry: string[];
   setPantry: (fn: (prev: string[]) => string[]) => void;
+  appliances: ApplianceTag[];
+  setAppliances: (fn: (prev: ApplianceTag[]) => ApplianceTag[]) => void;
   onContinue: () => void;
 }
 
-export function KitchenView({ pantry, setPantry, onContinue }: KitchenViewProps) {
+export function KitchenView({ pantry, setPantry, appliances, setAppliances, onContinue }: KitchenViewProps) {
+  const toggleAppliance = (id: ApplianceTag) =>
+    setAppliances((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
+    );
   const [input, setInput] = useState('');
   const [speechError, setSpeechError] = useState<string | null>(null);
   const [justAdded, setJustAdded] = useState<number | null>(null);
@@ -244,6 +261,45 @@ export function KitchenView({ pantry, setPantry, onContinue }: KitchenViewProps)
             </div>
           </div>
         )}
+
+        {/* Appliance picker */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <p className="font-body text-[13px] font-bold text-[var(--text-primary)] uppercase tracking-wider">
+              Your kitchen gear
+            </p>
+            {appliances.length > 0 && (
+              <span className="font-body text-[11px] text-[var(--brand-500)] font-semibold">
+                Filtering recipes
+              </span>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {APPLIANCE_OPTIONS.map((a) => {
+              const active = appliances.includes(a.id);
+              return (
+                <button
+                  key={a.id}
+                  onClick={() => toggleAppliance(a.id)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
+                  style={{
+                    background: active ? 'var(--surface-dark)' : 'white',
+                    color: active ? 'white' : 'var(--text-secondary)',
+                    border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
+                  }}
+                >
+                  <span>{a.icon}</span>
+                  {a.label}
+                </button>
+              );
+            })}
+          </div>
+          <p className="font-body text-[11px] text-[var(--text-tertiary)] mt-2 leading-relaxed">
+            {appliances.length > 0
+              ? 'Recipes needing equipment you haven\'t selected will be hidden in Discover.'
+              : 'Select what you have to filter out recipes you can\'t make. Stovetop is always assumed.'}
+          </p>
+        </div>
 
         {/* Quick add categories */}
         <div className="space-y-2">

@@ -5,11 +5,12 @@ import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
 import { RECIPES } from '../data/recipes';
 import { computeMatch, isStaple } from '../lib/matching';
-import type { Filters, SwipeDirection } from '../types';
+import type { Filters, SwipeDirection, ApplianceTag } from '../types';
 
 interface DiscoverViewProps {
   pantry: string[];
   filters: Filters;
+  appliances: ApplianceTag[];
   cookbook: number[];
   addToCookbook: (id: number) => void;
   making: number[];
@@ -25,6 +26,7 @@ interface DiscoverViewProps {
 export function DiscoverView({
   pantry,
   filters,
+  appliances,
   cookbook,
   addToCookbook,
   making,
@@ -57,6 +59,12 @@ export function DiscoverView({
       candidates = candidates.filter((r) => filters.dietary.every((d) => r.dietary.includes(d)));
     }
 
+    if (appliances.length > 0) {
+      candidates = candidates.filter((r) =>
+        !r.appliances?.length || r.appliances.every((a) => appliances.includes(a))
+      );
+    }
+
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
       candidates = candidates.filter(
@@ -78,7 +86,7 @@ export function DiscoverView({
 
     scored.sort((a, b) => b.match.score - a.match.score);
     return scored;
-  }, [pantry, filters, cookbook, making, passed, searchQuery]);
+  }, [pantry, filters, appliances, cookbook, making, passed, searchQuery]);
 
   const topThree = deck.slice(0, 3);
   const current = topThree[0];
