@@ -157,31 +157,59 @@ export function CookingStepsView({ recipeId, onClose }: CookingStepsViewProps) {
 
                 {/* Intro content */}
                 {isIntro && (
-                  <div className="absolute bottom-0 left-0 right-0 p-7 pb-9">
-                    <p className="font-body text-white/60 text-[11px] uppercase tracking-widest font-semibold mb-2">
-                      Ready to cook?
-                    </p>
-                    <h2 className="font-display font-semibold text-white text-[34px] leading-[1.05] tracking-tight mb-3">
-                      Let's make<br />
-                      <span className="italic font-medium">{recipe.name}!</span>
-                    </h2>
-                    <p className="font-body text-white/65 text-[14px] mb-7">
-                      {totalSteps} steps · {recipe.cookTime} min · serves {recipe.servings}
-                    </p>
-                    <button
-                      onClick={goNext}
-                      className="w-full py-4 rounded-2xl bg-white font-body font-bold text-[16px] flex items-center justify-center gap-2 active:scale-95 transition-transform"
-                      style={{ color: 'var(--surface-dark)', boxShadow: '0 8px 24px -4px rgba(0,0,0,0.35)' }}
-                    >
-                      Start cooking
-                      <ChevronRight size={20} strokeWidth={2.8} />
-                    </button>
-                  </div>
+                  <>
+                    {/* Ingredient list — upper area */}
+                    <div className="absolute top-6 left-6 right-6">
+                      <div
+                        className="rounded-2xl px-4 py-3"
+                        style={{ background: 'rgba(0,0,0,0.32)', backdropFilter: 'blur(12px)' }}
+                      >
+                        <p className="font-body text-[10px] uppercase tracking-widest text-white/50 font-semibold mb-2.5">
+                          You'll need
+                        </p>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                          {recipe.ingredients.map((ing, i) => (
+                            <div key={i} className="flex items-baseline gap-1.5 min-w-0">
+                              <span className="font-body text-white/55 text-[11px] flex-shrink-0 tabular-nums">
+                                {recipe.amounts[i]}
+                              </span>
+                              <span className="font-body text-white/90 text-[12px] font-medium truncate capitalize">
+                                {ing}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA — bottom area */}
+                    <div className="absolute bottom-0 left-0 right-0 p-7 pb-9">
+                      <p className="font-body text-white/60 text-[11px] uppercase tracking-widest font-semibold mb-2">
+                        Ready to cook?
+                      </p>
+                      <h2 className="font-display font-semibold text-white text-[32px] leading-[1.05] tracking-tight mb-3">
+                        Let's make<br />
+                        <span className="italic font-medium">{recipe.name}!</span>
+                      </h2>
+                      <p className="font-body text-white/65 text-[14px] mb-6">
+                        {totalSteps} steps · {recipe.cookTime} min · serves {recipe.servings}
+                      </p>
+                      <button
+                        onClick={goNext}
+                        className="w-full py-4 rounded-2xl bg-white font-body font-bold text-[16px] flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                        style={{ color: 'var(--surface-dark)', boxShadow: '0 8px 24px -4px rgba(0,0,0,0.35)' }}
+                      >
+                        Start cooking
+                        <ChevronRight size={20} strokeWidth={2.8} />
+                      </button>
+                    </div>
+                  </>
                 )}
 
                 {/* Step content */}
                 {!isIntro && !isDone && (
                   <>
+                    {/* Badge row */}
                     <div className="absolute top-7 left-7 right-7 flex items-center justify-between">
                       <div
                         className="px-4 py-2 rounded-full font-body font-bold text-[11px] uppercase tracking-widest text-white"
@@ -197,6 +225,30 @@ export function CookingStepsView({ recipeId, onClose }: CookingStepsViewProps) {
                       </div>
                     </div>
 
+                    {/* Ingredient reference strip — scrollable */}
+                    <div
+                      className="absolute left-5 right-5 overflow-x-auto no-scrollbar"
+                      style={{ top: 76 }}
+                    >
+                      <div className="flex gap-1.5 pb-0.5">
+                        {recipe.ingredients.map((ing, i) => (
+                          <div
+                            key={i}
+                            className="flex-shrink-0 rounded-full px-3 py-1.5 flex items-center gap-1.5"
+                            style={{ background: 'rgba(255,255,255,0.13)', backdropFilter: 'blur(8px)' }}
+                          >
+                            <span className="font-body text-white/55 text-[10px] whitespace-nowrap tabular-nums">
+                              {recipe.amounts[i]}
+                            </span>
+                            <span className="font-body text-white/90 text-[11px] font-medium whitespace-nowrap capitalize">
+                              {ing}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Step text */}
                     <div className="absolute bottom-0 left-0 right-0 p-7 pb-9">
                       <p className="font-display font-semibold text-white text-[26px] leading-[1.35] tracking-tight">
                         {recipe.steps[stepIndex - 1]}

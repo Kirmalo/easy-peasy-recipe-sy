@@ -10,6 +10,7 @@ export const RECIPES: Recipe[] = [
     id: 1, name: 'Garlic Butter Pasta', emoji: '🍝', theme: 'mustard',
     description: 'Silky pasta tossed in a glossy, garlicky butter sauce.',
     ingredients: ['pasta', 'garlic', 'butter', 'parmesan', 'parsley', 'olive oil', 'salt', 'pepper'],
+    amounts:     ['200g',  '4 cloves', '3 tbsp', '50g grated', 'handful', '1 tbsp', 'to taste', 'to taste'],
     cookTime: 15, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian'], servings: 2,
     steps: [
       'Bring a large pot of salted water to a boil.',
@@ -23,6 +24,7 @@ export const RECIPES: Recipe[] = [
     id: 2, name: 'Tomato Basil Bruschetta', emoji: '🍅', theme: 'tomato',
     description: 'Toasty bread piled high with sweet tomatoes and torn basil.',
     ingredients: ['bread', 'tomatoes', 'basil', 'garlic', 'olive oil', 'balsamic', 'salt'],
+    amounts:     ['½ baguette', '4 ripe', 'large handful', '1 clove', '3 tbsp', '1 tbsp', 'to taste'],
     cookTime: 10, difficulty: 'easy', mealType: 'snack', dietary: ['vegetarian', 'vegan'], servings: 4,
     steps: [
       'Dice tomatoes; toss with torn basil, olive oil, balsamic, and salt.',
@@ -35,6 +37,7 @@ export const RECIPES: Recipe[] = [
     id: 3, name: 'Lemon Herb Chicken', emoji: '🍗', theme: 'sage',
     description: 'Juicy chicken with bright lemon and fresh herbs.',
     ingredients: ['chicken', 'lemon', 'garlic', 'olive oil', 'thyme', 'rosemary', 'salt', 'pepper'],
+    amounts:     ['4 thighs', '1', '4 cloves', '2 tbsp', '4 sprigs', '2 sprigs', 'generous', 'to taste'],
     cookTime: 30, difficulty: 'easy', mealType: 'dinner', dietary: ['gluten-free'], servings: 4,
     steps: [
       'Pat chicken dry; season generously with salt and pepper.',
@@ -48,6 +51,7 @@ export const RECIPES: Recipe[] = [
     id: 4, name: 'Rainbow Veggie Stir-Fry', emoji: '🥢', theme: 'forest',
     description: 'Crisp-tender veggies in a glossy soy-ginger glaze.',
     ingredients: ['broccoli', 'bell pepper', 'carrots', 'soy sauce', 'garlic', 'ginger', 'sesame oil', 'rice'],
+    amounts:     ['1 head', '2', '2 large', '3 tbsp', '3 cloves', '1 tsp grated', '1 tbsp', '1 cup dry'],
     cookTime: 20, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian', 'vegan'], servings: 3,
     steps: [
       'Cook rice according to package instructions.',
@@ -61,6 +65,7 @@ export const RECIPES: Recipe[] = [
     id: 5, name: 'Classic Grilled Cheese', emoji: '🧀', theme: 'mustard',
     description: 'Crispy, golden, melty perfection.',
     ingredients: ['bread', 'cheese', 'butter'],
+    amounts:     ['2 thick slices', '2 slices', '2 tbsp'],
     cookTime: 8, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian'], servings: 1,
     steps: [
       'Butter one side of each bread slice.',
@@ -73,6 +78,7 @@ export const RECIPES: Recipe[] = [
     id: 6, name: 'Mushroom Risotto', emoji: '🍄', theme: 'peach',
     description: 'Creamy, slow-stirred rice with deeply savory mushrooms.',
     ingredients: ['rice', 'mushrooms', 'butter', 'parmesan', 'onion', 'garlic', 'white wine', 'broth'],
+    amounts:     ['300g arborio', '300g sliced', '4 tbsp', '80g grated', '1 medium', '3 cloves', '100ml', '1L warm'],
     cookTime: 45, difficulty: 'medium', mealType: 'dinner', dietary: ['vegetarian'], servings: 4,
     steps: [
       'Sauté sliced mushrooms in butter until deep brown. Set aside.',
@@ -86,6 +92,7 @@ export const RECIPES: Recipe[] = [
     id: 7, name: 'Avocado Toast Deluxe', emoji: '🥑', theme: 'sage',
     description: 'Smashed avocado, lemon, chili crunch — the brunch classic.',
     ingredients: ['bread', 'avocado', 'lemon', 'chili flakes', 'salt', 'olive oil'],
+    amounts:     ['2 slices', '1 ripe', '½', 'pinch', 'to taste', '1 tsp'],
     cookTime: 5, difficulty: 'easy', mealType: 'breakfast', dietary: ['vegetarian', 'vegan'], servings: 1,
     steps: [
       'Toast bread until deeply golden.',
@@ -98,6 +105,7 @@ export const RECIPES: Recipe[] = [
     id: 8, name: 'Egg Fried Rice', emoji: '🍚', theme: 'mustard',
     description: 'Fluffy day-old rice, fragrant eggs, scallions.',
     ingredients: ['rice', 'eggs', 'soy sauce', 'green onion', 'garlic', 'sesame oil', 'peas'],
+    amounts:     ['2 cups cold', '3 large', '2 tbsp', '3 stalks', '2 cloves', '1 tsp', 'handful'],
     cookTime: 15, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian'], servings: 2,
     steps: [
       'Push cold rice to one side of a screaming-hot wok.',
@@ -110,6 +118,7 @@ export const RECIPES: Recipe[] = [
     id: 9, name: 'Caprese Salad', emoji: '🥗', theme: 'tomato',
     description: 'Mozzarella, tomatoes, basil — barely a recipe, mostly perfect.',
     ingredients: ['tomatoes', 'mozzarella', 'basil', 'olive oil', 'balsamic', 'salt'],
+    amounts:     ['3 ripe', '250g fresh', 'large handful', '3 tbsp', '1 tbsp', 'flaky'],
     cookTime: 5, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian', 'gluten-free'], servings: 2,
     steps: [
       'Slice ripe tomatoes and fresh mozzarella into thick rounds.',
@@ -122,6 +131,7 @@ export const RECIPES: Recipe[] = [
     id: 10, name: 'Coconut Chickpea Curry', emoji: '🍛', theme: 'peach',
     description: 'Cozy, fragrant, ready in under 30.',
     ingredients: ['chickpeas', 'tomatoes', 'onion', 'garlic', 'ginger', 'coconut milk', 'curry powder', 'rice'],
+    amounts:     ['2 cans (400g)', '1 can (400g)', '1 large', '4 cloves', '1 tsp grated', '400ml', '2 tsp', '1½ cups dry'],
     cookTime: 25, difficulty: 'easy', mealType: 'dinner', dietary: ['vegan', 'gluten-free'], servings: 4,
     steps: [
       'Sauté diced onion until soft. Add garlic, ginger, curry powder.',
@@ -134,6 +144,7 @@ export const RECIPES: Recipe[] = [
     id: 11, name: 'Fluffy Banana Pancakes', emoji: '🥞', theme: 'mustard',
     description: 'Tall, golden, with bananas folded right in.',
     ingredients: ['bananas', 'eggs', 'flour', 'milk', 'baking powder', 'butter', 'salt'],
+    amounts:     ['2 ripe', '2 large', '1 cup', '¾ cup', '1½ tsp', '2 tbsp', 'pinch'],
     cookTime: 20, difficulty: 'easy', mealType: 'breakfast', dietary: ['vegetarian'], servings: 4,
     steps: [
       'Mash 2 ripe bananas in a bowl.',
@@ -146,6 +157,7 @@ export const RECIPES: Recipe[] = [
     id: 12, name: 'Tuna Melt', emoji: '🥪', theme: 'ocean',
     description: 'Crispy outside, creamy melty inside.',
     ingredients: ['bread', 'tuna', 'mayo', 'cheese', 'butter', 'onion', 'celery'],
+    amounts:     ['4 slices', '2 cans (140g)', '3 tbsp', '4 slices', '2 tbsp', '¼', '1 stalk'],
     cookTime: 12, difficulty: 'easy', mealType: 'lunch', dietary: [], servings: 2,
     steps: [
       'Mix tuna with mayo, finely diced onion and celery.',
@@ -158,6 +170,7 @@ export const RECIPES: Recipe[] = [
     id: 13, name: 'Pesto Pasta', emoji: '🌿', theme: 'forest',
     description: 'Vibrant basil pesto clinging to every twist of pasta.',
     ingredients: ['pasta', 'basil', 'pine nuts', 'garlic', 'parmesan', 'olive oil', 'lemon'],
+    amounts:     ['400g', '2 big handfuls', '2 tbsp', '1 clove', '50g grated', '80ml', '½'],
     cookTime: 20, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian'], servings: 4,
     steps: [
       'Blitz basil, pine nuts, garlic, and parmesan in a food processor.',
@@ -170,6 +183,7 @@ export const RECIPES: Recipe[] = [
     id: 14, name: 'Sheet Pan Veggies', emoji: '🥕', theme: 'peach',
     description: 'Caramelized, herby, hands-off magic.',
     ingredients: ['carrots', 'broccoli', 'potatoes', 'olive oil', 'garlic', 'thyme', 'salt', 'pepper'],
+    amounts:     ['3 large', '1 head', '4 medium', '3 tbsp', '4 cloves', '6 sprigs', 'to taste', 'to taste'],
     cookTime: 35, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian', 'vegan', 'gluten-free'], servings: 4,
     steps: [
       'Heat oven to 425°F.',
@@ -182,6 +196,7 @@ export const RECIPES: Recipe[] = [
     id: 15, name: 'Hearty Lentil Soup', emoji: '🍲', theme: 'tomato',
     description: 'Stick-to-your-ribs comfort in a bowl.',
     ingredients: ['lentils', 'carrots', 'onion', 'celery', 'garlic', 'tomatoes', 'broth', 'cumin'],
+    amounts:     ['1½ cups dry', '2', '1 large', '2 stalks', '3 cloves', '1 can (400g)', '1.5L', '1 tsp'],
     cookTime: 40, difficulty: 'easy', mealType: 'dinner', dietary: ['vegetarian', 'vegan', 'gluten-free'], servings: 6,
     steps: [
       'Sauté diced onion, carrots, and celery until soft.',
@@ -194,6 +209,7 @@ export const RECIPES: Recipe[] = [
     id: 16, name: 'Greek Salad', emoji: '🫒', theme: 'ocean',
     description: 'Crunchy, briny, sun-on-a-plate.',
     ingredients: ['cucumber', 'tomatoes', 'feta', 'olives', 'onion', 'olive oil', 'oregano', 'lemon'],
+    amounts:     ['1 large', '3', '200g', 'handful', '½ red', '4 tbsp', '1 tsp dried', '½'],
     cookTime: 10, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian', 'gluten-free'], servings: 4,
     steps: [
       'Chop cucumber and tomatoes into rough chunks.',
@@ -206,6 +222,7 @@ export const RECIPES: Recipe[] = [
     id: 17, name: 'Weeknight Beef Tacos', emoji: '🌮', theme: 'berry',
     description: 'Quick, savory, customizable with whatever\'s in the fridge.',
     ingredients: ['ground beef', 'tortillas', 'cheese', 'lettuce', 'tomatoes', 'onion', 'cumin', 'chili powder'],
+    amounts:     ['500g', '8 small', 'grated, to taste', 'shredded', '2', '1', '1 tsp', '1 tsp'],
     cookTime: 20, difficulty: 'easy', mealType: 'dinner', dietary: [], servings: 4,
     steps: [
       'Brown ground beef with diced onion; drain excess fat.',
@@ -218,6 +235,7 @@ export const RECIPES: Recipe[] = [
     id: 18, name: 'Cilantro Chimichurri Steak', emoji: '🥩', theme: 'forest',
     description: 'Seared steak under a vibrant herb-and-garlic shower.',
     ingredients: ['steak', 'cilantro', 'parsley', 'garlic', 'olive oil', 'red wine vinegar', 'chili flakes', 'salt'],
+    amounts:     ['2 × 200g', 'large handful', 'small handful', '3 cloves', '60ml', '2 tbsp', 'pinch', 'generous'],
     cookTime: 20, difficulty: 'medium', mealType: 'dinner', dietary: ['gluten-free'], servings: 2,
     steps: [
       'Finely chop cilantro, parsley, and garlic; mix with oil, vinegar, chili flakes, salt. Rest 10 min.',
@@ -231,6 +249,7 @@ export const RECIPES: Recipe[] = [
     id: 19, name: 'Caprese Sandwich', emoji: '🥖', theme: 'rose',
     description: 'Crusty bread, ripe tomato, oozy mozzarella, basil.',
     ingredients: ['bread', 'tomatoes', 'mozzarella', 'basil', 'olive oil', 'balsamic', 'salt'],
+    amounts:     ['2 crusty rolls', '2 ripe', '150g fresh', 'handful', '2 tbsp', '1 tsp', 'flaky'],
     cookTime: 8, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian'], servings: 2,
     steps: [
       'Split a crusty roll; drizzle insides with olive oil.',
@@ -243,6 +262,7 @@ export const RECIPES: Recipe[] = [
     id: 20, name: 'Veggie Omelette', emoji: '🍳', theme: 'mustard',
     description: 'Fluffy eggs folded around whatever\'s in your crisper.',
     ingredients: ['eggs', 'cheese', 'bell pepper', 'onion', 'mushrooms', 'butter', 'salt', 'pepper'],
+    amounts:     ['3 large', 'handful grated', '½', '¼', '3', '1 tbsp', 'to taste', 'to taste'],
     cookTime: 10, difficulty: 'easy', mealType: 'breakfast', dietary: ['vegetarian', 'gluten-free'], servings: 1,
     steps: [
       'Sauté diced veggies in butter until soft; remove.',
@@ -255,6 +275,7 @@ export const RECIPES: Recipe[] = [
     id: 21, name: 'Creamy Tomato Soup', emoji: '🥣', theme: 'tomato',
     description: 'Velvety, deeply tomato-y, made for dunking.',
     ingredients: ['tomatoes', 'onion', 'garlic', 'basil', 'cream', 'butter', 'broth'],
+    amounts:     ['2 cans (800g)', '1 large', '3 cloves', 'handful', '100ml', '2 tbsp', '500ml'],
     cookTime: 30, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian', 'gluten-free'], servings: 4,
     steps: [
       'Sauté onion and garlic in butter until soft.',
@@ -267,6 +288,7 @@ export const RECIPES: Recipe[] = [
     id: 22, name: 'Garlic Butter Shrimp', emoji: '🦐', theme: 'rose',
     description: 'Plump shrimp swimming in lemony garlic butter.',
     ingredients: ['shrimp', 'garlic', 'butter', 'lemon', 'parsley', 'chili flakes', 'olive oil'],
+    amounts:     ['400g peeled', '4 cloves', '3 tbsp', '1', 'handful', 'pinch', '1 tbsp'],
     cookTime: 12, difficulty: 'easy', mealType: 'dinner', dietary: ['gluten-free'], servings: 3,
     steps: [
       'Pat shrimp dry; season with salt.',
@@ -279,6 +301,7 @@ export const RECIPES: Recipe[] = [
     id: 23, name: 'Crispy Quesadillas', emoji: '🫓', theme: 'mustard',
     description: 'Buttery, golden, oozing with cheese.',
     ingredients: ['tortillas', 'cheese', 'butter', 'onion', 'bell pepper'],
+    amounts:     ['4 large', '200g grated', '2 tbsp', '1', '1'],
     cookTime: 10, difficulty: 'easy', mealType: 'lunch', dietary: ['vegetarian'], servings: 2,
     steps: [
       'Sauté diced peppers and onion until soft (optional).',
@@ -291,6 +314,7 @@ export const RECIPES: Recipe[] = [
     id: 24, name: 'Honey Garlic Salmon', emoji: '🐟', theme: 'rose',
     description: 'Glossy, sticky-sweet, ready in 15.',
     ingredients: ['salmon', 'honey', 'garlic', 'soy sauce', 'lemon', 'butter', 'olive oil'],
+    amounts:     ['2 fillets', '2 tbsp', '3 cloves', '2 tbsp', '1', '1 tbsp', '1 tbsp'],
     cookTime: 15, difficulty: 'medium', mealType: 'dinner', dietary: ['gluten-free'], servings: 2,
     steps: [
       'Whisk honey, soy sauce, minced garlic, and lemon juice.',
@@ -303,6 +327,7 @@ export const RECIPES: Recipe[] = [
     id: 25, name: 'Chocolate Mug Cake', emoji: '🍫', theme: 'berry',
     description: 'Rich, gooey, ready before your tea cools.',
     ingredients: ['flour', 'cocoa powder', 'sugar', 'milk', 'butter', 'vanilla', 'chocolate chips'],
+    amounts:     ['4 tbsp', '2 tbsp', '3 tbsp', '3 tbsp', '2 tbsp melted', 'splash', '2 tbsp'],
     cookTime: 5, difficulty: 'easy', mealType: 'dessert', dietary: ['vegetarian'], servings: 1,
     steps: [
       'In a large mug, whisk 4 tbsp flour, 3 tbsp sugar, 2 tbsp cocoa.',

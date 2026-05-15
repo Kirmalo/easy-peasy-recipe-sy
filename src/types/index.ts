@@ -19,6 +19,7 @@ export interface Recipe {
   theme: ThemeName;
   description: string;
   ingredients: string[];
+  amounts: string[];
   cookTime: number;
   difficulty: Difficulty;
   mealType: MealType;

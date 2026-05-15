@@ -121,17 +121,18 @@ export function RecipeDetail({
             )}
           </h2>
           <div className="bg-white rounded-2xl p-2">
-            {recipe.ingredients.map((ing) => {
+            {recipe.ingredients.map((ing, i) => {
               const have = pantry.some((p) => ingMatches(ing, p));
               return (
                 <div key={ing} className="flex items-center gap-3 px-3 py-2.5">
                   <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center"
+                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ background: have ? theme.from : 'var(--surface-muted)' }}
                   >
                     {have && <Check size={14} strokeWidth={3.5} className="text-white" />}
                   </div>
-                  <span className="font-body text-[15px] text-[var(--text-primary)] capitalize">{ing}</span>
+                  <span className="font-body text-[15px] text-[var(--text-primary)] capitalize flex-1">{ing}</span>
+                  <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">{recipe.amounts[i]}</span>
                 </div>
               );
             })}
