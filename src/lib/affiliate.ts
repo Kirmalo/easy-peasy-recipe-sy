@@ -1,7 +1,7 @@
 import type { Recipe } from '../types';
 
 // ← Replace with your Amazon Associates tracking ID once approved
-export const AMAZON_TAG = 'easypeasy-20';
+export const AMAZON_TAG = 'crispypettus-20';
 
 export function amazonShopUrl(items: string[]): string {
   const query = items.slice(0, 8).join(' ');

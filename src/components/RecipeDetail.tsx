@@ -5,7 +5,7 @@ import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
 import { computeMatch, ingMatches } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
-import { amazonShopUrl, getEquipmentSuggestions } from '../lib/affiliate';
+import { amazonShopUrl, getEquipmentSuggestions, AMAZON_TAG } from '../lib/affiliate';
 
 interface RecipeDetailProps {
   recipeId: number;
@@ -260,7 +260,7 @@ export function RecipeDetail({
               {gear.map((item) => (
                 <a
                   key={item.name}
-                  href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=easypeasy-20`}
+                  href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=${AMAZON_TAG}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-95 transition-transform"
