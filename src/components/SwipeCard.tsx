@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { Clock, Gauge, Utensils, Sparkles, Apple, Leaf } from 'lucide-react';
@@ -27,6 +27,9 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
   const rotate = useTransform(x, [-200, 200], [-25, 25]);
   const likeOp = useTransform(x, [0, 110], [0, 1]);
   const passOp = useTransform(x, [-110, 0], [1, 0]);
+  // Framer Motion v12 fires onTap even after a drag completes. Track whether
+  // a drag started so we can suppress the spurious tap.
+  const wasDraggingRef = useRef(false);
 
   useEffect(() => {
     if (!forcedExit || !isTop) return;
@@ -44,6 +47,13 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
     } else {
       animate(x, 0, { type: 'spring', stiffness: 400, damping: 25 });
     }
+    // Reset drag flag after onTap would have fired
+    setTimeout(() => { wasDraggingRef.current = false; }, 50);
+  };
+
+  const handleTap = () => {
+    if (wasDraggingRef.current) return;
+    onTap();
   };
 
   const showFallback = !imageUrl || imgError || !imgLoaded;
@@ -72,8 +82,9 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
       drag={isTop ? 'x' : false}
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.7}
+      onDragStart={() => { wasDraggingRef.current = true; }}
       onDragEnd={isTop ? handleDragEnd : undefined}
-      onTap={isTop ? onTap : undefined}
+      onTap={isTop ? handleTap : undefined}
     >
       {/* Fallback: gradient + emoji */}
       <div

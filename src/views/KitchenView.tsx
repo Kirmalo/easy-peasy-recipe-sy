@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { Plus, X, Check, Mic, Square, AlertCircle, Sparkles } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Plus, X, Check, Mic, Square, AlertCircle, Sparkles, ChevronDown } from 'lucide-react';
 import { COMMON_INGREDIENTS } from '../data/commonIngredients';
 import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
 
@@ -13,6 +14,16 @@ export function KitchenView({ pantry, setPantry, onContinue }: KitchenViewProps)
   const [input, setInput] = useState('');
   const [speechError, setSpeechError] = useState<string | null>(null);
   const [justAdded, setJustAdded] = useState<number | null>(null);
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+
+  const toggleCategory = (cat: string) => {
+    setOpenCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
+  };
 
   const addIngredient = (ing: string) => {
     const v = ing.trim().toLowerCase();
@@ -229,34 +240,74 @@ export function KitchenView({ pantry, setPantry, onContinue }: KitchenViewProps)
         )}
 
         {/* Quick add categories */}
-        <div className="space-y-5">
-          {Object.entries(COMMON_INGREDIENTS).map(([cat, items]) => (
-            <div key={cat}>
-              <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-2.5">
-                {cat}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {items.map((it) => {
-                  const active = pantry.includes(it);
-                  return (
-                    <button
-                      key={it}
-                      onClick={() => active ? remove(it) : addIngredient(it)}
-                      className="px-3.5 py-2 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
-                      style={{
-                        background: active ? 'var(--surface-dark)' : 'white',
-                        color: active ? 'white' : 'var(--text-secondary)',
-                        border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
-                      }}
+        <div className="space-y-2">
+          {Object.entries(COMMON_INGREDIENTS).map(([cat, items]) => {
+            const isOpen = openCategories.has(cat);
+            const activeCount = items.filter((it) => pantry.includes(it)).length;
+            return (
+              <div
+                key={cat}
+                className="rounded-2xl overflow-hidden bg-white border-2"
+                style={{ borderColor: isOpen ? 'var(--border-strong)' : 'var(--border-default)' }}
+              >
+                <button
+                  onClick={() => toggleCategory(cat)}
+                  className="w-full flex items-center justify-between px-4 py-3.5 transition-colors active:bg-[var(--surface-muted)]"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="font-body text-[14px] font-semibold text-[var(--text-primary)]">
+                      {cat}
+                    </span>
+                    {activeCount > 0 && (
+                      <span className="px-2 py-0.5 rounded-full bg-[var(--brand-500)] text-white font-body text-[11px] font-bold leading-none">
+                        {activeCount}
+                      </span>
+                    )}
+                  </div>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2, ease: 'easeInOut' }}
+                  >
+                    <ChevronDown size={18} strokeWidth={2.5} className="text-[var(--text-tertiary)]" />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.22, ease: 'easeInOut' }}
+                      style={{ overflow: 'hidden' }}
                     >
-                      {active && <Check size={13} strokeWidth={3} className="inline mr-1 -mt-0.5" />}
-                      {it}
-                    </button>
-                  );
-                })}
+                      <div className="px-4 pb-4 pt-1 flex flex-wrap gap-2">
+                        {items.map((it) => {
+                          const active = pantry.includes(it);
+                          return (
+                            <button
+                              key={it}
+                              onClick={() => active ? remove(it) : addIngredient(it)}
+                              className="px-3.5 py-2 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
+                              style={{
+                                background: active ? 'var(--surface-dark)' : 'var(--surface-muted)',
+                                color: active ? 'white' : 'var(--text-secondary)',
+                                border: active ? '2px solid var(--surface-dark)' : '2px solid transparent',
+                              }}
+                            >
+                              {active && <Check size={13} strokeWidth={3} className="inline mr-1 -mt-0.5" />}
+                              {it}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <button
