@@ -128,7 +128,7 @@ export function RecipeDetail({
       </div>
 
       {/* Content */}
-      <div className="px-6 pt-6 pb-32 -mt-6 relative bg-[var(--bg-page)] rounded-t-[32px]">
+      <div className="px-6 pt-6 pb-48 -mt-6 relative bg-[var(--bg-page)] rounded-t-[32px]">
         <h1 className="font-display font-semibold text-[var(--text-primary)] text-[36px] leading-[1.05] tracking-tight mb-2">
           {recipe.name}
         </h1>
