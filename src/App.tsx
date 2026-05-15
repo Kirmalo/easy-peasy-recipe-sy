@@ -11,7 +11,7 @@ import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
 import { DEFAULT_FILTERS } from './data/defaults';
-import type { ViewId } from './types';
+import type { ViewId, Filters } from './types';
 
 export default function App() {
   const [view, setView] = useState<ViewId>('kitchen');
