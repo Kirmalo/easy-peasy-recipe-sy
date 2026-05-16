@@ -22,11 +22,13 @@ export default function App() {
   const [appliances, setAppliances] = useStorage<ApplianceTag[]>('appliances', []);
   const [passed, setPassed] = useStorage<number[]>('passed', []);
   const [aiRecipes, setAiRecipes] = useState<Recipe[]>([]);
+  const [cooked, setCooked] = useStorage<number[]>('cooked', []);
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [cookingSessionId, setCookingSessionId] = useState<number | null>(null);
 
   const addAiRecipe = (r: Recipe) => setAiRecipes((prev) => [r, ...prev.filter((x) => x.id !== r.id)]);
+  const addToCooked = (id: number) => setCooked((p) => (p.includes(id) ? p : [id, ...p].slice(0, 100)));
 
   const addToCookbook = (id: number) => setCookbook((p) => (p.includes(id) ? p : [...p, id]));
   const removeFromCookbook = (id: number) => setCookbook((p) => p.filter((x) => x !== id));
@@ -115,6 +117,7 @@ export default function App() {
         {view === 'making' && (
           <CookingView
             making={making}
+            cooked={cooked}
             pantry={pantry}
             cookbook={cookbook}
             removeFromMaking={removeFromMaking}
@@ -162,6 +165,7 @@ export default function App() {
               recipeId={cookingSessionId}
               onClose={() => setCookingSessionId(null)}
               onDone={() => {
+                addToCooked(cookingSessionId);
                 removeFromMaking(cookingSessionId);
                 setCookingSessionId(null);
               }}
