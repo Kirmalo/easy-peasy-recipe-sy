@@ -8,6 +8,10 @@ export function amazonShopUrl(items: string[]): string {
   return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&i=amazonfresh&tag=${AMAZON_TAG}`;
 }
 
+export function amazonItemUrl(item: string): string {
+  return `https://www.amazon.com/s?k=${encodeURIComponent(item)}&i=amazonfresh&tag=${AMAZON_TAG}`;
+}
+
 export interface EquipmentItem {
   name: string;
   emoji: string;

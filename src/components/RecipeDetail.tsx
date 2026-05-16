@@ -5,7 +5,7 @@ import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
 import { computeMatch, ingMatches } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
-import { amazonShopUrl, getEquipmentSuggestions, AMAZON_TAG } from '../lib/affiliate';
+import { amazonItemUrl, getEquipmentSuggestions, AMAZON_TAG } from '../lib/affiliate';
 
 interface RecipeDetailProps {
   recipeId: number;
@@ -182,32 +182,21 @@ export function RecipeDetail({
               )}
             </h2>
             {match.missing.length > 0 && (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={async () => {
-                    await shareShoppingList(match.missing, recipe.name);
-                    setCopied(true);
-                    setTimeout(() => setCopied(false), 2000);
-                  }}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
-                  style={{
-                    background: copied ? 'var(--success-100)' : theme.soft,
-                    color: copied ? 'var(--success-700)' : theme.dark,
-                  }}
-                >
-                  <ShoppingCart size={13} strokeWidth={2.5} />
-                  {copied ? 'Copied!' : `${match.missing.length} to buy`}
-                </button>
-                <a
-                  href={amazonShopUrl(match.missing)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
-                  style={{ background: '#FF9900', color: 'white' }}
-                >
-                  Buy on Amazon →
-                </a>
-              </div>
+              <button
+                onClick={async () => {
+                  await shareShoppingList(match.missing, recipe.name);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-[12px] font-semibold active:scale-95 transition-all"
+                style={{
+                  background: copied ? 'var(--success-100)' : theme.soft,
+                  color: copied ? 'var(--success-700)' : theme.dark,
+                }}
+              >
+                <ShoppingCart size={13} strokeWidth={2.5} />
+                {copied ? 'Copied!' : `${match.missing.length} to buy`}
+              </button>
             )}
           </div>
           <div className="bg-white rounded-2xl p-2">
@@ -222,9 +211,26 @@ export function RecipeDetail({
                     {have && <Check size={14} strokeWidth={3.5} className="text-white" />}
                   </div>
                   <span className="font-body text-[15px] text-[var(--text-primary)] capitalize flex-1">{ing}</span>
-                  <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
-                    {scaleAmount(recipe.amounts[i], scaleFactor)}
-                  </span>
+                  {have ? (
+                    <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
+                      {scaleAmount(recipe.amounts[i], scaleFactor)}
+                    </span>
+                  ) : (
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
+                        {scaleAmount(recipe.amounts[i], scaleFactor)}
+                      </span>
+                      <a
+                        href={amazonItemUrl(ing)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2 py-1 rounded-full font-body text-[11px] font-bold active:scale-95 transition-transform"
+                        style={{ background: '#FF9900', color: 'white' }}
+                      >
+                        Buy →
+                      </a>
+                    </div>
+                  )}
                 </div>
               );
             })}
