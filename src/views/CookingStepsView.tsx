@@ -251,9 +251,23 @@ export function CookingStepsView({ recipeId, onClose, onDone, extraRecipes }: Co
                       </div>
                     </div>
 
-                    {/* Step text */}
-                    <div className="absolute bottom-0 left-0 right-0 p-7 pb-9">
-                      <p className="font-display font-semibold text-white text-[26px] leading-[1.35] tracking-tight">
+                    {/* Step text — fills space below ingredient strip, scrollable if very long */}
+                    <div
+                      className="absolute left-0 right-0 bottom-0 overflow-y-auto no-scrollbar flex items-end"
+                      style={{ top: 116, padding: '8px 28px 36px' }}
+                    >
+                      <p
+                        className="font-display font-semibold text-white leading-[1.35] tracking-tight"
+                        style={{
+                          fontSize: (() => {
+                            const len = recipe.steps[stepIndex - 1].length;
+                            if (len > 180) return 14;
+                            if (len > 120) return 17;
+                            if (len > 75) return 20;
+                            return 26;
+                          })(),
+                        }}
+                      >
                         {recipe.steps[stepIndex - 1]}
                       </p>
                     </div>
