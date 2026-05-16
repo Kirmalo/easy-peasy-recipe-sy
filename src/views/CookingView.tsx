@@ -7,10 +7,12 @@ interface CookingViewProps {
   cooked: number[];
   pantry: string[];
   cookbook: number[];
+  ratings: Record<number, 1 | 2 | 3>;
   removeFromMaking: (id: number) => void;
   addToCookbook: (id: number) => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
+  onRate: (id: number, stars: 1 | 2 | 3) => void;
 }
 
 export function CookingView({
@@ -18,10 +20,12 @@ export function CookingView({
   cooked,
   pantry,
   cookbook,
+  ratings,
   removeFromMaking,
   addToCookbook,
   openDetail,
   onCookNow,
+  onRate,
 }: CookingViewProps) {
   const makingRecipes = making
     .map((id) => RECIPES.find((r) => r.id === id))
@@ -97,6 +101,8 @@ export function CookingView({
                   onCook={onCookNow}
                   openDetail={openDetail}
                   index={i}
+                  rating={ratings[r.id]}
+                  onRate={onRate}
                 />
               ))}
             </div>

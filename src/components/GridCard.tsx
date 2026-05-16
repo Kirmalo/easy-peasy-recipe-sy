@@ -16,9 +16,11 @@ interface GridCardProps {
   onCook?: (id: number) => void;
   openDetail: (id: number) => void;
   index: number;
+  rating?: 1 | 2 | 3;
+  onRate?: (id: number, stars: 1 | 2 | 3) => void;
 }
 
-export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index }: GridCardProps) {
+export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index, rating, onRate }: GridCardProps) {
   const theme = THEMES[recipe.theme];
   const m = computeMatch(recipe, pantry);
   const imageUrl = useRecipeImage(recipe.id);
@@ -120,6 +122,23 @@ export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved,
                 {m.have}/{m.need}
               </>
             )}
+            {(rating !== undefined || onRate) && (
+              <>
+                <span>·</span>
+                <div className="flex items-center gap-0.5" onClick={(e) => e.stopPropagation()}>
+                  {([1, 2, 3] as const).map((s) => (
+                    <button
+                      key={s}
+                      onClick={(e) => { e.stopPropagation(); onRate?.(recipe.id, s); }}
+                      className={onRate ? 'active:scale-90 transition-transform' : 'pointer-events-none'}
+                      aria-label={`Rate ${s} star${s !== 1 ? 's' : ''}`}
+                    >
+                      <span className="text-[14px] leading-none" style={{ color: rating && rating >= s ? '#FCD34D' : 'rgba(255,255,255,0.30)' }}>★</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
         {onCook && (
@@ -146,6 +165,8 @@ interface RecipeGridProps {
   onSave?: (id: number) => void;
   savedIds?: number[];
   onCook?: (id: number) => void;
+  ratings?: Record<number, 1 | 2 | 3>;
+  onRate?: (id: number, stars: 1 | 2 | 3) => void;
   emptyTitle: string;
   emptyDesc: string;
   emptyEmoji: string;
@@ -160,6 +181,8 @@ export function RecipeGrid({
   onSave,
   savedIds,
   onCook,
+  ratings,
+  onRate,
   emptyTitle,
   emptyDesc,
   emptyEmoji,
@@ -196,6 +219,8 @@ export function RecipeGrid({
             onCook={onCook}
             openDetail={openDetail}
             index={i}
+            rating={ratings?.[r.id]}
+            onRate={onRate}
           />
         ))}
       </div>

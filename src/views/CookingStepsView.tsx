@@ -10,6 +10,7 @@ interface CookingStepsViewProps {
   recipeId: number;
   onClose: () => void;
   onDone: () => void;
+  onRate?: (stars: 1 | 2 | 3) => void;
   extraRecipes?: Recipe[];
 }
 
@@ -19,7 +20,7 @@ const slideVariants = {
   exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
 };
 
-export function CookingStepsView({ recipeId, onClose, onDone, extraRecipes }: CookingStepsViewProps) {
+export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecipes }: CookingStepsViewProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId);
@@ -278,23 +279,38 @@ export function CookingStepsView({ recipeId, onClose, onDone, extraRecipes }: Co
                 {isDone && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
                     <div
-                      className="text-[90px] leading-none mb-5"
+                      className="text-[90px] leading-none mb-4"
                       style={{ animation: 'pop 0.5s ease-out' }}
                     >
                       🎉
                     </div>
-                    <h2 className="font-display font-semibold text-white text-[38px] leading-tight tracking-tight mb-3">
+                    <h2 className="font-display font-semibold text-white text-[38px] leading-tight tracking-tight mb-2">
                       You made it!
                     </h2>
-                    <p className="font-body text-white/70 text-[16px] mb-8">
-                      Enjoy your {recipe.name}!
+                    <p className="font-body text-white/70 text-[15px] mb-5">
+                      How was {recipe.name}?
                     </p>
+                    <div className="flex gap-4 mb-7">
+                      {([1, 2, 3] as const).map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => { onRate?.(s); onDone(); }}
+                          className="flex flex-col items-center gap-1.5 active:scale-90 transition-transform"
+                        >
+                          <span className="text-[52px] leading-none" style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}>
+                            {s === 1 ? '😐' : s === 2 ? '😊' : '🤩'}
+                          </span>
+                          <span className="font-body text-white/60 text-[11px] font-semibold">
+                            {s === 1 ? 'OK' : s === 2 ? 'Good' : 'Amazing'}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                     <button
                       onClick={onDone}
-                      className="px-10 py-4 rounded-2xl bg-white font-body font-bold text-[16px] active:scale-95 transition-transform"
-                      style={{ color: 'var(--surface-dark)' }}
+                      className="font-body text-white/40 text-[13px] underline underline-offset-2 active:text-white/70"
                     >
-                      Done cooking
+                      Skip rating
                     </button>
                   </div>
                 )}
