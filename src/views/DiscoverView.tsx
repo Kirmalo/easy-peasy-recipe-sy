@@ -206,15 +206,26 @@ export function DiscoverView({
                 <h1 className="font-display font-semibold text-[var(--text-primary)] text-[28px] leading-tight tracking-tight">
                   Discover
                 </h1>
-                {modeBadge && (
-                  <button
-                    onClick={onOpenFilters}
-                    className="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--brand-50)] active:scale-95 transition-transform"
-                  >
-                    <Sparkles size={11} strokeWidth={2.8} className="text-[var(--brand-500)]" />
-                    <span className="font-body text-[11px] font-bold text-[var(--brand-800)]">{modeBadge}</span>
-                  </button>
-                )}
+                <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                  {modeBadge && (
+                    <button
+                      onClick={onOpenFilters}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--brand-50)] active:scale-95 transition-transform"
+                    >
+                      <Sparkles size={11} strokeWidth={2.8} className="text-[var(--brand-500)]" />
+                      <span className="font-body text-[11px] font-bold text-[var(--brand-800)]">{modeBadge}</span>
+                    </button>
+                  )}
+                  {passed.length > 0 && (
+                    <button
+                      onClick={resetPassed}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--surface-muted)] active:scale-95 transition-transform"
+                    >
+                      <RotateCcw size={11} strokeWidth={2.8} className="text-[var(--text-tertiary)]" />
+                      <span className="font-body text-[11px] font-bold text-[var(--text-tertiary)]">{passed.length} seen</span>
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button

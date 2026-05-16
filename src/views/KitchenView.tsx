@@ -7,6 +7,7 @@ import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
 import type { ApplianceTag } from '../types';
 
 const APPLIANCE_OPTIONS: { id: ApplianceTag; label: string; icon: string }[] = [
+  { id: 'stovetop',    label: 'Stovetop',    icon: '🍳' },
   { id: 'oven',        label: 'Oven',        icon: '♨️' },
   { id: 'air-fryer',   label: 'Air Fryer',   icon: '💨' },
   { id: 'grill',       label: 'Grill / BBQ', icon: '🔥' },
@@ -297,7 +298,7 @@ export function KitchenView({ pantry, setPantry, appliances, setAppliances, onCo
           <p className="font-body text-[11px] text-[var(--text-tertiary)] mt-2 leading-relaxed">
             {appliances.length > 0
               ? 'Recipes needing equipment you haven\'t selected will be hidden in Discover.'
-              : 'Select what you have to filter out recipes you can\'t make. Stovetop is always assumed.'}
+              : 'Select what you have to filter out recipes you can\'t make.'}
           </p>
         </div>
 
