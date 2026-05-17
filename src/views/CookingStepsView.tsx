@@ -165,15 +165,20 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                   </>
                 )}
 
-                {/* Intro content */}
+                {/* Intro content — flex column prevents ingredient list from overlapping CTA */}
                 {isIntro && (
-                  <>
-                    {/* Ingredient list — upper area */}
-                    <div className="absolute top-6 left-6 right-6">
-                      <div
-                        className="rounded-2xl px-4 py-3.5"
-                        style={{ background: 'rgba(0,0,0,0.32)', backdropFilter: 'blur(12px)' }}
-                      >
+                  <div className="absolute inset-0 flex flex-col px-6 pt-6 pb-9">
+                    {/* Ingredient list — shrinks and scrolls if recipe has many items */}
+                    <div
+                      className="rounded-2xl overflow-y-auto no-scrollbar"
+                      style={{
+                        background: 'rgba(0,0,0,0.32)',
+                        backdropFilter: 'blur(12px)',
+                        flexShrink: 1,
+                        minHeight: 0,
+                      }}
+                    >
+                      <div className="px-4 py-3.5">
                         <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold mb-3">
                           You'll need
                         </p>
@@ -192,19 +197,21 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       </div>
                     </div>
 
-                    {/* CTA — bottom area */}
-                    <div className="absolute bottom-0 left-0 right-0 p-7 pb-9">
+                    {/* Elastic gap — fills available space, collapses when ingredients are many */}
+                    <div style={{ flex: '1 0 10px' }} />
+
+                    {/* CTA — never shrinks */}
+                    <div className="flex-shrink-0">
                       <p className="font-body text-white/60 text-[11px] uppercase tracking-widest font-semibold mb-2">
                         Ready to cook?
                       </p>
-                      <h2 className="font-display font-semibold text-white text-[32px] leading-[1.05] tracking-tight mb-3">
-                        Let's make<br />
-                        <span className="italic font-medium">{recipe.name}!</span>
+                      <h2 className="font-display font-semibold text-white text-[28px] leading-[1.05] tracking-tight mb-2">
+                        Let's make <span className="italic font-medium">{recipe.name}!</span>
                       </h2>
-                      <p className="font-body text-white/65 text-[14px] mb-4">
+                      <p className="font-body text-white/65 text-[13px] mb-3">
                         {totalSteps} steps · {recipe.cookTime} min
                       </p>
-                      <div className="flex items-center gap-3 mb-6">
+                      <div className="flex items-center gap-3 mb-4">
                         <button
                           onClick={() => setServings((s) => Math.max(1, s - 1))}
                           disabled={servings <= 1}
@@ -226,14 +233,14 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       </div>
                       <button
                         onClick={goNext}
-                        className="w-full py-4 rounded-2xl bg-white font-body font-bold text-[16px] flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                        className="w-full py-3.5 rounded-2xl bg-white font-body font-bold text-[16px] flex items-center justify-center gap-2 active:scale-95 transition-transform"
                         style={{ color: 'var(--surface-dark)', boxShadow: '0 8px 24px -4px rgba(0,0,0,0.35)' }}
                       >
                         Start cooking
                         <ChevronRight size={20} strokeWidth={2.8} />
                       </button>
                     </div>
-                  </>
+                  </div>
                 )}
 
                 {/* Step content */}
