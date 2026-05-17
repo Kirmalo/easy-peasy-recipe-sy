@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Minus, Plus } from 'lucide-react';
 import { RECIPES } from '../data/recipes';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
+import { scaleAmount } from '../lib/scaleAmount';
 import type { Recipe } from '../types';
 
 interface CookingStepsViewProps {
@@ -32,6 +33,8 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
   const [stepIndex, setStepIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const [showIngredients, setShowIngredients] = useState(false);
+  const [servings, setServings] = useState(recipe.servings);
+  const scaleFactor = servings / recipe.servings;
 
   const isIntro = stepIndex === 0;
   const isDone = stepIndex === totalSteps + 1;
@@ -178,7 +181,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                           {recipe.ingredients.map((ing, i) => (
                             <div key={i} className="flex items-baseline gap-2 min-w-0">
                               <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
-                                {recipe.amounts[i]}
+                                {scaleAmount(recipe.amounts[i], scaleFactor)}
                               </span>
                               <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
                                 {ing}
@@ -198,9 +201,29 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                         Let's make<br />
                         <span className="italic font-medium">{recipe.name}!</span>
                       </h2>
-                      <p className="font-body text-white/65 text-[14px] mb-6">
-                        {totalSteps} steps · {recipe.cookTime} min · serves {recipe.servings}
+                      <p className="font-body text-white/65 text-[14px] mb-4">
+                        {totalSteps} steps · {recipe.cookTime} min
                       </p>
+                      <div className="flex items-center gap-3 mb-6">
+                        <button
+                          onClick={() => setServings((s) => Math.max(1, s - 1))}
+                          disabled={servings <= 1}
+                          className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform disabled:opacity-30"
+                          style={{ background: 'rgba(255,255,255,0.2)' }}
+                        >
+                          <Minus size={14} strokeWidth={3} className="text-white" />
+                        </button>
+                        <span className="font-body text-white font-semibold text-[15px] tabular-nums min-w-[90px] text-center">
+                          {servings} {servings === 1 ? 'serving' : 'servings'}
+                        </span>
+                        <button
+                          onClick={() => setServings((s) => s + 1)}
+                          className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+                          style={{ background: 'rgba(255,255,255,0.2)' }}
+                        >
+                          <Plus size={14} strokeWidth={3} className="text-white" />
+                        </button>
+                      </div>
                       <button
                         onClick={goNext}
                         className="w-full py-4 rounded-2xl bg-white font-body font-bold text-[16px] flex items-center justify-center gap-2 active:scale-95 transition-transform"
@@ -284,7 +307,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                             {recipe.ingredients.map((ing, i) => (
                               <div key={i} className="flex items-baseline gap-3">
                                 <span className="font-body text-white/50 text-[13px] tabular-nums w-16 flex-shrink-0 text-right">
-                                  {recipe.amounts[i]}
+                                  {scaleAmount(recipe.amounts[i], scaleFactor)}
                                 </span>
                                 <span className="font-body text-white text-[15px] font-medium capitalize leading-snug">
                                   {ing}
