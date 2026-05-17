@@ -110,6 +110,7 @@ export default function App() {
         {view === 'cookbook' && (
           <CookbookView
             cookbook={cookbook}
+            making={making}
             pantry={pantry}
             ratings={ratings}
             removeFromCookbook={removeFromCookbook}
