@@ -10,6 +10,7 @@ import { CookingStepsView } from './views/CookingStepsView';
 import { BottomNav } from './components/BottomNav';
 import { FilterSheet } from './components/FilterSheet';
 import { RecipeDetail } from './components/RecipeDetail';
+import { PantrySheet } from './components/PantrySheet';
 import { DEFAULT_FILTERS } from './data/defaults';
 import type { ViewId, Filters, ApplianceTag, Recipe } from './types';
 
@@ -26,6 +27,7 @@ export default function App() {
   const [ratings, setRatings] = useStorage<Record<number, 1 | 2 | 3>>('ratings', {});
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [showPantry, setShowPantry] = useState(false);
   const [cookingSessionId, setCookingSessionId] = useState<number | null>(null);
 
   const addAiRecipe = (r: Recipe) => setAiRecipes((prev) => [r, ...prev.filter((x) => x.id !== r.id)]);
@@ -72,7 +74,7 @@ export default function App() {
           </div>
           {pantry.length > 0 && view !== 'kitchen' && (
             <button
-              onClick={() => setView('kitchen')}
+              onClick={() => setShowPantry(true)}
               className="text-[12px] font-body font-medium text-[var(--text-tertiary)] underline underline-offset-2"
             >
               {pantry.length} ingredients
@@ -162,9 +164,21 @@ export default function App() {
             addToMaking={addToMaking}
             removeFromCookbook={removeFromCookbook}
             removeFromMaking={removeFromMaking}
+            addToPantry={(ing) => setPantry((p) => (p.includes(ing) ? p : [...p, ing]))}
             extraRecipes={aiRecipes}
           />
         )}
+
+        <AnimatePresence>
+          {showPantry && (
+            <PantrySheet
+              pantry={pantry}
+              setPantry={setPantry}
+              onClose={() => setShowPantry(false)}
+              onGoToKitchen={() => setView('kitchen')}
+            />
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {cookingSessionId !== null && (

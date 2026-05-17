@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Clock, Gauge, Utensils, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Clock, Gauge, Utensils, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus, Share2 } from 'lucide-react';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
 import { RECIPES, CUISINE_LABELS } from '../data/recipes';
@@ -18,6 +18,7 @@ interface RecipeDetailProps {
   addToMaking: (id: number) => void;
   removeFromCookbook: (id: number) => void;
   removeFromMaking: (id: number) => void;
+  addToPantry?: (ing: string) => void;
   extraRecipes?: import('../types').Recipe[];
 }
 
@@ -41,6 +42,7 @@ export function RecipeDetail({
   addToMaking,
   removeFromCookbook,
   removeFromMaking,
+  addToPantry,
   extraRecipes,
 }: RecipeDetailProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
@@ -48,6 +50,7 @@ export function RecipeDetail({
   const [imgError, setImgError] = useState(false);
   const [servings, setServings] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [shared, setShared] = useState(false);
 
   if (!recipe) return null;
 
@@ -105,8 +108,28 @@ export function RecipeDetail({
           <ArrowLeft size={22} strokeWidth={2.5} />
         </button>
 
-        <div className="absolute top-5 right-5 w-14 h-14 rounded-2xl bg-white/95 backdrop-blur-md flex items-center justify-center text-[30px] shadow-lg z-10">
-          {recipe.emoji}
+        <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
+          <button
+            onClick={async () => {
+              const text = `${recipe.name}\n\n${recipe.description}\n\nIngredients:\n${recipe.ingredients.map((ing, i) => `• ${recipe.amounts[i]} ${ing}`).join('\n')}`;
+              if (typeof navigator.share === 'function') {
+                await navigator.share({ title: recipe.name, text }).catch(() => undefined);
+              } else {
+                await navigator.clipboard.writeText(text);
+                setShared(true);
+                setTimeout(() => setShared(false), 2000);
+              }
+            }}
+            aria-label="Share recipe"
+            className="w-11 h-11 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center active:scale-90 transition-transform shadow-lg"
+          >
+            {shared
+              ? <Check size={18} strokeWidth={2.8} className="text-[var(--success-500)]" />
+              : <Share2 size={18} strokeWidth={2.5} className="text-[var(--text-primary)]" />}
+          </button>
+          <div className="w-14 h-14 rounded-2xl bg-white/95 backdrop-blur-md flex items-center justify-center text-[30px] shadow-lg">
+            {recipe.emoji}
+          </div>
         </div>
       </div>
 
@@ -197,10 +220,19 @@ export function RecipeDetail({
                       {scaleAmount(recipe.amounts[i], scaleFactor)}
                     </span>
                   ) : (
-                    <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
                       <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
                         {scaleAmount(recipe.amounts[i], scaleFactor)}
                       </span>
+                      {addToPantry && (
+                        <button
+                          onClick={() => addToPantry(ing)}
+                          className="px-2 py-1 rounded-full font-body text-[11px] font-bold active:scale-95 transition-transform"
+                          style={{ background: 'var(--success-100)', color: 'var(--success-700)' }}
+                        >
+                          + Pantry
+                        </button>
+                      )}
                       <a
                         href={amazonItemUrl(ing)}
                         target="_blank"
