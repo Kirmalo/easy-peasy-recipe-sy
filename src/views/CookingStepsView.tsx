@@ -31,17 +31,20 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
   const totalSteps = recipe.steps.length;
   const [stepIndex, setStepIndex] = useState(0);
   const [dir, setDir] = useState(1);
+  const [showIngredients, setShowIngredients] = useState(false);
 
   const isIntro = stepIndex === 0;
   const isDone = stepIndex === totalSteps + 1;
 
   const goNext = () => {
     setDir(1);
+    setShowIngredients(false);
     setStepIndex((i) => Math.min(i + 1, totalSteps + 1));
   };
 
   const goPrev = () => {
     setDir(-1);
+    setShowIngredients(false);
     setStepIndex((i) => Math.max(i - 1, 0));
   };
 
@@ -165,19 +168,19 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                     {/* Ingredient list — upper area */}
                     <div className="absolute top-6 left-6 right-6">
                       <div
-                        className="rounded-2xl px-4 py-3"
+                        className="rounded-2xl px-4 py-3.5"
                         style={{ background: 'rgba(0,0,0,0.32)', backdropFilter: 'blur(12px)' }}
                       >
-                        <p className="font-body text-[10px] uppercase tracking-widest text-white/50 font-semibold mb-2.5">
+                        <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold mb-3">
                           You'll need
                         </p>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
                           {recipe.ingredients.map((ing, i) => (
-                            <div key={i} className="flex items-baseline gap-1.5 min-w-0">
-                              <span className="font-body text-white/55 text-[11px] flex-shrink-0 tabular-nums">
+                            <div key={i} className="flex items-baseline gap-2 min-w-0">
+                              <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
                                 {recipe.amounts[i]}
                               </span>
-                              <span className="font-body text-white/90 text-[12px] font-medium truncate capitalize">
+                              <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
                                 {ing}
                               </span>
                             </div>
@@ -221,57 +224,80 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       >
                         Step {stepIndex}
                       </div>
-                      <div
-                        className="w-11 h-11 rounded-2xl flex items-center justify-center text-[22px]"
+                      <button
+                        onClick={() => setShowIngredients(true)}
+                        className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body font-semibold text-[11px] text-white active:scale-95 transition-transform"
                         style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
                       >
-                        {recipe.emoji}
-                      </div>
+                        🧂 Ingredients
+                      </button>
                     </div>
 
-                    {/* Ingredient reference strip — scrollable */}
-                    <div
-                      className="absolute left-5 right-5 overflow-x-auto no-scrollbar"
-                      style={{ top: 76 }}
-                    >
-                      <div className="flex gap-1.5 pb-0.5">
-                        {recipe.ingredients.map((ing, i) => (
-                          <div
-                            key={i}
-                            className="flex-shrink-0 rounded-full px-3 py-1.5 flex items-center gap-1.5"
-                            style={{ background: 'rgba(255,255,255,0.13)', backdropFilter: 'blur(8px)' }}
-                          >
-                            <span className="font-body text-white/55 text-[10px] whitespace-nowrap tabular-nums">
-                              {recipe.amounts[i]}
-                            </span>
-                            <span className="font-body text-white/90 text-[11px] font-medium whitespace-nowrap capitalize">
-                              {ing}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Step text — fills space below ingredient strip, scrollable if very long */}
+                    {/* Step text — fills space below badge row */}
                     <div
                       className="absolute left-0 right-0 bottom-0 overflow-y-auto no-scrollbar flex items-end"
-                      style={{ top: 116, padding: '8px 28px 36px' }}
+                      style={{ top: 76, padding: '12px 28px 36px' }}
                     >
                       <p
                         className="font-display font-semibold text-white leading-[1.35] tracking-tight"
                         style={{
                           fontSize: (() => {
                             const len = recipe.steps[stepIndex - 1].length;
-                            if (len > 180) return 14;
-                            if (len > 120) return 17;
-                            if (len > 75) return 20;
-                            return 26;
+                            if (len > 180) return 15;
+                            if (len > 120) return 18;
+                            if (len > 75) return 22;
+                            return 28;
                           })(),
                         }}
                       >
                         {recipe.steps[stepIndex - 1]}
                       </p>
                     </div>
+
+                    {/* Ingredient sheet — slides up inside card on demand */}
+                    <AnimatePresence>
+                      {showIngredients && (
+                        <motion.div
+                          initial={{ y: '100%' }}
+                          animate={{ y: 0 }}
+                          exit={{ y: '100%' }}
+                          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                          className="absolute inset-0 rounded-[28px] flex flex-col"
+                          style={{ background: 'rgba(0,0,0,0.90)', backdropFilter: 'blur(20px)' }}
+                          onClick={() => setShowIngredients(false)}
+                        >
+                          <div className="flex items-center justify-between px-6 pt-6 pb-4 flex-shrink-0">
+                            <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold">
+                              Ingredients
+                            </p>
+                            <button
+                              onClick={() => setShowIngredients(false)}
+                              className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
+                            >
+                              <X size={14} strokeWidth={2.5} className="text-white" />
+                            </button>
+                          </div>
+                          <div
+                            className="flex-1 overflow-y-auto no-scrollbar px-6 pb-2 space-y-3"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {recipe.ingredients.map((ing, i) => (
+                              <div key={i} className="flex items-baseline gap-3">
+                                <span className="font-body text-white/50 text-[13px] tabular-nums w-16 flex-shrink-0 text-right">
+                                  {recipe.amounts[i]}
+                                </span>
+                                <span className="font-body text-white text-[15px] font-medium capitalize leading-snug">
+                                  {ing}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                          <p className="font-body text-white/25 text-[11px] text-center py-5 flex-shrink-0">
+                            tap anywhere to close
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </>
                 )}
 
@@ -326,6 +352,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                   key={i}
                   onClick={() => {
                     setDir(i + 1 > stepIndex ? 1 : -1);
+                    setShowIngredients(false);
                     setStepIndex(i + 1);
                   }}
                   style={{
