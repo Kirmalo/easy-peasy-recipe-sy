@@ -1,4 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -6,6 +8,17 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type',
   'Content-Type': 'application/json',
 };
+
+// Only initialise if env vars are present — allows local dev without Upstash.
+const ratelimit =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? new Ratelimit({
+        redis: Redis.fromEnv(),
+        limiter: Ratelimit.slidingWindow(5, '24 h'),
+        prefix: 'ep:recipe',
+        analytics: false,
+      })
+    : null;
 
 type ThemeName = 'tomato' | 'sage' | 'mustard' | 'berry' | 'peach' | 'ocean' | 'forest' | 'rose';
 
@@ -24,6 +37,14 @@ function pickTheme(mealType: string, ingredients: string[]): ThemeName {
   return byMeal[mealType] ?? 'tomato';
 }
 
+function getClientIp(request: Request): string {
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+    request.headers.get('x-real-ip') ??
+    'unknown'
+  );
+}
+
 export default async function handler(request: Request): Promise<Response> {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
@@ -38,6 +59,28 @@ export default async function handler(request: Request): Promise<Response> {
     return new Response(JSON.stringify({ error: 'ANTHROPIC_API_KEY not set' }), { status: 500, headers: CORS_HEADERS });
   }
 
+  // Rate limit before parsing the body or calling the AI.
+  if (ratelimit) {
+    const ip = getClientIp(request);
+    const { success, limit, remaining, reset } = await ratelimit.limit(ip);
+    if (!success) {
+      const retryAfterSecs = Math.ceil((reset - Date.now()) / 1000);
+      return new Response(
+        JSON.stringify({ error: `Too many requests — you can generate ${limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` }),
+        {
+          status: 429,
+          headers: {
+            ...CORS_HEADERS,
+            'Retry-After': String(retryAfterSecs),
+            'X-RateLimit-Limit': String(limit),
+            'X-RateLimit-Remaining': String(remaining),
+            'X-RateLimit-Reset': String(reset),
+          },
+        },
+      );
+    }
+  }
+
   let body: { pantry?: string[]; appliances?: string[]; servings?: number };
   try {
     body = await request.json() as typeof body;
@@ -46,16 +89,22 @@ export default async function handler(request: Request): Promise<Response> {
   }
 
   const { pantry = [], appliances = [], servings = 4 } = body;
+
   if (pantry.length === 0) {
     return new Response(JSON.stringify({ error: 'Pantry is empty — add ingredients first' }), { status: 400, headers: CORS_HEADERS });
   }
+
+  // Sanitise inputs — cap sizes to limit prompt injection surface.
+  const safePantry = pantry.slice(0, 30).map((s) => String(s).slice(0, 60));
+  const safeAppliances = appliances.slice(0, 10).map((s) => String(s).slice(0, 40));
+  const safeServings = Math.max(1, Math.min(12, Number(servings) || 4));
 
   const client = new Anthropic({ apiKey });
 
   try {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 2048,
+      max_tokens: 1500,
       tools: [{
         name: 'create_recipe',
         description: 'Generate a complete, achievable recipe from the provided pantry.',
@@ -82,9 +131,9 @@ export default async function handler(request: Request): Promise<Response> {
         role: 'user',
         content: `Create a recipe I can make right now.
 
-Pantry: ${pantry.join(', ')}
-Appliances: ${appliances.length ? appliances.join(', ') : 'stovetop'}
-Servings: ${servings}
+Pantry: ${safePantry.join(', ')}
+Appliances: ${safeAppliances.length ? safeAppliances.join(', ') : 'stovetop'}
+Servings: ${safeServings}
 
 Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, garlic, onion, water). Be creative but realistic.`,
       }],
