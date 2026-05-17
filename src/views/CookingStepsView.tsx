@@ -73,7 +73,7 @@ function playBeep() {
 export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecipes }: CookingStepsViewProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
-  const imageUrl = useRecipeImage(recipeId);
+  const imageUrl = useRecipeImage(recipeId, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
 

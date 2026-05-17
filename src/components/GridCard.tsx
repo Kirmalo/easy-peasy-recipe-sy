@@ -23,7 +23,7 @@ interface GridCardProps {
 export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index, rating, onRate }: GridCardProps) {
   const theme = THEMES[recipe.theme];
   const m = computeMatch(recipe, pantry);
-  const imageUrl = useRecipeImage(recipe.id);
+  const imageUrl = useRecipeImage(recipe.id, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const showFallback = !imageUrl || imgError || !imgLoaded;

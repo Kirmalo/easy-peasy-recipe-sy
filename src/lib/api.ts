@@ -45,11 +45,13 @@ try {
   }
 } catch { /* private browsing / storage unavailable */ }
 
-export async function fetchRecipeImage(recipeId: number): Promise<string | null> {
+export async function fetchRecipeImage(recipeId: number, searchName?: string): Promise<string | null> {
   if (imageCache.has(recipeId)) return imageCache.get(recipeId) ?? null;
   if (imageInflight.has(recipeId)) return imageInflight.get(recipeId) ?? null;
 
-  const queries = RECIPE_QUERIES[recipeId] ?? [];
+  // Use explicit query list, or fall back to searching by recipe name
+  const queries = RECIPE_QUERIES[recipeId] ?? (searchName ? [searchName] : []);
+
   const promise: Promise<string | null> = (async () => {
     for (const q of queries) {
       try {

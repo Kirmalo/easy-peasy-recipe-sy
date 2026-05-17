@@ -22,7 +22,7 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
-  const imageUrl = useRecipeImage(recipe.id);
+  const imageUrl = useRecipeImage(recipe.id, recipe.name);
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-25, 25]);
   const likeOp = useTransform(x, [0, 110], [0, 1]);

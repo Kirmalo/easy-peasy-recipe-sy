@@ -58,7 +58,7 @@ export function RecipeDetail({
   const match = computeMatch(recipe, pantry);
   const inCookbook = cookbook.includes(recipe.id);
   const inMaking = making.includes(recipe.id);
-  const imageUrl = useRecipeImage(recipe.id);
+  const imageUrl = useRecipeImage(recipe.id, recipe.name);
   const showFallback = !imageUrl || imgError || !imgLoaded;
 
   const activeServings = servings ?? recipe.servings;
