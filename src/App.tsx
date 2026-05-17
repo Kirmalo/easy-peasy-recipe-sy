@@ -165,6 +165,7 @@ export default function App() {
             removeFromCookbook={removeFromCookbook}
             removeFromMaking={removeFromMaking}
             addToPantry={(ing) => setPantry((p) => (p.includes(ing) ? p : [...p, ing]))}
+            onCookNow={(id) => { setCookingSessionId(id); setDetailId(null); }}
             extraRecipes={aiRecipes}
           />
         )}

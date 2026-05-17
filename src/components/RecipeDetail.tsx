@@ -19,6 +19,7 @@ interface RecipeDetailProps {
   removeFromCookbook: (id: number) => void;
   removeFromMaking: (id: number) => void;
   addToPantry?: (ing: string) => void;
+  onCookNow?: (id: number) => void;
   extraRecipes?: import('../types').Recipe[];
 }
 
@@ -43,6 +44,7 @@ export function RecipeDetail({
   removeFromCookbook,
   removeFromMaking,
   addToPantry,
+  onCookNow,
   extraRecipes,
 }: RecipeDetailProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
@@ -267,39 +269,39 @@ export function RecipeDetail({
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Equipment suggestions */}
-      {(() => {
-        const gear = getEquipmentSuggestions(recipe);
-        return (
-          <div className="mb-8">
-            <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] mb-3">
-              Useful kit
-            </h2>
-            <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
-              {gear.map((item) => (
-                <a
-                  key={item.name}
-                  href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=${AMAZON_TAG}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-95 transition-transform"
-                  style={{
-                    minWidth: 110,
-                    boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.12)',
-                    border: '1.5px solid var(--border-default)',
-                  }}
-                >
-                  <span className="text-[32px]">{item.emoji}</span>
-                  <span className="font-body text-[12px] font-semibold text-[var(--text-primary)] text-center leading-snug">{item.name}</span>
-                  <span className="font-body text-[10px] text-[var(--brand-500)] font-bold">Amazon →</span>
-                </a>
-              ))}
+        {/* Equipment suggestions */}
+        {(() => {
+          const gear = getEquipmentSuggestions(recipe);
+          return (
+            <div className="mb-8">
+              <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] mb-3">
+                Useful kit
+              </h2>
+              <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+                {gear.map((item) => (
+                  <a
+                    key={item.name}
+                    href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=${AMAZON_TAG}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-95 transition-transform"
+                    style={{
+                      minWidth: 110,
+                      boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.12)',
+                      border: '1.5px solid var(--border-default)',
+                    }}
+                  >
+                    <span className="text-[32px]">{item.emoji}</span>
+                    <span className="font-body text-[12px] font-semibold text-[var(--text-primary)] text-center leading-snug">{item.name}</span>
+                    <span className="font-body text-[10px] text-[var(--brand-500)] font-bold">Amazon →</span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        );
-      })()}
+          );
+        })()}
+      </div>
 
       {/* Sticky actions */}
       <div className="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-[var(--bg-page)]/95 backdrop-blur-md p-5 pb-7 border-t border-[var(--border-default)]">
@@ -318,7 +320,15 @@ export function RecipeDetail({
             {inCookbook ? 'Saved' : 'Save'}
           </button>
           <button
-            onClick={() => inMaking ? removeFromMaking(recipe.id) : addToMaking(recipe.id)}
+            onClick={() => {
+              if (inMaking) {
+                removeFromMaking(recipe.id);
+              } else {
+                addToMaking(recipe.id);
+                onCookNow?.(recipe.id);
+                onClose();
+              }
+            }}
             className="flex-1 py-3.5 rounded-2xl font-body font-bold text-[15px] text-white active:scale-95 transition-transform flex items-center justify-center gap-2"
             style={{ background: inMaking ? 'var(--surface-dark)' : theme.from }}
           >
