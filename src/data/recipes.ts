@@ -1,5 +1,6 @@
 import type { Recipe } from '../types';
 import { EXTENDED_RECIPES } from './recipes-extended';
+import { AI_SEED_RECIPES } from './recipes-ai-seed';
 
 export const CUISINE_LABELS: Record<string, string> = {
   easy: 'Easy', medium: 'Medium', hard: 'Hard',
@@ -339,7 +340,7 @@ const CURATED_RECIPES: Recipe[] = [
   },
 ];
 
-export const RECIPES: Recipe[] = [...CURATED_RECIPES, ...EXTENDED_RECIPES];
+export const RECIPES: Recipe[] = [...CURATED_RECIPES, ...EXTENDED_RECIPES, ...AI_SEED_RECIPES];
 
 if (import.meta.env.DEV) {
   CURATED_RECIPES.forEach((r) => {

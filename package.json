@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "fetch-recipes": "node scripts/fetch-meals.mjs"
+    "fetch-recipes": "node scripts/fetch-meals.mjs",
+    "generate-ai-recipes": "node scripts/generate-ai-recipes.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
