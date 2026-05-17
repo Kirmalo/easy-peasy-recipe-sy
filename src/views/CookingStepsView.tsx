@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Minus, Plus } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import { RECIPES } from '../data/recipes';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
@@ -15,11 +15,60 @@ interface CookingStepsViewProps {
   extraRecipes?: Recipe[];
 }
 
+interface TimerState {
+  total: number;
+  remaining: number;
+  running: boolean;
+}
+
 const slideVariants = {
   enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%', opacity: 0 }),
   center: { x: 0, opacity: 1 },
   exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
 };
+
+const TIMER_PRESETS = [
+  { label: '1m', seconds: 60 },
+  { label: '2m', seconds: 120 },
+  { label: '5m', seconds: 300 },
+  { label: '10m', seconds: 600 },
+  { label: '15m', seconds: 900 },
+  { label: '20m', seconds: 1200 },
+  { label: '30m', seconds: 1800 },
+];
+
+function detectSeconds(text: string): number | null {
+  const match = text.match(/(\d+)\s*(?:to\s*\d+\s*)?(hours?|hrs?|minutes?|mins?|seconds?|secs?)/i);
+  if (!match) return null;
+  const val = parseInt(match[1]);
+  const unit = match[2].toLowerCase();
+  if (unit.startsWith('hour') || unit.startsWith('hr')) return val * 3600;
+  if (unit.startsWith('min')) return val * 60;
+  return val;
+}
+
+function formatTime(s: number): string {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}:${sec.toString().padStart(2, '0')}`;
+}
+
+function playBeep() {
+  try {
+    const ctx = new AudioContext();
+    [0, 0.35, 0.7].forEach((delay) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.3, ctx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + 0.28);
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.28);
+    });
+  } catch {}
+}
 
 export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecipes }: CookingStepsViewProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
@@ -33,25 +82,59 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
   const [stepIndex, setStepIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const [showIngredients, setShowIngredients] = useState(false);
+  const [showTimerPicker, setShowTimerPicker] = useState(false);
   const [servings, setServings] = useState(recipe.servings);
   const scaleFactor = servings / recipe.servings;
+
+  const [timer, setTimer] = useState<TimerState | null>(null);
+  const [timerDone, setTimerDone] = useState(false);
+  const timerRef = useRef(timer);
+  timerRef.current = timer;
 
   const isIntro = stepIndex === 0;
   const isDone = stepIndex === totalSteps + 1;
 
-  const goNext = () => {
-    setDir(1);
-    setShowIngredients(false);
-    setStepIndex((i) => Math.min(i + 1, totalSteps + 1));
+  // Countdown tick
+  useEffect(() => {
+    if (!timer?.running) return;
+    const id = setInterval(() => {
+      const t = timerRef.current;
+      if (!t?.running) return;
+      if (t.remaining <= 1) {
+        playBeep();
+        navigator.vibrate?.([300, 100, 300, 100, 300]);
+        setTimer({ ...t, remaining: 0, running: false });
+        setTimerDone(true);
+        setTimeout(() => setTimerDone(false), 4000);
+      } else {
+        setTimer({ ...t, remaining: t.remaining - 1 });
+      }
+    }, 1000);
+    return () => clearInterval(id);
+  }, [timer?.running]);
+
+  const startTimer = (seconds: number) => {
+    setTimer({ total: seconds, remaining: seconds, running: true });
+    setShowTimerPicker(false);
+    setTimerDone(false);
   };
 
-  const goPrev = () => {
-    setDir(-1);
+  const navigate = (nextIndex: number, direction: number) => {
+    setDir(direction);
     setShowIngredients(false);
-    setStepIndex((i) => Math.max(i - 1, 0));
+    setShowTimerPicker(false);
+    setStepIndex(nextIndex);
   };
+
+  const goNext = () => navigate(Math.min(stepIndex + 1, totalSteps + 1), 1);
+  const goPrev = () => navigate(Math.max(stepIndex - 1, 0), -1);
 
   const showFallback = !imageUrl || imgError || !imgLoaded;
+
+  // Detected time for current step
+  const detectedSeconds = !isIntro && !isDone ? detectSeconds(recipe.steps[stepIndex - 1]) : null;
+
+  const isUrgent = timer !== null && timer.remaining <= 30 && timer.running;
 
   return (
     <motion.div
@@ -165,10 +248,9 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                   </>
                 )}
 
-                {/* Intro content — flex column prevents ingredient list from overlapping CTA */}
+                {/* Intro content — flex column prevents overlap */}
                 {isIntro && (
                   <div className="absolute inset-0 flex flex-col px-6 pt-6 pb-9">
-                    {/* Ingredient list — shrinks and scrolls if recipe has many items */}
                     <div
                       className="rounded-2xl overflow-y-auto no-scrollbar"
                       style={{
@@ -197,10 +279,8 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       </div>
                     </div>
 
-                    {/* Elastic gap — fills available space, collapses when ingredients are many */}
                     <div style={{ flex: '1 0 10px' }} />
 
-                    {/* CTA — never shrinks */}
                     <div className="flex-shrink-0">
                       <p className="font-body text-white/60 text-[11px] uppercase tracking-widest font-semibold mb-2">
                         Ready to cook?
@@ -254,16 +334,28 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       >
                         Step {stepIndex}
                       </div>
-                      <button
-                        onClick={() => setShowIngredients(true)}
-                        className="flex items-center gap-1.5 px-3 py-2 rounded-full font-body font-semibold text-[11px] text-white active:scale-95 transition-transform"
-                        style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
-                      >
-                        🧂 Ingredients
-                      </button>
+                      <div className="flex items-center gap-2">
+                        {/* Timer button */}
+                        <button
+                          onClick={() => setShowTimerPicker(true)}
+                          className="flex items-center gap-1 px-2.5 py-2 rounded-full font-body font-bold text-[11px] text-white active:scale-95 transition-transform"
+                          style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
+                        >
+                          <Clock size={13} strokeWidth={2.5} className="text-white" />
+                          {detectedSeconds ? formatTime(detectedSeconds) : 'Timer'}
+                        </button>
+                        {/* Ingredients button */}
+                        <button
+                          onClick={() => setShowIngredients(true)}
+                          className="flex items-center gap-1 px-2.5 py-2 rounded-full font-body font-bold text-[11px] text-white active:scale-95 transition-transform"
+                          style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
+                        >
+                          🧂
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Step text — fills space below badge row */}
+                    {/* Step text */}
                     <div
                       className="absolute left-0 right-0 bottom-0 overflow-y-auto no-scrollbar flex items-end"
                       style={{ top: 76, padding: '12px 28px 36px' }}
@@ -284,7 +376,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                       </p>
                     </div>
 
-                    {/* Ingredient sheet — slides up inside card on demand */}
+                    {/* Ingredient sheet */}
                     <AnimatePresence>
                       {showIngredients && (
                         <motion.div
@@ -328,16 +420,70 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                         </motion.div>
                       )}
                     </AnimatePresence>
+
+                    {/* Timer picker sheet */}
+                    <AnimatePresence>
+                      {showTimerPicker && (
+                        <motion.div
+                          initial={{ y: '100%' }}
+                          animate={{ y: 0 }}
+                          exit={{ y: '100%' }}
+                          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                          className="absolute inset-0 rounded-[28px] flex flex-col"
+                          style={{ background: 'rgba(0,0,0,0.90)', backdropFilter: 'blur(20px)' }}
+                          onClick={() => setShowTimerPicker(false)}
+                        >
+                          <div className="flex items-center justify-between px-6 pt-6 pb-4 flex-shrink-0">
+                            <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold">
+                              Set a timer
+                            </p>
+                            <button
+                              onClick={() => setShowTimerPicker(false)}
+                              className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
+                            >
+                              <X size={14} strokeWidth={2.5} className="text-white" />
+                            </button>
+                          </div>
+                          <div
+                            className="flex-1 px-6 pb-6"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {detectedSeconds && (
+                              <button
+                                onClick={() => startTimer(detectedSeconds)}
+                                className="w-full mb-4 py-4 rounded-2xl font-body font-bold text-[17px] text-white active:scale-95 transition-transform flex items-center justify-center gap-2"
+                                style={{ background: 'rgba(255,255,255,0.15)', border: '1.5px solid rgba(255,255,255,0.3)' }}
+                              >
+                                <Clock size={18} strokeWidth={2.5} />
+                                {formatTime(detectedSeconds)} — from this step
+                              </button>
+                            )}
+                            <div className="grid grid-cols-4 gap-2">
+                              {TIMER_PRESETS.map(({ label, seconds }) => (
+                                <button
+                                  key={label}
+                                  onClick={() => startTimer(seconds)}
+                                  className="py-3 rounded-2xl font-body font-bold text-[15px] text-white active:scale-95 transition-transform"
+                                  style={{ background: 'rgba(255,255,255,0.12)' }}
+                                >
+                                  {label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                          <p className="font-body text-white/25 text-[11px] text-center pb-5 flex-shrink-0">
+                            tap anywhere to close
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </>
                 )}
 
                 {/* Done content */}
                 {isDone && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                    <div
-                      className="text-[90px] leading-none mb-4"
-                      style={{ animation: 'pop 0.5s ease-out' }}
-                    >
+                    <div className="text-[90px] leading-none mb-4" style={{ animation: 'pop 0.5s ease-out' }}>
                       🎉
                     </div>
                     <h2 className="font-display font-semibold text-white text-[38px] leading-tight tracking-tight mb-2">
@@ -374,15 +520,77 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
             </AnimatePresence>
           </div>
 
+          {/* Timer strip — persistent across steps */}
+          <AnimatePresence>
+            {(timer !== null || timerDone) && !isIntro && !isDone && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center gap-3 mt-3 px-1"
+              >
+                {/* Progress bar */}
+                <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.15)' }}>
+                  <div
+                    className="h-full rounded-full transition-all duration-1000"
+                    style={{
+                      width: timerDone ? '0%' : timer ? `${(timer.remaining / timer.total) * 100}%` : '0%',
+                      background: isUrgent ? '#FCA5A5' : 'white',
+                    }}
+                  />
+                </div>
+                {/* Time display */}
+                <span
+                  className="font-body font-bold text-[18px] tabular-nums min-w-[48px] text-center"
+                  style={{ color: timerDone ? '#86EFAC' : isUrgent ? '#FCA5A5' : 'white' }}
+                >
+                  {timerDone ? 'Done!' : timer ? formatTime(timer.remaining) : ''}
+                </span>
+                {/* Controls */}
+                {!timerDone && timer && (
+                  <>
+                    <button
+                      onClick={() => setTimer((t) => t ? { ...t, running: !t.running } : null)}
+                      className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+                      style={{ background: 'rgba(255,255,255,0.15)' }}
+                    >
+                      {timer.running
+                        ? <Pause size={14} strokeWidth={2.5} className="text-white" />
+                        : <Play size={14} strokeWidth={2.5} className="text-white" />}
+                    </button>
+                    <button
+                      onClick={() => { setTimer(null); setTimerDone(false); }}
+                      className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+                      style={{ background: 'rgba(255,255,255,0.15)' }}
+                    >
+                      <RotateCcw size={14} strokeWidth={2.5} className="text-white" />
+                    </button>
+                  </>
+                )}
+                {timerDone && (
+                  <button
+                    onClick={() => setTimerDone(false)}
+                    className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+                    style={{ background: 'rgba(255,255,255,0.15)' }}
+                  >
+                    <X size={14} strokeWidth={2.5} className="text-white" />
+                  </button>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Progress dots */}
           {!isIntro && !isDone && (
-            <div className="flex items-center justify-center gap-2 mt-5">
+            <div className="flex items-center justify-center gap-2 mt-4">
               {recipe.steps.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => {
                     setDir(i + 1 > stepIndex ? 1 : -1);
                     setShowIngredients(false);
+                    setShowTimerPicker(false);
                     setStepIndex(i + 1);
                   }}
                   style={{
