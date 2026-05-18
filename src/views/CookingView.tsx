@@ -8,6 +8,7 @@ interface CookingViewProps {
   pantry: string[];
   cookbook: number[];
   ratings: Record<number, 1 | 2 | 3>;
+  notes: Record<number, string>;
   removeFromMaking: (id: number) => void;
   addToCookbook: (id: number) => void;
   openDetail: (id: number) => void;
@@ -21,6 +22,7 @@ export function CookingView({
   pantry,
   cookbook,
   ratings,
+  notes,
   removeFromMaking,
   addToCookbook,
   openDetail,
@@ -62,6 +64,7 @@ export function CookingView({
                 onCook={onCookNow}
                 openDetail={openDetail}
                 index={i}
+                hasNote={!!(notes[r.id]?.trim())}
               />
             ))}
           </div>
@@ -103,6 +106,7 @@ export function CookingView({
                   index={i}
                   rating={ratings[r.id]}
                   onRate={onRate}
+                  hasNote={!!(notes[r.id]?.trim())}
                 />
               ))}
             </div>

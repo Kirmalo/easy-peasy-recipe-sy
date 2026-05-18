@@ -12,6 +12,7 @@ interface CookingStepsViewProps {
   onClose: () => void;
   onDone: () => void;
   onRate?: (stars: 1 | 2 | 3) => void;
+  note?: string;
   extraRecipes?: Recipe[];
 }
 
@@ -70,7 +71,7 @@ function playBeep() {
   } catch {}
 }
 
-export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecipes }: CookingStepsViewProps) {
+export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extraRecipes }: CookingStepsViewProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId, recipe.name);
@@ -278,6 +279,18 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, extraRecip
                         </div>
                       </div>
                     </div>
+
+                    {note?.trim() && (
+                      <div
+                        className="mt-3 rounded-2xl px-4 py-3 flex-shrink-0"
+                        style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)' }}
+                      >
+                        <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold mb-1.5">
+                          My notes
+                        </p>
+                        <p className="font-body text-white/90 text-[14px] leading-snug">{note}</p>
+                      </div>
+                    )}
 
                     <div style={{ flex: '1 0 10px' }} />
 

@@ -20,6 +20,8 @@ interface RecipeDetailProps {
   removeFromMaking: (id: number) => void;
   addToPantry?: (ing: string) => void;
   onCookNow?: (id: number) => void;
+  note?: string;
+  onNoteChange?: (text: string) => void;
   extraRecipes?: import('../types').Recipe[];
 }
 
@@ -45,6 +47,8 @@ export function RecipeDetail({
   removeFromMaking,
   addToPantry,
   onCookNow,
+  note,
+  onNoteChange,
   extraRecipes,
 }: RecipeDetailProps) {
   const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
@@ -268,6 +272,18 @@ export function RecipeDetail({
               </div>
             ))}
           </div>
+        </div>
+
+        {/* My notes */}
+        <div className="mb-8">
+          <h2 className="font-display font-semibold text-[var(--text-primary)] text-[22px] mb-3">My notes</h2>
+          <textarea
+            value={note ?? ''}
+            onChange={(e) => onNoteChange?.(e.target.value)}
+            placeholder="Add a personal note — tweaks, substitutions, serving ideas…"
+            rows={3}
+            className="w-full px-4 py-3 rounded-2xl font-body text-[15px] text-[var(--text-primary)] bg-white border-2 border-[var(--border-default)] focus:border-[var(--brand-500)] focus:outline-none placeholder:text-[var(--text-placeholder)] resize-none leading-relaxed"
+          />
         </div>
 
         {/* Equipment suggestions */}

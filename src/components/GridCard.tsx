@@ -18,9 +18,10 @@ interface GridCardProps {
   index: number;
   rating?: 1 | 2 | 3;
   onRate?: (id: number, stars: 1 | 2 | 3) => void;
+  hasNote?: boolean;
 }
 
-export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index, rating, onRate }: GridCardProps) {
+export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved, onCook, openDetail, index, rating, onRate, hasNote }: GridCardProps) {
   const theme = THEMES[recipe.theme];
   const m = computeMatch(recipe, pantry);
   const imageUrl = useRecipeImage(recipe.id, recipe.name);
@@ -115,6 +116,7 @@ export function GridCard({ recipe, pantry, onRemove, removeLabel, onSave, saved,
           >
             <Clock size={11} strokeWidth={2.6} />
             {recipe.cookTime}m
+            {hasNote && <><span>·</span><span>📝</span></>}
             {pantry.length > 0 && (
               <>
                 <span>·</span>
@@ -167,6 +169,7 @@ interface RecipeGridProps {
   onCook?: (id: number) => void;
   ratings?: Record<number, 1 | 2 | 3>;
   onRate?: (id: number, stars: 1 | 2 | 3) => void;
+  notes?: Record<number, string>;
   emptyTitle: string;
   emptyDesc: string;
   emptyEmoji: string;
@@ -183,6 +186,7 @@ export function RecipeGrid({
   onCook,
   ratings,
   onRate,
+  notes,
   emptyTitle,
   emptyDesc,
   emptyEmoji,
@@ -221,6 +225,7 @@ export function RecipeGrid({
             index={i}
             rating={ratings?.[r.id]}
             onRate={onRate}
+            hasNote={!!(notes?.[r.id]?.trim())}
           />
         ))}
       </div>

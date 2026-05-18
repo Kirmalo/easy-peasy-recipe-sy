@@ -25,6 +25,7 @@ export default function App() {
   const [aiRecipes, setAiRecipes] = useState<Recipe[]>([]);
   const [cooked, setCooked] = useStorage<number[]>('cooked', []);
   const [ratings, setRatings] = useStorage<Record<number, 1 | 2 | 3>>('ratings', {});
+  const [notes, setNotes] = useStorage<Record<number, string>>('notes', {});
   const [detailId, setDetailId] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [showPantry, setShowPantry] = useState(false);
@@ -45,6 +46,9 @@ export default function App() {
       })
       .catch(() => { /* non-fatal */ });
   }, []);
+
+  const setNote = (id: number, text: string) =>
+    setNotes((prev) => text.trim() ? { ...prev, [id]: text } : Object.fromEntries(Object.entries(prev).filter(([k]) => Number(k) !== id)));
 
   const addAiRecipe = (r: Recipe) => setAiRecipes((prev) => [r, ...prev.filter((x) => x.id !== r.id)]);
   const addToCooked = (id: number) => setCooked((p) => (p.includes(id) ? p : [id, ...p].slice(0, 100)));
@@ -131,6 +135,7 @@ export default function App() {
             making={making}
             pantry={pantry}
             ratings={ratings}
+            notes={notes}
             removeFromCookbook={removeFromCookbook}
             openDetail={(id) => setDetailId(id)}
             onCookNow={(id) => { addToMaking(id); setCookingSessionId(id); }}
@@ -144,6 +149,7 @@ export default function App() {
             pantry={pantry}
             cookbook={cookbook}
             ratings={ratings}
+            notes={notes}
             removeFromMaking={removeFromMaking}
             addToCookbook={addToCookbook}
             openDetail={(id) => setDetailId(id)}
@@ -182,6 +188,8 @@ export default function App() {
             removeFromMaking={removeFromMaking}
             addToPantry={(ing) => setPantry((p) => (p.includes(ing) ? p : [...p, ing]))}
             onCookNow={(id) => { setCookingSessionId(id); setDetailId(null); }}
+            note={notes[detailId] ?? ''}
+            onNoteChange={(text) => setNote(detailId, text)}
             extraRecipes={aiRecipes}
           />
         )}
@@ -208,6 +216,7 @@ export default function App() {
                 setCookingSessionId(null);
               }}
               onRate={(stars) => setRating(cookingSessionId, stars)}
+              note={notes[cookingSessionId] ?? ''}
               extraRecipes={aiRecipes}
             />
           )}

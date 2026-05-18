@@ -10,13 +10,14 @@ interface CookbookViewProps {
   making: number[];
   pantry: string[];
   ratings: Record<number, 1 | 2 | 3>;
+  notes: Record<number, string>;
   removeFromCookbook: (id: number) => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
   onRate: (id: number, stars: 1 | 2 | 3) => void;
 }
 
-export function CookbookView({ cookbook, making, pantry, ratings, removeFromCookbook, openDetail, onCookNow, onRate }: CookbookViewProps) {
+export function CookbookView({ cookbook, making, pantry, ratings, notes, removeFromCookbook, openDetail, onCookNow, onRate }: CookbookViewProps) {
   const [showShoppingList, setShowShoppingList] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [topRatedOnly, setTopRatedOnly] = useState(false);
@@ -97,6 +98,7 @@ export function CookbookView({ cookbook, making, pantry, ratings, removeFromCook
         onCook={onCookNow}
         ratings={ratings}
         onRate={onRate}
+        notes={notes}
         emptyEmoji={hasFilter ? '🔍' : '📖'}
         emptyTitle={hasFilter ? 'No matches' : 'Your cookbook is empty'}
         emptyDesc={
