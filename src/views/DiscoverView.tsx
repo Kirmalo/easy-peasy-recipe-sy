@@ -6,6 +6,7 @@ import { IconButton } from '../components/IconButton';
 import { AIRecipeSheet } from '../components/AIRecipeSheet';
 import { RECIPES } from '../data/recipes';
 import { computeMatch, isStaple } from '../lib/matching';
+import { inferCuisine } from '../lib/cuisine';
 import type { Filters, SwipeDirection, ApplianceTag, Recipe } from '../types';
 
 interface DiscoverViewProps {
@@ -89,6 +90,10 @@ export function DiscoverView({
       candidates = candidates.filter((r) =>
         !r.appliances?.length || r.appliances.every((a) => appliances.includes(a))
       );
+    }
+
+    if (filters.cuisine) {
+      candidates = candidates.filter((r) => inferCuisine(r) === filters.cuisine);
     }
 
     if (searchQuery.trim()) {

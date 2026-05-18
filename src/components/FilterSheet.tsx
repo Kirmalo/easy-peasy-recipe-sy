@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import type { Filters, DietaryTag, Difficulty, MealType } from '../types';
 import { CUISINE_LABELS } from '../data/recipes';
 import { DEFAULT_FILTERS } from '../data/defaults';
+import { CUISINES } from '../lib/cuisine';
 
 interface FilterSheetProps {
   onClose: () => void;
@@ -165,6 +166,33 @@ export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) 
             </Chip>
           ))}
         </Section>
+
+        <div className="mb-6">
+          <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+            Cuisine
+          </p>
+          <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-6 px-6 pb-1">
+            {CUISINES.map((c) => {
+              const active = filters.cuisine === c.id;
+              return (
+                <button
+                  key={c.id}
+                  onClick={() => setFilters((f) => ({ ...f, cuisine: f.cuisine === c.id ? null : c.id }))}
+                  className="flex-shrink-0 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-2xl font-body text-[13px] font-medium transition-all active:scale-95"
+                  style={{
+                    background: active ? 'var(--surface-dark)' : 'white',
+                    color: active ? 'white' : 'var(--text-secondary)',
+                    border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
+                    minWidth: 72,
+                  }}
+                >
+                  <span className="text-[22px] leading-none">{c.flag}</span>
+                  <span>{c.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         <button
           onClick={onClose}

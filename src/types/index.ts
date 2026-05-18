@@ -37,6 +37,7 @@ export interface Filters {
   mealType: MealType | null;
   dietary: DietaryTag[];
   ingredientMode: IngredientMode;
+  cuisine: string | null;
 }
 
 export interface MatchResult {
