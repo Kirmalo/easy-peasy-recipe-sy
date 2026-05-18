@@ -157,6 +157,15 @@ Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, g
       theme: pickTheme(data.mealType, data.ingredients),
     };
 
+    // Persist to community pool — fire and forget, never block the response.
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+      const { Redis } = await import('@upstash/redis');
+      const redis = Redis.fromEnv();
+      redis.lpush('ep:community:recipes', JSON.stringify(recipe))
+        .then(() => redis.ltrim('ep:community:recipes', 0, 499))
+        .catch(() => { /* non-fatal */ });
+    }
+
     return new Response(JSON.stringify(recipe), { status: 200, headers: CORS_HEADERS });
 
   } catch (err) {

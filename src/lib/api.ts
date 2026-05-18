@@ -45,6 +45,21 @@ try {
   }
 } catch { /* private browsing / storage unavailable */ }
 
+async function fetchFromPixabay(query: string): Promise<string | null> {
+  const key = import.meta.env.VITE_PIXABAY_API_KEY;
+  if (!key) return null;
+  try {
+    const res = await fetch(
+      `https://pixabay.com/api/?key=${key}&q=${encodeURIComponent(query)}&image_type=photo&category=food&per_page=3&safesearch=true&min_width=400`
+    );
+    if (!res.ok) return null;
+    const data = (await res.json()) as { hits?: Array<{ webformatURL: string }> };
+    return data?.hits?.[0]?.webformatURL ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function fetchRecipeImage(recipeId: number, searchName?: string): Promise<string | null> {
   if (imageCache.has(recipeId)) return imageCache.get(recipeId) ?? null;
   if (imageInflight.has(recipeId)) return imageInflight.get(recipeId) ?? null;
@@ -53,6 +68,7 @@ export async function fetchRecipeImage(recipeId: number, searchName?: string): P
   const queries = RECIPE_QUERIES[recipeId] ?? (searchName ? [searchName] : []);
 
   const promise: Promise<string | null> = (async () => {
+    // 1. Try TheMealDB
     for (const q of queries) {
       try {
         const res = await fetch(
@@ -70,6 +86,17 @@ export async function fetchRecipeImage(recipeId: number, searchName?: string): P
         // try next query
       }
     }
+
+    // 2. Fall back to Pixabay when TheMealDB has nothing
+    if (searchName) {
+      const url = await fetchFromPixabay(searchName);
+      if (url) {
+        imageCache.set(recipeId, url);
+        try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, url); } catch { /* quota */ }
+        return url;
+      }
+    }
+
     imageCache.set(recipeId, null);
     try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, 'null'); } catch { /* quota */ }
     return null;
