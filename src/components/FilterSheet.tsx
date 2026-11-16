@@ -10,6 +10,33 @@ interface FilterSheetProps {
   setFilters: (fn: (prev: Filters) => Filters) => void;
 }
 
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+  <div className="mb-6">
+    <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+      {title}
+    </p>
+    <div className="flex flex-wrap gap-2">{children}</div>
+  </div>
+  );
+}
+
+function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+  <button
+    onClick={onClick}
+    className="px-4 py-2.5 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
+    style={{
+      background: active ? 'var(--surface-dark)' : 'white',
+      color: active ? 'white' : 'var(--text-secondary)',
+      border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
+    }}
+  >
+    {children}
+  </button>
+  );
+}
+
 export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) {
 
   const toggle = (key: 'cookTime' | 'difficulty' | 'mealType', value: number | string) => {
@@ -38,29 +65,6 @@ export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) 
     { val: 'vegan',      label: 'Vegan',       icon: '🌿' },
     { val: 'gluten-free', label: 'Gluten-free', icon: '🌾' },
   ];
-
-  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="mb-6">
-      <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-        {title}
-      </p>
-      <div className="flex flex-wrap gap-2">{children}</div>
-    </div>
-  );
-
-  const Chip = ({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) => (
-    <button
-      onClick={onClick}
-      className="px-4 py-2.5 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
-      style={{
-        background: active ? 'var(--surface-dark)' : 'white',
-        color: active ? 'white' : 'var(--text-secondary)',
-        border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
-      }}
-    >
-      {children}
-    </button>
-  );
 
   const mode = filters.ingredientMode ?? 'all';
 

@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import { useRecipe } from '../context/recipes';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
 import { scaleAmount } from '../lib/scaleAmount';
+import { detectSeconds, formatTime, secondsLeft } from '../lib/timer';
 import type { Recipe } from '../types';
 
 interface CookingStepsViewProps {
@@ -15,10 +16,14 @@ interface CookingStepsViewProps {
   note?: string;
 }
 
+// Wall-clock timer: survives backgrounded tabs / locked screens without drifting.
 interface TimerState {
   total: number;
-  remaining: number;
   running: boolean;
+  /** Epoch ms when a running timer hits zero. */
+  endsAt: number;
+  /** Seconds left while paused. */
+  pausedRemaining: number;
 }
 
 const slideVariants = {
@@ -37,21 +42,8 @@ const TIMER_PRESETS = [
   { label: '30m', seconds: 1800 },
 ];
 
-function detectSeconds(text: string): number | null {
-  const match = text.match(/(\d+)\s*(?:to\s*\d+\s*)?(hours?|hrs?|minutes?|mins?|seconds?|secs?)/i);
-  if (!match) return null;
-  const val = parseInt(match[1]);
-  const unit = match[2].toLowerCase();
-  if (unit.startsWith('hour') || unit.startsWith('hr')) return val * 3600;
-  if (unit.startsWith('min')) return val * 60;
-  return val;
-}
-
-function formatTime(s: number): string {
-  const m = Math.floor(s / 60);
-  const sec = s % 60;
-  return `${m}:${sec.toString().padStart(2, '0')}`;
-}
+/** Wall clock — only called from event handlers and effects. */
+const clockNow = (): number => Date.now();
 
 function playBeep() {
   try {
@@ -67,7 +59,7 @@ function playBeep() {
       osc.start(ctx.currentTime + delay);
       osc.stop(ctx.currentTime + delay + 0.28);
     });
-  } catch {}
+  } catch { /* audio unavailable */ }
 }
 
 export function CookingStepsView(props: CookingStepsViewProps) {
@@ -94,8 +86,8 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
 
   const [timer, setTimer] = useState<TimerState | null>(null);
   const [timerDone, setTimerDone] = useState(false);
-  const timerRef = useRef(timer);
-  timerRef.current = timer;
+  const [now, setNow] = useState(() => Date.now());
+  const remaining = timer ? (timer.running ? secondsLeft(timer.endsAt, now) : timer.pausedRemaining) : 0;
 
   const isIntro = stepIndex === 0;
   const isDone = stepIndex === totalSteps + 1;
@@ -103,24 +95,46 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
   // Countdown tick
   useEffect(() => {
     if (!timer?.running) return;
-    const id = setInterval(() => {
-      const t = timerRef.current;
-      if (!t?.running) return;
-      if (t.remaining <= 1) {
+    const tick = () => {
+      const t = Date.now();
+      setNow(t);
+      if (t >= timer.endsAt) {
         playBeep();
         navigator.vibrate?.([300, 100, 300, 100, 300]);
-        setTimer({ ...t, remaining: 0, running: false });
+        setTimer({ ...timer, running: false, pausedRemaining: 0 });
         setTimerDone(true);
-        setTimeout(() => setTimerDone(false), 4000);
-      } else {
-        setTimer({ ...t, remaining: t.remaining - 1 });
       }
-    }, 1000);
-    return () => clearInterval(id);
-  }, [timer?.running]);
+    };
+    const id = setInterval(tick, 250);
+    // Catch up immediately when the user returns to the tab.
+    document.addEventListener('visibilitychange', tick);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener('visibilitychange', tick);
+    };
+  }, [timer]);
+
+  useEffect(() => {
+    if (!timerDone) return;
+    const id = setTimeout(() => setTimerDone(false), 4000);
+    return () => clearTimeout(id);
+  }, [timerDone]);
+
+  const toggleTimer = () => {
+    const t = clockNow();
+    setNow(t);
+    setTimer((prev) => {
+      if (!prev) return null;
+      return prev.running
+        ? { ...prev, running: false, pausedRemaining: secondsLeft(prev.endsAt, t) }
+        : { ...prev, running: true, endsAt: t + prev.pausedRemaining * 1000 };
+    });
+  };
 
   const startTimer = (seconds: number) => {
-    setTimer({ total: seconds, remaining: seconds, running: true });
+    const t = clockNow();
+    setNow(t);
+    setTimer({ total: seconds, running: true, endsAt: t + seconds * 1000, pausedRemaining: seconds });
     setShowTimerPicker(false);
     setTimerDone(false);
   };
@@ -140,7 +154,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
   // Detected time for current step
   const detectedSeconds = !isIntro && !isDone ? detectSeconds(recipe.steps[stepIndex - 1]) : null;
 
-  const isUrgent = timer !== null && timer.remaining <= 30 && timer.running;
+  const isUrgent = timer !== null && remaining <= 30 && timer.running;
 
   return (
     <motion.div
@@ -553,7 +567,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                   <div
                     className="h-full rounded-full transition-all duration-1000"
                     style={{
-                      width: timerDone ? '0%' : timer ? `${(timer.remaining / timer.total) * 100}%` : '0%',
+                      width: timerDone ? '0%' : timer ? `${(remaining / timer.total) * 100}%` : '0%',
                       background: isUrgent ? '#FCA5A5' : 'white',
                     }}
                   />
@@ -563,13 +577,13 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                   className="font-body font-bold text-[18px] tabular-nums min-w-[48px] text-center"
                   style={{ color: timerDone ? '#86EFAC' : isUrgent ? '#FCA5A5' : 'white' }}
                 >
-                  {timerDone ? 'Done!' : timer ? formatTime(timer.remaining) : ''}
+                  {timerDone ? 'Done!' : timer ? formatTime(remaining) : ''}
                 </span>
                 {/* Controls */}
                 {!timerDone && timer && (
                   <>
                     <button
-                      onClick={() => setTimer((t) => t ? { ...t, running: !t.running } : null)}
+                      onClick={toggleTimer}
                       className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                       style={{ background: 'rgba(255,255,255,0.15)' }}
                     >

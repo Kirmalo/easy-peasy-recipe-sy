@@ -1,6 +1,7 @@
 import { Redis } from '@upstash/redis';
 import { corsHeaders, json, originAllowed, hasRedis } from './_lib/http';
 import { sanitizeRecipes } from '../src/lib/recipeValidation';
+import { moderateRecipe } from '../src/lib/moderation';
 
 export default async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'GET');
@@ -18,7 +19,9 @@ export default async function handler(request: Request): Promise<Response> {
       catch { return null; }
     });
     // Never trust stored data shape — drop anything malformed.
-    return json(sanitizeRecipes(parsed), 200, headers, {
+    // Re-screen on read so tightening the rules also cleans recipes already stored.
+    const recipes = sanitizeRecipes(parsed).filter((r) => moderateRecipe(r).ok);
+    return json(recipes, 200, headers, {
       'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
     });
   } catch (err) {

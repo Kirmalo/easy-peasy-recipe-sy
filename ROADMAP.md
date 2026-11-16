@@ -19,12 +19,12 @@ Working list from the full-repo review (2026-11-16). Tick items off as they land
 
 ## Phase 2 — Quality gates
 
-- [ ] Bug 4: Cooking timer based on wall-clock end time (no drift when backgrounded)
-- [ ] Bug 5: `FilterSheet` defines a component during render
-- [ ] Fix all remaining lint errors
-- [ ] Unit tests (Vitest): matching, scaleAmount, parseSpeech, inferCuisine, detectSeconds
-- [ ] Moderation for the community recipe pool
-- [ ] GitHub Actions CI: typecheck, lint, test, build
+- [x] Bug 4: Cooking timer based on wall-clock end time (no drift when backgrounded)
+- [x] Bug 5: `FilterSheet` defines a component during render
+- [x] Fix all remaining lint errors
+- [x] Unit tests (Vitest): matching, scaleAmount, parseSpeech, inferCuisine, timer, validation, moderation (72 tests)
+- [x] Moderation for the community recipe pool (blocklist + pantry-grounding check on write and read; reporting/upvotes in Phase 4)
+- [x] GitHub Actions CI: typecheck, lint, test, build
 
 ## Phase 3 — Performance & architecture
 

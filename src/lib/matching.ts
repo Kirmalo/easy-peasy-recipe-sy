@@ -26,11 +26,14 @@ const PRODUCT_WORDS = new Set([
   'starch', 'seed', 'bouillon', 'essence', 'liqueur', 'jam', 'chip',
 ]);
 
+// Only these drop "-ves" for "-f"; cloves / olives / chives just lose the "s".
+const VES_TO_F = new Set(['leaves', 'halves', 'loaves', 'calves', 'shelves']);
+
 function singular(word: string): string {
   if (word.length <= 3) return word;
   if (word.endsWith('ies')) return word.slice(0, -3) + 'y';
   if (word.endsWith('oes')) return word.slice(0, -2);
-  if (word.endsWith('ves')) return word.slice(0, -3) + 'f';
+  if (VES_TO_F.has(word)) return word.slice(0, -3) + 'f';
   if (/(ches|shes|xes|sses)$/.test(word)) return word.slice(0, -2);
   if (word.endsWith('s') && !/(ss|us|is)$/.test(word)) return word.slice(0, -1);
   return word;
