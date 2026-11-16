@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, ShoppingCart } from 'lucide-react';
-import { RECIPES } from '../data/recipes';
+import { useRecipeList } from '../context/recipes';
 import { computeMatch } from '../lib/matching';
 import { amazonItemUrl } from '../lib/affiliate';
-import type { Recipe } from '../types';
 
 interface ShoppingListSheetProps {
   cookbook: number[];
@@ -17,9 +16,7 @@ export function ShoppingListSheet({ cookbook, making, pantry, onClose }: Shoppin
   const [copied, setCopied] = useState(false);
 
   const allIds = [...new Set([...cookbook, ...making])];
-  const recipes = allIds
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  const recipes = useRecipeList(allIds);
 
   // Dedupe missing ingredients; track which recipes need each one
   const missingMap = new Map<string, string[]>();

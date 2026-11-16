@@ -1,36 +1,28 @@
 import { Redis } from '@upstash/redis';
-
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Content-Type': 'application/json',
-};
+import { corsHeaders, json, originAllowed, hasRedis } from './_lib/http';
+import { sanitizeRecipes } from '../src/lib/recipeValidation';
 
 export default async function handler(request: Request): Promise<Response> {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS_HEADERS });
-  }
+  const headers = corsHeaders(request, 'GET');
 
-  if (request.method !== 'GET') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: CORS_HEADERS });
-  }
-
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return new Response(JSON.stringify([]), { status: 200, headers: CORS_HEADERS });
-  }
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
+  if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, headers);
+  if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
+  if (!hasRedis()) return json([], 200, headers);
 
   try {
     const redis = Redis.fromEnv();
-    const raw = await redis.lrange<string>('ep:community:recipes', 0, 99);
-    const recipes = raw.map((item) => {
+    const raw = await redis.lrange<unknown>('ep:community:recipes', 0, 99);
+    const parsed = raw.map((item) => {
       try { return typeof item === 'string' ? JSON.parse(item) : item; }
       catch { return null; }
-    }).filter(Boolean);
-
-    return new Response(JSON.stringify(recipes), { status: 200, headers: CORS_HEADERS });
+    });
+    // Never trust stored data shape — drop anything malformed.
+    return json(sanitizeRecipes(parsed), 200, headers, {
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+    });
   } catch (err) {
-    const msg = err instanceof Error ? err.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: msg }), { status: 500, headers: CORS_HEADERS });
+    console.error('community-recipes failed', err);
+    return json({ error: 'Could not load community recipes' }, 500, headers);
   }
 }

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { ArrowLeft, Clock, Gauge, Utensils, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus, Share2 } from 'lucide-react';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
-import { RECIPES, CUISINE_LABELS } from '../data/recipes';
+import { CUISINE_LABELS } from '../data/recipes';
+import { useRecipe } from '../context/recipes';
 import { computeMatch, ingMatches } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
 import { amazonItemUrl, getEquipmentSuggestions, AMAZON_TAG } from '../lib/affiliate';
@@ -22,7 +23,6 @@ interface RecipeDetailProps {
   onCookNow?: (id: number) => void;
   note?: string;
   onNoteChange?: (text: string) => void;
-  extraRecipes?: import('../types').Recipe[];
 }
 
 
@@ -49,14 +49,14 @@ export function RecipeDetail({
   onCookNow,
   note,
   onNoteChange,
-  extraRecipes,
 }: RecipeDetailProps) {
-  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
+  const recipe = useRecipe(recipeId);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [servings, setServings] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
+  const imageUrl = useRecipeImage(recipeId, recipe?.name);
 
   if (!recipe) return null;
 
@@ -64,7 +64,6 @@ export function RecipeDetail({
   const match = computeMatch(recipe, pantry);
   const inCookbook = cookbook.includes(recipe.id);
   const inMaking = making.includes(recipe.id);
-  const imageUrl = useRecipeImage(recipe.id, recipe.name);
   const showFallback = !imageUrl || imgError || !imgLoaded;
 
   const activeServings = servings ?? recipe.servings;

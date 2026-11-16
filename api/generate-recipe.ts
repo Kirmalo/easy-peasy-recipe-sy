@@ -1,26 +1,26 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
+import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation';
+import type { ThemeName } from '../src/types';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Content-Type': 'application/json',
-};
+// Override with ANTHROPIC_MODEL. Before switching to a newer Haiku, check that forced
+// tool_choice is still accepted with that model's default thinking settings.
+const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
+const PER_IP_DAILY = Number(process.env.AI_DAILY_LIMIT_PER_IP) || 5;
+const GLOBAL_DAILY = Number(process.env.AI_DAILY_LIMIT_GLOBAL) || 500;
+
+const redis = hasRedis() ? Redis.fromEnv() : null;
 
 // Only initialise if env vars are present — allows local dev without Upstash.
-const ratelimit =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? new Ratelimit({
-        redis: Redis.fromEnv(),
-        limiter: Ratelimit.slidingWindow(5, '24 h'),
-        prefix: 'ep:recipe',
-        analytics: false,
-      })
-    : null;
-
-type ThemeName = 'tomato' | 'sage' | 'mustard' | 'berry' | 'peach' | 'ocean' | 'forest' | 'rose';
+const ipLimit = redis
+  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(PER_IP_DAILY, '24 h'), prefix: 'ep:recipe', analytics: false })
+  : null;
+// Cost backstop: caps total generations across all users.
+const globalLimit = redis
+  ? new Ratelimit({ redis, limiter: Ratelimit.fixedWindow(GLOBAL_DAILY, '24 h'), prefix: 'ep:recipe-global', analytics: false })
+  : null;
 
 function pickTheme(mealType: string, ingredients: string[]): ThemeName {
   const ings = ingredients.join(' ');
@@ -37,73 +37,71 @@ function pickTheme(mealType: string, ingredients: string[]): ThemeName {
   return byMeal[mealType] ?? 'tomato';
 }
 
-function getClientIp(request: Request): string {
-  return (
-    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
-    request.headers.get('x-real-ip') ??
-    'unknown'
-  );
+/** Unique id for an AI recipe: a Redis counter when available, otherwise a random id in a disjoint range. */
+async function nextRecipeId(): Promise<number> {
+  if (redis) {
+    try { return AI_ID_BASE + (await redis.incr('ep:community:nextId')); } catch { /* fall through */ }
+  }
+  return 3_000_000_000_000_000 + Math.floor(Math.random() * 5_000_000_000_000_000);
 }
 
 export default async function handler(request: Request): Promise<Response> {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS_HEADERS });
-  }
+  const headers = corsHeaders(request, 'POST');
 
-  if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: CORS_HEADERS });
-  }
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
+  if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, headers);
+  if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'ANTHROPIC_API_KEY not set' }), { status: 500, headers: CORS_HEADERS });
+    console.error('generate-recipe: ANTHROPIC_API_KEY not set');
+    return json({ error: 'Recipe generation is not available right now.' }, 503, headers);
   }
 
   // Rate limit before parsing the body or calling the AI.
-  if (ratelimit) {
-    const ip = getClientIp(request);
-    const { success, limit, remaining, reset } = await ratelimit.limit(ip);
-    if (!success) {
-      const retryAfterSecs = Math.ceil((reset - Date.now()) / 1000);
-      return new Response(
-        JSON.stringify({ error: `Too many requests — you can generate ${limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` }),
-        {
-          status: 429,
-          headers: {
-            ...CORS_HEADERS,
-            'Retry-After': String(retryAfterSecs),
-            'X-RateLimit-Limit': String(limit),
-            'X-RateLimit-Remaining': String(remaining),
-            'X-RateLimit-Reset': String(reset),
-          },
-        },
+  if (ipLimit && globalLimit) {
+    const ip = await ipLimit.limit(clientIp(request));
+    if (!ip.success) {
+      const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
+      return json(
+        { error: `Too many requests — you can generate ${ip.limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` },
+        429, headers,
+        { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
       );
+    }
+    const global = await globalLimit.limit('all');
+    if (!global.success) {
+      return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
+        { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
     }
   }
 
-  let body: { pantry?: string[]; appliances?: string[]; servings?: number };
+  let body: { pantry?: unknown; appliances?: unknown; servings?: unknown };
   try {
     body = await request.json() as typeof body;
   } catch {
-    return new Response(JSON.stringify({ error: 'Invalid request body' }), { status: 400, headers: CORS_HEADERS });
+    return json({ error: 'Invalid request body' }, 400, headers);
   }
 
-  const { pantry = [], appliances = [], servings = 4 } = body;
+  const pantry = Array.isArray(body.pantry) ? body.pantry : [];
+  const appliances = Array.isArray(body.appliances) ? body.appliances : [];
 
-  if (pantry.length === 0) {
-    return new Response(JSON.stringify({ error: 'Pantry is empty — add ingredients first' }), { status: 400, headers: CORS_HEADERS });
+  // Sanitise inputs — cap sizes and strip control characters to limit prompt injection surface.
+  const clean = (v: unknown, max: number) =>
+    [...String(v)].map((c) => (c.charCodeAt(0) < 32 || '<>{}'.includes(c) ? ' ' : c)).join('').trim().slice(0, max);
+  const safePantry = pantry.slice(0, 30).map((s) => clean(s, 60)).filter(Boolean);
+  const safeAppliances = appliances.slice(0, 10).map((s) => clean(s, 40)).filter(Boolean);
+  const safeServings = Math.max(1, Math.min(12, Number(body.servings) || 4));
+
+  if (safePantry.length === 0) {
+    return json({ error: 'Pantry is empty — add ingredients first' }, 400, headers);
   }
-
-  // Sanitise inputs — cap sizes to limit prompt injection surface.
-  const safePantry = pantry.slice(0, 30).map((s) => String(s).slice(0, 60));
-  const safeAppliances = appliances.slice(0, 10).map((s) => String(s).slice(0, 40));
-  const safeServings = Math.max(1, Math.min(12, Number(servings) || 4));
 
   const client = new Anthropic({ apiKey });
 
   try {
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
+      model: MODEL,
       max_tokens: 1500,
       tools: [{
         name: 'create_recipe',
@@ -139,37 +137,36 @@ Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, g
       }],
     });
 
+    if (message.stop_reason === 'refusal') {
+      return json({ error: "Couldn't create a recipe from those ingredients." }, 422, headers);
+    }
+
     const toolBlock = message.content.find((b) => b.type === 'tool_use');
     if (!toolBlock || toolBlock.type !== 'tool_use') {
-      return new Response(JSON.stringify({ error: 'No recipe returned' }), { status: 500, headers: CORS_HEADERS });
+      return json({ error: 'No recipe returned — please try again.' }, 502, headers);
     }
 
-    const data = toolBlock.input as {
-      name: string; emoji: string; description: string;
-      ingredients: string[]; amounts: string[]; cookTime: number;
-      difficulty: string; mealType: string; dietary: string[];
-      servings: number; steps: string[];
-    };
+    const input = toolBlock.input as Record<string, unknown>;
+    const ingredients = Array.isArray(input.ingredients) ? input.ingredients.map(String) : [];
+    const recipe = sanitizeRecipe({
+      ...input,
+      id: await nextRecipeId(),
+      theme: pickTheme(String(input.mealType ?? ''), ingredients) satisfies ThemeName,
+    });
+    if (!recipe) {
+      return json({ error: 'The generated recipe was incomplete — please try again.' }, 502, headers);
+    }
 
-    const recipe = {
-      ...data,
-      id: Date.now(),
-      theme: pickTheme(data.mealType, data.ingredients),
-    };
-
-    // Persist to community pool — fire and forget, never block the response.
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-      const { Redis } = await import('@upstash/redis');
-      const redis = Redis.fromEnv();
+    // Persist to community pool — never block the response on it.
+    if (redis) {
       redis.lpush('ep:community:recipes', JSON.stringify(recipe))
         .then(() => redis.ltrim('ep:community:recipes', 0, 499))
-        .catch(() => { /* non-fatal */ });
+        .catch((e) => console.error('community push failed', e));
     }
 
-    return new Response(JSON.stringify(recipe), { status: 200, headers: CORS_HEADERS });
-
+    return json(recipe, 200, headers);
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: message }), { status: 500, headers: CORS_HEADERS });
+    console.error('generate-recipe failed', err);
+    return json({ error: 'Recipe generation failed — please try again.' }, 502, headers);
   }
 }

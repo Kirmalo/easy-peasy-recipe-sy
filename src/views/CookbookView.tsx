@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Search, X } from 'lucide-react';
 import { RecipeGrid } from '../components/GridCard';
 import { ShoppingListSheet } from '../components/ShoppingListSheet';
-import { RECIPES } from '../data/recipes';
+import { useRecipes } from '../context/recipes';
 
 interface CookbookViewProps {
   cookbook: number[];
@@ -22,11 +22,12 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
   const [searchQuery, setSearchQuery] = useState('');
   const [topRatedOnly, setTopRatedOnly] = useState(false);
 
+  const { byId } = useRecipes();
   const hasFilter = searchQuery.trim().length > 0 || topRatedOnly;
 
   const filteredCookbook = hasFilter
     ? cookbook.filter((id) => {
-        const recipe = RECIPES.find((r) => r.id === id);
+        const recipe = byId.get(id);
         if (!recipe) return false;
         if (searchQuery.trim() && !recipe.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
         if (topRatedOnly && ratings[id] !== 3) return false;

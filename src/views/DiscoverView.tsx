@@ -5,8 +5,9 @@ import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
 import { AIRecipeSheet } from '../components/AIRecipeSheet';
 import { RECIPES } from '../data/recipes';
-import { computeMatch, isStaple } from '../lib/matching';
+import { computeMatch, isStaple, compareByEase } from '../lib/matching';
 import { inferCuisine } from '../lib/cuisine';
+import { sanitizeRecipe } from '../lib/recipeValidation';
 import type { Filters, SwipeDirection, ApplianceTag, Recipe } from '../types';
 
 interface DiscoverViewProps {
@@ -60,9 +61,11 @@ export function DiscoverView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pantry, appliances, servings: 4 }),
       });
-      const data = await res.json() as { error?: string } & Recipe;
+      const data = await res.json().catch(() => ({})) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? 'Generation failed');
-      setAiRecipe(data as Recipe);
+      const recipe = sanitizeRecipe(data);
+      if (!recipe) throw new Error('The recipe came back incomplete — try again.');
+      setAiRecipe(recipe);
     } catch (e) {
       setAiError(e instanceof Error ? e.message : 'Something went wrong');
     } finally {
@@ -115,7 +118,7 @@ export function DiscoverView({
       });
     }
 
-    scored.sort((a, b) => b.match.score - a.match.score);
+    scored.sort((a, b) => b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
     return scored;
   }, [pantry, filters, appliances, cookbook, making, passed, searchQuery]);
 

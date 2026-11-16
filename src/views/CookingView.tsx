@@ -1,6 +1,5 @@
-import { RECIPES } from '../data/recipes';
+import { useRecipeList } from '../context/recipes';
 import { GridCard } from '../components/GridCard';
-import type { Recipe } from '../types';
 
 interface CookingViewProps {
   making: number[];
@@ -29,13 +28,9 @@ export function CookingView({
   onCookNow,
   onRate,
 }: CookingViewProps) {
-  const makingRecipes = making
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  const makingRecipes = useRecipeList(making);
 
-  const cookedRecipes = cooked
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  const cookedRecipes = useRecipeList(cooked);
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">

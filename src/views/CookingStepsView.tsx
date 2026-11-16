@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
-import { RECIPES } from '../data/recipes';
+import { useRecipe } from '../context/recipes';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
 import { scaleAmount } from '../lib/scaleAmount';
@@ -13,7 +13,6 @@ interface CookingStepsViewProps {
   onDone: () => void;
   onRate?: (stars: 1 | 2 | 3) => void;
   note?: string;
-  extraRecipes?: Recipe[];
 }
 
 interface TimerState {
@@ -71,8 +70,14 @@ function playBeep() {
   } catch {}
 }
 
-export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extraRecipes }: CookingStepsViewProps) {
-  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
+export function CookingStepsView(props: CookingStepsViewProps) {
+  const recipe = useRecipe(props.recipeId);
+  // Unknown id (e.g. an AI recipe that was cleared) — render nothing instead of crashing.
+  if (!recipe) return null;
+  return <CookingSteps {...props} recipe={recipe} />;
+}
+
+function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: CookingStepsViewProps & { recipe: Recipe }) {
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
