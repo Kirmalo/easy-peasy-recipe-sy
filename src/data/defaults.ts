@@ -7,4 +7,5 @@ export const DEFAULT_FILTERS: Filters = {
   dietary: [],
   ingredientMode: 'all',
   cuisine: null,
+  useItUp: false,
 };

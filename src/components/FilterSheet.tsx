@@ -138,6 +138,15 @@ export function FilterSheet({ onClose }: FilterSheetProps) {
           </div>
         </Section>
 
+        <Section title="Use it up">
+          <Chip active={!!filters.useItUp} onClick={() => setFilters((f) => ({ ...f, useItUp: !f.useItUp }))}>
+            ⏳ Prioritise ingredients expiring soon
+          </Chip>
+          <p className="w-full font-body text-[12px] text-[var(--text-tertiary)]">
+            Set use-by dates in your pantry list.
+          </p>
+        </Section>
+
         <Section title="Cook time">
           {cookTimes.map((c) => (
             <Chip key={c.val} active={filters.cookTime === c.val} onClick={() => toggle('cookTime', c.val)}>

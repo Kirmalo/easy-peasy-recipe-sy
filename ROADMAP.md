@@ -44,11 +44,11 @@ Working list from the full-repo review (2026-11-16). Tick items off as they land
 
 ## Phase 4 — Features
 
-- [ ] Ingredient substitutions
-- [ ] Metric / imperial toggle + amount normalisation
-- [ ] Pantry upkeep: expiry dates, "use it up" sort, deduct on cook
-- [ ] Weekly meal plan feeding the shopping list
-- [ ] Optional account sync
-- [ ] Community pool: upvotes, reporting, surface best AI recipes in Discover
-- [ ] Nutrition & allergen info
-- [ ] Hands-free voice commands in cooking mode
+- [x] Ingredient substitutions
+- [x] Metric / imperial toggle + amount normalisation
+- [x] Pantry upkeep: expiry dates, "use it up" sort, deduct on cook
+- [x] Weekly meal plan feeding the shopping list
+- [x] Optional device sync (private sync code + QR, no accounts)
+- [x] Community pool: upvotes, reporting, surface best AI recipes in Discover
+- [x] Allergen info + verified diet tags (nutrition numbers intentionally out of scope)
+- [x] Hands-free voice commands in cooking mode

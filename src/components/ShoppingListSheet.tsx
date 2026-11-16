@@ -15,10 +15,11 @@ interface ShoppingListSheetProps {
 
 export function ShoppingListSheet({ onClose }: ShoppingListSheetProps) {
   const dialogProps = useDialog(onClose, 'Shopping list');
-  const { cookbook, making, pantry } = useAppStore(useShallow((s) => ({ cookbook: s.cookbook, making: s.making, pantry: s.pantry })));
+  const { cookbook, making, pantry, mealPlan } = useAppStore(useShallow((s) => ({ cookbook: s.cookbook, making: s.making, pantry: s.pantry, mealPlan: s.mealPlan })));
   const [copied, setCopied] = useState(false);
 
-  const allIds = [...new Set([...cookbook, ...making])];
+  // Saved, queued and planned recipes all feed the list.
+  const allIds = [...new Set([...cookbook, ...making, ...Object.values(mealPlan).flat()])];
   const recipes = useRecipeList(allIds);
 
   // Dedupe missing ingredients; track which recipes need each one

@@ -1,5 +1,6 @@
 import type { Recipe, MatchResult } from '../types';
 import { STAPLES } from '../data/staples';
+import { SUBSTITUTIONS } from '../data/substitutions';
 
 // Regional / alternate names collapsed to one canonical phrase before matching.
 const SYNONYMS: Array<[RegExp, string]> = [
@@ -53,7 +54,7 @@ export function tokenize(s: string): string[] {
 }
 
 /** Index where `needle` appears as a contiguous run inside `hay`, or -1. */
-function findRun(hay: string[], needle: string[]): number {
+export function findRun(hay: string[], needle: string[]): number {
   outer: for (let i = 0; i + needle.length <= hay.length; i++) {
     for (let j = 0; j < needle.length; j++) if (hay[i + j] !== needle[j]) continue outer;
     return i;
@@ -78,17 +79,42 @@ export const ingMatches = (recipeIng: string, pantryIng: string): boolean => {
   return !(next && PRODUCT_WORDS.has(next));
 };
 
+export interface SubstituteMatch {
+  /** Pantry item to use instead. */
+  use: string;
+  note: string;
+}
+
+/** A pantry item that can stand in for a missing recipe ingredient, or null. */
+export function findSubstitute(ingredient: string, pantry: string[]): SubstituteMatch | null {
+  for (const sub of SUBSTITUTIONS) {
+    if (!ingMatches(ingredient, sub.for)) continue;
+    for (const option of sub.use) {
+      const have = pantry.find((p) => ingMatches(option, p));
+      if (have) return { use: have, note: sub.note };
+    }
+  }
+  return null;
+}
+
+/** A substitute counts for most, but not all, of an ingredient you actually have. */
+const SUBSTITUTE_WEIGHT = 0.75;
+
 export const computeMatch = (recipe: Recipe, pantry: string[]): MatchResult => {
   if (!pantry.length) {
-    return { score: 0, have: 0, need: recipe.ingredients.length, missing: recipe.ingredients };
+    return { score: 0, have: 0, need: recipe.ingredients.length, missing: recipe.ingredients, substitutes: [] };
   }
   let have = 0;
   const missing: string[] = [];
+  const substitutes: MatchResult['substitutes'] = [];
   recipe.ingredients.forEach((ri) => {
-    if (pantry.some((p) => ingMatches(ri, p))) have++;
+    if (pantry.some((p) => ingMatches(ri, p))) { have++; return; }
+    const sub = findSubstitute(ri, pantry);
+    if (sub) substitutes.push({ ingredient: ri, ...sub });
     else missing.push(ri);
   });
-  return { score: have / recipe.ingredients.length, have, need: recipe.ingredients.length, missing };
+  const need = recipe.ingredients.length;
+  return { score: (have + SUBSTITUTE_WEIGHT * substitutes.length) / need, have, need, missing, substitutes };
 };
 
 // Descriptors that can precede a staple without changing what it is.

@@ -1,33 +1,28 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage, type StateStorage } from 'zustand/middleware';
-import { DEFAULT_FILTERS } from '../data/defaults';
-import { sanitizeRecipes } from '../lib/recipeValidation';
 import type { ApplianceTag, Filters, Recipe } from '../types';
+import type { UnitSystem } from '../lib/units';
+import {
+  DEFAULT_PERSISTED, EMPTY_PLAN, sanitizePersisted,
+  type PersistedState, type Stars, type DayKey, type Vote,
+} from './persisted';
 
-export type Stars = 1 | 2 | 3;
+export { DAYS, DAY_LABELS, sanitizePersisted } from './persisted';
+export type { PersistedState, Stars, DayKey, MealPlan, Vote } from './persisted';
+
 type Updater<T> = T | ((prev: T) => T);
 const apply = <T,>(u: Updater<T>, prev: T): T => (typeof u === 'function' ? (u as (p: T) => T)(prev) : u);
-
-/** Everything that survives a reload. Bump STORE_VERSION and extend `migrate` when this shape changes. */
-export interface PersistedState {
-  pantry: string[];
-  appliances: ApplianceTag[];
-  filters: Filters;
-  cookbook: number[];
-  making: number[];
-  passed: number[];
-  cooked: number[];
-  ratings: Record<number, Stars>;
-  notes: Record<number, string>;
-  /** AI recipes this user generated, so saved/cooked ones survive reloads. */
-  myAiRecipes: Recipe[];
-}
 
 interface SessionState {
   /** Recipes other users generated — fetched fresh each session. */
   communityRecipes: Recipe[];
+  /** Upvote counts for community recipes, by id. */
+  communityUpvotes: Record<number, number>;
   /** Most recent swipe-left, for undo. */
   lastPassed: number | null;
+  /** Device sync state for the UI. */
+  syncStatus: 'off' | 'idle' | 'syncing' | 'error';
+  lastSyncedAt: number | null;
 }
 
 interface Actions {
@@ -49,51 +44,28 @@ interface Actions {
   setRating: (id: number, stars: Stars) => void;
   setNote: (id: number, text: string) => void;
   addAiRecipe: (r: Recipe) => void;
-  setCommunityRecipes: (list: Recipe[]) => void;
+  setCommunityRecipes: (list: Recipe[], upvotes?: Record<number, number>) => void;
+  setUnits: (u: UnitSystem) => void;
+  setExpiry: (ingredient: string, date: string | null) => void;
+  /** Remove items from the pantry (e.g. used up while cooking). */
+  removeFromPantry: (items: string[]) => void;
+  addToPlan: (day: DayKey, id: number) => void;
+  removeFromPlan: (day: DayKey, id: number) => void;
+  clearPlan: () => void;
+  setSyncCode: (code: string | null) => void;
+  setSyncStatus: (status: AppState['syncStatus'], lastSyncedAt?: number) => void;
+  setVote: (id: number, vote: Vote) => void;
+  /** Replace all persisted data (used by device sync). */
+  importState: (data: PersistedState) => void;
 }
 
 export type AppState = PersistedState & SessionState & Actions;
 
 export const STORE_KEY = 'recipesy-state';
-export const STORE_VERSION = 1;
-
-const DEFAULT_PERSISTED: PersistedState = {
-  pantry: [], appliances: [], filters: DEFAULT_FILTERS, cookbook: [], making: [],
-  passed: [], cooked: [], ratings: {}, notes: {}, myAiRecipes: [],
-};
-
-// ── Validation: storage can hold anything (old versions, manual edits, other tabs) ──
-
-const ids = (v: unknown): number[] =>
-  Array.isArray(v) ? [...new Set(v.filter((x): x is number => Number.isSafeInteger(x)))] : [];
-const strings = (v: unknown): string[] =>
-  Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string' && x.trim() !== '') : [];
-const record = <T,>(v: unknown, ok: (x: unknown) => x is T): Record<number, T> => {
-  if (!v || typeof v !== 'object' || Array.isArray(v)) return {};
-  return Object.fromEntries(Object.entries(v).filter(([k, x]) => Number.isSafeInteger(Number(k)) && ok(x))) as Record<number, T>;
-};
-const isStars = (x: unknown): x is Stars => x === 1 || x === 2 || x === 3;
-const isString = (x: unknown): x is string => typeof x === 'string';
-
-export function sanitizePersisted(raw: unknown): PersistedState {
-  const o = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>;
-  const f = (o.filters && typeof o.filters === 'object' ? o.filters : {}) as Partial<Filters>;
-  return {
-    pantry: strings(o.pantry),
-    appliances: strings(o.appliances) as ApplianceTag[],
-    filters: { ...DEFAULT_FILTERS, ...f, dietary: Array.isArray(f.dietary) ? f.dietary : [] },
-    cookbook: ids(o.cookbook),
-    making: ids(o.making),
-    passed: ids(o.passed).slice(-500),
-    cooked: ids(o.cooked).slice(0, 100),
-    ratings: record(o.ratings, isStars),
-    notes: record(o.notes, isString),
-    myAiRecipes: sanitizeRecipes(o.myAiRecipes).slice(0, 200),
-  };
-}
+export const STORE_VERSION = 2;
 
 // Before the store existed, each field lived under its own localStorage key.
-const LEGACY_KEYS: Record<keyof PersistedState, string> = {
+const LEGACY_KEYS: Partial<Record<keyof PersistedState, string>> = {
   pantry: 'pantry', appliances: 'appliances', filters: 'filters', cookbook: 'cookbook', making: 'making',
   passed: 'passed', cooked: 'cooked', ratings: 'ratings', notes: 'notes', myAiRecipes: 'aiRecipes',
 };
@@ -143,7 +115,10 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       ...DEFAULT_PERSISTED,
       communityRecipes: [],
+      communityUpvotes: {},
       lastPassed: null,
+      syncStatus: 'off',
+      lastSyncedAt: null,
 
       setPantry: (u) => set((s) => ({ pantry: apply(u, s.pantry) })),
       addToPantry: (ing) => set((s) => (s.pantry.includes(ing) ? s : { pantry: [...s.pantry, ing] })),
@@ -168,23 +143,48 @@ export const useAppStore = create<AppState>()(
       setNote: (id, text) => set((s) => ({ notes: text.trim() ? { ...s.notes, [id]: text } : without(s.notes, id) })),
 
       addAiRecipe: (r) => set((s) => ({ myAiRecipes: [r, ...s.myAiRecipes.filter((x) => x.id !== r.id)].slice(0, 200) })),
-      setCommunityRecipes: (list) => set({ communityRecipes: list }),
+      setCommunityRecipes: (list, upvotes = {}) => set({ communityRecipes: list, communityUpvotes: upvotes }),
+      setUnits: (units) => set({ units }),
+      setExpiry: (ing, date) => set((s) => {
+        const next = { ...s.pantryExpiry };
+        if (date) next[ing] = date; else delete next[ing];
+        return { pantryExpiry: next };
+      }),
+      removeFromPantry: (items) => set((s) => {
+        const drop = new Set(items);
+        const pantryExpiry = { ...s.pantryExpiry };
+        items.forEach((i) => delete pantryExpiry[i]);
+        return { pantry: s.pantry.filter((p) => !drop.has(p)), pantryExpiry };
+      }),
+      addToPlan: (day, id) => set((s) => (s.mealPlan[day].includes(id) ? s : { mealPlan: { ...s.mealPlan, [day]: [...s.mealPlan[day], id] } })),
+      removeFromPlan: (day, id) => set((s) => ({ mealPlan: { ...s.mealPlan, [day]: s.mealPlan[day].filter((x) => x !== id) } })),
+      clearPlan: () => set({ mealPlan: EMPTY_PLAN }),
+      setSyncCode: (syncCode) => set({ syncCode, syncStatus: syncCode ? 'idle' : 'off' }),
+      setSyncStatus: (syncStatus, lastSyncedAt) => set((s) => ({ syncStatus, lastSyncedAt: lastSyncedAt ?? s.lastSyncedAt })),
+      setVote: (id, vote) => set((s) => ({ votes: { ...s.votes, [id]: vote } })),
+      importState: (data) => set(sanitizePersisted(data)),
     }),
     {
       name: STORE_KEY,
       version: STORE_VERSION,
       storage: createJSONStorage(() => safeStorage),
-      partialize: (s): PersistedState => ({
-        pantry: s.pantry, appliances: s.appliances, filters: s.filters, cookbook: s.cookbook,
-        making: s.making, passed: s.passed, cooked: s.cooked, ratings: s.ratings, notes: s.notes,
-        myAiRecipes: s.myAiRecipes,
-      }),
+      partialize: (s): PersistedState => pickPersisted(s),
       // Future shape changes go here, keyed on the stored version.
       migrate: (persisted) => sanitizePersisted(persisted),
       merge: (persisted, current) => ({ ...current, ...sanitizePersisted(persisted) }),
     },
   ),
 );
+
+/** The persisted slice of the state (what's saved locally and synced). */
+export function pickPersisted(s: PersistedState): PersistedState {
+  return {
+    pantry: s.pantry, appliances: s.appliances, filters: s.filters, cookbook: s.cookbook,
+    making: s.making, passed: s.passed, cooked: s.cooked, ratings: s.ratings, notes: s.notes,
+    myAiRecipes: s.myAiRecipes, units: s.units, pantryExpiry: s.pantryExpiry, mealPlan: s.mealPlan,
+    syncCode: s.syncCode, votes: s.votes,
+  };
+}
 
 /** Keep tabs in sync: another tab writing the store rehydrates this one. */
 export function syncAcrossTabs(): () => void {

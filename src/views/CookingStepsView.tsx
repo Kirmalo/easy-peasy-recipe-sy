@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
+import { Mic, MicOff, X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import { useRecipe } from '../context/recipes';
 import { useAppStore } from '../store/appStore';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
 import { useWakeLock } from '../hooks/useWakeLock';
-import { scaleAmount } from '../lib/scaleAmount';
+import { useHandsFree } from '../hooks/useHandsFree';
+import { formatAmount } from '../lib/scaleAmount';
+import { findSubstitute, ingMatches } from '../lib/matching';
+import { UnitToggle } from '../components/UnitToggle';
+import { useShallow } from 'zustand/react/shallow';
 import { detectSeconds, formatTime, secondsLeft } from '../lib/timer';
 import type { Recipe } from '../types';
 import { useDialog } from '../hooks/useDialog';
@@ -74,8 +78,23 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
   const note = useAppStore((s) => s.notes[recipeId] ?? '');
   useWakeLock();
   const dialogProps = useDialog(onClose, `Cooking ${recipe.name}`);
-  const setRating = useAppStore((s) => s.setRating);
+  const { setRating, units, pantry, removeFromPantry } = useAppStore(useShallow((s) => ({
+    setRating: s.setRating, units: s.units, pantry: s.pantry, removeFromPantry: s.removeFromPantry,
+  })));
   const onRate = (stars: 1 | 2 | 3) => setRating(recipeId, stars);
+  // Pantry items this recipe used — offered for removal when finished.
+  const usedPantry = pantry.filter((p) => recipe.ingredients.some((i) => ingMatches(i, p)));
+  const [usedUp, setUsedUp] = useState<Set<string>>(() => new Set());
+  const toggleUsedUp = (p: string) => setUsedUp((prev) => {
+    const next = new Set(prev);
+    if (next.has(p)) next.delete(p); else next.add(p);
+    return next;
+  });
+  const finish = (stars?: 1 | 2 | 3) => {
+    if (stars) onRate(stars);
+    if (usedUp.size) removeFromPantry([...usedUp]);
+    onDone();
+  };
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -155,10 +174,40 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
   const goNext = () => navigate(Math.min(stepIndex + 1, totalSteps + 1), 1);
   const goPrev = () => navigate(Math.max(stepIndex - 1, 0), -1);
 
-  const showFallback = !imageUrl || imgError || !imgLoaded;
-
   // Detected time for current step
   const detectedSeconds = !isIntro && !isDone ? detectSeconds(recipe.steps[stepIndex - 1]) : null;
+
+  // Hands-free mode: voice commands + steps read aloud.
+  const [handsFree, setHandsFree] = useState(false);
+  const currentStepText = !isIntro && !isDone ? recipe.steps[stepIndex - 1] : null;
+  const speakRef = useRef<(text: string) => void>(() => {});
+  const say = (text: string) => speakRef.current(text);
+  const voice = useHandsFree(handsFree, (cmd) => {
+    switch (cmd) {
+      case 'next': goNext(); break;
+      case 'back': goPrev(); break;
+      case 'repeat': say(currentStepText ?? `${recipe.name}. Say next to start.`); break;
+      case 'ingredients':
+        setShowIngredients(true);
+        say(recipe.ingredients.map((ing, i) => `${formatAmount(recipe.amounts[i], scaleFactor, units)} ${ing}`).join(', '));
+        break;
+      case 'start-timer':
+        if (detectedSeconds) startTimer(detectedSeconds);
+        else say('This step has no time in it. Use the timer button to pick one.');
+        break;
+      case 'pause-timer': if (timer) toggleTimer(); break;
+      case 'stop-timer': setTimer(null); setTimerDone(false); break;
+      case 'done': if (isDone) finish(); break;
+    }
+  });
+  const { speak } = voice;
+  useLayoutEffect(() => { speakRef.current = speak; }, [speak]);
+  useEffect(() => {
+    if (handsFree && currentStepText) speak(`Step ${stepIndex}. ${currentStepText}`);
+  }, [handsFree, currentStepText, stepIndex, speak]);
+
+  const showFallback = !imageUrl || imgError || !imgLoaded;
+
 
   const isUrgent = timer !== null && remaining <= 30 && timer.running;
 
@@ -194,8 +243,30 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
               </p>
             )}
           </div>
-          <div className="w-11" />
+          {voice.supported ? (
+            <button
+              onClick={() => setHandsFree((v) => !v)}
+              aria-pressed={handsFree}
+              aria-label={handsFree ? 'Turn off hands-free mode' : 'Turn on hands-free mode (voice commands)'}
+              className="relative w-11 h-11 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+              style={{ background: handsFree ? 'white' : 'rgba(255,255,255,0.1)' }}
+            >
+              {handsFree
+                ? <Mic size={19} strokeWidth={2.5} className="text-[var(--surface-dark)]" />
+                : <MicOff size={19} strokeWidth={2.5} className="text-white" />}
+              {handsFree && voice.listening && (
+                <span aria-hidden="true" className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+              )}
+            </button>
+          ) : (
+            <div className="w-11" />
+          )}
         </div>
+        {handsFree && (
+          <p className="px-6 -mt-2 mb-1 text-center font-body text-[12px] text-white/55" role="status">
+            Say “next”, “back”, “repeat”, “ingredients” or “start timer”{voice.heard ? ` · heard “${voice.heard.trim()}”` : ''}
+          </p>
+        )}
 
         {/* Card area */}
         <div className="flex-1 flex flex-col justify-center px-6 overflow-hidden">
@@ -289,20 +360,27 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
                       }}
                     >
                       <div className="px-4 py-3.5">
-                        <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold mb-3">
-                          You'll need
-                        </p>
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold">
+                            You'll need
+                          </p>
+                          <UnitToggle dark />
+                        </div>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-                          {recipe.ingredients.map((ing, i) => (
-                            <div key={i} className="flex items-baseline gap-2 min-w-0">
-                              <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
-                                {scaleAmount(recipe.amounts[i], scaleFactor)}
-                              </span>
-                              <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
-                                {ing}
-                              </span>
-                            </div>
-                          ))}
+                          {recipe.ingredients.map((ing, i) => {
+                            const sub = pantry.some((p) => ingMatches(ing, p)) ? null : findSubstitute(ing, pantry);
+                            return (
+                              <div key={i} className="flex items-baseline gap-2 min-w-0">
+                                <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
+                                  {formatAmount(recipe.amounts[i], scaleFactor, units)}
+                                </span>
+                                <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
+                                  {ing}
+                                  {sub && <span className="block normal-case text-[11px] text-emerald-200/90 font-normal">→ your {sub.use}</span>}
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -449,7 +527,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
                             {recipe.ingredients.map((ing, i) => (
                               <div key={i} className="flex items-baseline gap-3">
                                 <span className="font-body text-white/50 text-[13px] tabular-nums w-16 flex-shrink-0 text-right">
-                                  {scaleAmount(recipe.amounts[i], scaleFactor)}
+                                  {formatAmount(recipe.amounts[i], scaleFactor, units)}
                                 </span>
                                 <span className="font-body text-white text-[15px] font-medium capitalize leading-snug">
                                   {ing}
@@ -533,6 +611,24 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
                     <h2 className="font-display font-semibold text-white text-[38px] leading-tight tracking-tight mb-2">
                       You made it!
                     </h2>
+                    {usedPantry.length > 0 && (
+                      <div className="mb-5 w-full">
+                        <p className="font-body text-white/70 text-[13px] mb-2">Used anything up? Tap to clear it from your pantry.</p>
+                        <div className="flex flex-wrap justify-center gap-1.5">
+                          {usedPantry.map((p) => (
+                            <button
+                              key={p}
+                              aria-pressed={usedUp.has(p)}
+                              onClick={() => toggleUsedUp(p)}
+                              className="px-3 py-1 rounded-full font-body text-[12px] font-semibold capitalize transition-colors"
+                              style={{ background: usedUp.has(p) ? 'white' : 'rgba(255,255,255,0.14)', color: usedUp.has(p) ? 'var(--surface-dark)' : 'white' }}
+                            >
+                              {usedUp.has(p) ? '✓ ' : ''}{p}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <p className="font-body text-white/70 text-[15px] mb-5">
                       How was {recipe.name}?
                     </p>
@@ -540,7 +636,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
                       {([1, 2, 3] as const).map((s) => (
                         <button
                           key={s}
-                          onClick={() => { onRate?.(s); onDone(); }}
+                          onClick={() => finish(s)}
                           className="flex flex-col items-center gap-1.5 active:scale-90 transition-transform"
                         >
                           <span className="text-[52px] leading-none" style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}>
@@ -553,7 +649,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
                       ))}
                     </div>
                     <button
-                      onClick={onDone}
+                      onClick={() => finish()}
                       className="font-body text-white/40 text-[13px] underline underline-offset-2 active:text-white/70"
                     >
                       Skip rating

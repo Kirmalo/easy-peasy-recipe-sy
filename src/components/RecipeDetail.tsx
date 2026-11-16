@@ -10,7 +10,13 @@ import { amazonItemUrl, amazonGearUrl, getEquipmentSuggestions, AFFILIATE_REL } 
 import { AffiliateDisclosure } from './AffiliateDisclosure';
 import { useDialog } from '../hooks/useDialog';
 import { recipeUrl } from '../lib/router';
-import { scaleAmount } from '../lib/scaleAmount';
+import { formatAmount } from '../lib/scaleAmount';
+import { findSubstitute } from '../lib/matching';
+import { verifiedDietary } from '../lib/allergens';
+import { UnitToggle } from './UnitToggle';
+import { AllergenList } from './AllergenList';
+import { PlanPicker } from './PlanPicker';
+import { CommunityVote } from './CommunityVote';
 import { useShallow } from 'zustand/react/shallow';
 import { useAppStore } from '../store/appStore';
 
@@ -37,6 +43,7 @@ export function RecipeDetail({
 }: RecipeDetailProps) {
   const { pantry, cookbook, making, addToCookbook, addToMaking, removeFromCookbook, removeFromMaking, addToPantry } = useAppStore(useShallow((s) => ({ pantry: s.pantry, cookbook: s.cookbook, making: s.making, addToCookbook: s.addToCookbook, addToMaking: s.addToMaking, removeFromCookbook: s.removeFromCookbook, removeFromMaking: s.removeFromMaking, addToPantry: s.addToPantry })));
   const note = useAppStore((s) => s.notes[recipeId] ?? '');
+  const units = useAppStore((s) => s.units);
   const setNote = useAppStore((s) => s.setNote);
   const onNoteChange = (text: string) => setNote(recipeId, text);
   const recipe = useRecipe(recipeId);
@@ -168,7 +175,7 @@ export function RecipeDetail({
               <Plus size={12} strokeWidth={3} className="text-white" />
             </button>
           </div>
-          {recipe.dietary.map((d) => (
+          {verifiedDietary(recipe).map((d) => (
             <Pill key={d} icon={Leaf} color={theme.soft} textColor={theme.dark}>{d}</Pill>
           ))}
         </div>
@@ -202,9 +209,11 @@ export function RecipeDetail({
               </button>
             )}
           </div>
+          <div className="mb-3"><UnitToggle /></div>
           <div className="bg-white rounded-2xl p-2">
             {recipe.ingredients.map((ing, i) => {
               const have = pantry.some((p) => ingMatches(ing, p));
+              const sub = have ? null : findSubstitute(ing, pantry);
               return (
                 <div key={ing} className="flex items-center gap-3 px-3 py-2.5">
                   <div
@@ -213,15 +222,22 @@ export function RecipeDetail({
                   >
                     {have && <Check size={14} strokeWidth={3.5} className="text-white" />}
                   </div>
-                  <span className="font-body text-[15px] text-[var(--text-primary)] capitalize flex-1">{ing}</span>
+                  <div className="flex-1 min-w-0">
+                    <span className="font-body text-[15px] text-[var(--text-primary)] capitalize">{ing}</span>
+                    {sub && (
+                      <p className="font-body text-[12px] leading-snug text-[var(--success-700)]">
+                        Swap: your {sub.use} — {sub.note}
+                      </p>
+                    )}
+                  </div>
                   {have ? (
                     <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
-                      {scaleAmount(recipe.amounts[i], scaleFactor)}
+                      {formatAmount(recipe.amounts[i], scaleFactor, units)}
                     </span>
                   ) : (
                     <div className="flex items-center gap-1.5 flex-shrink-0">
                       <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
-                        {scaleAmount(recipe.amounts[i], scaleFactor)}
+                        {formatAmount(recipe.amounts[i], scaleFactor, units)}
                       </span>
                       {addToPantry && (
                         <button
@@ -279,6 +295,10 @@ export function RecipeDetail({
             className="w-full px-4 py-3 rounded-2xl font-body text-[15px] text-[var(--text-primary)] bg-white border-2 border-[var(--border-default)] focus:border-[var(--brand-500)] focus:outline-none placeholder:text-[var(--text-placeholder)] resize-none leading-relaxed"
           />
         </div>
+
+        <AllergenList recipe={recipe} />
+        <PlanPicker recipeId={recipe.id} />
+        <CommunityVote recipeId={recipe.id} />
 
         {/* Equipment suggestions */}
         {(() => {

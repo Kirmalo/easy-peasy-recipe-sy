@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ingMatches, isStaple, computeMatch, tokenize, compareByEase } from '../matching';
+import { ingMatches, isStaple, computeMatch, tokenize, compareByEase, findSubstitute } from '../matching';
 import type { Recipe } from '../../types';
 
 const recipe = (over: Partial<Recipe>): Recipe => ({
@@ -59,7 +59,7 @@ describe('computeMatch', () => {
   const r = recipe({ ingredients: ['egg', 'spinach', 'feta cheese'] });
 
   it('counts have / missing', () => {
-    expect(computeMatch(r, ['eggs', 'feta'])).toEqual({ score: 2 / 3, have: 2, need: 3, missing: ['spinach'] });
+    expect(computeMatch(r, ['eggs', 'feta'])).toEqual({ score: 2 / 3, have: 2, need: 3, missing: ['spinach'], substitutes: [] });
   });
   it('scores 0 with an empty pantry', () => {
     expect(computeMatch(r, []).score).toBe(0);
@@ -72,5 +72,20 @@ describe('compareByEase', () => {
     const slow = recipe({ cookTime: 40, ingredients: ['a'] });
     const quickShort = recipe({ cookTime: 10, ingredients: ['a'] });
     expect([slow, quick, quickShort].sort(compareByEase)).toEqual([quickShort, quick, slow]);
+  });
+});
+
+describe('substitutions', () => {
+  it('suggests a pantry swap for a missing ingredient', () => {
+    expect(findSubstitute('buttermilk', ['milk', 'flour'])?.use).toBe('milk');
+    expect(findSubstitute('fresh cilantro', ['flat-leaf parsley'])?.use).toBe('flat-leaf parsley');
+    expect(findSubstitute('buttermilk', ['flour'])).toBeNull();
+  });
+  it('counts substitutes toward the score but keeps them off the shopping list', () => {
+    const r = recipe({ ingredients: ['egg', 'kale', 'lime'] });
+    const m = computeMatch(r, ['eggs', 'spinach']);
+    expect(m.missing).toEqual(['lime']);
+    expect(m.substitutes.map((s) => s.ingredient)).toEqual(['kale']);
+    expect(m.score).toBeCloseTo((1 + 0.75) / 3);
   });
 });

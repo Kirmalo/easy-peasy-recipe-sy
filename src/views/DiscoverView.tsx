@@ -5,7 +5,12 @@ import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
 import { AIRecipeSheet } from '../components/AIRecipeSheet';
 import { useRecipes } from '../context/recipes';
-import { computeMatch, isStaple, compareByEase } from '../lib/matching';
+import { computeMatch, isStaple, compareByEase, ingMatches } from '../lib/matching';
+import { verifiedDietary } from '../lib/allergens';
+import { soonToExpire } from '../lib/expiry';
+
+/** Community recipes need this many upvotes to appear in everyone's deck. */
+const FEATURE_MIN_UPVOTES = 2;
 import { inferCuisine } from '../lib/cuisine';
 import { sanitizeRecipe } from '../lib/recipeValidation';
 import type { SwipeDirection, Recipe } from '../types';
@@ -65,11 +70,26 @@ export function DiscoverView({
     return () => clearTimeout(id);
   }, [lastPassed, clearUndo]);
 
+  const { communityRecipes, communityUpvotes, votes, pantryExpiry } = useAppStore(useShallow((s) => ({
+    communityRecipes: s.communityRecipes, communityUpvotes: s.communityUpvotes, votes: s.votes, pantryExpiry: s.pantryExpiry,
+  })));
+
+  // Well-rated community AI recipes join the deck.
+  const featured = useMemo(
+    () => communityRecipes.filter((r) => (communityUpvotes[r.id] ?? 0) >= FEATURE_MIN_UPVOTES && votes[r.id] !== 'report'),
+    [communityRecipes, communityUpvotes, votes],
+  );
+
   // Recipes not yet swiped, saved or queued. Sets keep this O(n) on every pantry/filter change.
   const unseen = useMemo(() => {
     const hidden = new Set([...passed, ...cookbook, ...making]);
-    return catalog.filter((r) => !hidden.has(r.id));
-  }, [catalog, passed, cookbook, making]);
+    const catalogIds = featured.length ? new Set(catalog.map((c) => c.id)) : null;
+    const pool = catalogIds ? [...catalog, ...featured.filter((f) => !catalogIds.has(f.id))] : catalog;
+    return pool.filter((r) => !hidden.has(r.id));
+  }, [catalog, featured, passed, cookbook, making]);
+
+  // Pantry items expiring within 3 days, for the "use it up" ranking.
+  const expiringSoon = useMemo(() => soonToExpire(pantry, pantryExpiry, 3), [pantry, pantryExpiry]);
   const unfilteredCount = unseen.length;
 
   const deck = useMemo(() => {
@@ -78,7 +98,7 @@ export function DiscoverView({
     if (filters.difficulty) candidates = candidates.filter((r) => r.difficulty === filters.difficulty);
     if (filters.mealType) candidates = candidates.filter((r) => r.mealType === filters.mealType);
     if (filters.dietary?.length) {
-      candidates = candidates.filter((r) => filters.dietary.every((d) => r.dietary.includes(d)));
+      candidates = candidates.filter((r) => { const diet = verifiedDietary(r); return filters.dietary.every((d) => diet.includes(d)); });
     }
 
     if (appliances.length > 0) {
@@ -110,9 +130,16 @@ export function DiscoverView({
       });
     }
 
-    scored.sort((a, b) => b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
+    if (filters.useItUp && expiringSoon.length) {
+      // Recipes using more soon-to-expire items come first, then normal ranking.
+      const uses = (r: Recipe) => expiringSoon.filter((p) => r.ingredients.some((i) => ingMatches(i, p))).length;
+      const useCount = new Map(scored.map((x) => [x.recipe.id, uses(x.recipe)]));
+      scored.sort((a, b) => (useCount.get(b.recipe.id)! - useCount.get(a.recipe.id)!) || b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
+    } else {
+      scored.sort((a, b) => b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
+    }
     return scored;
-  }, [unseen, pantry, filters, appliances, searchQuery]);
+  }, [unseen, pantry, filters, appliances, searchQuery, expiringSoon]);
 
   const topThree = deck.slice(0, 3);
   const current = topThree[0];
@@ -146,7 +173,9 @@ export function DiscoverView({
     (filters.difficulty ? 1 : 0) +
     (filters.mealType ? 1 : 0) +
     (filters.dietary?.length ?? 0) +
-    (ingredientMode !== 'all' ? 1 : 0);
+    (ingredientMode !== 'all' ? 1 : 0) +
+    (filters.cuisine ? 1 : 0) +
+    (filters.useItUp ? 1 : 0);
 
   const modeBadge =
     pantry.length > 0 && ingredientMode !== 'all'

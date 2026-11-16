@@ -58,3 +58,7 @@ export function clientIp(request: Request): string {
 
 export const hasRedis = (): boolean =>
   Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+
+// Redis keys for community recipe votes.
+export const VOTES_KEY = 'ep:community:upvotes';
+export const REPORTS_KEY = 'ep:community:reports';

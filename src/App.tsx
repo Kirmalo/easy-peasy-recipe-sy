@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, lazy, Suspense } from 'react';
-import { ChefHat } from 'lucide-react';
+import { ChefHat, Smartphone } from 'lucide-react';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { useShallow } from 'zustand/react/shallow';
 import { KitchenView } from './views/KitchenView';
@@ -11,11 +11,13 @@ import { RecipesProvider } from './context/RecipesContext';
 import { sanitizeRecipes } from './lib/recipeValidation';
 import { useAppStore, syncAcrossTabs } from './store/appStore';
 import { useRoute } from './hooks/useRoute';
+import { useDeviceSync } from './hooks/useDeviceSync';
 
 // Overlays load on first use to keep the initial bundle small.
 const RecipeDetail = lazy(() => import('./components/RecipeDetail').then((m) => ({ default: m.RecipeDetail })));
 const CookingStepsView = lazy(() => import('./views/CookingStepsView').then((m) => ({ default: m.CookingStepsView })));
 const FilterSheet = lazy(() => import('./components/FilterSheet').then((m) => ({ default: m.FilterSheet })));
+const SyncSheet = lazy(() => import('./components/SyncSheet').then((m) => ({ default: m.SyncSheet })));
 const PantrySheet = lazy(() => import('./components/PantrySheet').then((m) => ({ default: m.PantrySheet })));
 
 export default function App() {
@@ -28,6 +30,18 @@ export default function App() {
   );
   const [showFilters, setShowFilters] = useState(false);
   const [showPantry, setShowPantry] = useState(false);
+  // A scanned sync QR opens the app at /?sync=CODE.
+  const [syncInvite] = useState(() => new URLSearchParams(window.location.search).get('sync'));
+  const [showSync, setShowSync] = useState(() => syncInvite !== null);
+  const syncStatus = useAppStore((s) => s.syncStatus);
+
+  useDeviceSync();
+  useEffect(() => {
+    if (!syncInvite) return;
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sync');
+    window.history.replaceState(window.history.state, '', url);
+  }, [syncInvite]);
 
   useEffect(() => syncAcrossTabs(), []);
 
@@ -35,7 +49,14 @@ export default function App() {
   useEffect(() => {
     fetch('/api/community-recipes')
       .then((r) => (r.ok ? r.json() : []))
-      .then((data: unknown) => setCommunityRecipes(sanitizeRecipes(data)))
+      .then((data: unknown) => {
+        // Older deployments return a bare array; newer ones { recipes, upvotes }.
+        const body = (Array.isArray(data) ? { recipes: data } : data ?? {}) as { recipes?: unknown; upvotes?: unknown };
+        const upvotes = body.upvotes && typeof body.upvotes === 'object'
+          ? Object.fromEntries(Object.entries(body.upvotes).map(([k, v]) => [Number(k), Number(v) || 0]))
+          : {};
+        setCommunityRecipes(sanitizeRecipes(body.recipes), upvotes);
+      })
       .catch(() => { /* non-fatal */ });
   }, [setCommunityRecipes]);
 
@@ -75,6 +96,7 @@ export default function App() {
               </p>
             </div>
           </div>
+          <div className="flex items-center gap-3">
           {pantry.length > 0 && route.view !== 'kitchen' && (
             <button
               onClick={() => setShowPantry(true)}
@@ -83,6 +105,18 @@ export default function App() {
               {pantry.length} ingredients
             </button>
           )}
+            <button
+              onClick={() => setShowSync(true)}
+              aria-label={syncStatus === 'off' ? 'Sync across devices' : `Device sync (${syncStatus === 'error' ? 'error' : 'on'})`}
+              className="relative w-9 h-9 rounded-full bg-[var(--surface-cream)] flex items-center justify-center active:scale-90 transition-transform"
+            >
+              <Smartphone size={16} strokeWidth={2.4} className="text-[var(--text-secondary)]" aria-hidden="true" />
+              {syncStatus !== 'off' && (
+                <span aria-hidden="true" className="absolute top-1 right-1 w-2 h-2 rounded-full"
+                  style={{ background: syncStatus === 'error' ? 'var(--brand-500)' : 'var(--success-500)' }} />
+              )}
+            </button>
+          </div>
         </header>
 
         <main className="flex-1 flex flex-col">
@@ -116,6 +150,10 @@ export default function App() {
                 onGoToKitchen={() => { setShowPantry(false); setView('kitchen'); }}
               />
             )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {showSync && <SyncSheet onClose={() => setShowSync(false)} initialCode={syncInvite} />}
           </AnimatePresence>
 
           <AnimatePresence>

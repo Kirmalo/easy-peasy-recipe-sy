@@ -2,6 +2,8 @@
 
 A swipe-to-cook recipe discovery app. Add what's in your kitchen, get matched recipes one card at a time — swipe right to cook, left to skip, bookmark to save. Can't find a match? Generate one from your pantry with AI.
 
+Highlights: ingredient substitutions, metric/US unit toggle, allergen badges, pantry use-by dates with a "use it up" ranking, a weekly meal plan that feeds the shopping list, hands-free voice control while cooking, community voting on AI recipes, and account-free sync between devices with a private code.
+
 Installable as a PWA on iOS and Android.
 
 ## Stack
@@ -42,6 +44,7 @@ All are optional — without them the app still works, minus the feature that ne
 | `AI_DAILY_LIMIT_PER_IP` | `api/generate-recipe` | Generations per IP per 24 h (default 5) |
 | `AI_DAILY_LIMIT_GLOBAL` | `api/generate-recipe` | Total generations per 24 h across everyone (default 500) — cost backstop |
 | `ALLOWED_ORIGINS` | `api/*` | Extra comma-separated origins allowed to call the API from a browser (same-origin is always allowed) |
+| `VOTE_SALT` | `api/community-vote` | Salt for hashing voter IPs (set any random string) |
 | `PIXABAY_API_KEY` | `api/recipe-image` | Fallback food photos. Server-side only (the old `VITE_PIXABAY_API_KEY` name is still read, but no longer shipped to the browser). |
 
 ## Deployment
@@ -57,6 +60,8 @@ api/
   generate-recipe.ts      # POST — Claude recipe from pantry; rate limited, validated, moderated
   community-recipes.ts    # GET — latest community AI recipes (re-validated on read)
   recipe-image.ts         # GET ?q= — Pixabay search, streamed from our origin and CDN-cached
+  community-vote.ts       # POST — upvote / report a community recipe (one per IP)
+  sync.ts                 # POST/GET/PUT/DELETE — device sync snapshots keyed by a private code
   _lib/http.ts            # CORS allow-list, JSON helpers, client IP (not deployed as a route)
 src/
   App.tsx                 # layout, routing between tabs and overlays
@@ -96,10 +101,13 @@ Overlays are history entries, so the browser / Android Back button closes them.
 
 ## Data persistence
 
+### Device sync
+
+Sync needs no account. "Turn on sync" (phone icon in the header) uploads a snapshot to Redis under a random 12-character code (≈60 bits, rate limited) and shows the code plus a QR link (`/?sync=CODE`). Other devices enter or scan it. Changes push about 1.5 s after an edit; pulls happen on open and when the tab regains focus. If two devices edit at once, the server rejects the stale write and the client merges both sides (lists are unioned, per-recipe records prefer the local edit). Snapshots expire after 180 days without a write. Anyone with the code can read and change the data, and the app says so.
+
+### Local storage
+
 User state lives in one `localStorage` key, `recipesy-state`, written by the Zustand `persist` middleware with a schema version (`STORE_VERSION` in `src/store/appStore.ts`). Everything read back is validated, so a corrupt or older value can't break the app. Data from the pre-store per-field keys (`pantry`, `cookbook`, …) is migrated automatically on first load. Open tabs stay in sync through the `storage` event.
 
-Persisted: pantry, appliances, filters, cookbook, cooking queue, passed recipes, cooked history, ratings, notes and the AI recipes you generated.
+Persisted: pantry (with use-by dates), appliances, filters, units, cookbook, cooking queue, weekly plan, passed recipes, cooked history, ratings, notes, community votes and the AI recipes you generated.
 
-## Improvement roadmap
-
-Remaining work is tracked in [`ROADMAP.md`](./ROADMAP.md).
