@@ -12,6 +12,14 @@ export function amazonItemUrl(item: string): string {
   return `https://www.amazon.com/s?k=${encodeURIComponent(item)}&i=amazonfresh&tag=${AMAZON_TAG}`;
 }
 
+/** General Amazon search (kitchen equipment). */
+export function amazonGearUrl(query: string): string {
+  return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${AMAZON_TAG}`;
+}
+
+/** rel for paid links, per search-engine guidelines. */
+export const AFFILIATE_REL = 'sponsored noopener noreferrer';
+
 export interface EquipmentItem {
   name: string;
   emoji: string;

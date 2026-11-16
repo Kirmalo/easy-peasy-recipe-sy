@@ -1,41 +1,21 @@
-import { RECIPES } from '../data/recipes';
+import { useRecipeList } from '../context/recipes';
 import { GridCard } from '../components/GridCard';
-import type { Recipe } from '../types';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 interface CookingViewProps {
-  making: number[];
-  cooked: number[];
-  pantry: string[];
-  cookbook: number[];
-  ratings: Record<number, 1 | 2 | 3>;
-  notes: Record<number, string>;
-  removeFromMaking: (id: number) => void;
-  addToCookbook: (id: number) => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
-  onRate: (id: number, stars: 1 | 2 | 3) => void;
 }
 
 export function CookingView({
-  making,
-  cooked,
-  pantry,
-  cookbook,
-  ratings,
-  notes,
-  removeFromMaking,
-  addToCookbook,
   openDetail,
   onCookNow,
-  onRate,
 }: CookingViewProps) {
-  const makingRecipes = making
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  const { making, cooked, pantry, cookbook, ratings, notes, removeFromMaking, addToCookbook, onRate } = useAppStore(useShallow((s) => ({ making: s.making, cooked: s.cooked, pantry: s.pantry, cookbook: s.cookbook, ratings: s.ratings, notes: s.notes, removeFromMaking: s.removeFromMaking, addToCookbook: s.addToCookbook, onRate: s.setRating })));
+  const makingRecipes = useRecipeList(making);
 
-  const cookedRecipes = cooked
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  const cookedRecipes = useRecipeList(cooked);
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">

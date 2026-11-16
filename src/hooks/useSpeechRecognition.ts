@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { parseSpokenIngredients } from '../lib/parseSpeech';
 
 interface SpeechCallbacks {
@@ -18,22 +18,27 @@ interface UseSpeechRecognitionReturn {
 // recognition instance to avoid fighting vendor-prefix type gymnastics.
 type AnyWindow = Window & Record<string, unknown>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getRecognitionCtor(): (new () => any) | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const w = window as unknown as AnyWindow;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (w.SpeechRecognition ?? w.webkitSpeechRecognition) as (new () => any) | undefined;
+}
+
 export function useSpeechRecognition(callbacks: SpeechCallbacks): UseSpeechRecognitionReturn {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const [speechSupported, setSpeechSupported] = useState(false);
+  const [speechSupported] = useState(() => getRecognitionCtor() !== undefined);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
   const finalTranscriptRef = useRef('');
   const callbacksRef = useRef(callbacks);
-  callbacksRef.current = callbacks;
+  useLayoutEffect(() => { callbacksRef.current = callbacks; });
 
   useEffect(() => {
-    const w = window as unknown as AnyWindow;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const SR = (w.SpeechRecognition ?? w.webkitSpeechRecognition) as (new () => any) | undefined;
+    const SR = getRecognitionCtor();
     if (!SR) return;
-    setSpeechSupported(true);
 
     const rec = new SR();
     rec.continuous = false;

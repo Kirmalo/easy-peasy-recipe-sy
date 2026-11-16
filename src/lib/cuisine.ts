@@ -120,10 +120,17 @@ const SORTED_PAIRS: Array<[string, string]> = Object.entries(KEYWORDS)
   .flatMap(([id, kws]) => kws.map((kw): [string, string] => [id, kw]))
   .sort((a, b) => b[1].length - a[1].length);
 
+const cuisineCache = new WeakMap<Recipe, string | null>();
+
+/** Cuisine id inferred from the recipe name/description; memoised per recipe object. */
 export function inferCuisine(recipe: Recipe): string | null {
+  const cached = cuisineCache.get(recipe);
+  if (cached !== undefined) return cached;
   const haystack = `${recipe.name} ${recipe.description}`.toLowerCase();
+  let result: string | null = null;
   for (const [id, kw] of SORTED_PAIRS) {
-    if (haystack.includes(kw)) return id;
+    if (haystack.includes(kw)) { result = id; break; }
   }
-  return null;
+  cuisineCache.set(recipe, result);
+  return result;
 }

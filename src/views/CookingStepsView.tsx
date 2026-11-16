@@ -1,25 +1,34 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
-import { RECIPES } from '../data/recipes';
+import { Mic, MicOff, X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
+import { useRecipe } from '../context/recipes';
+import { useAppStore } from '../store/appStore';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
-import { scaleAmount } from '../lib/scaleAmount';
+import { useWakeLock } from '../hooks/useWakeLock';
+import { useHandsFree } from '../hooks/useHandsFree';
+import { formatAmount } from '../lib/scaleAmount';
+import { findSubstitute, ingMatches } from '../lib/matching';
+import { UnitToggle } from '../components/UnitToggle';
+import { useShallow } from 'zustand/react/shallow';
+import { detectSeconds, formatTime, secondsLeft } from '../lib/timer';
 import type { Recipe } from '../types';
+import { useDialog } from '../hooks/useDialog';
 
 interface CookingStepsViewProps {
   recipeId: number;
   onClose: () => void;
   onDone: () => void;
-  onRate?: (stars: 1 | 2 | 3) => void;
-  note?: string;
-  extraRecipes?: Recipe[];
 }
 
+// Wall-clock timer: survives backgrounded tabs / locked screens without drifting.
 interface TimerState {
   total: number;
-  remaining: number;
   running: boolean;
+  /** Epoch ms when a running timer hits zero. */
+  endsAt: number;
+  /** Seconds left while paused. */
+  pausedRemaining: number;
 }
 
 const slideVariants = {
@@ -38,21 +47,8 @@ const TIMER_PRESETS = [
   { label: '30m', seconds: 1800 },
 ];
 
-function detectSeconds(text: string): number | null {
-  const match = text.match(/(\d+)\s*(?:to\s*\d+\s*)?(hours?|hrs?|minutes?|mins?|seconds?|secs?)/i);
-  if (!match) return null;
-  const val = parseInt(match[1]);
-  const unit = match[2].toLowerCase();
-  if (unit.startsWith('hour') || unit.startsWith('hr')) return val * 3600;
-  if (unit.startsWith('min')) return val * 60;
-  return val;
-}
-
-function formatTime(s: number): string {
-  const m = Math.floor(s / 60);
-  const sec = s % 60;
-  return `${m}:${sec.toString().padStart(2, '0')}`;
-}
+/** Wall clock — only called from event handlers and effects. */
+const clockNow = (): number => Date.now();
 
 function playBeep() {
   try {
@@ -68,11 +64,37 @@ function playBeep() {
       osc.start(ctx.currentTime + delay);
       osc.stop(ctx.currentTime + delay + 0.28);
     });
-  } catch {}
+  } catch { /* audio unavailable */ }
 }
 
-export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extraRecipes }: CookingStepsViewProps) {
-  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId)!;
+export function CookingStepsView(props: CookingStepsViewProps) {
+  const recipe = useRecipe(props.recipeId);
+  // Unknown id (e.g. an AI recipe that was cleared) — render nothing instead of crashing.
+  if (!recipe) return null;
+  return <CookingSteps {...props} recipe={recipe} />;
+}
+
+function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewProps & { recipe: Recipe }) {
+  const note = useAppStore((s) => s.notes[recipeId] ?? '');
+  useWakeLock();
+  const dialogProps = useDialog(onClose, `Cooking ${recipe.name}`);
+  const { setRating, units, pantry, removeFromPantry } = useAppStore(useShallow((s) => ({
+    setRating: s.setRating, units: s.units, pantry: s.pantry, removeFromPantry: s.removeFromPantry,
+  })));
+  const onRate = (stars: 1 | 2 | 3) => setRating(recipeId, stars);
+  // Pantry items this recipe used — offered for removal when finished.
+  const usedPantry = pantry.filter((p) => recipe.ingredients.some((i) => ingMatches(i, p)));
+  const [usedUp, setUsedUp] = useState<Set<string>>(() => new Set());
+  const toggleUsedUp = (p: string) => setUsedUp((prev) => {
+    const next = new Set(prev);
+    if (next.has(p)) next.delete(p); else next.add(p);
+    return next;
+  });
+  const finish = (stars?: 1 | 2 | 3) => {
+    if (stars) onRate(stars);
+    if (usedUp.size) removeFromPantry([...usedUp]);
+    onDone();
+  };
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -89,8 +111,8 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
 
   const [timer, setTimer] = useState<TimerState | null>(null);
   const [timerDone, setTimerDone] = useState(false);
-  const timerRef = useRef(timer);
-  timerRef.current = timer;
+  const [now, setNow] = useState(() => Date.now());
+  const remaining = timer ? (timer.running ? secondsLeft(timer.endsAt, now) : timer.pausedRemaining) : 0;
 
   const isIntro = stepIndex === 0;
   const isDone = stepIndex === totalSteps + 1;
@@ -98,24 +120,46 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
   // Countdown tick
   useEffect(() => {
     if (!timer?.running) return;
-    const id = setInterval(() => {
-      const t = timerRef.current;
-      if (!t?.running) return;
-      if (t.remaining <= 1) {
+    const tick = () => {
+      const t = Date.now();
+      setNow(t);
+      if (t >= timer.endsAt) {
         playBeep();
         navigator.vibrate?.([300, 100, 300, 100, 300]);
-        setTimer({ ...t, remaining: 0, running: false });
+        setTimer({ ...timer, running: false, pausedRemaining: 0 });
         setTimerDone(true);
-        setTimeout(() => setTimerDone(false), 4000);
-      } else {
-        setTimer({ ...t, remaining: t.remaining - 1 });
       }
-    }, 1000);
-    return () => clearInterval(id);
-  }, [timer?.running]);
+    };
+    const id = setInterval(tick, 250);
+    // Catch up immediately when the user returns to the tab.
+    document.addEventListener('visibilitychange', tick);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener('visibilitychange', tick);
+    };
+  }, [timer]);
+
+  useEffect(() => {
+    if (!timerDone) return;
+    const id = setTimeout(() => setTimerDone(false), 4000);
+    return () => clearTimeout(id);
+  }, [timerDone]);
+
+  const toggleTimer = () => {
+    const t = clockNow();
+    setNow(t);
+    setTimer((prev) => {
+      if (!prev) return null;
+      return prev.running
+        ? { ...prev, running: false, pausedRemaining: secondsLeft(prev.endsAt, t) }
+        : { ...prev, running: true, endsAt: t + prev.pausedRemaining * 1000 };
+    });
+  };
 
   const startTimer = (seconds: number) => {
-    setTimer({ total: seconds, remaining: seconds, running: true });
+    const t = clockNow();
+    setNow(t);
+    setTimer({ total: seconds, running: true, endsAt: t + seconds * 1000, pausedRemaining: seconds });
     setShowTimerPicker(false);
     setTimerDone(false);
   };
@@ -130,16 +174,47 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
   const goNext = () => navigate(Math.min(stepIndex + 1, totalSteps + 1), 1);
   const goPrev = () => navigate(Math.max(stepIndex - 1, 0), -1);
 
-  const showFallback = !imageUrl || imgError || !imgLoaded;
-
   // Detected time for current step
   const detectedSeconds = !isIntro && !isDone ? detectSeconds(recipe.steps[stepIndex - 1]) : null;
 
-  const isUrgent = timer !== null && timer.remaining <= 30 && timer.running;
+  // Hands-free mode: voice commands + steps read aloud.
+  const [handsFree, setHandsFree] = useState(false);
+  const currentStepText = !isIntro && !isDone ? recipe.steps[stepIndex - 1] : null;
+  const speakRef = useRef<(text: string) => void>(() => {});
+  const say = (text: string) => speakRef.current(text);
+  const voice = useHandsFree(handsFree, (cmd) => {
+    switch (cmd) {
+      case 'next': goNext(); break;
+      case 'back': goPrev(); break;
+      case 'repeat': say(currentStepText ?? `${recipe.name}. Say next to start.`); break;
+      case 'ingredients':
+        setShowIngredients(true);
+        say(recipe.ingredients.map((ing, i) => `${formatAmount(recipe.amounts[i], scaleFactor, units)} ${ing}`).join(', '));
+        break;
+      case 'start-timer':
+        if (detectedSeconds) startTimer(detectedSeconds);
+        else say('This step has no time in it. Use the timer button to pick one.');
+        break;
+      case 'pause-timer': if (timer) toggleTimer(); break;
+      case 'stop-timer': setTimer(null); setTimerDone(false); break;
+      case 'done': if (isDone) finish(); break;
+    }
+  });
+  const { speak } = voice;
+  useLayoutEffect(() => { speakRef.current = speak; }, [speak]);
+  useEffect(() => {
+    if (handsFree && currentStepText) speak(`Step ${stepIndex}. ${currentStepText}`);
+  }, [handsFree, currentStepText, stepIndex, speak]);
+
+  const showFallback = !imageUrl || imgError || !imgLoaded;
+
+
+  const isUrgent = timer !== null && remaining <= 30 && timer.running;
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col"
+      {...dialogProps}
+      className="fixed inset-0 z-50 flex flex-col outline-none"
       style={{ background: 'var(--surface-dark)' }}
       initial={{ y: '100%' }}
       animate={{ y: 0 }}
@@ -150,6 +225,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-8 pb-4 flex-shrink-0">
           <button
+            aria-label="Close cooking mode"
             onClick={onClose}
             className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
           >
@@ -167,8 +243,30 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
               </p>
             )}
           </div>
-          <div className="w-11" />
+          {voice.supported ? (
+            <button
+              onClick={() => setHandsFree((v) => !v)}
+              aria-pressed={handsFree}
+              aria-label={handsFree ? 'Turn off hands-free mode' : 'Turn on hands-free mode (voice commands)'}
+              className="relative w-11 h-11 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+              style={{ background: handsFree ? 'white' : 'rgba(255,255,255,0.1)' }}
+            >
+              {handsFree
+                ? <Mic size={19} strokeWidth={2.5} className="text-[var(--surface-dark)]" />
+                : <MicOff size={19} strokeWidth={2.5} className="text-white" />}
+              {handsFree && voice.listening && (
+                <span aria-hidden="true" className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+              )}
+            </button>
+          ) : (
+            <div className="w-11" />
+          )}
         </div>
+        {handsFree && (
+          <p className="px-6 -mt-2 mb-1 text-center font-body text-[12px] text-white/55" role="status">
+            Say “next”, “back”, “repeat”, “ingredients” or “start timer”{voice.heard ? ` · heard “${voice.heard.trim()}”` : ''}
+          </p>
+        )}
 
         {/* Card area */}
         <div className="flex-1 flex flex-col justify-center px-6 overflow-hidden">
@@ -262,20 +360,27 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                       }}
                     >
                       <div className="px-4 py-3.5">
-                        <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold mb-3">
-                          You'll need
-                        </p>
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          <p className="font-body text-[11px] uppercase tracking-widest text-white/50 font-semibold">
+                            You'll need
+                          </p>
+                          <UnitToggle dark />
+                        </div>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-                          {recipe.ingredients.map((ing, i) => (
-                            <div key={i} className="flex items-baseline gap-2 min-w-0">
-                              <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
-                                {scaleAmount(recipe.amounts[i], scaleFactor)}
-                              </span>
-                              <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
-                                {ing}
-                              </span>
-                            </div>
-                          ))}
+                          {recipe.ingredients.map((ing, i) => {
+                            const sub = pantry.some((p) => ingMatches(ing, p)) ? null : findSubstitute(ing, pantry);
+                            return (
+                              <div key={i} className="flex items-baseline gap-2 min-w-0">
+                                <span className="font-body text-white/60 text-[13px] flex-shrink-0 tabular-nums">
+                                  {formatAmount(recipe.amounts[i], scaleFactor, units)}
+                                </span>
+                                <span className="font-body text-white/95 text-[14px] font-medium leading-snug capitalize">
+                                  {ing}
+                                  {sub && <span className="block normal-case text-[11px] text-emerald-200/90 font-normal">→ your {sub.use}</span>}
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -306,6 +411,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                       </p>
                       <div className="flex items-center gap-3 mb-4">
                         <button
+                          aria-label="Fewer servings"
                           onClick={() => setServings((s) => Math.max(1, s - 1))}
                           disabled={servings <= 1}
                           className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform disabled:opacity-30"
@@ -317,6 +423,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                           {servings} {servings === 1 ? 'serving' : 'servings'}
                         </span>
                         <button
+                          aria-label="More servings"
                           onClick={() => setServings((s) => s + 1)}
                           className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                           style={{ background: 'rgba(255,255,255,0.2)' }}
@@ -406,6 +513,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                               Ingredients
                             </p>
                             <button
+                              aria-label="Close ingredients"
                               onClick={() => setShowIngredients(false)}
                               className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
                             >
@@ -419,7 +527,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                             {recipe.ingredients.map((ing, i) => (
                               <div key={i} className="flex items-baseline gap-3">
                                 <span className="font-body text-white/50 text-[13px] tabular-nums w-16 flex-shrink-0 text-right">
-                                  {scaleAmount(recipe.amounts[i], scaleFactor)}
+                                  {formatAmount(recipe.amounts[i], scaleFactor, units)}
                                 </span>
                                 <span className="font-body text-white text-[15px] font-medium capitalize leading-snug">
                                   {ing}
@@ -451,6 +559,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                               Set a timer
                             </p>
                             <button
+                              aria-label="Close timer picker"
                               onClick={() => setShowTimerPicker(false)}
                               className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
                             >
@@ -502,6 +611,24 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                     <h2 className="font-display font-semibold text-white text-[38px] leading-tight tracking-tight mb-2">
                       You made it!
                     </h2>
+                    {usedPantry.length > 0 && (
+                      <div className="mb-5 w-full">
+                        <p className="font-body text-white/70 text-[13px] mb-2">Used anything up? Tap to clear it from your pantry.</p>
+                        <div className="flex flex-wrap justify-center gap-1.5">
+                          {usedPantry.map((p) => (
+                            <button
+                              key={p}
+                              aria-pressed={usedUp.has(p)}
+                              onClick={() => toggleUsedUp(p)}
+                              className="px-3 py-1 rounded-full font-body text-[12px] font-semibold capitalize transition-colors"
+                              style={{ background: usedUp.has(p) ? 'white' : 'rgba(255,255,255,0.14)', color: usedUp.has(p) ? 'var(--surface-dark)' : 'white' }}
+                            >
+                              {usedUp.has(p) ? '✓ ' : ''}{p}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <p className="font-body text-white/70 text-[15px] mb-5">
                       How was {recipe.name}?
                     </p>
@@ -509,7 +636,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                       {([1, 2, 3] as const).map((s) => (
                         <button
                           key={s}
-                          onClick={() => { onRate?.(s); onDone(); }}
+                          onClick={() => finish(s)}
                           className="flex flex-col items-center gap-1.5 active:scale-90 transition-transform"
                         >
                           <span className="text-[52px] leading-none" style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}>
@@ -522,7 +649,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                       ))}
                     </div>
                     <button
-                      onClick={onDone}
+                      onClick={() => finish()}
                       className="font-body text-white/40 text-[13px] underline underline-offset-2 active:text-white/70"
                     >
                       Skip rating
@@ -548,7 +675,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                   <div
                     className="h-full rounded-full transition-all duration-1000"
                     style={{
-                      width: timerDone ? '0%' : timer ? `${(timer.remaining / timer.total) * 100}%` : '0%',
+                      width: timerDone ? '0%' : timer ? `${(remaining / timer.total) * 100}%` : '0%',
                       background: isUrgent ? '#FCA5A5' : 'white',
                     }}
                   />
@@ -558,13 +685,14 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                   className="font-body font-bold text-[18px] tabular-nums min-w-[48px] text-center"
                   style={{ color: timerDone ? '#86EFAC' : isUrgent ? '#FCA5A5' : 'white' }}
                 >
-                  {timerDone ? 'Done!' : timer ? formatTime(timer.remaining) : ''}
+                  {timerDone ? 'Done!' : timer ? formatTime(remaining) : ''}
                 </span>
                 {/* Controls */}
                 {!timerDone && timer && (
                   <>
                     <button
-                      onClick={() => setTimer((t) => t ? { ...t, running: !t.running } : null)}
+                      aria-label={timer.running ? 'Pause timer' : 'Resume timer'}
+                      onClick={toggleTimer}
                       className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                       style={{ background: 'rgba(255,255,255,0.15)' }}
                     >
@@ -573,6 +701,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                         : <Play size={14} strokeWidth={2.5} className="text-white" />}
                     </button>
                     <button
+                      aria-label="Cancel timer"
                       onClick={() => { setTimer(null); setTimerDone(false); }}
                       className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                       style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -583,6 +712,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
                 )}
                 {timerDone && (
                   <button
+                    aria-label="Dismiss timer"
                     onClick={() => setTimerDone(false)}
                     className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                     style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -599,6 +729,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
             <div className="flex items-center justify-center gap-2 mt-4">
               {recipe.steps.map((_, i) => (
                 <button
+                  aria-label={`Go to step ${i + 1}`}
                   key={i}
                   onClick={() => {
                     setDir(i + 1 > stepIndex ? 1 : -1);
@@ -623,6 +754,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
         {!isIntro && !isDone && (
           <div className="flex items-center justify-between px-6 pb-10 pt-5 flex-shrink-0">
             <button
+              aria-label="Previous step"
               onClick={goPrev}
               disabled={stepIndex === 1}
               className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform disabled:opacity-25 disabled:pointer-events-none"
@@ -635,6 +767,7 @@ export function CookingStepsView({ recipeId, onClose, onDone, onRate, note, extr
             </p>
 
             <button
+              aria-label="Next step"
               onClick={goNext}
               className="w-14 h-14 rounded-full bg-white flex items-center justify-center active:scale-90 transition-transform"
               style={{ boxShadow: '0 8px 20px -4px rgba(0,0,0,0.4)', color: 'var(--surface-dark)' }}

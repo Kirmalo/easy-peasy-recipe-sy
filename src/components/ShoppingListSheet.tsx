@@ -1,25 +1,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, ShoppingCart } from 'lucide-react';
-import { RECIPES } from '../data/recipes';
+import { useRecipeList } from '../context/recipes';
 import { computeMatch } from '../lib/matching';
-import { amazonItemUrl } from '../lib/affiliate';
-import type { Recipe } from '../types';
+import { amazonItemUrl, AFFILIATE_REL } from '../lib/affiliate';
+import { AffiliateDisclosure } from './AffiliateDisclosure';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
+import { useDialog } from '../hooks/useDialog';
 
 interface ShoppingListSheetProps {
-  cookbook: number[];
-  making: number[];
-  pantry: string[];
   onClose: () => void;
 }
 
-export function ShoppingListSheet({ cookbook, making, pantry, onClose }: ShoppingListSheetProps) {
+export function ShoppingListSheet({ onClose }: ShoppingListSheetProps) {
+  const dialogProps = useDialog(onClose, 'Shopping list');
+  const { cookbook, making, pantry, mealPlan } = useAppStore(useShallow((s) => ({ cookbook: s.cookbook, making: s.making, pantry: s.pantry, mealPlan: s.mealPlan })));
   const [copied, setCopied] = useState(false);
 
-  const allIds = [...new Set([...cookbook, ...making])];
-  const recipes = allIds
-    .map((id) => RECIPES.find((r) => r.id === id))
-    .filter((r): r is Recipe => r !== undefined);
+  // Saved, queued and planned recipes all feed the list.
+  const allIds = [...new Set([...cookbook, ...making, ...Object.values(mealPlan).flat()])];
+  const recipes = useRecipeList(allIds);
 
   // Dedupe missing ingredients; track which recipes need each one
   const missingMap = new Map<string, string[]>();
@@ -44,7 +45,7 @@ export function ShoppingListSheet({ cookbook, making, pantry, onClose }: Shoppin
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end">
+    <div {...dialogProps} className="fixed inset-0 z-50 flex flex-col justify-end outline-none">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <motion.div
         className="relative max-w-[480px] w-full mx-auto bg-[var(--bg-page)] rounded-t-[32px] flex flex-col"
@@ -130,7 +131,8 @@ export function ShoppingListSheet({ cookbook, making, pantry, onClose }: Shoppin
                   <a
                     href={amazonItemUrl(ing)}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={AFFILIATE_REL}
+                    aria-label={`Buy ${ing} on Amazon (opens in a new tab)`}
                     className="flex-shrink-0 px-3 py-1.5 rounded-full font-body text-[12px] font-bold active:scale-95 transition-transform"
                     style={{ background: '#FF9900', color: 'white' }}
                   >
@@ -138,6 +140,7 @@ export function ShoppingListSheet({ cookbook, making, pantry, onClose }: Shoppin
                   </a>
                 </div>
               ))}
+              <AffiliateDisclosure className="pt-2 px-1" />
             </div>
           )}
         </div>

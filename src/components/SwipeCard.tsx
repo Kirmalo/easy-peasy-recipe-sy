@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { Clock, Gauge, Utensils, Sparkles, Apple, Leaf } from 'lucide-react';
+import { verifiedDietary } from '../lib/allergens';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
 import { CUISINE_LABELS } from '../data/recipes';
@@ -152,7 +153,7 @@ export function SwipeCard({ recipe, match, isTop, stackIndex, onSwipe, onTap, fo
           >
             {recipe.emoji}
           </div>
-          {recipe.dietary.includes('vegetarian') && (
+          {verifiedDietary(recipe).includes('vegetarian') && (
             <Pill icon={Leaf} color="rgba(255,255,255,0.92)" textColor="var(--success-700)">Veggie</Pill>
           )}
         </div>

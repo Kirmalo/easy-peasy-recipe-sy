@@ -1,95 +1,113 @@
 # Easy Peasy Recipe-sy
 
-A swipe-to-cook recipe discovery app. Add ingredients, get matched recipes one card at a time — swipe right to cook, left to skip, bookmark to save.
+A swipe-to-cook recipe discovery app. Add what's in your kitchen, get matched recipes one card at a time — swipe right to cook, left to skip, bookmark to save. Can't find a match? Generate one from your pantry with AI.
+
+Highlights: ingredient substitutions, metric/US unit toggle, allergen badges, pantry use-by dates with a "use it up" ranking, a weekly meal plan that feeds the shopping list, hands-free voice control while cooking, community voting on AI recipes, and account-free sync between devices with a private code.
+
+Installable as a PWA on iOS and Android.
 
 ## Stack
 
 - **Vite 8** + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (design tokens in `src/styles/tokens.css`)
-- **Framer Motion** — swipe card animations
+- **Framer Motion** — swipe card and sheet animations
+- **Zustand** — app state, persisted to `localStorage`
 - **lucide-react** — icons
-- Storage: `localStorage` (no backend, single-user)
+- **Vercel functions** (`api/`) — AI recipe generation (Claude), community recipe pool and image proxy, backed by **Upstash Redis**
+- **Vitest** — unit tests
 
 ## Local dev
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev          # http://localhost:5173 — front end only; /api routes need `vercel dev`
+npm run typecheck
+npm run lint
+npm test             # vitest run (npm run test:watch for watch mode)
+npm run build        # outputs to dist/
+npm run preview      # serve the built dist/ locally
 ```
 
-## Production build
+To exercise the API routes locally, use the Vercel CLI: `vercel dev` (reads env vars from `.env.local`).
 
-```bash
-npm run build      # outputs to dist/
-npm run preview    # preview the built dist/ locally
-```
+CI (`.github/workflows/ci.yml`) runs typecheck, lint, tests and build on every pull request.
 
-The `dist/` folder is a self-contained static site — no server needed.
+## Environment variables
+
+All are optional — without them the app still works, minus the feature that needs them.
+
+| Variable | Used by | Purpose |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | `api/generate-recipe` | Enables "Generate a recipe from my pantry" |
+| `ANTHROPIC_MODEL` | `api/generate-recipe` | Override the model (default `claude-haiku-4-5-20251001`). The route uses forced `tool_choice`; check that a newer model still accepts it before switching. |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | `api/*` | Rate limiting, recipe ids and the shared community recipe pool |
+| `AI_DAILY_LIMIT_PER_IP` | `api/generate-recipe` | Generations per IP per 24 h (default 5) |
+| `AI_DAILY_LIMIT_GLOBAL` | `api/generate-recipe` | Total generations per 24 h across everyone (default 500) — cost backstop |
+| `ALLOWED_ORIGINS` | `api/*` | Extra comma-separated origins allowed to call the API from a browser (same-origin is always allowed) |
+| `VOTE_SALT` | `api/community-vote` | Salt for hashing voter IPs (set any random string) |
+| `PIXABAY_API_KEY` | `api/recipe-image` | Fallback food photos. Server-side only (the old `VITE_PIXABAY_API_KEY` name is still read, but no longer shipped to the browser). |
 
 ## Deployment
 
-Upload the contents of `dist/` to your host. If the app lives under a subpath (e.g. `christopherpettus.com/recipes/`), set the `base` option in `vite.config.ts` before building:
+The repo is set up for **Vercel**: connect it, keep the build command `npm run build` and output directory `dist`. `vercel.json` rewrites client routes (`/discover`, `/recipe/123`, `/cook/123`, …) to `index.html` so deep links work.
 
-```ts
-export default defineConfig({
-  base: '/recipes/',
-  plugins: [tailwindcss(), react()],
-})
-```
-
-For Netlify or Vercel, connect the repo and set the build command to `npm run build` and the output directory to `dist`.
+On another static host, serve `dist/` with an SPA fallback to `index.html`; the `/api` features won't be available. If the app lives under a subpath (e.g. `example.com/recipes/`), set `base` in `vite.config.ts` — the router honours it.
 
 ## Project structure
 
 ```
+api/
+  generate-recipe.ts      # POST — Claude recipe from pantry; rate limited, validated, moderated
+  community-recipes.ts    # GET — latest community AI recipes (re-validated on read)
+  recipe-image.ts         # GET ?q= — Pixabay search, streamed from our origin and CDN-cached
+  community-vote.ts       # POST — upvote / report a community recipe (one per IP)
+  sync.ts                 # POST/GET/PUT/DELETE — device sync snapshots keyed by a private code
+  _lib/http.ts            # CORS allow-list, JSON helpers, client IP (not deployed as a route)
 src/
-  App.tsx                 # root component, all persisted state lives here
-  types/index.ts          # shared TypeScript types (Recipe, Filters, etc.)
+  App.tsx                 # layout, routing between tabs and overlays
+  store/appStore.ts       # Zustand store: all user state + actions, versioned persistence
+  context/                # RecipesProvider — built-in catalog (lazy) + AI recipes, lookup hooks
   data/
-    recipes.ts            # 25 seed recipes + CUISINE_LABELS
-    themes.ts             # 8 per-recipe color palettes
-    staples.ts            # common pantry staples list
-    commonIngredients.ts  # quick-add chip categories
+    recipes.ts            # 25 curated recipes (bundled) + loadAllRecipes() for the full catalog
+    recipes-extended.ts   # ~600 TheMealDB recipes (generated; own chunk)
+    recipes-ai-seed.ts    # 150 AI seed recipes (generated; own chunk)
+    themes.ts, staples.ts, commonIngredients.ts, defaults.ts
   lib/
-    matching.ts           # ingredient fuzzy matching + scoring
-    parseSpeech.ts        # spoken text → ingredient list
-    api.ts                # TheMealDB image fetcher (module-level cache)
-  hooks/
-    useStorage.ts         # localStorage-backed state (drop-in for future backend)
-    useRecipeImage.ts     # cached recipe photo hook
-    useSpeechRecognition.ts  # Web Speech API wrapper
-  components/
-    SwipeCard.tsx         # hero swipeable card (Framer Motion drag)
-    GridCard.tsx          # grid tile + RecipeGrid layout
-    RecipeDetail.tsx      # full-screen recipe view
-    FilterSheet.tsx       # bottom-sheet filter panel
-    BottomNav.tsx         # tab bar
-    Pill.tsx / IconButton.tsx  # small reusable bits
-  views/
-    KitchenView.tsx       # ingredient entry (type + voice)
-    DiscoverView.tsx      # swipe deck
-    CookbookView.tsx      # saved recipes
-    CookingView.tsx       # "currently making" list
-  styles/
-    tokens.css            # CSS custom properties (design system)
-    index.css             # Tailwind v4 entry + tokens import
+    matching.ts           # whole-word ingredient matching, synonyms, staples, scoring
+    recipeValidation.ts   # sanitizeRecipe() — shared by client and API
+    moderation.ts         # blocklist + pantry-grounding screen for AI recipes
+    router.ts             # URL ⇄ route mapping
+    timer.ts, scaleAmount.ts, parseSpeech.ts, cuisine.ts, affiliate.ts, api.ts (images)
+  hooks/                  # useRoute, useDialog, useWakeLock, useRecipeImage, useSpeechRecognition
+  components/             # SwipeCard, GridCard, RecipeDetail, sheets, BottomNav, …
+  views/                  # Kitchen, Discover, Cookbook, Cooking, CookingSteps
+scripts/
+  fetch-meals.mjs         # npm run fetch-recipes — regenerate recipes-extended.ts
+  generate-ai-recipes.mjs # npm run generate-ai-recipes — regenerate recipes-ai-seed.ts
 ```
+
+## Routes
+
+| Path | Screen |
+|---|---|
+| `/` | Kitchen (pantry entry) |
+| `/discover` | Swipe deck |
+| `/cookbook` | Saved recipes |
+| `/cooking` | Queue + previously cooked |
+| `/recipe/:id` | Recipe detail overlay (shareable) |
+| `/cook/:id` | Step-by-step cooking mode |
+
+Overlays are history entries, so the browser / Android Back button closes them.
 
 ## Data persistence
 
-All state is stored in `localStorage` under these keys:
-- `pantry` — ingredients the user has added
-- `filters` — active filter settings
-- `cookbook` — saved recipe IDs
-- `making` — "I'm making this" recipe IDs
-- `passed` — swiped-left recipe IDs (excluded from deck)
+### Device sync
 
-To add a backend later, swap `useStorage` to hit an API; the rest of the app is unchanged.
+Sync needs no account. "Turn on sync" (phone icon in the header) uploads a snapshot to Redis under a random 12-character code (≈60 bits, rate limited) and shows the code plus a QR link (`/?sync=CODE`). Other devices enter or scan it. Changes push about 1.5 s after an edit; pulls happen on open and when the tab regains focus. If two devices edit at once, the server rejects the stale write and the client merges both sides (lists are unioned, per-recipe records prefer the local edit). Snapshots expire after 180 days without a write. Anyone with the code can read and change the data, and the app says so.
 
-## Roadmap (post-port)
+### Local storage
 
-1. More recipes (target 100-200; TheMealDB API has plenty)
-2. "Surprise me" button — random match
-3. Shopping list from Cooking recipes
-4. Step-by-step cooking mode with timers
-5. PWA manifest + service worker for installability
+User state lives in one `localStorage` key, `recipesy-state`, written by the Zustand `persist` middleware with a schema version (`STORE_VERSION` in `src/store/appStore.ts`). Everything read back is validated, so a corrupt or older value can't break the app. Data from the pre-store per-field keys (`pantry`, `cookbook`, …) is migrated automatically on first load. Open tabs stay in sync through the `storage` event.
+
+Persisted: pantry (with use-by dates), appliances, filters, units, cookbook, cooking queue, weekly plan, passed recipes, cooked history, ratings, notes, community votes and the AI recipes you generated.
+

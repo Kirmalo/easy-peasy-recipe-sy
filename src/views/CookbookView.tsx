@@ -3,30 +3,29 @@ import { AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Search, X } from 'lucide-react';
 import { RecipeGrid } from '../components/GridCard';
 import { ShoppingListSheet } from '../components/ShoppingListSheet';
-import { RECIPES } from '../data/recipes';
+import { MealPlanList } from '../components/MealPlanList';
+import { useRecipes } from '../context/recipes';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 interface CookbookViewProps {
-  cookbook: number[];
-  making: number[];
-  pantry: string[];
-  ratings: Record<number, 1 | 2 | 3>;
-  notes: Record<number, string>;
-  removeFromCookbook: (id: number) => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
-  onRate: (id: number, stars: 1 | 2 | 3) => void;
 }
 
-export function CookbookView({ cookbook, making, pantry, ratings, notes, removeFromCookbook, openDetail, onCookNow, onRate }: CookbookViewProps) {
+export function CookbookView({ openDetail, onCookNow }: CookbookViewProps) {
+  const { cookbook, pantry, ratings, notes, removeFromCookbook, onRate } = useAppStore(useShallow((s) => ({ cookbook: s.cookbook, pantry: s.pantry, ratings: s.ratings, notes: s.notes, removeFromCookbook: s.removeFromCookbook, onRate: s.setRating })));
   const [showShoppingList, setShowShoppingList] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [topRatedOnly, setTopRatedOnly] = useState(false);
+  const [tab, setTab] = useState<'saved' | 'plan'>('saved');
 
+  const { byId } = useRecipes();
   const hasFilter = searchQuery.trim().length > 0 || topRatedOnly;
 
   const filteredCookbook = hasFilter
     ? cookbook.filter((id) => {
-        const recipe = RECIPES.find((r) => r.id === id);
+        const recipe = byId.get(id);
         if (!recipe) return false;
         if (searchQuery.trim() && !recipe.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
         if (topRatedOnly && ratings[id] !== 3) return false;
@@ -54,8 +53,23 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
           </button>
         </div>
 
+        <div role="tablist" aria-label="Cookbook sections" className="inline-flex mt-3 p-0.5 rounded-full" style={{ background: 'var(--surface-cream)' }}>
+          {([['saved', 'Saved'], ['plan', 'This week']] as const).map(([id, label]) => (
+            <button
+              key={id}
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+              className="px-4 py-1.5 rounded-full font-body text-[13px] font-semibold transition-colors"
+              style={{ background: tab === id ? 'var(--surface-dark)' : 'transparent', color: tab === id ? 'white' : 'var(--text-secondary)' }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
         {/* Search + filter row */}
-        {cookbook.length > 0 && (
+        {tab === 'saved' && cookbook.length > 0 && (
           <div className="flex items-center gap-2 mt-3">
             <div className="relative flex-1">
               <Search size={15} strokeWidth={2.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-placeholder)]" />
@@ -63,11 +77,13 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search recipes..."
+                aria-label="Search your cookbook"
                 className="w-full pl-9 pr-8 py-2 rounded-full font-body text-[14px] bg-white border-2 border-[var(--border-default)] focus:border-[var(--brand-500)] focus:outline-none placeholder:text-[var(--text-placeholder)] text-[var(--text-primary)]"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
+                  aria-label="Clear search"
                   className="absolute right-3 top-1/2 -translate-y-1/2 active:scale-90"
                 >
                   <X size={14} strokeWidth={2.5} className="text-[var(--text-tertiary)]" />
@@ -89,7 +105,7 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
         )}
       </div>
 
-      <RecipeGrid
+      {tab === 'plan' ? <MealPlanList openDetail={openDetail} onCook={onCookNow} /> : <RecipeGrid
         recipeIds={filteredCookbook}
         openDetail={openDetail}
         pantry={pantry}
@@ -106,14 +122,11 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
             ? 'Try a different search or clear the filter.'
             : 'Tap the bookmark icon on any recipe to save it here for later.'
         }
-      />
+      />}
 
       <AnimatePresence>
         {showShoppingList && (
           <ShoppingListSheet
-            cookbook={cookbook}
-            making={making}
-            pantry={pantry}
             onClose={() => setShowShoppingList(false)}
           />
         )}

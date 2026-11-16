@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, Clock, Sparkles, BookmarkPlus, BookmarkCheck, Play } from 'lucide-react';
 import { THEMES } from '../data/themes';
-import { RECIPES } from '../data/recipes';
+import { useRecipeList } from '../context/recipes';
 import { computeMatch } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
 import type { Recipe } from '../types';
@@ -191,7 +191,7 @@ export function RecipeGrid({
   emptyDesc,
   emptyEmoji,
 }: RecipeGridProps) {
-  const recipes = recipeIds.map((id) => RECIPES.find((r) => r.id === id)).filter((r): r is Recipe => r !== undefined);
+  const recipes = useRecipeList(recipeIds);
 
   if (recipes.length === 0) {
     return (

@@ -1,47 +1,34 @@
-import { useState, useMemo } from 'react';
-import { X, BookmarkPlus, Heart, SlidersHorizontal, Sparkles, RotateCcw, Search } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { X, BookmarkPlus, Heart, SlidersHorizontal, Sparkles, RotateCcw, Search, Undo2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SwipeCard } from '../components/SwipeCard';
 import { IconButton } from '../components/IconButton';
 import { AIRecipeSheet } from '../components/AIRecipeSheet';
-import { RECIPES } from '../data/recipes';
-import { computeMatch, isStaple } from '../lib/matching';
+import { useRecipes } from '../context/recipes';
+import { computeMatch, isStaple, compareByEase, ingMatches } from '../lib/matching';
+import { verifiedDietary } from '../lib/allergens';
+import { soonToExpire } from '../lib/expiry';
+
+/** Community recipes need this many upvotes to appear in everyone's deck. */
+const FEATURE_MIN_UPVOTES = 2;
 import { inferCuisine } from '../lib/cuisine';
-import type { Filters, SwipeDirection, ApplianceTag, Recipe } from '../types';
+import { sanitizeRecipe } from '../lib/recipeValidation';
+import type { SwipeDirection, Recipe } from '../types';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 interface DiscoverViewProps {
-  pantry: string[];
-  filters: Filters;
-  appliances: ApplianceTag[];
-  cookbook: number[];
-  addToCookbook: (id: number) => void;
-  making: number[];
-  addToMaking: (id: number) => void;
-  passed: number[];
-  addToPassed: (id: number) => void;
-  resetPassed: () => void;
   onOpenFilters: () => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
-  onAiGenerated: (recipe: Recipe) => void;
 }
 
 export function DiscoverView({
-  pantry,
-  filters,
-  appliances,
-  cookbook,
-  addToCookbook,
-  making,
-  addToMaking,
-  passed,
-  addToPassed,
-  resetPassed,
   onOpenFilters,
   openDetail,
   onCookNow,
-  onAiGenerated,
 }: DiscoverViewProps) {
+  const { pantry, filters, appliances, cookbook, addToCookbook, making, addToMaking, passed, addToPassed, resetPassed, onAiGenerated } = useAppStore(useShallow((s) => ({ pantry: s.pantry, filters: s.filters, appliances: s.appliances, cookbook: s.cookbook, addToCookbook: s.addToCookbook, making: s.making, addToMaking: s.addToMaking, passed: s.passed, addToPassed: s.addToPassed, resetPassed: s.resetPassed, onAiGenerated: s.addAiRecipe })));
   const [forcedExit, setForcedExit] = useState<SwipeDirection | null>(null);
   const [exitingId, setExitingId] = useState<number | null>(null);
   const [showSearch, setShowSearch] = useState(false);
@@ -60,9 +47,11 @@ export function DiscoverView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pantry, appliances, servings: 4 }),
       });
-      const data = await res.json() as { error?: string } & Recipe;
+      const data = await res.json().catch(() => ({})) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? 'Generation failed');
-      setAiRecipe(data as Recipe);
+      const recipe = sanitizeRecipe(data);
+      if (!recipe) throw new Error('The recipe came back incomplete — try again.');
+      setAiRecipe(recipe);
     } catch (e) {
       setAiError(e instanceof Error ? e.message : 'Something went wrong');
     } finally {
@@ -70,20 +59,46 @@ export function DiscoverView({
     }
   };
 
-  const unfilteredCount = useMemo(
-    () => RECIPES.filter((r) => !passed.includes(r.id) && !cookbook.includes(r.id) && !making.includes(r.id)).length,
-    [passed, cookbook, making],
+  const { builtIn: catalog, ready: catalogReady, byId } = useRecipes();
+  const lastPassed = useAppStore((s) => s.lastPassed);
+  const undoPass = useAppStore((s) => s.undoPass);
+  const clearUndo = useAppStore((s) => s.clearUndo);
+  const lastPassedRecipe = lastPassed !== null ? byId.get(lastPassed) : undefined;
+  useEffect(() => {
+    if (lastPassed === null) return;
+    const id = setTimeout(clearUndo, 6000);
+    return () => clearTimeout(id);
+  }, [lastPassed, clearUndo]);
+
+  const { communityRecipes, communityUpvotes, votes, pantryExpiry } = useAppStore(useShallow((s) => ({
+    communityRecipes: s.communityRecipes, communityUpvotes: s.communityUpvotes, votes: s.votes, pantryExpiry: s.pantryExpiry,
+  })));
+
+  // Well-rated community AI recipes join the deck.
+  const featured = useMemo(
+    () => communityRecipes.filter((r) => (communityUpvotes[r.id] ?? 0) >= FEATURE_MIN_UPVOTES && votes[r.id] !== 'report'),
+    [communityRecipes, communityUpvotes, votes],
   );
 
+  // Recipes not yet swiped, saved or queued. Sets keep this O(n) on every pantry/filter change.
+  const unseen = useMemo(() => {
+    const hidden = new Set([...passed, ...cookbook, ...making]);
+    const catalogIds = featured.length ? new Set(catalog.map((c) => c.id)) : null;
+    const pool = catalogIds ? [...catalog, ...featured.filter((f) => !catalogIds.has(f.id))] : catalog;
+    return pool.filter((r) => !hidden.has(r.id));
+  }, [catalog, featured, passed, cookbook, making]);
+
+  // Pantry items expiring within 3 days, for the "use it up" ranking.
+  const expiringSoon = useMemo(() => soonToExpire(pantry, pantryExpiry, 3), [pantry, pantryExpiry]);
+  const unfilteredCount = unseen.length;
+
   const deck = useMemo(() => {
-    let candidates = RECIPES.filter(
-      (r) => !passed.includes(r.id) && !cookbook.includes(r.id) && !making.includes(r.id),
-    );
+    let candidates = unseen;
     if (filters.cookTime) candidates = candidates.filter((r) => r.cookTime <= filters.cookTime!);
     if (filters.difficulty) candidates = candidates.filter((r) => r.difficulty === filters.difficulty);
     if (filters.mealType) candidates = candidates.filter((r) => r.mealType === filters.mealType);
     if (filters.dietary?.length) {
-      candidates = candidates.filter((r) => filters.dietary.every((d) => r.dietary.includes(d)));
+      candidates = candidates.filter((r) => { const diet = verifiedDietary(r); return filters.dietary.every((d) => diet.includes(d)); });
     }
 
     if (appliances.length > 0) {
@@ -115,9 +130,16 @@ export function DiscoverView({
       });
     }
 
-    scored.sort((a, b) => b.match.score - a.match.score);
+    if (filters.useItUp && expiringSoon.length) {
+      // Recipes using more soon-to-expire items come first, then normal ranking.
+      const uses = (r: Recipe) => expiringSoon.filter((p) => r.ingredients.some((i) => ingMatches(i, p))).length;
+      const useCount = new Map(scored.map((x) => [x.recipe.id, uses(x.recipe)]));
+      scored.sort((a, b) => (useCount.get(b.recipe.id)! - useCount.get(a.recipe.id)!) || b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
+    } else {
+      scored.sort((a, b) => b.match.score - a.match.score || compareByEase(a.recipe, b.recipe));
+    }
     return scored;
-  }, [pantry, filters, appliances, cookbook, making, passed, searchQuery]);
+  }, [unseen, pantry, filters, appliances, searchQuery, expiringSoon]);
 
   const topThree = deck.slice(0, 3);
   const current = topThree[0];
@@ -151,7 +173,9 @@ export function DiscoverView({
     (filters.difficulty ? 1 : 0) +
     (filters.mealType ? 1 : 0) +
     (filters.dietary?.length ?? 0) +
-    (ingredientMode !== 'all' ? 1 : 0);
+    (ingredientMode !== 'all' ? 1 : 0) +
+    (filters.cuisine ? 1 : 0) +
+    (filters.useItUp ? 1 : 0);
 
   const modeBadge =
     pantry.length > 0 && ingredientMode !== 'all'
@@ -235,6 +259,7 @@ export function DiscoverView({
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={() => setShowSearch(true)}
+                  aria-label="Search recipes"
                   className="h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform"
                   style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.15)' }}
                 >
@@ -242,6 +267,7 @@ export function DiscoverView({
                 </button>
                 <button
                   onClick={onOpenFilters}
+                  aria-label={activeFilterCount > 0 ? `Filters (${activeFilterCount} active)` : 'Filters'}
                   className="relative h-12 w-12 rounded-full bg-white border-2 border-[var(--border-default)] flex items-center justify-center active:scale-95 transition-transform"
                   style={{ boxShadow: '0 4px 12px -4px rgba(var(--ink-warm-rgb),0.15)' }}
                 >
@@ -260,7 +286,9 @@ export function DiscoverView({
 
       {/* Card area */}
       <div className="flex-1 flex flex-col justify-center px-6">
-        {current ? (
+        {!catalogReady ? (
+          <div className="text-center py-16 font-body text-[var(--text-tertiary)]" role="status">Loading recipes…</div>
+        ) : current ? (
           <>
             <div className="relative w-full" style={{ aspectRatio: '3 / 4.2', maxHeight: '60vh' }}>
               {topThree.slice().reverse().map((item, revIdx) => {
@@ -315,6 +343,7 @@ export function DiscoverView({
               <p className="font-body text-[11px] text-[var(--text-tertiary)] text-center w-14">Save</p>
               <p className="font-body text-[11px] text-[var(--text-tertiary)] text-center w-16">Cook it</p>
             </div>
+
 
             {/* AI generate button */}
             <div className="flex flex-col items-center mt-4 gap-2">
@@ -400,6 +429,31 @@ export function DiscoverView({
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {lastPassedRecipe && (
+          <motion.div
+            key={lastPassedRecipe.id}
+            role="status"
+            className="fixed left-0 right-0 bottom-24 z-40 flex justify-center pointer-events-none px-6"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+          >
+            <div className="pointer-events-auto flex items-center gap-3 pl-4 pr-1.5 py-1.5 rounded-full shadow-xl max-w-full" style={{ background: 'var(--surface-dark)' }}>
+              <span className="font-body text-[13px] text-white/80 truncate">Passed on {lastPassedRecipe.name}</span>
+              <button
+                onClick={undoPass}
+                aria-label={`Undo pass on ${lastPassedRecipe.name}`}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-body text-[13px] font-semibold bg-white text-[var(--text-primary)] active:scale-95 transition-transform flex-shrink-0"
+              >
+                <Undo2 size={13} strokeWidth={2.6} aria-hidden="true" />
+                Undo
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {aiRecipe && (

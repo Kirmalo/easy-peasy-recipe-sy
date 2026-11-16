@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Plus, ChevronRight } from 'lucide-react';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
+import { useDialog } from '../hooks/useDialog';
+import { daysUntil, expiryLabel } from '../lib/expiry';
 
 interface PantrySheetProps {
-  pantry: string[];
-  setPantry: (fn: (prev: string[]) => string[]) => void;
   onClose: () => void;
   onGoToKitchen: () => void;
 }
 
-export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: PantrySheetProps) {
+export function PantrySheet({ onClose, onGoToKitchen }: PantrySheetProps) {
+  const dialogProps = useDialog(onClose, 'Your pantry');
+  const { pantry, setPantry, pantryExpiry, setExpiry, removeFromPantry } = useAppStore(useShallow((s) => ({
+    pantry: s.pantry, setPantry: s.setPantry, pantryExpiry: s.pantryExpiry, setExpiry: s.setExpiry, removeFromPantry: s.removeFromPantry,
+  })));
+  // Dated items first, soonest to expire at the top.
+  const sorted = useMemo(() => [...pantry].sort((a, b) => {
+    const da = pantryExpiry[a], db = pantryExpiry[b];
+    if (da && db) return daysUntil(da) - daysUntil(db);
+    return da ? -1 : db ? 1 : 0;
+  }), [pantry, pantryExpiry]);
   const [input, setInput] = useState('');
 
   const add = (ing: string) => {
@@ -19,10 +31,10 @@ export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: Pantr
     setInput('');
   };
 
-  const remove = (ing: string) => setPantry((p) => p.filter((x) => x !== ing));
+  const remove = (ing: string) => removeFromPantry([ing]);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end">
+    <div {...dialogProps} className="fixed inset-0 z-50 flex flex-col justify-end outline-none">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <motion.div
         className="relative max-w-[480px] w-full mx-auto bg-[var(--bg-page)] rounded-t-[32px] flex flex-col"
@@ -44,6 +56,7 @@ export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: Pantr
           </div>
           <button
             onClick={onClose}
+            aria-label="Close pantry"
             className="w-9 h-9 rounded-full bg-[var(--surface-muted)] flex items-center justify-center active:scale-90 transition-transform"
           >
             <X size={16} strokeWidth={2.5} className="text-[var(--text-primary)]" />
@@ -77,24 +90,39 @@ export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: Pantr
               Nothing in your pantry yet.
             </p>
           ) : (
-            <div className="flex flex-wrap gap-2">
-              {pantry.map((ing) => (
-                <button
-                  key={ing}
-                  onClick={() => remove(ing)}
-                  className="inline-flex items-center gap-1.5 pl-4 pr-2 py-2 rounded-full font-body text-[14px] font-medium text-white active:scale-95 transition-transform capitalize"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--brand-500) 0%, var(--brand-400) 100%)',
-                    boxShadow: '0 4px 10px -2px rgba(var(--brand-rgb),0.35)',
-                  }}
-                >
-                  {ing}
-                  <span className="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center">
-                    <X size={12} strokeWidth={3} />
-                  </span>
-                </button>
-              ))}
-            </div>
+            <ul className="divide-y divide-[var(--border-default)] bg-white rounded-2xl">
+              {sorted.map((ing) => {
+                const date = pantryExpiry[ing];
+                const days = date ? daysUntil(date) : null;
+                const urgent = days !== null && days <= 2;
+                return (
+                  <li key={ing} className="flex items-center gap-3 px-4 py-2.5">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-body text-[15px] font-medium text-[var(--text-primary)] capitalize truncate">{ing}</p>
+                      {date && (
+                        <p className="font-body text-[12px]" style={{ color: urgent ? 'var(--brand-600)' : 'var(--text-tertiary)' }}>
+                          {expiryLabel(date)}
+                        </p>
+                      )}
+                    </div>
+                    <input
+                      type="date"
+                      value={date ?? ''}
+                      onChange={(e) => setExpiry(ing, e.target.value || null)}
+                      aria-label={`Use-by date for ${ing}`}
+                      className="font-body text-[12px] text-[var(--text-secondary)] bg-[var(--surface-muted)] rounded-lg px-2 py-1.5 w-[8.5rem]"
+                    />
+                    <button
+                      onClick={() => remove(ing)}
+                      aria-label={`Remove ${ing}`}
+                      className="w-8 h-8 rounded-full bg-[var(--surface-muted)] flex items-center justify-center active:scale-90 transition-transform flex-shrink-0"
+                    >
+                      <X size={14} strokeWidth={2.8} className="text-[var(--text-secondary)]" />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           )}
         </div>
 

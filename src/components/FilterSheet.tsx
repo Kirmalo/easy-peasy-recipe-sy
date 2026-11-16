@@ -1,16 +1,46 @@
 import { motion } from 'framer-motion';
-import type { Filters, DietaryTag, Difficulty, MealType } from '../types';
+import type { DietaryTag, Difficulty, MealType } from '../types';
 import { CUISINE_LABELS } from '../data/recipes';
 import { DEFAULT_FILTERS } from '../data/defaults';
 import { CUISINES } from '../lib/cuisine';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
+import { useDialog } from '../hooks/useDialog';
 
 interface FilterSheetProps {
   onClose: () => void;
-  filters: Filters;
-  setFilters: (fn: (prev: Filters) => Filters) => void;
 }
 
-export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+  <div className="mb-6">
+    <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+      {title}
+    </p>
+    <div className="flex flex-wrap gap-2">{children}</div>
+  </div>
+  );
+}
+
+function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+  <button
+    onClick={onClick}
+    className="px-4 py-2.5 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
+    style={{
+      background: active ? 'var(--surface-dark)' : 'white',
+      color: active ? 'white' : 'var(--text-secondary)',
+      border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
+    }}
+  >
+    {children}
+  </button>
+  );
+}
+
+export function FilterSheet({ onClose }: FilterSheetProps) {
+  const dialogProps = useDialog(onClose, 'Filters');
+  const { filters, setFilters } = useAppStore(useShallow((s) => ({ filters: s.filters, setFilters: s.setFilters })));
 
   const toggle = (key: 'cookTime' | 'difficulty' | 'mealType', value: number | string) => {
     setFilters((f) => ({ ...f, [key]: f[key] === value ? null : value }));
@@ -39,33 +69,10 @@ export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) 
     { val: 'gluten-free', label: 'Gluten-free', icon: '🌾' },
   ];
 
-  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="mb-6">
-      <p className="font-body text-[13px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-        {title}
-      </p>
-      <div className="flex flex-wrap gap-2">{children}</div>
-    </div>
-  );
-
-  const Chip = ({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) => (
-    <button
-      onClick={onClick}
-      className="px-4 py-2.5 rounded-full font-body text-[14px] font-medium transition-all active:scale-95"
-      style={{
-        background: active ? 'var(--surface-dark)' : 'white',
-        color: active ? 'white' : 'var(--text-secondary)',
-        border: active ? '2px solid var(--surface-dark)' : '2px solid var(--border-default)',
-      }}
-    >
-      {children}
-    </button>
-  );
-
   const mode = filters.ingredientMode ?? 'all';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end">
+    <div {...dialogProps} className="fixed inset-0 z-50 flex items-end outline-none">
       <motion.div
         className="absolute inset-0 bg-black/40"
         initial={{ opacity: 0 }}
@@ -129,6 +136,15 @@ export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) 
               </p>
             )}
           </div>
+        </Section>
+
+        <Section title="Use it up">
+          <Chip active={!!filters.useItUp} onClick={() => setFilters((f) => ({ ...f, useItUp: !f.useItUp }))}>
+            ⏳ Prioritise ingredients expiring soon
+          </Chip>
+          <p className="w-full font-body text-[12px] text-[var(--text-tertiary)]">
+            Set use-by dates in your pantry list.
+          </p>
         </Section>
 
         <Section title="Cook time">

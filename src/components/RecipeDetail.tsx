@@ -2,27 +2,28 @@ import { useState } from 'react';
 import { ArrowLeft, Clock, Gauge, Utensils, Leaf, BookOpen, Flame, Check, ShoppingCart, Minus, Plus, Share2 } from 'lucide-react';
 import { Pill } from './Pill';
 import { THEMES } from '../data/themes';
-import { RECIPES, CUISINE_LABELS } from '../data/recipes';
+import { CUISINE_LABELS } from '../data/recipes';
+import { useRecipe } from '../context/recipes';
 import { computeMatch, ingMatches } from '../lib/matching';
 import { useRecipeImage } from '../hooks/useRecipeImage';
-import { amazonItemUrl, getEquipmentSuggestions, AMAZON_TAG } from '../lib/affiliate';
-import { scaleAmount } from '../lib/scaleAmount';
+import { amazonItemUrl, amazonGearUrl, getEquipmentSuggestions, AFFILIATE_REL } from '../lib/affiliate';
+import { AffiliateDisclosure } from './AffiliateDisclosure';
+import { useDialog } from '../hooks/useDialog';
+import { recipeUrl } from '../lib/router';
+import { formatAmount } from '../lib/scaleAmount';
+import { findSubstitute } from '../lib/matching';
+import { verifiedDietary } from '../lib/allergens';
+import { UnitToggle } from './UnitToggle';
+import { AllergenList } from './AllergenList';
+import { PlanPicker } from './PlanPicker';
+import { CommunityVote } from './CommunityVote';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 interface RecipeDetailProps {
   recipeId: number;
   onClose: () => void;
-  pantry: string[];
-  cookbook: number[];
-  making: number[];
-  addToCookbook: (id: number) => void;
-  addToMaking: (id: number) => void;
-  removeFromCookbook: (id: number) => void;
-  removeFromMaking: (id: number) => void;
-  addToPantry?: (ing: string) => void;
   onCookNow?: (id: number) => void;
-  note?: string;
-  onNoteChange?: (text: string) => void;
-  extraRecipes?: import('../types').Recipe[];
 }
 
 
@@ -38,25 +39,21 @@ async function shareShoppingList(missing: string[], recipeName: string) {
 export function RecipeDetail({
   recipeId,
   onClose,
-  pantry,
-  cookbook,
-  making,
-  addToCookbook,
-  addToMaking,
-  removeFromCookbook,
-  removeFromMaking,
-  addToPantry,
   onCookNow,
-  note,
-  onNoteChange,
-  extraRecipes,
 }: RecipeDetailProps) {
-  const recipe = [...(extraRecipes ?? []), ...RECIPES].find((r) => r.id === recipeId);
+  const { pantry, cookbook, making, addToCookbook, addToMaking, removeFromCookbook, removeFromMaking, addToPantry } = useAppStore(useShallow((s) => ({ pantry: s.pantry, cookbook: s.cookbook, making: s.making, addToCookbook: s.addToCookbook, addToMaking: s.addToMaking, removeFromCookbook: s.removeFromCookbook, removeFromMaking: s.removeFromMaking, addToPantry: s.addToPantry })));
+  const note = useAppStore((s) => s.notes[recipeId] ?? '');
+  const units = useAppStore((s) => s.units);
+  const setNote = useAppStore((s) => s.setNote);
+  const onNoteChange = (text: string) => setNote(recipeId, text);
+  const recipe = useRecipe(recipeId);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [servings, setServings] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
+  const imageUrl = useRecipeImage(recipeId, recipe?.name);
+  const dialogProps = useDialog(onClose, recipe?.name ?? 'Recipe');
 
   if (!recipe) return null;
 
@@ -64,7 +61,6 @@ export function RecipeDetail({
   const match = computeMatch(recipe, pantry);
   const inCookbook = cookbook.includes(recipe.id);
   const inMaking = making.includes(recipe.id);
-  const imageUrl = useRecipeImage(recipe.id, recipe.name);
   const showFallback = !imageUrl || imgError || !imgLoaded;
 
   const activeServings = servings ?? recipe.servings;
@@ -72,7 +68,8 @@ export function RecipeDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-[var(--bg-page)] overflow-y-auto no-scrollbar"
+      {...dialogProps}
+      className="fixed inset-0 z-50 bg-[var(--bg-page)] overflow-y-auto no-scrollbar outline-none"
       style={{ animation: 'float-in 0.3s ease-out' }}
     >
       {/* Hero */}
@@ -117,11 +114,12 @@ export function RecipeDetail({
         <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
           <button
             onClick={async () => {
+              const url = recipeUrl(recipe.id);
               const text = `${recipe.name}\n\n${recipe.description}\n\nIngredients:\n${recipe.ingredients.map((ing, i) => `• ${recipe.amounts[i]} ${ing}`).join('\n')}`;
               if (typeof navigator.share === 'function') {
-                await navigator.share({ title: recipe.name, text }).catch(() => undefined);
+                await navigator.share({ title: recipe.name, text, url }).catch(() => undefined);
               } else {
-                await navigator.clipboard.writeText(text);
+                await navigator.clipboard.writeText(`${text}\n\n${url}`).catch(() => undefined);
                 setShared(true);
                 setTimeout(() => setShared(false), 2000);
               }
@@ -158,6 +156,7 @@ export function RecipeDetail({
           >
             <button
               onClick={() => setServings((s) => Math.max(1, (s ?? recipe.servings) - 1))}
+              aria-label="Fewer servings"
               className="w-7 h-7 rounded-full flex items-center justify-center active:scale-90 transition-transform"
               style={{ background: activeServings > 1 ? 'var(--surface-dark)' : 'var(--border-default)' }}
               disabled={activeServings <= 1}
@@ -169,13 +168,14 @@ export function RecipeDetail({
             </span>
             <button
               onClick={() => setServings((s) => (s ?? recipe.servings) + 1)}
+              aria-label="More servings"
               className="w-7 h-7 rounded-full flex items-center justify-center active:scale-90 transition-transform"
               style={{ background: 'var(--surface-dark)' }}
             >
               <Plus size={12} strokeWidth={3} className="text-white" />
             </button>
           </div>
-          {recipe.dietary.map((d) => (
+          {verifiedDietary(recipe).map((d) => (
             <Pill key={d} icon={Leaf} color={theme.soft} textColor={theme.dark}>{d}</Pill>
           ))}
         </div>
@@ -209,9 +209,11 @@ export function RecipeDetail({
               </button>
             )}
           </div>
+          <div className="mb-3"><UnitToggle /></div>
           <div className="bg-white rounded-2xl p-2">
             {recipe.ingredients.map((ing, i) => {
               const have = pantry.some((p) => ingMatches(ing, p));
+              const sub = have ? null : findSubstitute(ing, pantry);
               return (
                 <div key={ing} className="flex items-center gap-3 px-3 py-2.5">
                   <div
@@ -220,15 +222,22 @@ export function RecipeDetail({
                   >
                     {have && <Check size={14} strokeWidth={3.5} className="text-white" />}
                   </div>
-                  <span className="font-body text-[15px] text-[var(--text-primary)] capitalize flex-1">{ing}</span>
+                  <div className="flex-1 min-w-0">
+                    <span className="font-body text-[15px] text-[var(--text-primary)] capitalize">{ing}</span>
+                    {sub && (
+                      <p className="font-body text-[12px] leading-snug text-[var(--success-700)]">
+                        Swap: your {sub.use} — {sub.note}
+                      </p>
+                    )}
+                  </div>
                   {have ? (
                     <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
-                      {scaleAmount(recipe.amounts[i], scaleFactor)}
+                      {formatAmount(recipe.amounts[i], scaleFactor, units)}
                     </span>
                   ) : (
                     <div className="flex items-center gap-1.5 flex-shrink-0">
                       <span className="font-body text-[13px] text-[var(--text-tertiary)] tabular-nums">
-                        {scaleAmount(recipe.amounts[i], scaleFactor)}
+                        {formatAmount(recipe.amounts[i], scaleFactor, units)}
                       </span>
                       {addToPantry && (
                         <button
@@ -242,7 +251,8 @@ export function RecipeDetail({
                       <a
                         href={amazonItemUrl(ing)}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel={AFFILIATE_REL}
+                        aria-label={`Buy ${ing} on Amazon (opens in a new tab)`}
                         className="px-2 py-1 rounded-full font-body text-[11px] font-bold active:scale-95 transition-transform"
                         style={{ background: '#FF9900', color: 'white' }}
                       >
@@ -286,6 +296,10 @@ export function RecipeDetail({
           />
         </div>
 
+        <AllergenList recipe={recipe} />
+        <PlanPicker recipeId={recipe.id} />
+        <CommunityVote recipeId={recipe.id} />
+
         {/* Equipment suggestions */}
         {(() => {
           const gear = getEquipmentSuggestions(recipe);
@@ -298,9 +312,10 @@ export function RecipeDetail({
                 {gear.map((item) => (
                   <a
                     key={item.name}
-                    href={`https://www.amazon.com/s?k=${encodeURIComponent(item.query)}&tag=${AMAZON_TAG}`}
+                    href={amazonGearUrl(item.query)}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={AFFILIATE_REL}
+                    aria-label={`${item.name} on Amazon (opens in a new tab)`}
                     className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-95 transition-transform"
                     style={{
                       minWidth: 110,
@@ -314,6 +329,7 @@ export function RecipeDetail({
                   </a>
                 ))}
               </div>
+              <AffiliateDisclosure className="mt-3" />
             </div>
           );
         })()}

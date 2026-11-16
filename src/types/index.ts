@@ -38,11 +38,16 @@ export interface Filters {
   dietary: DietaryTag[];
   ingredientMode: IngredientMode;
   cuisine: string | null;
+  /** Rank recipes that use soon-to-expire pantry items first. */
+  useItUp: boolean;
 }
 
 export interface MatchResult {
   score: number;
   have: number;
   need: number;
+  /** Ingredients not in the pantry and with no substitute — the shopping list. */
   missing: string[];
+  /** Missing ingredients covered by a pantry substitute. */
+  substitutes: Array<{ ingredient: string; use: string; note: string }>;
 }
