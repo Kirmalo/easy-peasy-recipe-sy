@@ -1,13 +1,22 @@
-import { useMemo, type ReactNode } from 'react';
-import { RecipesContext, BUILT_IN_RECIPES, type RecipesValue } from './recipes';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { RecipesContext, makeRecipesValue } from './recipes';
+import { CURATED_RECIPES, loadAllRecipes } from '../data/recipes';
 import type { Recipe } from '../types';
 
 export function RecipesProvider({ extra, children }: { extra: Recipe[]; children: ReactNode }) {
-  const value = useMemo<RecipesValue>(() => {
-    if (!extra.length) return BUILT_IN_RECIPES;
-    const byId = new Map(BUILT_IN_RECIPES.byId);
-    for (const r of extra) if (!byId.has(r.id)) byId.set(r.id, r);
-    return { all: [...byId.values()], byId };
-  }, [extra]);
+  const [catalog, setCatalog] = useState<Recipe[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadAllRecipes()
+      .then((all) => { if (!cancelled) setCatalog(all); })
+      .catch((err) => console.error('Failed to load recipe catalog', err));
+    return () => { cancelled = true; };
+  }, []);
+
+  const value = useMemo(
+    () => makeRecipesValue(catalog ?? CURATED_RECIPES, extra, catalog !== null),
+    [catalog, extra],
+  );
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 }

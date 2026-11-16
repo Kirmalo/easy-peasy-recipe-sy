@@ -10,8 +10,8 @@
   /* Text */
   --text-primary:     #1E1812;
   --text-secondary:   #574A3F;
-  --text-tertiary:    #897A6D;
-  --text-placeholder: #B0A090;
+  --text-tertiary:    #76695E; /* 5.0:1 on --bg-page (WCAG AA) */
+  --text-placeholder: #7C6F63; /* 4.9:1 on white inputs (WCAG AA) */
   --text-inverse:     #FFFFFF;
   --text-on-brand:    #FFFFFF;
 

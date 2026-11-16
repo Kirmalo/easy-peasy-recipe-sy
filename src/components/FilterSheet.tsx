@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import type { Filters, DietaryTag, Difficulty, MealType } from '../types';
+import type { DietaryTag, Difficulty, MealType } from '../types';
 import { CUISINE_LABELS } from '../data/recipes';
 import { DEFAULT_FILTERS } from '../data/defaults';
 import { CUISINES } from '../lib/cuisine';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
+import { useDialog } from '../hooks/useDialog';
 
 interface FilterSheetProps {
   onClose: () => void;
-  filters: Filters;
-  setFilters: (fn: (prev: Filters) => Filters) => void;
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -37,7 +38,9 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
   );
 }
 
-export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) {
+export function FilterSheet({ onClose }: FilterSheetProps) {
+  const dialogProps = useDialog(onClose, 'Filters');
+  const { filters, setFilters } = useAppStore(useShallow((s) => ({ filters: s.filters, setFilters: s.setFilters })));
 
   const toggle = (key: 'cookTime' | 'difficulty' | 'mealType', value: number | string) => {
     setFilters((f) => ({ ...f, [key]: f[key] === value ? null : value }));
@@ -69,7 +72,7 @@ export function FilterSheet({ onClose, filters, setFilters }: FilterSheetProps) 
   const mode = filters.ingredientMode ?? 'all';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end">
+    <div {...dialogProps} className="fixed inset-0 z-50 flex items-end outline-none">
       <motion.div
         className="absolute inset-0 bg-black/40"
         initial={{ opacity: 0 }}

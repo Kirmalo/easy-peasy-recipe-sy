@@ -28,19 +28,19 @@ Working list from the full-repo review (2026-11-16). Tick items off as they land
 
 ## Phase 3 — Performance & architecture
 
-- [ ] Move recipe data out of the main JS bundle (lazy-loaded JSON)
-- [ ] Code-split heavy views
-- [ ] Set-based lookups + precomputed cuisine in the deck
-- [ ] Clean up image cache in-flight map; don't permanently cache misses
-- [ ] Routing: `/recipe/:id`, `/cook/:id`, back button closes overlays, shareable links
-- [ ] Central store instead of prop drilling from `App.tsx`
-- [ ] Versioned storage + cross-tab sync
-- [ ] Screen wake lock during cooking
-- [ ] Pixabay lookups via serverless proxy (no key in the client bundle)
-- [ ] Affiliate link disclosure
-- [ ] Accessibility: dialog roles, focus trap, Escape to close, labels, reduced motion
-- [ ] Undo last swipe-left
-- [ ] README refresh (env vars, architecture, real recipe counts)
+- [x] Move recipe data out of the main JS bundle (lazy chunks; main JS 1.67 MB → 410 KB, 474 → 129 KB gzip)
+- [x] Code-split overlays (RecipeDetail, CookingSteps, Filter/Pantry sheets)
+- [x] Set-based lookups + precomputed cuisine in the deck
+- [x] Clean up image cache in-flight map; don't permanently cache misses
+- [x] Routing: `/recipe/:id`, `/cook/:id`, back button closes overlays, shareable links
+- [x] Central store instead of prop drilling from `App.tsx`
+- [x] Versioned storage + cross-tab sync
+- [x] Screen wake lock during cooking
+- [x] Pixabay lookups via serverless proxy (no key in the client bundle)
+- [x] Affiliate link disclosure
+- [x] Accessibility: dialog roles, focus trap, Escape to close, labels, reduced motion, AA text contrast
+- [x] Undo last swipe-left
+- [x] README refresh (env vars, architecture, real recipe counts)
 
 ## Phase 4 — Features
 

@@ -14,6 +14,7 @@ export function useRecipeImage(recipeId: number, searchName?: string): string | 
     return () => { cancelled = true; };
   }, [recipeId, searchName]);
 
-  if (imageCache.has(recipeId)) return imageCache.get(recipeId) ?? null;
+  const cached = imageCache.get(recipeId);
+  if (cached) return cached;
   return fetched?.id === recipeId ? fetched.url : null;
 }

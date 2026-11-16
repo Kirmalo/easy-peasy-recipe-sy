@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Plus, ChevronRight } from 'lucide-react';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
+import { useDialog } from '../hooks/useDialog';
 
 interface PantrySheetProps {
-  pantry: string[];
-  setPantry: (fn: (prev: string[]) => string[]) => void;
   onClose: () => void;
   onGoToKitchen: () => void;
 }
 
-export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: PantrySheetProps) {
+export function PantrySheet({ onClose, onGoToKitchen }: PantrySheetProps) {
+  const dialogProps = useDialog(onClose, 'Your pantry');
+  const { pantry, setPantry } = useAppStore(useShallow((s) => ({ pantry: s.pantry, setPantry: s.setPantry })));
   const [input, setInput] = useState('');
 
   const add = (ing: string) => {
@@ -22,7 +25,7 @@ export function PantrySheet({ pantry, setPantry, onClose, onGoToKitchen }: Pantr
   const remove = (ing: string) => setPantry((p) => p.filter((x) => x !== ing));
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end">
+    <div {...dialogProps} className="fixed inset-0 z-50 flex flex-col justify-end outline-none">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <motion.div
         className="relative max-w-[480px] w-full mx-auto bg-[var(--bg-page)] rounded-t-[32px] flex flex-col"

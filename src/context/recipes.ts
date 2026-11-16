@@ -1,16 +1,24 @@
 import { createContext, useContext, useMemo } from 'react';
-import { RECIPES } from '../data/recipes';
+import { CURATED_RECIPES } from '../data/recipes';
 import type { Recipe } from '../types';
 
 export interface RecipesValue {
+  /** Built-in catalog (curated until the full catalog chunk has loaded). */
+  builtIn: Recipe[];
   /** Built-in recipes followed by AI-generated ones. */
   all: Recipe[];
   byId: Map<number, Recipe>;
+  /** True once the full built-in catalog has loaded. */
+  ready: boolean;
 }
 
-export const BUILT_IN_RECIPES: RecipesValue = { all: RECIPES, byId: new Map(RECIPES.map((r) => [r.id, r])) };
+export const makeRecipesValue = (builtIn: Recipe[], extra: Recipe[], ready: boolean): RecipesValue => {
+  const byId = new Map(builtIn.map((r) => [r.id, r]));
+  for (const r of extra) if (!byId.has(r.id)) byId.set(r.id, r);
+  return { builtIn, all: [...byId.values()], byId, ready };
+};
 
-export const RecipesContext = createContext<RecipesValue>(BUILT_IN_RECIPES);
+export const RecipesContext = createContext<RecipesValue>(makeRecipesValue(CURATED_RECIPES, [], false));
 
 export const useRecipes = (): RecipesValue => useContext(RecipesContext);
 

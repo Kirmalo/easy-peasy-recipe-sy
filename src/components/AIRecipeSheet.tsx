@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import type { Recipe } from '../types';
 import { THEMES } from '../data/themes';
 import { ingMatches } from '../lib/matching';
+import { useDialog } from '../hooks/useDialog';
 
 interface AIRecipeSheetProps {
   recipe: Recipe;
@@ -13,11 +14,13 @@ interface AIRecipeSheetProps {
 }
 
 export function AIRecipeSheet({ recipe, pantry, onDismiss, onSave, onCook }: AIRecipeSheetProps) {
+  const dialogProps = useDialog(onDismiss, `AI recipe: ${recipe.name}`);
   const theme = THEMES[recipe.theme];
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col justify-end"
+      {...dialogProps}
+      className="fixed inset-0 z-50 flex flex-col justify-end outline-none"
       style={{ maxWidth: 480, margin: '0 auto', left: 0, right: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

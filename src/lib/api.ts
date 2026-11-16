@@ -27,8 +27,13 @@ const RECIPE_QUERIES: Record<number, string[]> = {
 };
 
 const SESSION_PREFIX = 'ep_img_';
+/** How long a "no image found" result is trusted before trying again. */
+const MISS_TTL_MS = 10 * 60 * 1000;
 
-const imageCache = new Map<number, string | null>();
+/** Found image URLs only. */
+const imageCache = new Map<number, string>();
+/** recipeId → time of last confirmed miss. In memory only, so a reload always retries. */
+const missCache = new Map<number, number>();
 const imageInflight = new Map<number, Promise<string | null>>();
 
 // Pre-populate from sessionStorage so images are instant on page reload.
@@ -37,70 +42,54 @@ try {
     const key = sessionStorage.key(i);
     if (key?.startsWith(SESSION_PREFIX)) {
       const id = parseInt(key.slice(SESSION_PREFIX.length), 10);
-      if (!isNaN(id)) {
-        const raw = sessionStorage.getItem(key);
-        imageCache.set(id, raw === 'null' ? null : raw);
-      }
+      const raw = sessionStorage.getItem(key);
+      if (!isNaN(id) && raw && raw !== 'null') imageCache.set(id, raw);
     }
   }
 } catch { /* private browsing / storage unavailable */ }
 
-async function fetchFromPixabay(query: string): Promise<string | null> {
-  const key = import.meta.env.VITE_PIXABAY_API_KEY;
-  if (!key) return null;
-  try {
-    const res = await fetch(
-      `https://pixabay.com/api/?key=${key}&q=${encodeURIComponent(query)}&image_type=photo&category=food&per_page=3&safesearch=true&min_width=400`
-    );
-    if (!res.ok) return null;
-    const data = (await res.json()) as { hits?: Array<{ webformatURL: string }> };
-    return data?.hits?.[0]?.webformatURL ?? null;
-  } catch {
-    return null;
-  }
+function remember(recipeId: number, url: string): string {
+  imageCache.set(recipeId, url);
+  try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, url); } catch { /* quota */ }
+  return url;
 }
 
+/** Same-origin image proxy (Pixabay search runs server-side; see api/recipe-image.ts). */
+export const proxiedImageUrl = (query: string): string =>
+  `/api/recipe-image?q=${encodeURIComponent(query.slice(0, 80))}`;
+
 export async function fetchRecipeImage(recipeId: number, searchName?: string): Promise<string | null> {
-  if (imageCache.has(recipeId)) return imageCache.get(recipeId) ?? null;
-  if (imageInflight.has(recipeId)) return imageInflight.get(recipeId) ?? null;
+  const hit = imageCache.get(recipeId);
+  if (hit) return hit;
+  const missedAt = missCache.get(recipeId);
+  if (missedAt && Date.now() - missedAt < MISS_TTL_MS) return null;
+  const pending = imageInflight.get(recipeId);
+  if (pending) return pending;
 
   // Use explicit query list, or fall back to searching by recipe name
   const queries = RECIPE_QUERIES[recipeId] ?? (searchName ? [searchName] : []);
 
   const promise: Promise<string | null> = (async () => {
+    let networkError = false;
     // 1. Try TheMealDB
     for (const q of queries) {
       try {
-        const res = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(q)}`
-        );
-        if (!res.ok) continue;
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(q)}`);
+        if (!res.ok) { networkError = true; continue; }
         const data = (await res.json()) as { meals?: Array<{ strMealThumb: string }> | null };
-        const url = data?.meals?.[0]?.strMealThumb ?? null;
-        if (url) {
-          imageCache.set(recipeId, url);
-          try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, url); } catch { /* quota */ }
-          return url;
-        }
+        const url = data?.meals?.[0]?.strMealThumb;
+        if (url) return remember(recipeId, url);
       } catch {
-        // try next query
+        networkError = true; // offline / blocked — don't treat as a real miss
       }
     }
 
-    // 2. Fall back to Pixabay when TheMealDB has nothing
-    if (searchName) {
-      const url = await fetchFromPixabay(searchName);
-      if (url) {
-        imageCache.set(recipeId, url);
-        try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, url); } catch { /* quota */ }
-        return url;
-      }
-    }
+    // 2. Fall back to the image proxy; the <img> onError fallback handles a 404 there.
+    if (searchName) return remember(recipeId, proxiedImageUrl(searchName));
 
-    imageCache.set(recipeId, null);
-    try { sessionStorage.setItem(`${SESSION_PREFIX}${recipeId}`, 'null'); } catch { /* quota */ }
+    if (!networkError) missCache.set(recipeId, Date.now());
     return null;
-  })();
+  })().finally(() => imageInflight.delete(recipeId));
 
   imageInflight.set(recipeId, promise);
   return promise;

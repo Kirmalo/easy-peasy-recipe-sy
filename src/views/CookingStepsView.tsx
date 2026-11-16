@@ -2,18 +2,19 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Minus, Plus, Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import { useRecipe } from '../context/recipes';
+import { useAppStore } from '../store/appStore';
 import { THEMES } from '../data/themes';
 import { useRecipeImage } from '../hooks/useRecipeImage';
+import { useWakeLock } from '../hooks/useWakeLock';
 import { scaleAmount } from '../lib/scaleAmount';
 import { detectSeconds, formatTime, secondsLeft } from '../lib/timer';
 import type { Recipe } from '../types';
+import { useDialog } from '../hooks/useDialog';
 
 interface CookingStepsViewProps {
   recipeId: number;
   onClose: () => void;
   onDone: () => void;
-  onRate?: (stars: 1 | 2 | 3) => void;
-  note?: string;
 }
 
 // Wall-clock timer: survives backgrounded tabs / locked screens without drifting.
@@ -69,7 +70,12 @@ export function CookingStepsView(props: CookingStepsViewProps) {
   return <CookingSteps {...props} recipe={recipe} />;
 }
 
-function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: CookingStepsViewProps & { recipe: Recipe }) {
+function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewProps & { recipe: Recipe }) {
+  const note = useAppStore((s) => s.notes[recipeId] ?? '');
+  useWakeLock();
+  const dialogProps = useDialog(onClose, `Cooking ${recipe.name}`);
+  const setRating = useAppStore((s) => s.setRating);
+  const onRate = (stars: 1 | 2 | 3) => setRating(recipeId, stars);
   const theme = THEMES[recipe.theme] ?? THEMES.tomato;
   const imageUrl = useRecipeImage(recipeId, recipe.name);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -158,7 +164,8 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col"
+      {...dialogProps}
+      className="fixed inset-0 z-50 flex flex-col outline-none"
       style={{ background: 'var(--surface-dark)' }}
       initial={{ y: '100%' }}
       animate={{ y: 0 }}
@@ -169,6 +176,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-8 pb-4 flex-shrink-0">
           <button
+            aria-label="Close cooking mode"
             onClick={onClose}
             className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
           >
@@ -325,6 +333,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                       </p>
                       <div className="flex items-center gap-3 mb-4">
                         <button
+                          aria-label="Fewer servings"
                           onClick={() => setServings((s) => Math.max(1, s - 1))}
                           disabled={servings <= 1}
                           className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform disabled:opacity-30"
@@ -336,6 +345,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                           {servings} {servings === 1 ? 'serving' : 'servings'}
                         </span>
                         <button
+                          aria-label="More servings"
                           onClick={() => setServings((s) => s + 1)}
                           className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                           style={{ background: 'rgba(255,255,255,0.2)' }}
@@ -425,6 +435,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                               Ingredients
                             </p>
                             <button
+                              aria-label="Close ingredients"
                               onClick={() => setShowIngredients(false)}
                               className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
                             >
@@ -470,6 +481,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                               Set a timer
                             </p>
                             <button
+                              aria-label="Close timer picker"
                               onClick={() => setShowTimerPicker(false)}
                               className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform"
                             >
@@ -583,6 +595,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                 {!timerDone && timer && (
                   <>
                     <button
+                      aria-label={timer.running ? 'Pause timer' : 'Resume timer'}
                       onClick={toggleTimer}
                       className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                       style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -592,6 +605,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                         : <Play size={14} strokeWidth={2.5} className="text-white" />}
                     </button>
                     <button
+                      aria-label="Cancel timer"
                       onClick={() => { setTimer(null); setTimerDone(false); }}
                       className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                       style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -602,6 +616,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
                 )}
                 {timerDone && (
                   <button
+                    aria-label="Dismiss timer"
                     onClick={() => setTimerDone(false)}
                     className="w-8 h-8 rounded-full flex items-center justify-center active:scale-90 transition-transform"
                     style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -618,6 +633,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
             <div className="flex items-center justify-center gap-2 mt-4">
               {recipe.steps.map((_, i) => (
                 <button
+                  aria-label={`Go to step ${i + 1}`}
                   key={i}
                   onClick={() => {
                     setDir(i + 1 > stepIndex ? 1 : -1);
@@ -642,6 +658,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
         {!isIntro && !isDone && (
           <div className="flex items-center justify-between px-6 pb-10 pt-5 flex-shrink-0">
             <button
+              aria-label="Previous step"
               onClick={goPrev}
               disabled={stepIndex === 1}
               className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center active:scale-90 transition-transform disabled:opacity-25 disabled:pointer-events-none"
@@ -654,6 +671,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone, onRate, note }: Cooki
             </p>
 
             <button
+              aria-label="Next step"
               onClick={goNext}
               className="w-14 h-14 rounded-full bg-white flex items-center justify-center active:scale-90 transition-transform"
               style={{ boxShadow: '0 8px 20px -4px rgba(0,0,0,0.4)', color: 'var(--surface-dark)' }}

@@ -5,6 +5,8 @@ import { COMMON_INGREDIENTS } from '../data/commonIngredients';
 import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
 
 import type { ApplianceTag } from '../types';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 const APPLIANCE_OPTIONS: { id: ApplianceTag; label: string; icon: string }[] = [
   { id: 'stovetop',    label: 'Stovetop',    icon: '🍳' },
@@ -17,14 +19,11 @@ const APPLIANCE_OPTIONS: { id: ApplianceTag; label: string; icon: string }[] = [
 ];
 
 interface KitchenViewProps {
-  pantry: string[];
-  setPantry: (fn: (prev: string[]) => string[]) => void;
-  appliances: ApplianceTag[];
-  setAppliances: (fn: (prev: ApplianceTag[]) => ApplianceTag[]) => void;
   onContinue: () => void;
 }
 
-export function KitchenView({ pantry, setPantry, appliances, setAppliances, onContinue }: KitchenViewProps) {
+export function KitchenView({ onContinue }: KitchenViewProps) {
+  const { pantry, setPantry, appliances, setAppliances } = useAppStore(useShallow((s) => ({ pantry: s.pantry, setPantry: s.setPantry, appliances: s.appliances, setAppliances: s.setAppliances })));
   const toggleAppliance = (id: ApplianceTag) =>
     setAppliances((prev) =>
       prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]

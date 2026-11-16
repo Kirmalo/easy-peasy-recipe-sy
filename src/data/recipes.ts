@@ -1,13 +1,12 @@
 import type { Recipe } from '../types';
-import { EXTENDED_RECIPES } from './recipes-extended';
-import { AI_SEED_RECIPES } from './recipes-ai-seed';
 
 export const CUISINE_LABELS: Record<string, string> = {
   easy: 'Easy', medium: 'Medium', hard: 'Hard',
   breakfast: 'Breakfast', lunch: 'Lunch', dinner: 'Dinner', snack: 'Snack', dessert: 'Dessert',
 };
 
-const CURATED_RECIPES: Recipe[] = [
+/** Hand-written recipes — small, bundled with the app so the first screen has data instantly. */
+export const CURATED_RECIPES: Recipe[] = [
   {
     id: 1, name: 'Garlic Butter Pasta', emoji: '🍝', theme: 'mustard',
     description: 'Silky pasta tossed in a glossy, garlicky butter sauce.',
@@ -340,7 +339,21 @@ const CURATED_RECIPES: Recipe[] = [
   },
 ];
 
-export const RECIPES: Recipe[] = [...CURATED_RECIPES, ...EXTENDED_RECIPES, ...AI_SEED_RECIPES];
+let fullCatalog: Promise<Recipe[]> | null = null;
+
+/**
+ * Loads the full catalog (curated + ~600 TheMealDB + 150 AI seed recipes).
+ * The large datasets are split into their own chunks so they don't block first paint.
+ */
+export function loadAllRecipes(): Promise<Recipe[]> {
+  fullCatalog ??= Promise.all([import('./recipes-extended'), import('./recipes-ai-seed')])
+    .then(([ext, ai]) => [...CURATED_RECIPES, ...ext.EXTENDED_RECIPES, ...ai.AI_SEED_RECIPES])
+    .catch((err) => {
+      fullCatalog = null; // allow a retry (e.g. offline before the chunk was cached)
+      throw err;
+    });
+  return fullCatalog;
+}
 
 if (import.meta.env.DEV) {
   CURATED_RECIPES.forEach((r) => {

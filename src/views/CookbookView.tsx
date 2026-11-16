@@ -4,20 +4,16 @@ import { ShoppingCart, Search, X } from 'lucide-react';
 import { RecipeGrid } from '../components/GridCard';
 import { ShoppingListSheet } from '../components/ShoppingListSheet';
 import { useRecipes } from '../context/recipes';
+import { useShallow } from 'zustand/react/shallow';
+import { useAppStore } from '../store/appStore';
 
 interface CookbookViewProps {
-  cookbook: number[];
-  making: number[];
-  pantry: string[];
-  ratings: Record<number, 1 | 2 | 3>;
-  notes: Record<number, string>;
-  removeFromCookbook: (id: number) => void;
   openDetail: (id: number) => void;
   onCookNow: (id: number) => void;
-  onRate: (id: number, stars: 1 | 2 | 3) => void;
 }
 
-export function CookbookView({ cookbook, making, pantry, ratings, notes, removeFromCookbook, openDetail, onCookNow, onRate }: CookbookViewProps) {
+export function CookbookView({ openDetail, onCookNow }: CookbookViewProps) {
+  const { cookbook, pantry, ratings, notes, removeFromCookbook, onRate } = useAppStore(useShallow((s) => ({ cookbook: s.cookbook, pantry: s.pantry, ratings: s.ratings, notes: s.notes, removeFromCookbook: s.removeFromCookbook, onRate: s.setRating })));
   const [showShoppingList, setShowShoppingList] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [topRatedOnly, setTopRatedOnly] = useState(false);
@@ -112,9 +108,6 @@ export function CookbookView({ cookbook, making, pantry, ratings, notes, removeF
       <AnimatePresence>
         {showShoppingList && (
           <ShoppingListSheet
-            cookbook={cookbook}
-            making={making}
-            pantry={pantry}
             onClose={() => setShowShoppingList(false)}
           />
         )}
