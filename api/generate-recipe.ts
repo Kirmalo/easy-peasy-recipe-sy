@@ -3,7 +3,7 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
 import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation';
-import { moderateRecipe } from '../src/lib/moderation';
+import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation';
 import type { ThemeName } from '../src/types';
 
 // Override with ANTHROPIC_MODEL. Before switching to a newer Haiku, check that forced
@@ -59,24 +59,6 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Recipe generation is not available right now.' }, 503, headers);
   }
 
-  // Rate limit before parsing the body or calling the AI.
-  if (ipLimit && globalLimit) {
-    const ip = await ipLimit.limit(clientIp(request));
-    if (!ip.success) {
-      const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
-      return json(
-        { error: `Too many requests — you can generate ${ip.limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` },
-        429, headers,
-        { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
-      );
-    }
-    const global = await globalLimit.limit('all');
-    if (!global.success) {
-      return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
-        { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
-    }
-  }
-
   let body: { pantry?: unknown; appliances?: unknown; servings?: unknown };
   try {
     body = await request.json() as typeof body;
@@ -96,6 +78,29 @@ export default async function handler(request: Request): Promise<Response> {
 
   if (safePantry.length === 0) {
     return json({ error: 'Pantry is empty — add ingredients first' }, 400, headers);
+  }
+
+  const blocked = blockedPantryItems(safePantry);
+  if (blocked.length) {
+    return json({ error: `Remove non-food items from your pantry first: ${blocked.join(', ')}` }, 400, headers);
+  }
+
+  // Rate limit after cheap input checks (so rejected input doesn't use quota), before calling the AI.
+  if (ipLimit && globalLimit) {
+    const ip = await ipLimit.limit(clientIp(request));
+    if (!ip.success) {
+      const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
+      return json(
+        { error: `Too many requests — you can generate ${ip.limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` },
+        429, headers,
+        { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
+      );
+    }
+    const global = await globalLimit.limit('all');
+    if (!global.success) {
+      return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
+        { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
+    }
   }
 
   const client = new Anthropic({ apiKey });

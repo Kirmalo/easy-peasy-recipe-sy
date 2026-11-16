@@ -20,19 +20,30 @@ function recipeText(r: Recipe): string {
   return [r.name, r.description, ...r.ingredients, ...r.amounts, ...r.steps].join('\n');
 }
 
+/** Pantry entries that are non-food or otherwise blocked; screened before calling the AI. */
+export function blockedPantryItems(pantry: string[]): string[] {
+  return pantry.filter((p) => BLOCKED_RE.test(p));
+}
+
 /**
  * Screens a generated recipe.
  * - rejects blocked terms anywhere in the text
- * - when a pantry is given, requires most ingredients to come from it (or be staples),
- *   which catches prompt-injected, off-topic output
+ * - when a pantry is given, requires the recipe to be built on it: at least one pantry
+ *   ingredient, and at least half of the non-staple ingredients from the pantry. Staples
+ *   alone don't count, so a generic "salt, oil, onion" fallback is rejected — that's what
+ *   the model produces when the pantry was junk or prompt injection.
  */
 export function moderateRecipe(recipe: Recipe, pantry?: string[]): ModerationResult {
   const hit = recipeText(recipe).match(BLOCKED_RE);
   if (hit) return { ok: false, reason: `blocked term: ${hit[1].toLowerCase()}` };
 
   if (pantry?.length) {
-    const grounded = recipe.ingredients.filter((i) => isStaple(i) || pantry.some((p) => ingMatches(i, p))).length;
-    if (grounded / recipe.ingredients.length < 0.5) {
+    const fromPantry = (i: string) => pantry.some((p) => ingMatches(i, p));
+    const used = recipe.ingredients.filter(fromPantry).length;
+    const nonStaples = recipe.ingredients.filter((i) => !isStaple(i));
+    const groundedNonStaples = nonStaples.filter(fromPantry).length;
+    if (used === 0) return { ok: false, reason: 'recipe uses none of the provided ingredients' };
+    if (nonStaples.length && groundedNonStaples / nonStaples.length < 0.5) {
       return { ok: false, reason: 'recipe does not use the provided ingredients' };
     }
   }
