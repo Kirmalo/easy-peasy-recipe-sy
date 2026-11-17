@@ -393,7 +393,21 @@ export function DiscoverView({
                   Clear search
                 </button>
               )}
+              {pantry.length > 0 && (
+                <button
+                  onClick={generateRecipe}
+                  disabled={aiGenerating}
+                  className="px-6 py-3.5 rounded-2xl font-body font-bold text-[15px] active:scale-95 transition-transform flex items-center justify-center gap-2 disabled:opacity-50"
+                  style={{ background: 'var(--surface-cream)', color: 'var(--text-primary)' }}
+                >
+                  <span aria-hidden="true">✨</span>
+                  {aiGenerating ? 'Generating…' : 'Generate a recipe from my pantry'}
+                </button>
+              )}
             </div>
+            {aiError && (
+              <p role="alert" className="font-body text-[12px] text-red-500 text-center mt-3 px-6">{aiError}</p>
+            )}
           </div>
         ) : (
           <div className="text-center py-16" style={{ animation: 'float-in 0.5s ease-out' }}>
