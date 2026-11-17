@@ -1,14 +1,14 @@
 // Searches Pixabay server-side and streams the image back from our own origin, so the
 // API key never ships to the browser and the CDN caches the bytes instead of hotlinking.
-import { json } from './_lib/http';
+import { json } from './_lib/http.js';
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = { 'Content-Type': 'application/json' };
   if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, headers);
 
-  const key = process.env.PIXABAY_API_KEY ?? process.env.VITE_PIXABAY_API_KEY;
+  const key = (process.env.PIXABAY_API_KEY ?? process.env.VITE_PIXABAY_API_KEY)?.trim();
   const q = new URL(request.url).searchParams.get('q')?.trim().slice(0, 80);
   if (!key || !q) return json({ error: 'Not found' }, 404, headers);
 
@@ -38,3 +38,7 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Not found' }, 404, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;

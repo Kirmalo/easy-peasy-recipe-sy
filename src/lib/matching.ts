@@ -1,6 +1,6 @@
-import type { Recipe, MatchResult } from '../types';
-import { STAPLES } from '../data/staples';
-import { SUBSTITUTIONS } from '../data/substitutions';
+import type { Recipe, MatchResult } from '../types/index.js';
+import { STAPLES } from '../data/staples.js';
+import { SUBSTITUTIONS } from '../data/substitutions.js';
 
 // Regional / alternate names collapsed to one canonical phrase before matching.
 const SYNONYMS: Array<[RegExp, string]> = [

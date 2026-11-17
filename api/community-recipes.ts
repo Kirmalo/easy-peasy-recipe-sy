@@ -1,12 +1,11 @@
-import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY } from './_lib/http';
-import { sanitizeRecipes } from '../src/lib/recipeValidation';
-import { moderateRecipe } from '../src/lib/moderation';
+import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody, makeRedis } from './_lib/http.js';
+import { sanitizeRecipes } from '../src/lib/recipeValidation.js';
+import { moderateRecipe } from '../src/lib/moderation.js';
 
 /** Recipes with this many reports are hidden from everyone. */
 const HIDE_AFTER_REPORTS = 3;
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'GET');
 
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
@@ -15,7 +14,7 @@ export default async function handler(request: Request): Promise<Response> {
   if (!hasRedis()) return json({ recipes: [], upvotes: {} }, 200, headers);
 
   try {
-    const redis = Redis.fromEnv();
+    const redis = makeRedis();
     const [raw, upvotesRaw, reportsRaw] = await Promise.all([
       redis.lrange<unknown>('ep:community:recipes', 0, 99),
       redis.hgetall<Record<string, number>>(VOTES_KEY),
@@ -40,6 +39,11 @@ export default async function handler(request: Request): Promise<Response> {
     });
   } catch (err) {
     console.error('community-recipes failed', err);
-    return json({ error: 'Could not load community recipes' }, 500, headers);
+    return json(errorBody('Could not load community recipes', err), 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;
+export const OPTIONS = handler;

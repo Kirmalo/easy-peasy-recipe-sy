@@ -47,6 +47,18 @@ All are optional — without them the app still works, minus the feature that ne
 | `VOTE_SALT` | `api/community-vote` | Salt for hashing voter IPs (set any random string) |
 | `PIXABAY_API_KEY` | `api/recipe-image` | Fallback food photos. Server-side only (the old `VITE_PIXABAY_API_KEY` name is still read, but no longer shipped to the browser). |
 
+## Troubleshooting the API
+
+Preview deployments include a `detail` field in API error responses (production keeps the generic message). Open `/api/community-recipes` on a preview to check the server side:
+
+| `detail` contains | Meaning | Fix |
+|---|---|---|
+| `getaddrinfo ENOTFOUND <name>.upstash.io` | The Upstash database no longer exists. Free databases are removed after long inactivity. | Create a new database, update both `UPSTASH_REDIS_REST_*` variables, then redeploy. |
+| `UPSTASH_REDIS_REST_URL = not a valid URL` / `redis://…` | The wrong URL type. | Use the **REST** URL (`https://…upstash.io`). |
+| `Unauthorized` / `WRONGPASS` | The token doesn't match the database. | Copy `UPSTASH_REDIS_REST_TOKEN` again from the same database. |
+
+Environment variable changes only apply to deployments built after the change, so redeploy (or push) afterwards.
+
 ## Deployment
 
 The repo is set up for **Vercel**: connect it, keep the build command `npm run build` and output directory `dist`. `vercel.json` rewrites client routes (`/discover`, `/recipe/123`, `/cook/123`, …) to `index.html` so deep links work.

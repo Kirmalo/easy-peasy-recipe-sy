@@ -1,3 +1,4 @@
+import { Redis } from '@upstash/redis';
 // Shared helpers for /api routes. Files under api/_lib are not deployed as endpoints.
 
 /**
@@ -56,9 +57,41 @@ export function clientIp(request: Request): string {
   );
 }
 
+/** Env var with surrounding whitespace removed (pasted values often carry a trailing newline). */
+const env = (name: string): string => (process.env[name] ?? '').trim();
+
 export const hasRedis = (): boolean =>
-  Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  Boolean(env('UPSTASH_REDIS_REST_URL') && env('UPSTASH_REDIS_REST_TOKEN'));
+
+/** Upstash client from env, tolerant of stray whitespace (Redis.fromEnv() rejects it). */
+export const makeRedis = (): Redis =>
+  new Redis({ url: env('UPSTASH_REDIS_REST_URL'), token: env('UPSTASH_REDIS_REST_TOKEN') });
 
 // Redis keys for community recipe votes.
 export const VOTES_KEY = 'ep:community:upvotes';
 export const REPORTS_KEY = 'ep:community:reports';
+
+/**
+ * Error body for a failed request. Preview and local deployments include the underlying
+ * message to make debugging possible without the logs; production keeps it generic.
+ */
+export function errorBody(message: string, err: unknown): { error: string; detail?: string } {
+  if (process.env.VERCEL_ENV === 'production') return { error: message };
+  const parts: string[] = [];
+  // Network errors from fetch hide the real reason (DNS, refused, bad URL scheme) in `cause`.
+  for (let e: unknown = err, depth = 0; e && depth < 3; e = (e as { cause?: unknown }).cause, depth++) {
+    if (e instanceof Error) {
+      const code = (e as { code?: string }).code;
+      parts.push(`${e.name}: ${e.message}${code ? ` [${code}]` : ''}`);
+    } else parts.push(String(e));
+  }
+  // The Upstash URL is the usual culprit; show its scheme + host only (never the token).
+  const raw = process.env.UPSTASH_REDIS_REST_URL;
+  if (raw !== undefined) {
+    let shown: string;
+    try { const u = new URL(raw.trim()); shown = `${u.protocol}//${u.host}`; } catch { shown = 'not a valid URL'; }
+    const issues = [raw !== raw.trim() && 'has surrounding whitespace', /^["']|["']$/.test(raw.trim()) && 'is wrapped in quotes'].filter(Boolean);
+    parts.push(`UPSTASH_REDIS_REST_URL = ${shown}${issues.length ? ` (${issues.join(', ')})` : ''}`);
+  }
+  return { error: message, detail: parts.join(' ← ').slice(0, 600) };
+}

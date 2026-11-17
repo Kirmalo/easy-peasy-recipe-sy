@@ -3,17 +3,16 @@
 //   GET    ?code=XXXX-XXXX-XXXX        → { data, updatedAt }
 //   PUT    { code, data, updatedAt }   → { updatedAt }         last write wins
 //   DELETE ?code=…                     → { ok }
-import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
-import { sanitizePersisted } from '../src/store/persisted';
-import { normalizeSyncCode } from '../src/lib/syncCode';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody, makeRedis } from './_lib/http.js';
+import { sanitizePersisted } from '../src/store/persisted.js';
+import { normalizeSyncCode } from '../src/lib/syncCode.js';
 
 const TTL_SECONDS = 60 * 60 * 24 * 180; // refreshed on every write
 const MAX_BYTES = 256 * 1024;
 const ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O, 1/I/L
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 // Generous for normal use, tight enough that guessing 60-bit codes is hopeless.
 const limiter = redis
   ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(120, '1 h'), prefix: 'ep:sync-rl', analytics: false })
@@ -29,7 +28,7 @@ function newCode(): string {
 
 interface Snapshot { data: unknown; updatedAt: number }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = { ...corsHeaders(request, 'GET, POST, PUT, DELETE'), 'Cache-Control': 'no-store' };
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
@@ -81,6 +80,14 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ updatedAt }, 200, headers);
   } catch (err) {
     console.error('sync failed', err);
-    return json({ error: 'Sync failed' }, 500, headers);
+    return json(errorBody('Sync failed', err), 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;
+export const DELETE = handler;
+export const OPTIONS = handler;

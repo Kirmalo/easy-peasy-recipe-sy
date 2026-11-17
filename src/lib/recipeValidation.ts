@@ -1,5 +1,5 @@
 // Shared by the client and the /api routes — keep this file free of DOM and Node APIs.
-import type { Recipe, ThemeName, Difficulty, MealType, DietaryTag, ApplianceTag } from '../types';
+import type { Recipe, ThemeName, Difficulty, MealType, DietaryTag, ApplianceTag } from '../types/index.js';
 
 export const THEME_NAMES: readonly ThemeName[] = ['tomato', 'sage', 'mustard', 'berry', 'peach', 'ocean', 'forest', 'rose'];
 const DIFFICULTIES: readonly Difficulty[] = ['easy', 'medium', 'hard'];

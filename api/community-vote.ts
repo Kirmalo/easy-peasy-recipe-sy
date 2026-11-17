@@ -1,10 +1,9 @@
 // POST { id, vote: 'up' | 'report' } — one vote per recipe per client IP.
-import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis, VOTES_KEY, REPORTS_KEY } from './_lib/http';
-import { AI_ID_BASE } from '../src/lib/recipeValidation';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody, makeRedis } from './_lib/http.js';
+import { AI_ID_BASE } from '../src/lib/recipeValidation.js';
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 const limiter = redis
   ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(40, '24 h'), prefix: 'ep:vote-rl', analytics: false })
   : null;
@@ -15,7 +14,7 @@ async function hashIp(ip: string): Promise<string> {
   return [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'POST');
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, headers);
@@ -41,6 +40,11 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ ok: true }, 200, headers);
   } catch (err) {
     console.error('community-vote failed', err);
-    return json({ error: 'Could not record vote' }, 500, headers);
+    return json(errorBody('Could not record vote', err), 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const POST = handler;
+export const OPTIONS = handler;

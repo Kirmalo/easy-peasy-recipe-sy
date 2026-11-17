@@ -1,10 +1,9 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
-import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation';
-import { moderateRecipe } from '../src/lib/moderation';
-import type { ThemeName } from '../src/types';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody, makeRedis } from './_lib/http.js';
+import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation.js';
+import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation.js';
+import type { ThemeName } from '../src/types/index.js';
 
 // Override with ANTHROPIC_MODEL. Before switching to a newer Haiku, check that forced
 // tool_choice is still accepted with that model's default thinking settings.
@@ -12,7 +11,7 @@ const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
 const PER_IP_DAILY = Number(process.env.AI_DAILY_LIMIT_PER_IP) || 5;
 const GLOBAL_DAILY = Number(process.env.AI_DAILY_LIMIT_GLOBAL) || 500;
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 
 // Only initialise if env vars are present — allows local dev without Upstash.
 const ipLimit = redis
@@ -46,35 +45,17 @@ async function nextRecipeId(): Promise<number> {
   return 3_000_000_000_000_000 + Math.floor(Math.random() * 5_000_000_000_000_000);
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'POST');
 
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, headers);
   if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.ANTHROPIC_API_KEY?.trim();
   if (!apiKey) {
     console.error('generate-recipe: ANTHROPIC_API_KEY not set');
     return json({ error: 'Recipe generation is not available right now.' }, 503, headers);
-  }
-
-  // Rate limit before parsing the body or calling the AI.
-  if (ipLimit && globalLimit) {
-    const ip = await ipLimit.limit(clientIp(request));
-    if (!ip.success) {
-      const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
-      return json(
-        { error: `Too many requests — you can generate ${ip.limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` },
-        429, headers,
-        { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
-      );
-    }
-    const global = await globalLimit.limit('all');
-    if (!global.success) {
-      return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
-        { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
-    }
   }
 
   let body: { pantry?: unknown; appliances?: unknown; servings?: unknown };
@@ -96,6 +77,36 @@ export default async function handler(request: Request): Promise<Response> {
 
   if (safePantry.length === 0) {
     return json({ error: 'Pantry is empty — add ingredients first' }, 400, headers);
+  }
+
+  const blocked = blockedPantryItems(safePantry);
+  if (blocked.length) {
+    return json({ error: `Remove non-food items from your pantry first: ${blocked.join(', ')}` }, 400, headers);
+  }
+
+  // Rate limit after cheap input checks (so rejected input doesn't use quota), before calling the AI.
+  if (ipLimit && globalLimit) {
+    let ip: Awaited<ReturnType<typeof ipLimit.limit>>;
+    let global: Awaited<ReturnType<typeof globalLimit.limit>>;
+    try {
+      [ip, global] = await Promise.all([ipLimit.limit(clientIp(request)), globalLimit.limit('all')]);
+    } catch (err) {
+      // Fail closed: without a working limiter we can't bound AI spend.
+      console.error('generate-recipe rate limiter failed', err);
+      return json(errorBody('Recipe generation is not available right now.', err), 503, headers);
+    }
+    if (!ip.success) {
+      const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
+      return json(
+        { error: `Too many requests — you can generate ${ip.limit} recipes per day. Try again in ${Math.ceil(retryAfterSecs / 3600)} hour(s).` },
+        429, headers,
+        { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
+      );
+    }
+    if (!global.success) {
+      return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
+        { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
+    }
   }
 
   const client = new Anthropic({ apiKey });
@@ -174,6 +185,11 @@ Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, g
     return json(recipe, 200, headers);
   } catch (err) {
     console.error('generate-recipe failed', err);
-    return json({ error: 'Recipe generation failed — please try again.' }, 502, headers);
+    return json(errorBody('Recipe generation failed — please try again.', err), 502, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const POST = handler;
+export const OPTIONS = handler;
