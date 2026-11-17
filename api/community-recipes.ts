@@ -1,5 +1,5 @@
 import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody } from './_lib/http.js';
 import { sanitizeRecipes } from '../src/lib/recipeValidation.js';
 import { moderateRecipe } from '../src/lib/moderation.js';
 
@@ -40,7 +40,7 @@ async function handler(request: Request): Promise<Response> {
     });
   } catch (err) {
     console.error('community-recipes failed', err);
-    return json({ error: 'Could not load community recipes' }, 500, headers);
+    return json(errorBody('Could not load community recipes', err), 500, headers);
   }
 }
 

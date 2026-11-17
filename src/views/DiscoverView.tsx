@@ -47,8 +47,9 @@ export function DiscoverView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pantry, appliances, servings: 4 }),
       });
-      const data = await res.json().catch(() => ({})) as { error?: string };
-      if (!res.ok) throw new Error(data.error ?? 'Generation failed');
+      const data = await res.json().catch(() => ({})) as { error?: string; detail?: string };
+      // `detail` is only sent by preview deployments, to make failures diagnosable.
+      if (!res.ok) throw new Error([data.error ?? `Generation failed (HTTP ${res.status})`, data.detail].filter(Boolean).join(' — '));
       const recipe = sanitizeRecipe(data);
       if (!recipe) throw new Error('The recipe came back incomplete — try again.');
       setAiRecipe(recipe);

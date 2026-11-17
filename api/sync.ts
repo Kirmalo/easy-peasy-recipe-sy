@@ -5,7 +5,7 @@
 //   DELETE ?code=…                     → { ok }
 import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody } from './_lib/http.js';
 import { sanitizePersisted } from '../src/store/persisted.js';
 import { normalizeSyncCode } from '../src/lib/syncCode.js';
 
@@ -81,7 +81,7 @@ async function handler(request: Request): Promise<Response> {
     return json({ updatedAt }, 200, headers);
   } catch (err) {
     console.error('sync failed', err);
-    return json({ error: 'Sync failed' }, 500, headers);
+    return json(errorBody('Sync failed', err), 500, headers);
   }
 }
 

@@ -62,3 +62,13 @@ export const hasRedis = (): boolean =>
 // Redis keys for community recipe votes.
 export const VOTES_KEY = 'ep:community:upvotes';
 export const REPORTS_KEY = 'ep:community:reports';
+
+/**
+ * Error body for a failed request. Preview and local deployments include the underlying
+ * message to make debugging possible without the logs; production keeps it generic.
+ */
+export function errorBody(message: string, err: unknown): { error: string; detail?: string } {
+  if (process.env.VERCEL_ENV === 'production') return { error: message };
+  const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+  return { error: message, detail: detail.slice(0, 500) };
+}

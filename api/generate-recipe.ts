@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody } from './_lib/http.js';
 import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation.js';
 import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation.js';
 import type { ThemeName } from '../src/types/index.js';
@@ -87,7 +87,15 @@ async function handler(request: Request): Promise<Response> {
 
   // Rate limit after cheap input checks (so rejected input doesn't use quota), before calling the AI.
   if (ipLimit && globalLimit) {
-    const ip = await ipLimit.limit(clientIp(request));
+    let ip: Awaited<ReturnType<typeof ipLimit.limit>>;
+    let global: Awaited<ReturnType<typeof globalLimit.limit>>;
+    try {
+      [ip, global] = await Promise.all([ipLimit.limit(clientIp(request)), globalLimit.limit('all')]);
+    } catch (err) {
+      // Fail closed: without a working limiter we can't bound AI spend.
+      console.error('generate-recipe rate limiter failed', err);
+      return json(errorBody('Recipe generation is not available right now.', err), 503, headers);
+    }
     if (!ip.success) {
       const retryAfterSecs = Math.max(1, Math.ceil((ip.reset - Date.now()) / 1000));
       return json(
@@ -96,7 +104,6 @@ async function handler(request: Request): Promise<Response> {
         { 'Retry-After': String(retryAfterSecs), 'X-RateLimit-Limit': String(ip.limit), 'X-RateLimit-Remaining': String(ip.remaining), 'X-RateLimit-Reset': String(ip.reset) },
       );
     }
-    const global = await globalLimit.limit('all');
     if (!global.success) {
       return json({ error: 'Recipe generation is busy today — please try again tomorrow.' }, 429, headers,
         { 'Retry-After': String(Math.max(1, Math.ceil((global.reset - Date.now()) / 1000))) });
@@ -179,7 +186,7 @@ Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, g
     return json(recipe, 200, headers);
   } catch (err) {
     console.error('generate-recipe failed', err);
-    return json({ error: 'Recipe generation failed — please try again.' }, 502, headers);
+    return json(errorBody('Recipe generation failed — please try again.', err), 502, headers);
   }
 }
 
