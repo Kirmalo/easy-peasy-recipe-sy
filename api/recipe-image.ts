@@ -4,7 +4,7 @@ import { json } from './_lib/http.js';
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = { 'Content-Type': 'application/json' };
   if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, headers);
 
@@ -38,3 +38,7 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Not found' }, 404, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;

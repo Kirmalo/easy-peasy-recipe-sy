@@ -15,7 +15,7 @@ async function hashIp(ip: string): Promise<string> {
   return [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'POST');
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, headers);
@@ -44,3 +44,8 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Could not record vote' }, 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const POST = handler;
+export const OPTIONS = handler;

@@ -29,7 +29,7 @@ function newCode(): string {
 
 interface Snapshot { data: unknown; updatedAt: number }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = { ...corsHeaders(request, 'GET, POST, PUT, DELETE'), 'Cache-Control': 'no-store' };
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
@@ -84,3 +84,11 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Sync failed' }, 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;
+export const DELETE = handler;
+export const OPTIONS = handler;

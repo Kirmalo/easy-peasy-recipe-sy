@@ -6,7 +6,7 @@ import { moderateRecipe } from '../src/lib/moderation.js';
 /** Recipes with this many reports are hidden from everyone. */
 const HIDE_AFTER_REPORTS = 3;
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'GET');
 
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
@@ -43,3 +43,8 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'Could not load community recipes' }, 500, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const GET = handler;
+export const OPTIONS = handler;

@@ -46,7 +46,7 @@ async function nextRecipeId(): Promise<number> {
   return 3_000_000_000_000_000 + Math.floor(Math.random() * 5_000_000_000_000_000);
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   const headers = corsHeaders(request, 'POST');
 
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
@@ -182,3 +182,8 @@ Use only the pantry ingredients plus basic staples (salt, pepper, oil, butter, g
     return json({ error: 'Recipe generation failed — please try again.' }, 502, headers);
   }
 }
+
+// Vercel's web-standard signature: one named export per HTTP method, each receiving a
+// fetch Request. (A default-export function is called Node-style with (req, res).)
+export const POST = handler;
+export const OPTIONS = handler;
