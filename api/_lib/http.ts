@@ -69,6 +69,21 @@ export const REPORTS_KEY = 'ep:community:reports';
  */
 export function errorBody(message: string, err: unknown): { error: string; detail?: string } {
   if (process.env.VERCEL_ENV === 'production') return { error: message };
-  const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-  return { error: message, detail: detail.slice(0, 500) };
+  const parts: string[] = [];
+  // Network errors from fetch hide the real reason (DNS, refused, bad URL scheme) in `cause`.
+  for (let e: unknown = err, depth = 0; e && depth < 3; e = (e as { cause?: unknown }).cause, depth++) {
+    if (e instanceof Error) {
+      const code = (e as { code?: string }).code;
+      parts.push(`${e.name}: ${e.message}${code ? ` [${code}]` : ''}`);
+    } else parts.push(String(e));
+  }
+  // The Upstash URL is the usual culprit; show its scheme + host only (never the token).
+  const raw = process.env.UPSTASH_REDIS_REST_URL;
+  if (raw !== undefined) {
+    let shown: string;
+    try { const u = new URL(raw.trim()); shown = `${u.protocol}//${u.host}`; } catch { shown = 'not a valid URL'; }
+    const issues = [raw !== raw.trim() && 'has surrounding whitespace', /^["']|["']$/.test(raw.trim()) && 'is wrapped in quotes'].filter(Boolean);
+    parts.push(`UPSTASH_REDIS_REST_URL = ${shown}${issues.length ? ` (${issues.join(', ')})` : ''}`);
+  }
+  return { error: message, detail: parts.join(' ← ').slice(0, 600) };
 }
