@@ -1,5 +1,4 @@
-import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody, makeRedis } from './_lib/http.js';
 import { sanitizeRecipes } from '../src/lib/recipeValidation.js';
 import { moderateRecipe } from '../src/lib/moderation.js';
 
@@ -15,7 +14,7 @@ async function handler(request: Request): Promise<Response> {
   if (!hasRedis()) return json({ recipes: [], upvotes: {} }, 200, headers);
 
   try {
-    const redis = Redis.fromEnv();
+    const redis = makeRedis();
     const [raw, upvotesRaw, reportsRaw] = await Promise.all([
       redis.lrange<unknown>('ep:community:recipes', 0, 99),
       redis.hgetall<Record<string, number>>(VOTES_KEY),

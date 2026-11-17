@@ -1,10 +1,9 @@
 // POST { id, vote: 'up' | 'report' } — one vote per recipe per client IP.
-import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, VOTES_KEY, REPORTS_KEY, errorBody, makeRedis } from './_lib/http.js';
 import { AI_ID_BASE } from '../src/lib/recipeValidation.js';
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 const limiter = redis
   ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(40, '24 h'), prefix: 'ep:vote-rl', analytics: false })
   : null;

@@ -1,7 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody, makeRedis } from './_lib/http.js';
 import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation.js';
 import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation.js';
 import type { ThemeName } from '../src/types/index.js';
@@ -12,7 +11,7 @@ const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
 const PER_IP_DAILY = Number(process.env.AI_DAILY_LIMIT_PER_IP) || 5;
 const GLOBAL_DAILY = Number(process.env.AI_DAILY_LIMIT_GLOBAL) || 500;
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 
 // Only initialise if env vars are present — allows local dev without Upstash.
 const ipLimit = redis
@@ -53,7 +52,7 @@ async function handler(request: Request): Promise<Response> {
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, headers);
   if (!originAllowed(request)) return json({ error: 'Origin not allowed' }, 403, headers);
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.ANTHROPIC_API_KEY?.trim();
   if (!apiKey) {
     console.error('generate-recipe: ANTHROPIC_API_KEY not set');
     return json({ error: 'Recipe generation is not available right now.' }, 503, headers);

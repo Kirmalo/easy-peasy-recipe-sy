@@ -1,3 +1,4 @@
+import { Redis } from '@upstash/redis';
 // Shared helpers for /api routes. Files under api/_lib are not deployed as endpoints.
 
 /**
@@ -56,8 +57,15 @@ export function clientIp(request: Request): string {
   );
 }
 
+/** Env var with surrounding whitespace removed (pasted values often carry a trailing newline). */
+const env = (name: string): string => (process.env[name] ?? '').trim();
+
 export const hasRedis = (): boolean =>
-  Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  Boolean(env('UPSTASH_REDIS_REST_URL') && env('UPSTASH_REDIS_REST_TOKEN'));
+
+/** Upstash client from env, tolerant of stray whitespace (Redis.fromEnv() rejects it). */
+export const makeRedis = (): Redis =>
+  new Redis({ url: env('UPSTASH_REDIS_REST_URL'), token: env('UPSTASH_REDIS_REST_TOKEN') });
 
 // Redis keys for community recipe votes.
 export const VOTES_KEY = 'ep:community:upvotes';

@@ -3,9 +3,8 @@
 //   GET    ?code=XXXX-XXXX-XXXX        → { data, updatedAt }
 //   PUT    { code, data, updatedAt }   → { updatedAt }         last write wins
 //   DELETE ?code=…                     → { ok }
-import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody } from './_lib/http.js';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis, errorBody, makeRedis } from './_lib/http.js';
 import { sanitizePersisted } from '../src/store/persisted.js';
 import { normalizeSyncCode } from '../src/lib/syncCode.js';
 
@@ -13,7 +12,7 @@ const TTL_SECONDS = 60 * 60 * 24 * 180; // refreshed on every write
 const MAX_BYTES = 256 * 1024;
 const ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O, 1/I/L
 
-const redis = hasRedis() ? Redis.fromEnv() : null;
+const redis = hasRedis() ? makeRedis() : null;
 // Generous for normal use, tight enough that guessing 60-bit codes is hopeless.
 const limiter = redis
   ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(120, '1 h'), prefix: 'ep:sync-rl', analytics: false })
