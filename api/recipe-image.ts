@@ -1,6 +1,6 @@
 // Searches Pixabay server-side and streams the image back from our own origin, so the
 // API key never ships to the browser and the CDN caches the bytes instead of hotlinking.
-import { json } from './_lib/http';
+import { json } from './_lib/http.js';
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
 

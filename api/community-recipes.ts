@@ -1,7 +1,7 @@
 import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY } from './_lib/http';
-import { sanitizeRecipes } from '../src/lib/recipeValidation';
-import { moderateRecipe } from '../src/lib/moderation';
+import { corsHeaders, json, originAllowed, hasRedis, VOTES_KEY, REPORTS_KEY } from './_lib/http.js';
+import { sanitizeRecipes } from '../src/lib/recipeValidation.js';
+import { moderateRecipe } from '../src/lib/moderation.js';
 
 /** Recipes with this many reports are hidden from everyone. */
 const HIDE_AFTER_REPORTS = 3;

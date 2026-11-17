@@ -1,10 +1,10 @@
 // Pure schema + validation for persisted user data. No React / Zustand / DOM here,
 // so the /api/sync route can validate uploads with the same rules.
-import { DEFAULT_FILTERS } from '../data/defaults';
-import { sanitizeRecipes } from '../lib/recipeValidation';
-import type { ApplianceTag, Filters, Recipe } from '../types';
-import type { UnitSystem } from '../lib/units';
-import { normalizeSyncCode } from '../lib/syncCode';
+import { DEFAULT_FILTERS } from '../data/defaults.js';
+import { sanitizeRecipes } from '../lib/recipeValidation.js';
+import type { ApplianceTag, Filters, Recipe } from '../types/index.js';
+import type { UnitSystem } from '../lib/units.js';
+import { normalizeSyncCode } from '../lib/syncCode.js';
 
 export type Stars = 1 | 2 | 3;
 

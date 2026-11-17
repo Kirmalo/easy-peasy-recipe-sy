@@ -1,10 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
-import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation';
-import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation';
-import type { ThemeName } from '../src/types';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http.js';
+import { sanitizeRecipe, AI_ID_BASE } from '../src/lib/recipeValidation.js';
+import { moderateRecipe, blockedPantryItems } from '../src/lib/moderation.js';
+import type { ThemeName } from '../src/types/index.js';
 
 // Override with ANTHROPIC_MODEL. Before switching to a newer Haiku, check that forced
 // tool_choice is still accepted with that model's default thinking settings.

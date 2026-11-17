@@ -5,9 +5,9 @@
 //   DELETE ?code=…                     → { ok }
 import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
-import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http';
-import { sanitizePersisted } from '../src/store/persisted';
-import { normalizeSyncCode } from '../src/lib/syncCode';
+import { corsHeaders, json, originAllowed, clientIp, hasRedis } from './_lib/http.js';
+import { sanitizePersisted } from '../src/store/persisted.js';
+import { normalizeSyncCode } from '../src/lib/syncCode.js';
 
 const TTL_SECONDS = 60 * 60 * 24 * 180; // refreshed on every write
 const MAX_BYTES = 256 * 1024;

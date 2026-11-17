@@ -1,7 +1,7 @@
 // Deterministic screen for AI recipes before they're shown or shared with other users.
 // Pure — shared by the client and /api routes.
-import type { Recipe } from '../types';
-import { ingMatches, isStaple } from './matching';
+import type { Recipe } from '../types/index.js';
+import { ingMatches, isStaple } from './matching.js';
 
 // Non-food / dangerous items and clearly off-topic content. Whole-word, case-insensitive.
 const BLOCKED_TERMS = [
