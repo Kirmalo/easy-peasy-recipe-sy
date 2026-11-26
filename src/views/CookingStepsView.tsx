@@ -178,11 +178,10 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
   const detectedSeconds = !isIntro && !isDone ? detectSeconds(recipe.steps[stepIndex - 1]) : null;
 
   // Hands-free mode: voice commands + steps read aloud.
-  const [handsFree, setHandsFree] = useState(false);
   const currentStepText = !isIntro && !isDone ? recipe.steps[stepIndex - 1] : null;
   const speakRef = useRef<(text: string) => void>(() => {});
   const say = (text: string) => speakRef.current(text);
-  const voice = useHandsFree(handsFree, (cmd) => {
+  const voice = useHandsFree((cmd) => {
     switch (cmd) {
       case 'next': goNext(); break;
       case 'back': goPrev(); break;
@@ -200,11 +199,22 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
       case 'done': if (isDone) finish(); break;
     }
   });
-  const { speak } = voice;
+  const { speak, active: handsFree } = voice;
   useLayoutEffect(() => { speakRef.current = speak; }, [speak]);
+  // Read each new step aloud while hands-free is on.
   useEffect(() => {
     if (handsFree && currentStepText) speak(`Step ${stepIndex}. ${currentStepText}`);
   }, [handsFree, currentStepText, stepIndex, speak]);
+  const toggleHandsFree = () => {
+    // Called directly from the tap: browsers only grant the mic inside a user gesture.
+    if (voice.status === 'off' || voice.status === 'blocked' || voice.status === 'error') voice.start();
+    else voice.stop();
+  };
+  const voiceStatusText =
+    voice.status === 'listening' ? 'Listening… say “next”, “back”, “repeat”, “ingredients” or “start timer”'
+    : voice.status === 'speaking' ? 'Reading the step — listening again when it finishes'
+    : voice.status === 'starting' ? 'Starting the microphone…'
+    : voice.error;
 
   const showFallback = !imageUrl || imgError || !imgLoaded;
 
@@ -245,7 +255,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
           </div>
           {voice.supported ? (
             <button
-              onClick={() => setHandsFree((v) => !v)}
+              onClick={toggleHandsFree}
               aria-pressed={handsFree}
               aria-label={handsFree ? 'Turn off hands-free mode' : 'Turn on hands-free mode (voice commands)'}
               className="relative w-11 h-11 rounded-full flex items-center justify-center active:scale-90 transition-transform"
@@ -254,7 +264,7 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
               {handsFree
                 ? <Mic size={19} strokeWidth={2.5} className="text-[var(--surface-dark)]" />
                 : <MicOff size={19} strokeWidth={2.5} className="text-white" />}
-              {handsFree && voice.listening && (
+              {voice.status === 'listening' && (
                 <span aria-hidden="true" className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
               )}
             </button>
@@ -262,9 +272,13 @@ function CookingSteps({ recipe, recipeId, onClose, onDone }: CookingStepsViewPro
             <div className="w-11" />
           )}
         </div>
-        {handsFree && (
-          <p className="px-6 -mt-2 mb-1 text-center font-body text-[12px] text-white/55" role="status">
-            Say “next”, “back”, “repeat”, “ingredients” or “start timer”{voice.heard ? ` · heard “${voice.heard.trim()}”` : ''}
+        {voiceStatusText && (
+          <p
+            className="px-6 -mt-2 mb-1 text-center font-body text-[12px]"
+            style={{ color: voice.error ? '#FCA5A5' : 'rgba(255,255,255,0.55)' }}
+            role={voice.error ? 'alert' : 'status'}
+          >
+            {voiceStatusText}{!voice.error && voice.heard ? ` · heard “${voice.heard.trim()}”` : ''}
           </p>
         )}
 
